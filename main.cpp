@@ -1,9 +1,13 @@
 #include <iostream>
-
+#include "Funciones.h"
+#include <locale.h>
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    setlocale(LC_ALL, "spanish");
+
+    menu_principal();
+
     return 0;
 }

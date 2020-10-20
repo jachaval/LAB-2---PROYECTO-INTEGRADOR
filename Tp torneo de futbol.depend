@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1603161930 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\interfaz.cpp
+	<iostream>
+	<cstring>
+	"interfaz.h"
+	"rlutil.h"
+
+1603161927 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\interfaz.h
+
+1571584339 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1603161473 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\main.cpp
+	<iostream>
+	"Funciones.h"
+
+1603161988 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\funciones.h
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<ctime>
+	"rlutil.h"
+	"interfaz.h"
+
