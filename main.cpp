@@ -1,10 +1,11 @@
 #include <iostream>
-#include "Funciones.h"
 #include <locale.h>
 using namespace std;
+#include "menu.h"
+#include "rlutil.h"
+using namespace rlutil;
 
-int main()
-{
+int main(){
     setlocale(LC_ALL, "spanish");
 
     menu_principal();
