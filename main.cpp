@@ -4,6 +4,7 @@ using namespace std;
 #include "menu.h"
 #include "rlutil.h"
 using namespace rlutil;
+#include "torneo.h"
 
 int main(){
     setlocale(LC_ALL, "spanish");

@@ -39,10 +39,15 @@ bool Equipo::guardarEnDisco(){
     return guardo;
 }
 
-void ingresar_equipo(int cant_equipos){
-    cls();
-    title("TORNEO DE FUTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
-    gotoxy(1,3);
+void ingresar_equipos(int cant_equipos){
+
+    bool grabo;
+    grabo=cargar_equipo(cant_equipos);
+
+
+}
+
+bool cargar_equipo(int cant_equipos){
     char nombre[30];
     int cant_jugadores;
     cout<<"    CARGAR EQUIPO Y JUGADORES"<<endl<<endl;
@@ -50,7 +55,6 @@ void ingresar_equipo(int cant_equipos){
     cout<<"    Ingrese nombre: ";
     cin>>nombre;
     eq.setNombre_equipo(nombre);
-    anykey();
     if(eq.guardarEnDisco()){
         cout<<"    SE HA GUARDADO CORRECTAMENTE"<<endl;
     }
@@ -60,19 +64,35 @@ void ingresar_equipo(int cant_equipos){
 
     cout<<"    Ingrese cantidad de jugadores: ";
     cin>>cant_jugadores;
+    return (cargar_jugadores(cant_jugadores));
+}
 
-    //cargar_jugadores();
+bool cargar_jugadores(int cant_jugadores){
     int i;
     for(i=0;i<cant_jugadores;i++){
         Jugador ju;
-        char nombrej[25];
+        char nombre[25];
         cout<< "    Ingresar nombre jugador "<<i+1<<": ";
-        cin>>nombrej;
-        ju.setNombre(nombrej);
-        if(ju.guardarEnDisco()){
-            cout<<"    SE HA GUARDADO CORRECTAMENTE"<<endl;
+        cin>>nombre;
+        /// falta los demas campos
+        ju.setNombre(nombre);
+        if(!ju.guardarEnDisco()){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
+            return false;
         }
     }
-
+    return true;
 }
 
+int contar_equiposCargados(){
+    FILE*pArchivo;
+    pArchivo=fopen(FILE_EQUIPOS,"rb");
+    if (pArchivo == NULL){
+        return 0;
+    }
+    int bytes, cant;
+    fseek(pArchivo, 0, SEEK_END);
+    bytes = ftell(pArchivo);
+    fclose(pArchivo);
+    cant = bytes / sizeof(Equipo);
+    return cant;
+}

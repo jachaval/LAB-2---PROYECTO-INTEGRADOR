@@ -30,7 +30,10 @@ class Equipo{
 		int getPartidos_perdidos();
 };
 
-void ingresar_equipo(int);
+void ingresar_equipos(int);
 
+bool cargar_equipo(int cant_equipos);
+bool cargar_jugadores(int cant_jugadores);
+int contar_equiposCargados();
 
 #endif // EQUIPO_H_INCLUDED
