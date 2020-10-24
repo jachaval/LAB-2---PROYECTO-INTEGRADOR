@@ -17,7 +17,7 @@ void menu_principal(){
     int opcion,i;
 	do{
         system("cls");
-        title("TORNEO DE FUTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+        title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
 
         for (i = 0; i < 24; i++) {
             gotoxy(i + 4, 3); printf("*");
@@ -61,7 +61,7 @@ void menu_iniciar_torneo(){
 
 	do{
         system("cls");
-        title("TORNEO DE FUTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+        title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
 
         setColor(RED);
         for (i = 0; i < 24; i++) {
@@ -85,7 +85,7 @@ void menu_iniciar_torneo(){
         switch (opcion) {
             case 1:
                 cls();
-                title("TORNEO DE FUTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy (1,3);
                 FILE*pArchivo;
                 pArchivo=fopen(FILE_TORNEOS,"rb");
@@ -100,7 +100,7 @@ void menu_iniciar_torneo(){
                 break;
             case 2:
                 cls();
-                title("TORNEO DE FUTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy (1,3);
                 int cantidad_equipos;
                 int cant_equiposCargados;
