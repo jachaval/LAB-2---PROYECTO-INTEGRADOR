@@ -4,7 +4,7 @@
 
 class Torneo {
     private:
-        int tipo_torneo;///32vos, 16vos, 8vos o 4tos.
+        int tipo_torneo;///64 equipos, 32 equipos, 16 equipos o 8 equipos.
         int instancia_torneo;
         int partidos_jugados;
         bool torneo_activo;

@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <locale.h>
+#include <cstring>
 using namespace std;
 #include "rlutil.h"
 #include "interfaz.h"
@@ -67,21 +68,30 @@ bool cargar_equipo(int cant_equipos){
     return (cargar_jugadores(cant_jugadores));
 }
 
+
 bool cargar_jugadores(int cant_jugadores){
     int i;
+    char posicion[25], apellido[25], nombre[25];
     for(i=0;i<cant_jugadores;i++){
         Jugador ju;
-        char nombre[25];
+        cin.ignore();
         cout<< "    Ingresar nombre jugador "<<i+1<<": ";
-        cin>>nombre;
-        /// falta los demas campos
+        cin.getline(nombre,25);
+        cout<< "    Ingresar apellido del jugador "<<i+1<<": "<<endl;
+        cin.getline(apellido,25);
+        cout<< "    Ingresar posicion del jugador "<<i+1<<": "<<endl;
+        cin.getline(posicion,25);
+
         ju.setNombre(nombre);
+        ju.setApellido(apellido);
+        ju.setPosicion(posicion);
         if(!ju.guardarEnDisco()){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
             return false;
         }
     }
     return true;
 }
+
 
 int contar_equiposCargados(){
     FILE*pArchivo;
