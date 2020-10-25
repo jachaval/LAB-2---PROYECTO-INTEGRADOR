@@ -54,7 +54,7 @@ bool cargar_equipo(int cant_equipos){
     cout<<"    CARGAR EQUIPO Y JUGADORES"<<endl<<endl;
     Equipo eq;
     cout<<"    Ingrese nombre: ";
-    cin>>nombre;
+    cin.getline(nombre,25);
     eq.setNombre_equipo(nombre);
     if(eq.guardarEnDisco()){
         cout<<"    SE HA GUARDADO CORRECTAMENTE"<<endl;
@@ -80,7 +80,13 @@ bool cargar_jugadores(int cant_jugadores){
         cout<< "    Ingresar apellido del jugador "<<i+1<<": "<<endl;
         cin.getline(apellido,25);
         cout<< "    Ingresar posicion del jugador "<<i+1<<": "<<endl;
+<<<<<<< Updated upstream
         cin.getline(posicion,25);
+=======
+        cin.ignore();
+        cin>>posicion;
+
+>>>>>>> Stashed changes
 
         ju.setNombre(nombre);
         ju.setApellido(apellido);
