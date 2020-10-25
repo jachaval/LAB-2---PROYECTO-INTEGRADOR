@@ -31,6 +31,11 @@ bool Torneo::guardarEnDisco(){
 }
 
 int informar_tipoTorneo(){
+
+
+
+
+
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");
     if(pArchivo==NULL){
@@ -42,4 +47,11 @@ int informar_tipoTorneo(){
     fclose(pArchivo);
     cant=tor.getTipo_torneo();
     return cant;
+}
+
+void cargar_resultado_partido(){
+
+
+
+
 }
