@@ -28,6 +28,7 @@ class Equipo{
 		int getGoles_encontra();
 		int getPartidos_ganados();
 		int getPartidos_perdidos();
+
 };
 
 void ingresar_equipos(int);

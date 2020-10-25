@@ -17,7 +17,7 @@ void Equipo::cargar(){
 Equipo::Equipo(){}
 void  Equipo::mostrar(){}
 bool  Equipo::escribrirEnDisco(){}
-void  Equipo::setNro_equipo(int n){nro_equipo=n;}
+void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
 void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
 void  Equipo::setGoles_afavor(int goles){goles_afavor=goles;}
 void  Equipo::setGoles_encontra(int goles){goles_encontra=goles;}
@@ -50,11 +50,15 @@ void ingresar_equipos(int cant_equipos){
 
 bool cargar_equipo(int cant_equipos){
     char nombre[30];
-    int cant_jugadores;
+    int cant_jugadores,n;
     cout<<"    CARGAR EQUIPO Y JUGADORES"<<endl<<endl;
     Equipo eq;
+    n=contar_equiposCargados();
+    eq.setNro_equipo(n);
+    cin.ignore();
     cout<<"    Ingrese nombre: ";
     cin.getline(nombre,25);
+
     eq.setNombre_equipo(nombre);
     if(eq.guardarEnDisco()){
         cout<<"    SE HA GUARDADO CORRECTAMENTE"<<endl;
@@ -80,13 +84,11 @@ bool cargar_jugadores(int cant_jugadores){
         cout<< "    Ingresar apellido del jugador "<<i+1<<": "<<endl;
         cin.getline(apellido,25);
         cout<< "    Ingresar posicion del jugador "<<i+1<<": "<<endl;
-<<<<<<< Updated upstream
-        cin.getline(posicion,25);
-=======
-        cin.ignore();
-        cin>>posicion;
 
->>>>>>> Stashed changes
+        cin.getline(posicion,25);
+
+
+
 
         ju.setNombre(nombre);
         ju.setApellido(apellido);
