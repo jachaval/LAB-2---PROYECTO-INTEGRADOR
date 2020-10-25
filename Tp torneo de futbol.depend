@@ -35,12 +35,13 @@
 	"rlutil.h"
 	"interfaz.h"
 
-1603442493 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\main.cpp
+1603597554 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\main.cpp
 	<iostream>
 	<locale.h>
 	"menu.h"
 	"rlutil.h"
 	"torneo.h"
+	"equipo.h"
 
 1603162575 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\funciones.h
 	<iostream>
@@ -76,7 +77,7 @@
 
 1603433259 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.h
 
-1603592142 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.cpp
+1603594776 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -89,7 +90,7 @@
 	"jugador.h"
 	"torneo.h"
 
-1603592908 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
+1603597931 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -101,7 +102,7 @@
 	"equipo.h"
 	"jugador.h"
 
-1603434207 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
+1603594776 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
 
 1603265478 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.cpp
 	<iostream>

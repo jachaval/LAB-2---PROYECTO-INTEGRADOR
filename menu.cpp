@@ -105,10 +105,6 @@ void menu_iniciar_torneo(){
                 int cantidad_equipos;
                 int cant_equiposCargados;
                 Torneo reg;
-               /* FILE*p;
-                p=fopen(FILE_TORNEOS,"rb");
-                fread(&reg, sizeof (Torneo),1,p);
-                */
                 cantidad_equipos=informar_tipoTorneo(); ///devuelve la cantidad de equipos total del torneo seleccionado.
                 cant_equiposCargados=contar_equiposCargados(); //devuelve la cantidad de los equipos cargados, si ya estan todo no permite cargar mas
                 cout<< "    EQUIPOS CARGADOS HASTA EL MOMENTO: "<< cant_equiposCargados<<" de " << cantidad_equipos<<endl<<endl;
