@@ -9,8 +9,7 @@ class Equipo{
 		int goles_afavor;
 		int goles_encontra;
 		int partidos_ganados;
-		int partidos_perdidos;///se puede usar para pasar de ronda, si partidos perdidos igual a 0 pasa a la siguiente ronda
-		//bool equipo_activo;//para usarlo para pasar de ronda
+		int partidos_perdidos;
 	public:
 	    Equipo();
 		void cargar();

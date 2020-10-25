@@ -17,7 +17,7 @@ void Equipo::cargar(){
 Equipo::Equipo(){}
 void  Equipo::mostrar(){}
 bool  Equipo::escribrirEnDisco(){}
-void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
+void  Equipo::setNro_equipo(int n){nro_equipo=n;}
 void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
 void  Equipo::setGoles_afavor(int goles){goles_afavor=goles;}
 void  Equipo::setGoles_encontra(int goles){goles_encontra=goles;}
@@ -44,25 +44,23 @@ void ingresar_equipos(int cant_equipos){
 
     bool grabo;
     grabo=cargar_equipo(cant_equipos);
-    if(grabo){
-        msj("SE HA GUARDADO CORRECTAMENTE",APP_TITLEFORECOLOR,APP_OKCOLOR);
-    }
+
+
 }
 
 bool cargar_equipo(int cant_equipos){
     char nombre[30];
-    int cant_jugadores, cant;
+    int cant_jugadores;
     cout<<"    CARGAR EQUIPO Y JUGADORES"<<endl<<endl;
     Equipo eq;
-    cant=contar_equiposCargados();
-    eq.setNro_equipo(cant);
-    cin.ignore();
     cout<<"    Ingrese nombre: ";
-    cin.getline(nombre,30);
+    cin>>nombre;
     eq.setNombre_equipo(nombre);
-    if(!eq.guardarEnDisco()){
-        msj("NO SE HA PODIDO GUARDAR",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
-        return false;
+    if(eq.guardarEnDisco()){
+        cout<<"    SE HA GUARDADO CORRECTAMENTE"<<endl;
+    }
+    else{
+        cout<<"    NO SE HA PODIDO GUARDAR"<<endl;
     }
 
     cout<<"    Ingrese cantidad de jugadores: ";
@@ -79,9 +77,9 @@ bool cargar_jugadores(int cant_jugadores){
         cin.ignore();
         cout<< "    Ingresar nombre jugador "<<i+1<<": ";
         cin.getline(nombre,25);
-        cout<< "    Ingresar apellido del jugador "<<i+1<<": ";
+        cout<< "    Ingresar apellido del jugador "<<i+1<<": "<<endl;
         cin.getline(apellido,25);
-        cout<< "    Ingresar posicion del jugador "<<i+1<<": ";
+        cout<< "    Ingresar posicion del jugador "<<i+1<<": "<<endl;
         cin.getline(posicion,25);
 
         ju.setNombre(nombre);
