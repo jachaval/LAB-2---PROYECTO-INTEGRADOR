@@ -14,21 +14,27 @@ using namespace rlutil;
 void Equipo::cargar(){
     cout<< "    ";
 }
-Equipo::Equipo(){}
+Equipo::Equipo(){activo=true}
 void  Equipo::mostrar(){}
 bool  Equipo::escribrirEnDisco(){}
 void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
 void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
-void  Equipo::setGoles_afavor(int goles){goles_afavor=goles;}
-void  Equipo::setGoles_encontra(int goles){goles_encontra=goles;}
+void  Equipo::setGoles_afavor(int goles){goles_afavor+=goles;}
+void  Equipo::setGoles_encontra(int goles){goles_encontra+=goles;}
 void  Equipo::setPartidos_ganados(int partidos){partidos_ganados=partidos;}
 void  Equipo::setPartidos_perdidos(int partidos){partidos_perdidos=partidos;}
+void  Equipo::setActivo(int n){activo=false};
 int   Equipo::getNro_equipo(){return nro_equipo;}
 char *Equipo::getNombre_equipo(){return nombre_equipo;}
 int   Equipo::getGoles_afavor(){return goles_afavor;}
 int   Equipo::getGoles_encontra(){return goles_encontra;}
 int   Equipo::getPartidos_ganados(){return partidos_ganados;}
 int   Equipo::getPartidos_perdidos(){return partidos_perdidos;}
+bool  Equipo::getActivo(){return activo;}
+
+
+
+
 
 bool Equipo::guardarEnDisco(){
     bool guardo;
@@ -74,18 +80,21 @@ bool cargar_equipo(int cant_equipos){
 
 
 bool cargar_jugadores(int cant_jugadores){
-    int i;
+    int i,camiseta;
     char posicion[25], apellido[25], nombre[25];
     for(i=0;i<cant_jugadores;i++){
         Jugador ju;
         cin.ignore();
         cout<< "    Ingresar nombre jugador "<<i+1<<": ";
         cin.getline(nombre,25);
-        cout<< "    Ingresar apellido del jugador "<<i+1<<": "<<endl;
+        cout<< "    Ingresar apellido de el jugador "<<i+1<<": "<<endl;
         cin.getline(apellido,25);
-        cout<< "    Ingresar posicion del jugador "<<i+1<<": "<<endl;
+        cout<< "    Ingresar posicion de el jugador "<<i+1<<": "<<endl;
 
         cin.getline(posicion,25);
+
+        cout<<"    Ingresar numero de camiseta de el jugador "<<i+1<<": "<<endl;
+        cin<<camiseta;
 
 
 
@@ -93,6 +102,7 @@ bool cargar_jugadores(int cant_jugadores){
         ju.setNombre(nombre);
         ju.setApellido(apellido);
         ju.setPosicion(posicion);
+        ju.getNro_camiseta(camiseta);
         if(!ju.guardarEnDisco()){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
             return false;
         }

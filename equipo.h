@@ -10,6 +10,7 @@ class Equipo{
 		int goles_encontra;
 		int partidos_ganados;
 		int partidos_perdidos;
+		bool activo;
 	public:
 	    Equipo();
 		void cargar();
@@ -22,12 +23,14 @@ class Equipo{
 		void setGoles_encontra(int);
 		void setPartidos_ganados(int);
 		void setPartidos_perdidos(int);
+		void setActivo(int);
 		int getNro_equipo();
 		char *getNombre_equipo();
 		int getGoles_afavor();
 		int getGoles_encontra();
 		int getPartidos_ganados();
 		int getPartidos_perdidos();
+		bool getActivo();
 
 };
 
@@ -36,5 +39,6 @@ void ingresar_equipos(int);
 bool cargar_equipo(int cant_equipos);
 bool cargar_jugadores(int cant_jugadores);
 int contar_equiposCargados();
+Equipo buscarEquipo(Equipo nro_equipo);
 
 #endif // EQUIPO_H_INCLUDED

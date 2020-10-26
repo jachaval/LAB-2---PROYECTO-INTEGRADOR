@@ -8,7 +8,9 @@ class Torneo {
         int instancia_torneo;
         int partidos_jugados;
         bool torneo_activo;
+        int *Matriz_resultados;
    public:
+        Torneo();
         void setTipo_torneo(int);
         void setInstancia_torneo(int);
         void setPartidos_jugados(int);
@@ -24,5 +26,7 @@ class Torneo {
 };
 
 int informar_tipoTorneo();
+
+void registrarResultado(int, int);
 
 #endif // TORNEO_H_INCLUDED

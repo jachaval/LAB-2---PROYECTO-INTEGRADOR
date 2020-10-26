@@ -11,6 +11,7 @@ class Jugador{
 		int tarjeta_amarilla;
 		int asistencias;
 		int cant_goles;
+		int nro_camiseta;
 	public:
 		void cargar();
 		void mostrar();
@@ -24,6 +25,8 @@ class Jugador{
 		void setTarjeta_amarilla(int);
 		void setAsistencias(int);
 		void setCant_goles(int);
+		void setNro_camiseta(int);
+
 		int getNro_equipo();
 		char *getNombre();
 		char *getApellido();
@@ -32,7 +35,12 @@ class Jugador{
 		int getTarjeta_amarilla();
 		int getAsistencias();
 		int getCant_goles();
+		int getNro_camiseta();
 };
+
+Jugador buscar_jugador(Jugador nro_camiseta);
+
+
 
 
 #endif // JUGADOR_H_INCLUDED

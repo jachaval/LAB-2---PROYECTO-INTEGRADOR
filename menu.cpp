@@ -165,3 +165,102 @@ int seleccionar_torneo(){
     return cant_equipos;
 }
 
+void menu_ver_torneo(){
+
+
+    int opcion,i;
+	do{
+        system("cls");
+        title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+
+        for (i = 0; i < 24; i++) {
+            gotoxy(i + 4, 3); printf("*");
+            gotoxy(9, 4); printf("RESULTADOS DEL TORNEO ");
+            gotoxy(i + 4, 5); printf("*");
+            gotoxy(4, 4); printf("*");
+            gotoxy(27, 4); printf("*");
+        }
+
+        gotoxy(1,6);
+        cout << "    1. CARGAR PARTIDOS" << endl;
+        cout << "    2. MOSTRAR ESTADISTICAS" << endl;
+        cout << "    0. SALIR" << endl;
+        cout << "    ------------------------------" << endl;
+
+        cout <<"    Opción-> ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                    cls();
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+                break;
+            case 0:	return;
+            break;
+        }
+	} while (opcion != 0);
+}
+
+
+void menu_estadisticas(){
+
+
+    int opcion,i;
+	do{
+        system("cls");
+        title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+
+        for (i = 0; i < 24; i++) {
+            gotoxy(i + 4, 3); printf("*");
+            gotoxy(9, 4); printf("ESTADISTICAS DEL TORNEO ");
+            gotoxy(i + 4, 5); printf("*");
+            gotoxy(4, 4); printf("*");
+            gotoxy(27, 4); printf("*");
+        }
+
+        gotoxy(1,6);
+        cout << "    1. RESULTADOS  " << endl;
+        cout << "    2. GOLEADORES  " << endl;
+        cout << "    3. ASISTENCIAS " << endl;
+        cout << "    4. TARJETAS ROJAS " << endl;
+        cout << "    5. TARJETAS AMARILLAS " << endl;
+        cout << "    6. BUSCAR JUGADOR " << endl;
+        cout << "    7. BUSCAR EQUIPO " << endl;
+        cout << "    0. SALIR" << endl;
+        cout << "    ------------------------------" << endl;
+
+        cout <<"    Opción-> ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                    cls();
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+                break;
+            case 0:	return;
+            break;
+        }
+	} while (opcion != 0);
+}
+
+
+
+
+
+
