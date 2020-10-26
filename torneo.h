@@ -8,7 +8,6 @@ class Torneo {
         int instancia_torneo;
         int partidos_jugados;
         bool torneo_activo;
-        int *Matriz_resultados;
    public:
         Torneo();
         void setTipo_torneo(int);
