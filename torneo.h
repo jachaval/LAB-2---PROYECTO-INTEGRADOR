@@ -26,6 +26,7 @@ class Torneo {
 };
 
 int informar_tipoTorneo();
+int seleccionar_torneo();
 
 void registrarResultado(int, int);
 

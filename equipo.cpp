@@ -4,6 +4,7 @@
 #include <cstring>
 #include <locale.h>
 #include <cstring>
+#include <iomanip>
 using namespace std;
 #include "rlutil.h"
 #include "interfaz.h"
@@ -14,6 +15,7 @@ using namespace rlutil;
 void Equipo::cargar(){
     cout<< "    ";
 }
+<<<<<<< HEAD
 Equipo::Equipo(){activo=true}
 void  Equipo::mostrar(){}
 bool  Equipo::escribrirEnDisco(){}
@@ -24,6 +26,25 @@ void  Equipo::setGoles_encontra(int goles){goles_encontra+=goles;}
 void  Equipo::setPartidos_ganados(int partidos){partidos_ganados=partidos;}
 void  Equipo::setPartidos_perdidos(int partidos){partidos_perdidos=partidos;}
 void  Equipo::setActivo(int n){activo=false};
+=======
+Equipo::Equipo(){
+    partidos_ganados=0;
+    partidos_perdidos=0;
+    goles_afavor=0;
+    goles_encontra=0;
+}
+
+void  Equipo::mostrar(){
+
+}
+bool  Equipo::escribrirEnDisco(){}
+void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
+void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
+void  Equipo::setGoles_afavor(int goles=0){goles_afavor=goles;}
+void  Equipo::setGoles_encontra(int goles=0){goles_encontra=goles;}
+void  Equipo::setPartidos_ganados(int partidos=0){partidos_ganados=partidos;}
+void  Equipo::setPartidos_perdidos(int partidos=0){partidos_perdidos=partidos;}
+>>>>>>> db647b9985502a9397e05c3e8275b75575778ef2
 int   Equipo::getNro_equipo(){return nro_equipo;}
 char *Equipo::getNombre_equipo(){return nombre_equipo;}
 int   Equipo::getGoles_afavor(){return goles_afavor;}
@@ -50,8 +71,12 @@ void ingresar_equipos(int cant_equipos){
 
     bool grabo;
     grabo=cargar_equipo(cant_equipos);
-
-
+    if(grabo){
+        msj("EQUIPO GUARDADO CORRECTAMENTE", APP_TITLEFORECOLOR, APP_OKCOLOR);
+    }
+    else{
+        msj("EL EQUIPO NO SE HA GUARDADO", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+    }
 }
 
 bool cargar_equipo(int cant_equipos){
@@ -66,11 +91,9 @@ bool cargar_equipo(int cant_equipos){
     cin.getline(nombre,25);
 
     eq.setNombre_equipo(nombre);
-    if(eq.guardarEnDisco()){
-        cout<<"    SE HA GUARDADO CORRECTAMENTE"<<endl;
-    }
-    else{
+    if(!eq.guardarEnDisco()){
         cout<<"    NO SE HA PODIDO GUARDAR"<<endl;
+        return false;
     }
 
     cout<<"    Ingrese cantidad de jugadores: ";
@@ -87,6 +110,7 @@ bool cargar_jugadores(int cant_jugadores){
         cin.ignore();
         cout<< "    Ingresar nombre jugador "<<i+1<<": ";
         cin.getline(nombre,25);
+<<<<<<< HEAD
         cout<< "    Ingresar apellido de el jugador "<<i+1<<": "<<endl;
         cin.getline(apellido,25);
         cout<< "    Ingresar posicion de el jugador "<<i+1<<": "<<endl;
@@ -99,6 +123,13 @@ bool cargar_jugadores(int cant_jugadores){
 
 
 
+=======
+        cout<< "    Ingresar apellido del jugador "<<i+1<<": ";
+        cin.getline(apellido,25);
+        cout<< "    Ingresar posicion del jugador "<<i+1<<": ";
+        cin.getline(posicion,25);
+
+>>>>>>> db647b9985502a9397e05c3e8275b75575778ef2
         ju.setNombre(nombre);
         ju.setApellido(apellido);
         ju.setPosicion(posicion);
@@ -123,4 +154,29 @@ int contar_equiposCargados(){
     fclose(pArchivo);
     cant = bytes / sizeof(Equipo);
     return cant;
+}
+
+void listar_equipos(){
+    FILE *pArchivo;
+    pArchivo=fopen(FILE_EQUIPOS,"rb");
+    Equipo eq;
+    cout << left;
+    cout << setw(11) << "Nro Equipo" << setw(20) << "|Nombre Equipo" << setw(4) << "|PG" << setw(4) << "|PP" << setw(4) << "|GF" << setw(4) << "|GC";
+    cout << endl << "----------------------------------------------------------------------------" << endl;
+    while(fread(&eq, sizeof (Equipo), 1, pArchivo)){
+        cout << setw(12);
+        cout << eq.getNro_equipo();
+        cout << setw(20) ;
+        cout << eq.getNombre_equipo();
+        cout << setw(4) ;
+        cout << eq.getPartidos_ganados();
+        cout << setw(4) ;
+        cout << eq.getPartidos_perdidos();
+        cout << setw(4) ;
+        cout << eq.getGoles_afavor();
+        cout << setw(4) ;
+        cout << eq.getGoles_encontra();
+        cout << endl;
+    }
+    fclose(pArchivo);
 }
