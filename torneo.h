@@ -24,5 +24,6 @@ class Torneo {
 };
 
 int informar_tipoTorneo();
+int seleccionar_torneo();
 
 #endif // TORNEO_H_INCLUDED

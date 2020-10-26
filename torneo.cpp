@@ -31,11 +31,6 @@ bool Torneo::guardarEnDisco(){
 }
 
 int informar_tipoTorneo(){
-
-
-
-
-
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");
     if(pArchivo==NULL){
@@ -54,4 +49,38 @@ void cargar_resultado_partido(){
 
 
 
+}
+
+int seleccionar_torneo(){
+    int torneo, cant_equipos;
+    char seguro;
+    cout<<"    Seleccionar torneo:"<<endl<<endl;
+    cout<<"    1 - 32vos = 64 EQUIPOS "<<endl;
+    cout<<"    2 - 16vos = 32 EQUIPOS"<<endl;
+    cout<<"    3 - 8vos  = 16 EQUIPOS"<<endl;
+    cout<<"    4 - 4tos  = 8 EQUIPOS"<<endl<<endl;
+
+    cout<<"    Opción-> ";
+    cin>> torneo;
+
+    if(torneo==1) cant_equipos=64;
+    if(torneo==2) cant_equipos=32;
+    if(torneo==3) cant_equipos=16;
+    if(torneo==4) cant_equipos=8;
+
+    cout<< endl<< "    HA SELECCIONADO EL TORNEO PARA "<< cant_equipos << " EQUIPOS"<<endl;
+    cout<< endl<< "    ¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)"; ///FALTARIA AGREGAR VALIDACION POR INGRESOS INCORRECTOS
+    cin>>seguro;
+    if(seguro=='N' || seguro=='n') {
+        cout<<endl << "    VUELVA A SELECCIONAR TORNEO"<<endl;
+        return 0;
+    }
+    cout<<endl << "    TORNEO SELECCIONADO CORRECTAMENTE"<<endl;
+    anykey();
+
+    Torneo tor;
+    tor.setTipo_torneo(cant_equipos);
+    tor.guardarEnDisco();
+
+    return cant_equipos;
 }

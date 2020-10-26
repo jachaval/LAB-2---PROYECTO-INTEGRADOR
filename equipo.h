@@ -36,5 +36,6 @@ void ingresar_equipos(int);
 bool cargar_equipo(int cant_equipos);
 bool cargar_jugadores(int cant_jugadores);
 int contar_equiposCargados();
+void listar_equipos();
 
 #endif // EQUIPO_H_INCLUDED
