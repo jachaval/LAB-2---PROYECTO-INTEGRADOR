@@ -44,7 +44,8 @@ void menu_principal(){
                     menu_iniciar_torneo();
                 break;
             case 2:
-
+                cls();
+                  menu_ver_torneo();
                 break;
             case 3:
                 system("cls");
@@ -171,8 +172,9 @@ void menu_ver_torneo(){
 
         switch (opcion) {
             case 1:
+                cls();
                 cargar_resultado_partido();
-                    cls();
+
 
                 break;
             case 2:

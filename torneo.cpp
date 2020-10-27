@@ -51,22 +51,27 @@ void cargar_resultado_partido(){
      CantRojas, CantAmari;
      int opcion;
 
-     cout<<"    INGRESE LOS GOLES Y EL CODIGO DE EL PRIMER EQUIPO";
-     cout<<"Goles: "<<endl;
-     cin>>golesEquipo1;
-     cout<<endl;
+
+
+
+     cout<<"    INGRESE EL CODIGO DE EL PRIMER EQUIPO Y SUS GOLES  "<<endl;
      cout<<"Numero de equipo: "<<endl;
      cin>>numeroEquipo1;
      cout<<endl;
-
-
-     cout<<"    INGRESE LOS GOLES Y EL CODIGO DE EL SEGUNDO EQUIPO";
      cout<<"Goles: "<<endl;
-     cin>>golesEquipo2;
+     cin>>golesEquipo1;
      cout<<endl;
+
+
+
+     cout<<"    INGRESE EL CODIGO DE EL SEGUNDO EQUIPO Y SUS GOLES";
      cout<<"Numero de Equipo: "<<endl;
      cin>>numeroEquipo2;
      cout<<endl;
+     cout<<"Goles: "<<endl;
+     cin>>golesEquipo2;
+     cout<<endl;
+
 
      int resultado=golesEquipo1-golesEquipo2;
 
