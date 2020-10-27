@@ -9,7 +9,6 @@ class Torneo {
         int partidos_jugados;
         bool torneo_activo;
    public:
-        Torneo();
         void setTipo_torneo(int);
         void setInstancia_torneo(int);
         void setPartidos_jugados(int);

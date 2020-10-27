@@ -91,7 +91,6 @@ void menu_iniciar_torneo(){
 
                 int cantidad_equipos;
                 int cant_equiposCargados;
-                Torneo reg;
 
         switch (opcion) {
             case 1:
