@@ -37,7 +37,7 @@ class Equipo{
 void ingresar_equipos(int);
 
 bool cargar_equipo(int cant_equipos);
-bool cargar_jugadores(int cant_jugadores);
+bool cargar_jugadores(int cant_jugadores, int nroEquipo);
 int contar_equiposCargados();
 
 Equipo buscarEquipo(Equipo nro_equipo);
