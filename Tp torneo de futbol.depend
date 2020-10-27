@@ -157,7 +157,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1603578191 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\jugador.cpp
+1603766327 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\jugador.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -168,9 +168,9 @@
 	"equipo.h"
 	"jugador.h"
 
-1603595509 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.h
+1603768998 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.h
 
-1603578191 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\jugador.h
+1603767625 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\jugador.h
 
 1603578191 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\main.cpp
 	<iostream>
@@ -179,11 +179,11 @@
 	"rlutil.h"
 	"torneo.h"
 
-1603578191 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.h
+1603767180 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.h
 
-1603593611 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.h
+1603767132 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.h
 
-1603593611 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.cpp
+1603767781 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -210,13 +210,14 @@
 	"jugador.h"
 	"torneo.h"
 
-1603598259 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.cpp
+1603768998 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
 	<cstring>
 	<locale.h>
 	<cstring>
+	<iomanip>
 	"rlutil.h"
 	"interfaz.h"
 	"equipo.h"

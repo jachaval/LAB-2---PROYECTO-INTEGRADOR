@@ -15,36 +15,25 @@ using namespace rlutil;
 void Equipo::cargar(){
     cout<< "    ";
 }
-<<<<<<< HEAD
-Equipo::Equipo(){activo=true}
-void  Equipo::mostrar(){}
-bool  Equipo::escribrirEnDisco(){}
-void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
-void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
-void  Equipo::setGoles_afavor(int goles){goles_afavor+=goles;}
-void  Equipo::setGoles_encontra(int goles){goles_encontra+=goles;}
-void  Equipo::setPartidos_ganados(int partidos){partidos_ganados=partidos;}
-void  Equipo::setPartidos_perdidos(int partidos){partidos_perdidos=partidos;}
-void  Equipo::setActivo(int n){activo=false};
-=======
+
+
 Equipo::Equipo(){
+    activo=true;
     partidos_ganados=0;
     partidos_perdidos=0;
     goles_afavor=0;
     goles_encontra=0;
 }
 
-void  Equipo::mostrar(){
-
-}
-bool  Equipo::escribrirEnDisco(){}
+void  Equipo::mostrar(){};
+bool  Equipo::escribrirEnDisco(){};
+void  Equipo::setActivo(){activo=false;}
 void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
 void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
-void  Equipo::setGoles_afavor(int goles=0){goles_afavor=goles;}
-void  Equipo::setGoles_encontra(int goles=0){goles_encontra=goles;}
-void  Equipo::setPartidos_ganados(int partidos=0){partidos_ganados=partidos;}
-void  Equipo::setPartidos_perdidos(int partidos=0){partidos_perdidos=partidos;}
->>>>>>> db647b9985502a9397e05c3e8275b75575778ef2
+void  Equipo::setGoles_afavor(int goles){goles_afavor+=goles;}
+void  Equipo::setGoles_encontra(int goles){goles_encontra+=goles;}
+void  Equipo::setPartidos_ganados(){partidos_ganados++;}
+void  Equipo::setPartidos_perdidos(){partidos_perdidos++;}
 int   Equipo::getNro_equipo(){return nro_equipo;}
 char *Equipo::getNombre_equipo(){return nombre_equipo;}
 int   Equipo::getGoles_afavor(){return goles_afavor;}
@@ -110,7 +99,6 @@ bool cargar_jugadores(int cant_jugadores){
         cin.ignore();
         cout<< "    Ingresar nombre jugador "<<i+1<<": ";
         cin.getline(nombre,25);
-<<<<<<< HEAD
         cout<< "    Ingresar apellido de el jugador "<<i+1<<": "<<endl;
         cin.getline(apellido,25);
         cout<< "    Ingresar posicion de el jugador "<<i+1<<": "<<endl;
@@ -118,22 +106,22 @@ bool cargar_jugadores(int cant_jugadores){
         cin.getline(posicion,25);
 
         cout<<"    Ingresar numero de camiseta de el jugador "<<i+1<<": "<<endl;
-        cin<<camiseta;
+        cin>>camiseta;
 
 
 
 
-=======
+
         cout<< "    Ingresar apellido del jugador "<<i+1<<": ";
         cin.getline(apellido,25);
         cout<< "    Ingresar posicion del jugador "<<i+1<<": ";
         cin.getline(posicion,25);
 
->>>>>>> db647b9985502a9397e05c3e8275b75575778ef2
+
         ju.setNombre(nombre);
         ju.setApellido(apellido);
         ju.setPosicion(posicion);
-        ju.getNro_camiseta(camiseta);
+        ju.setNro_camiseta(camiseta);
         if(!ju.guardarEnDisco()){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
             return false;
         }

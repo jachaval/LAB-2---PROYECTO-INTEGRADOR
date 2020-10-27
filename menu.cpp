@@ -88,6 +88,11 @@ void menu_iniciar_torneo(){
         cout <<"    Opción-> ";
         cin >> opcion;
 
+
+                int cantidad_equipos;
+                int cant_equiposCargados;
+                Torneo reg;
+
         switch (opcion) {
             case 1:
                 cls();
@@ -108,9 +113,6 @@ void menu_iniciar_torneo(){
                 cls();
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy (1,3);
-                int cantidad_equipos;
-                int cant_equiposCargados;
-                Torneo reg;
 
                 cantidad_equipos=informar_tipoTorneo(); ///devuelve la cantidad de equipos total del torneo seleccionado.
                 cant_equiposCargados=contar_equiposCargados(); //devuelve la cantidad de los equipos cargados, si ya estan todo no permite cargar mas
@@ -129,13 +131,14 @@ void menu_iniciar_torneo(){
                     cout<< "    EQUIPOS CARGADOS HASTA EL MOMENTO: "<< cant_equiposCargados<<" de " << cantidad_equipos<<endl<<endl;
                     ingresar_equipos(cant_equipos); //agrega todos los equipos y jugadores y los guarda en equipos.dat
                 }
-                break;
+            break;
             case 3:
-                    listar_equipos();
+            listar_equipos();
                 break;
             case 4:
                 break;
-            case 0:	return;
+            case 0:
+                return;
             break;
         }
 	} while (opcion != 0);
@@ -169,6 +172,7 @@ void menu_ver_torneo(){
 
         switch (opcion) {
             case 1:
+                cargar_resultado_partido();
                     cls();
 
                 break;

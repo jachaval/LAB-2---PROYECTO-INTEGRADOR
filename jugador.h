@@ -27,6 +27,7 @@ class Jugador{
 		void setCant_goles(int);
 		void setNro_camiseta(int);
 
+
 		int getNro_equipo();
 		char *getNombre();
 		char *getApellido();

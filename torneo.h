@@ -26,7 +26,17 @@ class Torneo {
 
 int informar_tipoTorneo();
 int seleccionar_torneo();
+void cargar_resultado_partido();
 
-void registrarResultado(int, int);
+
+void registrarResultado(int, int, int, int);
+
+void registrarGoles(int, int, int);
+
+void registrarAsistencias(int, int, int);
+
+void registrarAmarillas(int, int, int);
+
+void registrarRojas(int, int , int);
 
 #endif // TORNEO_H_INCLUDED
