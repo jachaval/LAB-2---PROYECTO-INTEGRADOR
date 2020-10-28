@@ -71,6 +71,7 @@ void ingresar_equipos(int cant_equipos){
 bool cargar_equipo(int cant_equipos){
     char nombre[30];
     int cant_jugadores,n;
+    bool grabo;
     cout<<"    CARGAR EQUIPO Y JUGADORES"<<endl<<endl;
     Equipo eq;
     n=contar_equiposCargados();
@@ -87,11 +88,13 @@ bool cargar_equipo(int cant_equipos){
 
     cout<<"    Ingrese cantidad de jugadores: ";
     cin>>cant_jugadores;
-    return (cargar_jugadores(cant_jugadores));
+    cout<<endl;
+    grabo=cargar_jugadores(cant_jugadores,n);
+    return (grabo);
 }
 
 
-bool cargar_jugadores(int cant_jugadores){
+bool cargar_jugadores(int cant_jugadores, int nroEquipo){
     int i,camiseta;
     char posicion[25], apellido[25], nombre[25];
     for(i=0;i<cant_jugadores;i++){
@@ -99,29 +102,24 @@ bool cargar_jugadores(int cant_jugadores){
         cin.ignore();
         cout<< "    Ingresar nombre jugador "<<i+1<<": ";
         cin.getline(nombre,25);
-        cout<< "    Ingresar apellido de el jugador "<<i+1<<": "<<endl;
+        cout<< "    Ingresar apellido jugador "<<i+1<<": ";
         cin.getline(apellido,25);
-        cout<< "    Ingresar posicion de el jugador "<<i+1<<": "<<endl;
-
+        cout<< "    Ingresar posicion jugador "<<i+1<<": ";
         cin.getline(posicion,25);
-
-        cout<<"    Ingresar numero de camiseta de el jugador "<<i+1<<": "<<endl;
+        cout<<"    Ingresar número de camiseta jugador "<<i+1<<": ";
         cin>>camiseta;
-
-
-
-
-
-        cout<< "    Ingresar apellido del jugador "<<i+1<<": ";
-        cin.getline(apellido,25);
-        cout<< "    Ingresar posicion del jugador "<<i+1<<": ";
-        cin.getline(posicion,25);
-
+        cout<<endl;
 
         ju.setNombre(nombre);
+
         ju.setApellido(apellido);
+
         ju.setPosicion(posicion);
-        ju.setNro_camiseta(camiseta);
+
+        ju.setNro_equipo(nroEquipo);
+
+        ju.guardarEnDisco();
+
         if(!ju.guardarEnDisco()){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
             return false;
         }
@@ -150,7 +148,7 @@ void listar_equipos(){
     Equipo eq;
     cout << left;
     cout << setw(11) << "Nro Equipo" << setw(20) << "|Nombre Equipo" << setw(4) << "|PG" << setw(4) << "|PP" << setw(4) << "|GF" << setw(4) << "|GC";
-    cout << endl << "----------------------------------------------------------------------------" << endl;
+    cout << endl << "-----------------------------------------------" << endl;
     while(fread(&eq, sizeof (Equipo), 1, pArchivo)){
         cout << setw(12);
         cout << eq.getNro_equipo();

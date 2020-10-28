@@ -13,6 +13,7 @@ class Jugador{
 		int cant_goles;
 		int nro_camiseta;
 	public:
+	    Jugador();
 		void cargar();
 		void mostrar();
 		bool escribrirEnDisco();
@@ -41,6 +42,7 @@ class Jugador{
 
 Jugador buscar_jugador(Jugador nro_camiseta);
 
+void listar_jugadores_x_equipo();
 
 
 

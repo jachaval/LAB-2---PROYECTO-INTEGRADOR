@@ -47,41 +47,35 @@ int informar_tipoTorneo(){
 }
 
 void cargar_resultado_partido(){
-     int numeroEquipo1,numeroEquipo2, numeroCamiseta, golesEquipo1,golesEquipo2, golesJugador, asistencias,
-     CantRojas, CantAmari;
-     int opcion;
+    int numeroEquipo1,numeroEquipo2, numeroCamiseta, golesEquipo1,golesEquipo2, golesJugador, asistencias, CantRojas, CantAmari;
+    int resultado, res_penales1=0, res_penales2=0;
+    int opcion;
 
+    cout<<"    INGRESE EL CODIGO DE EL PRIMER EQUIPO Y SUS GOLES  "<<endl;
+    cout<<"Numero de equipo: "<<endl;
+    cin>>numeroEquipo1;
+    cout<<endl;
+    cout<<"Goles: "<<endl;
+    cin>>golesEquipo1;
+    cout<<endl;
 
+    cout<<"    INGRESE EL CODIGO DE EL SEGUNDO EQUIPO Y SUS GOLES";
+    cout<<"Numero de Equipo: "<<endl;
+    cin>>numeroEquipo2;
+    cout<<endl;
+    cout<<"Goles: "<<endl;
+    cin>>golesEquipo2;
+    cout<<endl;
 
+    resultado=golesEquipo1-golesEquipo2;
 
-     cout<<"    INGRESE EL CODIGO DE EL PRIMER EQUIPO Y SUS GOLES  "<<endl;
-     cout<<"Numero de equipo: "<<endl;
-     cin>>numeroEquipo1;
-     cout<<endl;
-     cout<<"Goles: "<<endl;
-     cin>>golesEquipo1;
-     cout<<endl;
+    res_penales1=0;
+    res_penales2=0;
 
-
-
-     cout<<"    INGRESE EL CODIGO DE EL SEGUNDO EQUIPO Y SUS GOLES";
-     cout<<"Numero de Equipo: "<<endl;
-     cin>>numeroEquipo2;
-     cout<<endl;
-     cout<<"Goles: "<<endl;
-     cin>>golesEquipo2;
-     cout<<endl;
-
-
-     int resultado=golesEquipo1-golesEquipo2;
-
-     int res_penales1=0;
-     int res_penales2=0;
-
-     if(resultado==0){
+    if(resultado==0){
         int penales1,penales2;
 
-        cout<<"    INGRESE LOS RESULTADOS DE LA RONDA DE PENALTIES RESPETANDO EL ORDEN ANTERIOR"<<endl;
+        cout<< "    INGRESE LOS RESULTADOS DE LA RONDA DE PENALTIES RESPETANDO EL ORDEN ANTERIOR"<<endl;
         cout<< "Penales a favor de el primer equipo: "<<endl;
         cin>>penales1;
         cout<<endl;
@@ -93,145 +87,149 @@ void cargar_resultado_partido(){
 
         res_penales1=penales1-penales2;
         res_penales2=penales2-penales1;
-
-     }
-
-
-     registrarResultado(golesEquipo1,golesEquipo2,res_penales1,numeroEquipo1);
-     registrarResultado(golesEquipo2,golesEquipo1,res_penales2,numeroEquipo2);
+    }
 
 
-     cls();
-     do{
-     cout<<"    INGRESE LOS GOLEADORES. PRIMERO DIGITE EL NUMERO DE EQUIPO DE EL GOLEADOR, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE GOLES QUE EL JUGADOR HIZO.";
-     cout<<"   En caso de no haber goleadores ingrese -1"<<endl;
-     cout<<" Numero de equipo: " <<endl;
-     cin>>numeroEquipo1;
-     cout<<endl;
-
-     if(numeroEquipo1>0){
-     cout<<"Numero de camiseta: " <<endl;
-     cin>>numeroCamiseta;
-     cout<<endl;
-     cout<<"Cantidad de goles de el jugador: "<<endl;
-     cin>>golesJugador;
-     cout<<endl;
+    registrarResultado(golesEquipo1,golesEquipo2,res_penales1,numeroEquipo1);
+    registrarResultado(golesEquipo2,golesEquipo1,res_penales2,numeroEquipo2);
 
 
-     registrarGoles(numeroEquipo1, numeroCamiseta, golesJugador);
-     //hacer mensaje con okcolor//
+    cls();
+    do{
+        cout<<"    INGRESE LOS GOLEADORES. PRIMERO DIGITE EL NUMERO DE EQUIPO DE EL GOLEADOR, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE GOLES QUE EL JUGADOR HIZO.";
+        cout<<"   En caso de no haber goleadores ingrese -1"<<endl;
+        cout<<" Numero de equipo: " <<endl;
+        cin>>numeroEquipo1;
+        cout<<endl;
 
-     cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+        if(numeroEquipo1>0){
+            cout<<"Numero de camiseta: " <<endl;
+            cin>>numeroCamiseta;
+            cout<<endl;
+            cout<<"Cantidad de goles de el jugador: "<<endl;
+            cin>>golesJugador;
+            cout<<endl;
 
-     cin>>opcion;
-     cout<<endl;
 
-     while (opcion!=1 || opcion!=0){
-        cout<<"OPCION INCORRECTA"<<endl;
+            registrarGoles(numeroEquipo1, numeroCamiseta, golesJugador);
+            //hacer mensaje con okcolor//
+
+            cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+
+            cin>>opcion;
+            cout<<endl;
+
+            while (opcion!=1 || opcion!=0){
+                cout<<"OPCION INCORRECTA"<<endl;
+                cin>>opcion;
+                cout<<endl;
+            }
+        }
+
+    }while(opcion==1);
+
+    cls();
+
+
+    do{
+        cout<<"    INGRESE LAS ASISTENTENCIAS. PRIMERO DIGITE EL NUMERO DE EQUIPO DE EL JUGADOR, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE ASISTENCIAS QUE EL JUGADOR HIZO";
+        cout<<"   En caso de no haber asistencias ingrese -1 en ambos campos"<<endl;
+        cout<<" Numero de equipo: "<<endl;
+        cin>>numeroEquipo1;
+        cout<<endl;
+
+        if(numeroCamiseta>0){
+
+            cout<<"Numero de camiseta: " <<endl;
+            cin>>numeroCamiseta;
+            cout<<endl;
+            cout<<"Cantidad de asistencias de el jugador: "<<endl;
+            cin>>asistencias;
+            cout<<endl;
+
+            registrarAsistencias(numeroEquipo1,numeroCamiseta, asistencias);
+            //hacer mensaje con okcolor//
+
+            cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+
+            cin>>opcion;
+            cout<<endl;
+
+            while (opcion=1 || opcion!=0){
+            cout<<"OPCION INCORRECTA"<<endl;
+            cin>>opcion;
+            cout<<endl;
+            }
+        }
+
+    }while(opcion==1);
+
+    cls();
+
+    do{
+        cout<<"    INGRESE LAS TARJETAS AMARILLAS. PRIMERO DIGITE EL NUMERO DE EQUIPO, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE TARJETAS AMARILLAS";
+        cout<<"    En caso de no haber goleadores ingrese -1"<<endl;
+        cout<<" Numero de equipo: "<<endl;
+        cin>>numeroEquipo1;
+        cout<<endl;
+        if(numeroEquipo1>0){
+
+        cout<<"Numero de camiseta: " <<endl;
+        cin>>numeroCamiseta;
+        cout<<endl;
+        cout<<"Cantidad de tarjetas amarillas: "<<endl;
+        cin>>CantAmari;
+        cout<<endl;
+
+        registrarAmarillas(numeroEquipo1,numeroCamiseta, CantAmari);
+        //hacer mensaje con okcolor//
+
+        cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+
         cin>>opcion;
-        cout<<endl;}}
+        cout<<endl;
 
-     }while(opcion==1);
+        while (opcion=1 || opcion!=0){
+            cout<<"OPCION INCORRECTA"<<endl;
+            cin>>opcion;
+            cout<<endl;}
+        }
 
-     cls();
+        }while(opcion==1);
 
-
-      do{
-     cout<<"    INGRESE LAS ASISTENTENCIAS. PRIMERO DIGITE EL NUMERO DE EQUIPO DE EL JUGADOR, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE ASISTENCIAS QUE EL JUGADOR HIZO";
-     cout<<"   En caso de no haber asistencias ingrese -1 en ambos campos"<<endl;
-     cout<<" Numero de equipo: "<<endl;
-     cin>>numeroEquipo1;
-     cout<<endl;
-
-     if(numeroCamiseta>0){
-
-     cout<<"Numero de camiseta: " <<endl;
-     cin>>numeroCamiseta;
-     cout<<endl;
-     cout<<"Cantidad de asistencias de el jugador: "<<endl;
-     cin>>asistencias;
-     cout<<endl;
-
-     registrarAsistencias(numeroEquipo1,numeroCamiseta, asistencias);
-     //hacer mensaje con okcolor//
-
-     cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
-
-     cin>>opcion;
-     cout<<endl;
-
-     while (opcion=1 || opcion!=0){
-        cout<<"OPCION INCORRECTA"<<endl;
-        cin>>opcion;
-        cout<<endl;}}
-
-     }while(opcion==1);
-
-     cls();
-
- do{
-     cout<<"    INGRESE LAS TARJETAS AMARILLAS. PRIMERO DIGITE EL NUMERO DE EQUIPO, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE TARJETAS AMARILLAS";
-     cout<<"    En caso de no haber goleadores ingrese -1"<<endl;
-     cout<<" Numero de equipo: "<<endl;
-     cin>>numeroEquipo1;
-     cout<<endl;
-     if(numeroEquipo1>0){
-
-     cout<<"Numero de camiseta: " <<endl;
-     cin>>numeroCamiseta;
-     cout<<endl;
-     cout<<"Cantidad de tarjetas amarillas: "<<endl;
-     cin>>CantAmari;
-     cout<<endl;
-
-     registrarAmarillas(numeroEquipo1,numeroCamiseta, CantAmari);
-     //hacer mensaje con okcolor//
-
-     cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
-
-     cin>>opcion;
-     cout<<endl;
-
-     while (opcion=1 || opcion!=0){
-        cout<<"OPCION INCORRECTA"<<endl;
-        cin>>opcion;
-        cout<<endl;}}
-
-     }while(opcion==1);
-
-     cls();
+        cls();
 
 
-     do{
-     cout<<"    AHORA INGRESE UNO POR UNO LOS NUMEROS DE EQUIPO Y CAMISETA DE LOS JUGADORES CON TARJETA ROJA. ";
-     cout<<"   En caso de no haber tarjetas rojas ingrese -1";
-     cout<<" Numero de equipo: "<<endl;
-     cin>>numeroEquipo1;
-     cout<<endl;
-     if(numeroEquipo1>0){
-     cout<<"Numero de camiseta: " <<endl;
-     cin>>numeroCamiseta;
-     cout<<endl;
-     CantRojas=1;
+        do{
+        cout<<"    AHORA INGRESE UNO POR UNO LOS NUMEROS DE EQUIPO Y CAMISETA DE LOS JUGADORES CON TARJETA ROJA. ";
+        cout<<"   En caso de no haber tarjetas rojas ingrese -1";
+        cout<<" Numero de equipo: "<<endl;
+        cin>>numeroEquipo1;
+        cout<<endl;
+        if(numeroEquipo1>0){
+            cout<<"Numero de camiseta: " <<endl;
+            cin>>numeroCamiseta;
+            cout<<endl;
+            CantRojas=1;
 
-     registrarRojas(numeroEquipo1,numeroCamiseta, CantRojas);
-     //hacer mensaje con okcolor//
+            registrarRojas(numeroEquipo1,numeroCamiseta, CantRojas);
+            //hacer mensaje con okcolor//
 
-     cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+            cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
 
-     cin>>opcion;
-     cout<<endl;
+            cin>>opcion;
+            cout<<endl;
 
-     while (opcion=1 || opcion!=0){
-        cout<<"OPCION INCORRECTA"<<endl;
-        cin>>opcion;
-        cout<<endl;}}
+            while (opcion=1 || opcion!=0){
+                cout<<"OPCION INCORRECTA"<<endl;
+                cin>>opcion;
+                cout<<endl;
+            }
+        }
 
-     }while(opcion==1);
+    }while(opcion==1);
 
-     cls();
-
-
+    cls();
 }
 
 
@@ -249,28 +247,32 @@ void registrarResultado(int goles_a_favor,int goles_en_contra, int diferencia_pe
     int diferencia=goles_a_favor-goles_en_contra;
 
 
-   while(fwrite(&eq,sizeof(Equipo),1,p)){
+    while(fwrite(&eq,sizeof(Equipo),1,p)){
 
-    if(equipo==eq.getNro_equipo()){
+        if(equipo==eq.getNro_equipo()){
 
             eq.setGoles_afavor(goles_a_favor);
             eq.setGoles_encontra(goles_en_contra);
 
-    if(diferencia>0)eq.setPartidos_ganados();
+            if(diferencia>0)eq.setPartidos_ganados();
 
-    if(diferencia<0)eq.setPartidos_perdidos();eq.setActivo();
+            if(diferencia<0)eq.setPartidos_perdidos();eq.setActivo();
 
-    if(diferencia==0){
-        if(diferencia_penales>0){
-                eq.setPartidos_ganados();}
-        else{eq.setPartidos_perdidos();eq.setActivo();}
+            if(diferencia==0){
+                if(diferencia_penales>0){
+                    eq.setPartidos_ganados();
+                }
+                else{
+                    eq.setPartidos_perdidos();eq.setActivo();
+                }
+            }
         }
     }
-    }}
+}
 
 void registrarGoles(int equipo, int camiseta, int goles){
 
-   Jugador ju;
+    Jugador ju;
 
     FILE*p;
     p=fopen(FILE_JUGADORES,"ab");
@@ -278,15 +280,15 @@ void registrarGoles(int equipo, int camiseta, int goles){
         return;
     }
 
-   while(fwrite(&ju,sizeof(Jugador),1,p)){
+    while(fwrite(&ju,sizeof(Jugador),1,p)){
         if(equipo==ju.getNro_equipo() && camiseta==ju.getNro_equipo())ju.setCant_goles(goles);
-
-      }}
+    }
+}
 
 
 void registrarAsistencias(int equipo, int camiseta, int asistencias){
 
-   Jugador ju;
+    Jugador ju;
 
     FILE*p;
     p=fopen(FILE_JUGADORES,"ab");
@@ -294,15 +296,15 @@ void registrarAsistencias(int equipo, int camiseta, int asistencias){
         return;
     }
 
-   while(fwrite(&ju,sizeof(Jugador),1,p)){
+    while(fwrite(&ju,sizeof(Jugador),1,p)){
         if(equipo==ju.getNro_equipo() && camiseta==ju.getNro_camiseta())ju.setAsistencias(asistencias);
-
-      }}
+    }
+}
 
 
 void registrarAmarillas(int equipo, int camiseta, int amarillas){
 
-   Jugador ju;
+    Jugador ju;
 
     FILE*p;
     p=fopen(FILE_JUGADORES,"ab");
@@ -310,15 +312,15 @@ void registrarAmarillas(int equipo, int camiseta, int amarillas){
         return;
     }
 
-   while(fwrite(&ju,sizeof(Jugador),1,p)){
+    while(fwrite(&ju,sizeof(Jugador),1,p)){
         if(equipo==ju.getNro_equipo() && camiseta==ju.getNro_camiseta())ju.setTarjeta_amarilla(amarillas);
-
-      }}
+    }
+}
 
 
 void registrarRojas(int equipo, int camiseta, int rojas){
 
-   Jugador ju;
+    Jugador ju;
 
     FILE*p;
     p=fopen(FILE_JUGADORES,"ab");
@@ -326,13 +328,11 @@ void registrarRojas(int equipo, int camiseta, int rojas){
         return;
     }
 
-   while(fwrite(&ju,sizeof(Jugador),1,p)){
+    while(fwrite(&ju,sizeof(Jugador),1,p)){
         if(equipo==ju.getNro_equipo() && camiseta==ju.getNro_camiseta())ju.setTarjeta_roja(rojas);
 
-      }}
-
-
-
+    }
+}
 
 int seleccionar_torneo(){
     int torneo, cant_equipos;
