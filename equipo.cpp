@@ -33,7 +33,7 @@ void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
 void  Equipo::setGoles_afavor(int goles){goles_afavor+=goles;}
 void  Equipo::setGoles_encontra(int goles){goles_encontra+=goles;}
 void  Equipo::setPartidos_ganados(){partidos_ganados++;}
-void  Equipo::setPartidos_perdidos(){partidos_perdidos++;}
+void  Equipo::setPartidos_perdidos(){partidos_perdidos++;}///modificar y agregar una funcion para agregar partidos a favor,gol,etc
 int   Equipo::getNro_equipo(){return nro_equipo;}
 char *Equipo::getNombre_equipo(){return nombre_equipo;}
 int   Equipo::getGoles_afavor(){return goles_afavor;}
