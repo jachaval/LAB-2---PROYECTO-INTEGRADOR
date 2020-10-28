@@ -89,7 +89,7 @@ bool cargar_equipo(int cant_equipos){
     cout<<"    Ingrese cantidad de jugadores: ";
     cin>>cant_jugadores;
     cout<<endl;
-    grabo=cargar_jugadores(cant_jugadores,n);
+    grabo=cargar_jugadores(cant_jugadores,(n+1));
     return (grabo);
 }
 
@@ -118,7 +118,7 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo){
 
         ju.setNro_equipo(nroEquipo);
 
-        ju.guardarEnDisco();
+        ju.setNro_camiseta(camiseta);
 
         if(!ju.guardarEnDisco()){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
             return false;
@@ -149,7 +149,7 @@ void listar_equipos(){
     cout << left;
     cout << setw(11) << "Nro Equipo" << setw(20) << "|Nombre Equipo" << setw(4) << "|PG" << setw(4) << "|PP" << setw(4) << "|GF" << setw(4) << "|GC";
     cout << endl << "-----------------------------------------------" << endl;
-    while(fread(&eq, sizeof (Equipo), 1, pArchivo)){
+    while(fread(&eq, sizeof (Equipo), 1, pArchivo)==1){
         cout << setw(12);
         cout << eq.getNro_equipo();
         cout << setw(20) ;

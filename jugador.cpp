@@ -62,28 +62,29 @@ void listar_jugadores_x_equipo(){
     cout << left;
     cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
     cout << endl << "---------------------------------------------------------------------------------------------------------------------------------------------" << endl;
-    while(fread(&ju, sizeof (Equipo),1, pArchivo)==1){
-        cout << left;
-        cout << setw(16);
-        cout << ju.getNombre();
-        cout << setw(15) ;
-        cout << ju.getApellido();
-        cout << setw(17) ;
-        cout << ju.getPosicion();
-        cout << setw(15) ;
-        cout << ju.getNro_camiseta();
-        cout << setw(7) ;
-        cout << ju.getCant_goles();
-        cout << setw(13) ;
-        cout << ju.getAsistencias();
-        cout << setw(10) ;
-        cout << ju.getTarjeta_roja();
-        cout << setw(14) ;
-        cout << ju.getTarjeta_amarilla();
-        cout << setw(13) ;
-        cout << ju.getNro_equipo();
-        cout << endl;
-
+    while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
+        //if(equipo==ju.getNro_equipo()){
+            cout << left;
+            cout << setw(16);
+            cout << ju.getNombre();
+            cout << setw(15) ;
+            cout << ju.getApellido();
+            cout << setw(17) ;
+            cout << ju.getPosicion();
+            cout << setw(15) ;
+            cout << ju.getNro_camiseta();
+            cout << setw(7) ;
+            cout << ju.getCant_goles();
+            cout << setw(13) ;
+            cout << ju.getAsistencias();
+            cout << setw(10) ;
+            cout << ju.getTarjeta_roja();
+            cout << setw(14) ;
+            cout << ju.getTarjeta_amarilla();
+            cout << setw(13) ;
+            cout << ju.getNro_equipo();
+            cout << endl;
+        //}
     }
 }
 
