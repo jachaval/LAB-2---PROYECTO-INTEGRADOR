@@ -89,7 +89,13 @@ bool cargar_equipo(int cant_equipos){
     cout<<"    Ingrese cantidad de jugadores: ";
     cin>>cant_jugadores;
     cout<<endl;
+<<<<<<< Updated upstream
     grabo=cargar_jugadores(cant_jugadores,(n+1));
+=======
+
+
+    grabo=cargar_jugadores(cant_jugadores,n);
+>>>>>>> Stashed changes
     return (grabo);
 }
 
@@ -120,6 +126,8 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo){
 
         ju.setNro_camiseta(camiseta);
 
+
+        ju.guardarEnDisco();
         if(!ju.guardarEnDisco()){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
             return false;
         }
