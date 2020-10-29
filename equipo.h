@@ -1,6 +1,6 @@
 #ifndef EQUIPO_H_INCLUDED
 #define EQUIPO_H_INCLUDED
-#define FILE_EQUIPOS "equipos.dat"
+#define FILE_EQUIPOS "datos/equipos.dat"
 
 class Equipo{
 	private:
@@ -21,8 +21,8 @@ class Equipo{
 		void setNombre_equipo(char *);
 		void setGoles_afavor(int);
 		void setGoles_encontra(int);
-		void setPartidos_ganados();
-		void setPartidos_perdidos();
+		void setPartidos_ganados(int);
+		void setPartidos_perdidos(int);
 		void setActivo();
 		int getNro_equipo();
 		char *getNombre_equipo();
@@ -31,7 +31,10 @@ class Equipo{
 		int getPartidos_ganados();
 		int getPartidos_perdidos();
 		bool getActivo();
-
+		void aumentar_gol_afavor(int);
+        void aumentar_gol_encontra(int);
+        void aumentar_partidos_ganados();
+        void aumentar_partidos_perdidos();
 };
 
 void ingresar_equipos(int);
@@ -45,4 +48,5 @@ Equipo buscarEquipo(Equipo nro_equipo);
 void listar_equipos();
 
 
+bool nombre_equipo(char *,int);
 #endif // EQUIPO_H_INCLUDED

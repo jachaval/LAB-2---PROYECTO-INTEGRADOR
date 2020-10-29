@@ -1,14 +1,15 @@
 #ifndef TORNEO_H_INCLUDED
 #define TORNEO_H_INCLUDED
-#define FILE_TORNEOS "torneos.dat"
+#define FILE_TORNEOS "datos/torneos.dat"
 
 class Torneo {
     private:
         int tipo_torneo;///64 equipos, 32 equipos, 16 equipos o 8 equipos.
-        int instancia_torneo;
+        int instancia_torneo;/// al iniciar torneo se carga con la llave inicial correspondiente. cuando pasa de llave se va cambiando el valor.
         int partidos_jugados;
         bool torneo_activo;
    public:
+        Torneo();
         void setTipo_torneo(int);
         void setInstancia_torneo(int);
         void setPartidos_jugados(int);
@@ -30,12 +31,14 @@ void cargar_resultado_partido();
 
 void registrarResultado(int, int, int, int);
 
-void registrarGoles(int, int, int);
+void registrarGol(int nro_equipo, int numeroCamiseta);
 
-void registrarAsistencias(int, int, int);
+void registrarAsistencia(int nro_equipo, int numeroCamiseta);
 
-void registrarAmarillas(int, int, int);
+void registrarAmarilla(int nro_equipo, int numeroCamiseta);
 
-void registrarRojas(int, int , int);
+void registrarRoja(int nro_equipo, int numeroCamiseta);
+
+void mostrar_llaveTorneo();
 
 #endif // TORNEO_H_INCLUDED

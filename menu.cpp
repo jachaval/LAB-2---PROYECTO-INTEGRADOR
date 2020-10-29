@@ -141,8 +141,6 @@ void menu_iniciar_torneo(){
 
 
 void menu_ver_torneo(){
-
-
     int opcion,i;
 	do{
         system("cls");
@@ -167,6 +165,8 @@ void menu_ver_torneo(){
         switch (opcion) {
             case 1:
                 cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy (1,3);
                 cargar_resultado_partido();
 
                 break;
@@ -179,7 +179,6 @@ void menu_ver_torneo(){
 
 
 void menu_estadisticas(){
-
 
     int opcion,i;
 	do{

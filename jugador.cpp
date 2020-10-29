@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <locale.h>
+#include <cstring>
 #include <iomanip>
 using namespace std;
 #include "rlutil.h"
@@ -37,6 +38,21 @@ int  Jugador::getAsistencias(){return asistencias;}
 int  Jugador::getCant_goles(){return cant_goles;}
 int  Jugador::getNro_camiseta(){return nro_camiseta;}
 
+void Jugador::aumentar_gol(){
+    cant_goles++;
+}
+
+void Jugador::aumentar_asistencia(){
+    asistencias++;
+}
+void Jugador::aumentar_amarilla(){
+    tarjeta_amarilla++;
+}
+
+void Jugador::aumentar_roja(){
+    tarjeta_roja++;
+}
+
 bool Jugador::guardarEnDisco(){
     bool guardo;
     FILE *pArchivo;
@@ -48,7 +64,9 @@ bool Jugador::guardarEnDisco(){
 }
 
 void listar_jugadores_x_equipo(){
+    bool existe;
     int equipo;
+    char nomb_equipo[30];
     FILE * pArchivo;
     pArchivo=fopen(FILE_JUGADORES,"rb");
     if(pArchivo==NULL){
@@ -58,33 +76,41 @@ void listar_jugadores_x_equipo(){
     Jugador ju;
     cout << "    INGRESE NÚMERO DEL EQUIPO A BUSCAR: ";
     cin >> equipo;
-    cout << endl << "    LISTA DE JUGADORES DEL EQUIPO"<<endl<<endl;
-    cout << left;
-    cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
-    cout << endl << "---------------------------------------------------------------------------------------------------------------------------------------------" << endl;
-    while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
-        //if(equipo==ju.getNro_equipo()){
-            cout << left;
-            cout << setw(16);
-            cout << ju.getNombre();
-            cout << setw(15) ;
-            cout << ju.getApellido();
-            cout << setw(17) ;
-            cout << ju.getPosicion();
-            cout << setw(15) ;
-            cout << ju.getNro_camiseta();
-            cout << setw(7) ;
-            cout << ju.getCant_goles();
-            cout << setw(13) ;
-            cout << ju.getAsistencias();
-            cout << setw(10) ;
-            cout << ju.getTarjeta_roja();
-            cout << setw(14) ;
-            cout << ju.getTarjeta_amarilla();
-            cout << setw(13) ;
-            cout << ju.getNro_equipo();
-            cout << endl;
-        //}
+
+    existe=nombre_equipo(nomb_equipo,equipo);/// carga el nombre para poder poner el nombre del equipo Y ADEMAS VERIFICA QUE EXISTA EL EQUIPO
+    if(existe){
+        cout << endl << "    LISTA DE JUGADORES DEL EQUIPO: ";
+        setColor(RED);
+        cout << nomb_equipo<<endl<<endl;
+        setColor(WHITE);
+        cout << left;
+        cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
+        cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+        while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
+            if(equipo==ju.getNro_equipo()){
+                cout << left;
+                cout << setw(16);
+                cout << ju.getNombre();
+                cout << setw(15) ;
+                cout << ju.getApellido();
+                cout << setw(15) ;
+                cout << ju.getPosicion();
+                cout << setw(15) ;
+                cout << ju.getNro_camiseta();
+                cout << setw(7) ;
+                cout << ju.getCant_goles();
+                cout << setw(13) ;
+                cout << ju.getAsistencias();
+                cout << setw(10) ;
+                cout << ju.getTarjeta_roja();
+                cout << setw(14) ;
+                cout << ju.getTarjeta_amarilla();
+                cout << endl;
+            }
+        }
+    }
+    else{
+        msj("EQUIPO NO ENCONTRADO",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
     }
 }
 

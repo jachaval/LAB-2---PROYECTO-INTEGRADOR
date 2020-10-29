@@ -30,10 +30,10 @@ bool  Equipo::escribrirEnDisco(){};
 void  Equipo::setActivo(){activo=false;}
 void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
 void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
-void  Equipo::setGoles_afavor(int goles){goles_afavor+=goles;}
-void  Equipo::setGoles_encontra(int goles){goles_encontra+=goles;}
-void  Equipo::setPartidos_ganados(){partidos_ganados++;}
-void  Equipo::setPartidos_perdidos(){partidos_perdidos++;}///modificar y agregar una funcion para agregar partidos a favor,gol,etc
+void  Equipo::setGoles_afavor(int goles){goles_afavor=goles;}
+void  Equipo::setGoles_encontra(int goles){goles_encontra=goles;}
+void  Equipo::setPartidos_ganados(int partidos){partidos_ganados=partidos;}
+void  Equipo::setPartidos_perdidos(int partidos){partidos_perdidos=partidos;}///modificar y agregar una funcion para agregar partidos a favor,gol,etc
 int   Equipo::getNro_equipo(){return nro_equipo;}
 char *Equipo::getNombre_equipo(){return nombre_equipo;}
 int   Equipo::getGoles_afavor(){return goles_afavor;}
@@ -42,8 +42,19 @@ int   Equipo::getPartidos_ganados(){return partidos_ganados;}
 int   Equipo::getPartidos_perdidos(){return partidos_perdidos;}
 bool  Equipo::getActivo(){return activo;}
 
+void Equipo::aumentar_gol_afavor(int goles){
+    goles_afavor+= goles;
+}
+void Equipo::aumentar_gol_encontra(int goles){
+    goles_encontra+= goles;
+}
 
-
+void Equipo::aumentar_partidos_ganados(){
+    partidos_ganados++;
+}
+void Equipo::aumentar_partidos_perdidos(){
+    partidos_perdidos++;
+}
 
 
 bool Equipo::guardarEnDisco(){
@@ -86,7 +97,7 @@ bool cargar_equipo(int cant_equipos){
         return false;
     }
 
-    cout<<"    Ingrese cantidad de jugadores: ";
+    cout<<endl<<"    Ingrese cantidad de jugadores: ";
     cin>>cant_jugadores;
     cout<<endl;
 <<<<<<< Updated upstream
@@ -173,4 +184,25 @@ void listar_equipos(){
         cout << endl;
     }
     fclose(pArchivo);
+}
+
+bool nombre_equipo(char * nom_equipo,int equipo){
+    Equipo eq;
+    FILE * pArchivo;
+    pArchivo=fopen(FILE_EQUIPOS,"rb");
+    if(pArchivo==NULL){
+        cout<<"ERROR DE ARCHIVO"<<endl;
+        return false;
+    }
+    else{
+        while(fread(&eq, sizeof(Equipo), 1 , pArchivo)){
+            if(equipo==eq.getNro_equipo()){
+                strcpy(nom_equipo,eq.getNombre_equipo());
+                fclose(pArchivo);
+                return true;
+            }
+        }
+    }
+    fclose(pArchivo);
+    return false;
 }
