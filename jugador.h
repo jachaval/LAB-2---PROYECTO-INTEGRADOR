@@ -38,6 +38,10 @@ class Jugador{
 		int getAsistencias();
 		int getCant_goles();
 		int getNro_camiseta();
+		void aumentar_gol();
+		void aumentar_asistencia();
+		void aumentar_amarilla();
+		void aumentar_roja();
 };
 
 Jugador buscar_jugador(Jugador nro_camiseta);

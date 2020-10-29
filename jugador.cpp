@@ -38,6 +38,21 @@ int  Jugador::getAsistencias(){return asistencias;}
 int  Jugador::getCant_goles(){return cant_goles;}
 int  Jugador::getNro_camiseta(){return nro_camiseta;}
 
+void Jugador::aumentar_gol(){
+    cant_goles++;
+}
+
+void Jugador::aumentar_asistencia(){
+    asistencias++;
+}
+void Jugador::aumentar_amarilla(){
+    tarjeta_amarilla++;
+}
+
+void Jugador::aumentar_roja(){
+    tarjeta_roja++;
+}
+
 bool Jugador::guardarEnDisco(){
     bool guardo;
     FILE *pArchivo;
