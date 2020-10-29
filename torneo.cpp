@@ -20,6 +20,10 @@ int  Torneo::getInstancia_torneo(){return instancia_torneo;}
 int  Torneo::getPartidos_jugados(){return partidos_jugados;}
 bool Torneo::getTorneo_activo(){return torneo_activo;}
 
+Torneo::Torneo(){
+    partidos_jugados=0;
+    torneo_activo=true;
+}
 
 bool Torneo::guardarEnDisco(){
     bool guardo;
@@ -51,19 +55,33 @@ void cargar_resultado_partido(){
     int resultado, res_penales1=0, res_penales2=0;
     int opcion;
 
-    cout<<"    INGRESE EL CÓDIGO DEL PRIMER EQUIPO Y SUS GOLES  "<<endl;
-    cout<<"Número de equipo: "<<endl;
+    Torneo tor;
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_TORNEOS,"rb");
+    if(pArchivo==NULL){
+        msj("ERROR ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return;
+    }
+    fread(&tor, sizeof(Torneo),1 , pArchivo);
+    pclose(pArchivo);
+    char nomb_equipo1[30];
+    char nomb_equipo2[30];
+    cout<<"    CARGAR PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
+    cout<<"    Número del primer equipo: ";
     cin>>numeroEquipo1;
+    nombre_equipo(nomb_equipo1,numeroEquipo1);
+    cout<<"    EQUIPO "<<nomb_equipo1;
     cout<<endl;
-    cout<<"Goles: "<<endl;
+    cout<<"    Goles: ";
     cin>>golesEquipo1;
     cout<<endl;
 
-    cout<<"    INGRESE EL CÓDIGO DEL SEGUNDO EQUIPO Y SUS GOLES";
-    cout<<"Número de Equipo: "<<endl;
+    cout<<"    Número del segundo equipo: ";
     cin>>numeroEquipo2;
+    nombre_equipo(nomb_equipo2,numeroEquipo2);
+    cout<<"    EQUIPO "<<nomb_equipo2;
     cout<<endl;
-    cout<<"Goles: "<<endl;
+    cout<<"    Goles: ";
     cin>>golesEquipo2;
     cout<<endl;
 
@@ -75,12 +93,12 @@ void cargar_resultado_partido(){
     if(resultado==0){
         int penales1,penales2;
 
-        cout<< "    INGRESE LOS RESULTADOS DE LA RONDA DE PENALTIES RESPETANDO EL ORDEN ANTERIOR"<<endl;
-        cout<< "Penales a favor del primer equipo: "<<endl;
+        cout<< "    INGRESE LOS RESULTADOS DE LA RONDA DE PENALTIES RESPETANDO EL ORDEN ANTERIOR"<<endl<<endl;
+        cout<< "    Penales a favor de "<<nomb_equipo1<<": ";
         cin>>penales1;
         cout<<endl;
 
-        cout<< "Penales a favor del segundo equipo: "<<endl<<endl;
+        cout<< "    Penales a favor de "<<nomb_equipo2<<": ";
         cin>>penales2;
         cout<<endl;
 
@@ -97,8 +115,8 @@ void cargar_resultado_partido(){
     cls();
     do{
         cout<<"    INGRESE LOS GOLEADORES. PRIMERO DIGITE EL NÚMERO DE EQUIPO DEL GOLEADOR, LUEGO EL DE LA CAMISETA Y LUEGO LA CANTIDAD DE GOLES QUE EL JUGADOR HIZO.";
-        cout<<"   En caso de no haber goleadores ingrese -1"<<endl;
-        cout<<" Número de equipo: " <<endl;
+        cout<<"    En caso de no haber goles ingrese -1"<<endl;
+        cout<<"    Número de equipo: " <<endl;
         cin>>numeroEquipo1;
         cout<<endl;
 
@@ -133,8 +151,8 @@ void cargar_resultado_partido(){
 
     do{
         cout<<"    INGRESE LAS ASISTENTENCIAS. PRIMERO DIGITE EL NÚMERO DE EQUIPO DEL JUGADOR, LUEGO EL DE LA CAMISETA Y LUEGO LA CANTIDAD DE ASISTENCIAS QUE EL JUGADOR HIZO";
-        cout<<"   En caso de no haber asistencias ingrese -1 en ambos campos"<<endl;
-        cout<<" Número de equipo: "<<endl;
+        cout<<"    En caso de no haber asistencias ingrese -1 en ambos campos"<<endl;
+        cout<<"    Número de equipo: "<<endl;
         cin>>numeroEquipo1;
         cout<<endl;
 
@@ -167,8 +185,8 @@ void cargar_resultado_partido(){
     cls();
 
     do{
-        cout<<"    INGRESE LAS TARJETAS AMARILLAS. PRIMERO DIGITE EL NUMERO DE EQUIPO, LUEGO EL DE LA CAMISETA Y LUEGO LA CANTIDAD DE TARJETAS AMARILLAS";
-        cout<<"    En caso de no haber goleadores ingrese -1"<<endl;
+        cout<<"    INGRESE LAS TARJETAS AMARILLAS. PRIMERO DIGITE EL NÚMERO DE EQUIPO, LUEGO EL DE LA CAMISETA Y LUEGO LA CANTIDAD DE TARJETAS AMARILLAS"<<endl<<endl;
+        cout<<"    En caso de no haber amarillas ingrese -1"<<endl;
         cout<<" Número de equipo: "<<endl;
         cin>>numeroEquipo1;
         cout<<endl;
@@ -234,40 +252,44 @@ void cargar_resultado_partido(){
 
 
 void registrarResultado(int goles_a_favor,int goles_en_contra, int diferencia_penales, int equipo){
-
     Equipo eq;
-
+    int diferencia;
     FILE*p;
-    p=fopen(FILE_EQUIPOS,"ab");
+    p=fopen(FILE_EQUIPOS,"rb+");
     if (p == NULL){
+        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
         return;
     }
+    diferencia=goles_a_favor-goles_en_contra;
 
 
-    int diferencia=goles_a_favor-goles_en_contra;
-
-
-    while(fwrite(&eq,sizeof(Equipo),1,p)){
-
+    while(fread(&eq,sizeof(Equipo),1,p)==1){
         if(equipo==eq.getNro_equipo()){
+            eq.aumentar_gol_afavor(goles_a_favor);
+            eq.aumentar_gol_encontra(goles_en_contra);
+            if(diferencia>0)eq.aumentar_partidos_ganados();
 
-            eq.setGoles_afavor(goles_a_favor);
-            eq.setGoles_encontra(goles_en_contra);
-
-            if(diferencia>0)eq.setPartidos_ganados();
-
-            if(diferencia<0)eq.setPartidos_perdidos();eq.setActivo();
-
+            if(diferencia<0){
+                eq.aumentar_partidos_perdidos();
+                eq.setActivo();
+            }
             if(diferencia==0){
                 if(diferencia_penales>0){
-                    eq.setPartidos_ganados();
+                    eq.aumentar_partidos_ganados();
                 }
                 else{
-                    eq.setPartidos_perdidos();eq.setActivo();
+                    eq.aumentar_partidos_perdidos();
+                    eq.setActivo();
                 }
             }
+            fseek(p,ftell(p)-sizeof (Equipo),0);
+            fwrite(&eq, sizeof(Equipo), 1 , p);
+            fclose(p);
+            msj("RESULTADO GUARDADO CORRECTAMENTE",APP_TITLEFORECOLOR,APP_OKCOLOR);
+            return;
         }
     }
+    fclose(p);
 }
 
 void registrarGoles(int equipo, int camiseta, int goles){
@@ -362,6 +384,7 @@ int seleccionar_torneo(){
     anykey();
 
     Torneo tor;
+    tor.setInstancia_torneo(cant_equipos/2);
     tor.setTipo_torneo(cant_equipos);
     tor.guardarEnDisco();
 

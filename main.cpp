@@ -12,7 +12,23 @@ using namespace rlutil;
 
 int main(){
     setlocale(LC_ALL, "spanish");
+    /*
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_TORNEOS,"rb");
+    if(pArchivo==NULL){
+        cout<<"erro archivo"<<endl;
+        exit(1);
+    }
+    Torneo tor;
+    fread(&tor, sizeof(Torneo), 1, pArchivo);
+    fclose(pArchivo);
 
+    cout<<"torneo"<<endl;
+    cout<< "tipo de torneo: "<<tor.getTipo_torneo()<<endl;
+    cout<< "instancia de torneo: "<<tor.getInstancia_torneo()<<endl;
+    cout<< "Partido jugados: "<<tor.getPartidos_jugados()<<endl;
+    cout<< "torneo activo? "<<tor.getTorneo_activo()<<endl;
+    */
     menu_principal();
 
     return 0;

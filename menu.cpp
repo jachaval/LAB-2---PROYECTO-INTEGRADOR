@@ -165,6 +165,8 @@ void menu_ver_torneo(){
         switch (opcion) {
             case 1:
                 cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy (1,3);
                 cargar_resultado_partido();
 
                 break;

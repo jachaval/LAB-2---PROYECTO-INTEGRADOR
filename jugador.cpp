@@ -49,6 +49,7 @@ bool Jugador::guardarEnDisco(){
 }
 
 void listar_jugadores_x_equipo(){
+    bool existe;
     int equipo;
     char nomb_equipo[30];
     FILE * pArchivo;
@@ -61,36 +62,40 @@ void listar_jugadores_x_equipo(){
     cout << "    INGRESE NÚMERO DEL EQUIPO A BUSCAR: ";
     cin >> equipo;
 
-    nombre_equipo(nomb_equipo,equipo);/// carga el nombre para poder poner el nombre del equipo!!
-
-    cout << endl << "    LISTA DE JUGADORES DEL EQUIPO: ";
-    setColor(RED);
-    cout << nomb_equipo<<endl<<endl;
-    setColor(WHITE);
-    cout << left;
-    cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
-    cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
-    while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
-        if(equipo==ju.getNro_equipo()){
-            cout << left;
-            cout << setw(16);
-            cout << ju.getNombre();
-            cout << setw(15) ;
-            cout << ju.getApellido();
-            cout << setw(15) ;
-            cout << ju.getPosicion();
-            cout << setw(15) ;
-            cout << ju.getNro_camiseta();
-            cout << setw(7) ;
-            cout << ju.getCant_goles();
-            cout << setw(13) ;
-            cout << ju.getAsistencias();
-            cout << setw(10) ;
-            cout << ju.getTarjeta_roja();
-            cout << setw(14) ;
-            cout << ju.getTarjeta_amarilla();
-            cout << endl;
+    existe=nombre_equipo(nomb_equipo,equipo);/// carga el nombre para poder poner el nombre del equipo Y ADEMAS VERIFICA QUE EXISTA EL EQUIPO
+    if(existe){
+        cout << endl << "    LISTA DE JUGADORES DEL EQUIPO: ";
+        setColor(RED);
+        cout << nomb_equipo<<endl<<endl;
+        setColor(WHITE);
+        cout << left;
+        cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
+        cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+        while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
+            if(equipo==ju.getNro_equipo()){
+                cout << left;
+                cout << setw(16);
+                cout << ju.getNombre();
+                cout << setw(15) ;
+                cout << ju.getApellido();
+                cout << setw(15) ;
+                cout << ju.getPosicion();
+                cout << setw(15) ;
+                cout << ju.getNro_camiseta();
+                cout << setw(7) ;
+                cout << ju.getCant_goles();
+                cout << setw(13) ;
+                cout << ju.getAsistencias();
+                cout << setw(10) ;
+                cout << ju.getTarjeta_roja();
+                cout << setw(14) ;
+                cout << ju.getTarjeta_amarilla();
+                cout << endl;
+            }
         }
+    }
+    else{
+        msj("EQUIPO NO ENCONTRADO",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
     }
 }
 
