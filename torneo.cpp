@@ -51,16 +51,16 @@ void cargar_resultado_partido(){
     int resultado, res_penales1=0, res_penales2=0;
     int opcion;
 
-    cout<<"    INGRESE EL CODIGO DE EL PRIMER EQUIPO Y SUS GOLES  "<<endl;
-    cout<<"Numero de equipo: "<<endl;
+    cout<<"    INGRESE EL CÓDIGO DEL PRIMER EQUIPO Y SUS GOLES  "<<endl;
+    cout<<"Número de equipo: "<<endl;
     cin>>numeroEquipo1;
     cout<<endl;
     cout<<"Goles: "<<endl;
     cin>>golesEquipo1;
     cout<<endl;
 
-    cout<<"    INGRESE EL CODIGO DE EL SEGUNDO EQUIPO Y SUS GOLES";
-    cout<<"Numero de Equipo: "<<endl;
+    cout<<"    INGRESE EL CÓDIGO DEL SEGUNDO EQUIPO Y SUS GOLES";
+    cout<<"Número de Equipo: "<<endl;
     cin>>numeroEquipo2;
     cout<<endl;
     cout<<"Goles: "<<endl;
@@ -76,11 +76,11 @@ void cargar_resultado_partido(){
         int penales1,penales2;
 
         cout<< "    INGRESE LOS RESULTADOS DE LA RONDA DE PENALTIES RESPETANDO EL ORDEN ANTERIOR"<<endl;
-        cout<< "Penales a favor de el primer equipo: "<<endl;
+        cout<< "Penales a favor del primer equipo: "<<endl;
         cin>>penales1;
         cout<<endl;
 
-        cout<< "Penales a favor de el segundo equipo: "<<endl<<endl;
+        cout<< "Penales a favor del segundo equipo: "<<endl<<endl;
         cin>>penales2;
         cout<<endl;
 
@@ -96,17 +96,17 @@ void cargar_resultado_partido(){
 
     cls();
     do{
-        cout<<"    INGRESE LOS GOLEADORES. PRIMERO DIGITE EL NUMERO DE EQUIPO DE EL GOLEADOR, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE GOLES QUE EL JUGADOR HIZO.";
+        cout<<"    INGRESE LOS GOLEADORES. PRIMERO DIGITE EL NÚMERO DE EQUIPO DEL GOLEADOR, LUEGO EL DE LA CAMISETA Y LUEGO LA CANTIDAD DE GOLES QUE EL JUGADOR HIZO.";
         cout<<"   En caso de no haber goleadores ingrese -1"<<endl;
-        cout<<" Numero de equipo: " <<endl;
+        cout<<" Número de equipo: " <<endl;
         cin>>numeroEquipo1;
         cout<<endl;
 
         if(numeroEquipo1>0){
-            cout<<"Numero de camiseta: " <<endl;
+            cout<<"Número de camiseta: " <<endl;
             cin>>numeroCamiseta;
             cout<<endl;
-            cout<<"Cantidad de goles de el jugador: "<<endl;
+            cout<<"Cantidad de goles del jugador: "<<endl;
             cin>>golesJugador;
             cout<<endl;
 
@@ -114,13 +114,13 @@ void cargar_resultado_partido(){
             registrarGoles(numeroEquipo1, numeroCamiseta, golesJugador);
             //hacer mensaje con okcolor//
 
-            cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+            cout<<" ¿Hay más jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
 
             cin>>opcion;
             cout<<endl;
 
             while (opcion!=1 || opcion!=0){
-                cout<<"OPCION INCORRECTA"<<endl;
+                cout<<"OPCIÓN INCORRECTA"<<endl;
                 cin>>opcion;
                 cout<<endl;
             }
@@ -132,15 +132,15 @@ void cargar_resultado_partido(){
 
 
     do{
-        cout<<"    INGRESE LAS ASISTENTENCIAS. PRIMERO DIGITE EL NUMERO DE EQUIPO DE EL JUGADOR, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE ASISTENCIAS QUE EL JUGADOR HIZO";
+        cout<<"    INGRESE LAS ASISTENTENCIAS. PRIMERO DIGITE EL NÚMERO DE EQUIPO DEL JUGADOR, LUEGO EL DE LA CAMISETA Y LUEGO LA CANTIDAD DE ASISTENCIAS QUE EL JUGADOR HIZO";
         cout<<"   En caso de no haber asistencias ingrese -1 en ambos campos"<<endl;
-        cout<<" Numero de equipo: "<<endl;
+        cout<<" Número de equipo: "<<endl;
         cin>>numeroEquipo1;
         cout<<endl;
 
         if(numeroCamiseta>0){
 
-            cout<<"Numero de camiseta: " <<endl;
+            cout<<"Número de camiseta: " <<endl;
             cin>>numeroCamiseta;
             cout<<endl;
             cout<<"Cantidad de asistencias de el jugador: "<<endl;
@@ -150,13 +150,13 @@ void cargar_resultado_partido(){
             registrarAsistencias(numeroEquipo1,numeroCamiseta, asistencias);
             //hacer mensaje con okcolor//
 
-            cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+            cout<<" ¿Hay más jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
 
             cin>>opcion;
             cout<<endl;
 
             while (opcion=1 || opcion!=0){
-            cout<<"OPCION INCORRECTA"<<endl;
+            cout<<"OPCIÓN INCORRECTA"<<endl;
             cin>>opcion;
             cout<<endl;
             }
@@ -167,14 +167,14 @@ void cargar_resultado_partido(){
     cls();
 
     do{
-        cout<<"    INGRESE LAS TARJETAS AMARILLAS. PRIMERO DIGITE EL NUMERO DE EQUIPO, LUEGO EL DE CAMISETA Y LUEGO LA CANTIDAD DE TARJETAS AMARILLAS";
+        cout<<"    INGRESE LAS TARJETAS AMARILLAS. PRIMERO DIGITE EL NUMERO DE EQUIPO, LUEGO EL DE LA CAMISETA Y LUEGO LA CANTIDAD DE TARJETAS AMARILLAS";
         cout<<"    En caso de no haber goleadores ingrese -1"<<endl;
-        cout<<" Numero de equipo: "<<endl;
+        cout<<" Número de equipo: "<<endl;
         cin>>numeroEquipo1;
         cout<<endl;
         if(numeroEquipo1>0){
 
-        cout<<"Numero de camiseta: " <<endl;
+        cout<<"Número de camiseta: " <<endl;
         cin>>numeroCamiseta;
         cout<<endl;
         cout<<"Cantidad de tarjetas amarillas: "<<endl;
@@ -184,13 +184,13 @@ void cargar_resultado_partido(){
         registrarAmarillas(numeroEquipo1,numeroCamiseta, CantAmari);
         //hacer mensaje con okcolor//
 
-        cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+        cout<<" ¿Hay más jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
 
         cin>>opcion;
         cout<<endl;
 
         while (opcion=1 || opcion!=0){
-            cout<<"OPCION INCORRECTA"<<endl;
+            cout<<"OPCIÓN INCORRECTA"<<endl;
             cin>>opcion;
             cout<<endl;}
         }
@@ -201,13 +201,13 @@ void cargar_resultado_partido(){
 
 
         do{
-        cout<<"    AHORA INGRESE UNO POR UNO LOS NUMEROS DE EQUIPO Y CAMISETA DE LOS JUGADORES CON TARJETA ROJA. ";
+        cout<<"    AHORA INGRESE UNO POR UNO LOS NÚMEROS DE EQUIPO Y CAMISETA DE LOS JUGADORES CON TARJETA ROJA. ";
         cout<<"   En caso de no haber tarjetas rojas ingrese -1";
-        cout<<" Numero de equipo: "<<endl;
+        cout<<" Número de equipo: "<<endl;
         cin>>numeroEquipo1;
         cout<<endl;
         if(numeroEquipo1>0){
-            cout<<"Numero de camiseta: " <<endl;
+            cout<<"Número de camiseta: " <<endl;
             cin>>numeroCamiseta;
             cout<<endl;
             CantRojas=1;
@@ -215,13 +215,13 @@ void cargar_resultado_partido(){
             registrarRojas(numeroEquipo1,numeroCamiseta, CantRojas);
             //hacer mensaje con okcolor//
 
-            cout<<" ¿Hay mas jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
+            cout<<" ¿Hay más jugadores para ingresar? Ingrese 1 en caso de que si o 0 en caso de que no"<<endl;
 
             cin>>opcion;
             cout<<endl;
 
             while (opcion=1 || opcion!=0){
-                cout<<"OPCION INCORRECTA"<<endl;
+                cout<<"OPCIÓN INCORRECTA"<<endl;
                 cin>>opcion;
                 cout<<endl;
             }

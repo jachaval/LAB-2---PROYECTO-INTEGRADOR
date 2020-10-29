@@ -1,6 +1,6 @@
 #ifndef JUGADOR_H_INCLUDED
 #define JUGADOR_H_INCLUDED
-#define FILE_JUGADORES "jugadores.dat"
+#define FILE_JUGADORES "datos/jugadores.dat"
 class Jugador{
 	private:
 		int nro_equipo;

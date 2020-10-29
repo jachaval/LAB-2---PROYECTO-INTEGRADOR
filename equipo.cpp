@@ -166,3 +166,23 @@ void listar_equipos(){
     }
     fclose(pArchivo);
 }
+
+void nombre_equipo(char * nom_equipo,int equipo){
+    Equipo eq;
+    FILE * pArchivo;
+    pArchivo=fopen(FILE_EQUIPOS,"rb");
+    if(pArchivo==NULL){
+        cout<<"ERROR DE ARCHIVO"<<endl;
+        return;
+    }
+    else{
+        while(fread(&eq, sizeof(Equipo), 1 , pArchivo)){
+            if(equipo==eq.getNro_equipo()){
+                strcpy(nom_equipo,eq.getNombre_equipo());
+                fclose(pArchivo);
+                return;
+            }
+        }
+    }
+    fclose(pArchivo);
+}

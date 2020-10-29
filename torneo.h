@@ -1,6 +1,6 @@
 #ifndef TORNEO_H_INCLUDED
 #define TORNEO_H_INCLUDED
-#define FILE_TORNEOS "torneos.dat"
+#define FILE_TORNEOS "datos/torneos.dat"
 
 class Torneo {
     private:

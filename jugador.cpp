@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include <locale.h>
+#include <cstring>
 #include <iomanip>
 using namespace std;
 #include "rlutil.h"
@@ -49,6 +50,7 @@ bool Jugador::guardarEnDisco(){
 
 void listar_jugadores_x_equipo(){
     int equipo;
+    char nomb_equipo[30];
     FILE * pArchivo;
     pArchivo=fopen(FILE_JUGADORES,"rb");
     if(pArchivo==NULL){
@@ -58,18 +60,24 @@ void listar_jugadores_x_equipo(){
     Jugador ju;
     cout << "    INGRESE NÚMERO DEL EQUIPO A BUSCAR: ";
     cin >> equipo;
-    cout << endl << "    LISTA DE JUGADORES DEL EQUIPO"<<endl<<endl;
+
+    nombre_equipo(nomb_equipo,equipo);/// carga el nombre para poder poner el nombre del equipo!!
+
+    cout << endl << "    LISTA DE JUGADORES DEL EQUIPO: ";
+    setColor(RED);
+    cout << nomb_equipo<<endl<<endl;
+    setColor(WHITE);
     cout << left;
     cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
-    cout << endl << "---------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+    cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
     while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
-        //if(equipo==ju.getNro_equipo()){
+        if(equipo==ju.getNro_equipo()){
             cout << left;
             cout << setw(16);
             cout << ju.getNombre();
             cout << setw(15) ;
             cout << ju.getApellido();
-            cout << setw(17) ;
+            cout << setw(15) ;
             cout << ju.getPosicion();
             cout << setw(15) ;
             cout << ju.getNro_camiseta();
@@ -81,10 +89,8 @@ void listar_jugadores_x_equipo(){
             cout << ju.getTarjeta_roja();
             cout << setw(14) ;
             cout << ju.getTarjeta_amarilla();
-            cout << setw(13) ;
-            cout << ju.getNro_equipo();
             cout << endl;
-        //}
+        }
     }
 }
 

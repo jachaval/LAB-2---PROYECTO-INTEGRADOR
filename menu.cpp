@@ -141,8 +141,6 @@ void menu_iniciar_torneo(){
 
 
 void menu_ver_torneo(){
-
-
     int opcion,i;
 	do{
         system("cls");
@@ -179,7 +177,6 @@ void menu_ver_torneo(){
 
 
 void menu_estadisticas(){
-
 
     int opcion,i;
 	do{

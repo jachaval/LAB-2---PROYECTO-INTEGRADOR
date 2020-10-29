@@ -1,6 +1,6 @@
 #ifndef EQUIPO_H_INCLUDED
 #define EQUIPO_H_INCLUDED
-#define FILE_EQUIPOS "equipos.dat"
+#define FILE_EQUIPOS "datos/equipos.dat"
 
 class Equipo{
 	private:
@@ -45,4 +45,5 @@ Equipo buscarEquipo(Equipo nro_equipo);
 void listar_equipos();
 
 
+void nombre_equipo(char *,int);
 #endif // EQUIPO_H_INCLUDED
