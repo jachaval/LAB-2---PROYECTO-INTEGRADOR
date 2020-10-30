@@ -41,4 +41,8 @@ void registrarRoja(int nro_equipo, int numeroCamiseta);
 
 void mostrar_llaveTorneo();
 
+
+
+
+
 #endif // TORNEO_H_INCLUDED

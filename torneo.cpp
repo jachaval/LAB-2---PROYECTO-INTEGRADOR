@@ -308,21 +308,6 @@ void registrarResultado(int goles_a_favor,int goles_en_contra, int diferencia_pe
     fclose(p);
 }
 
-void registrarAsistencias(int equipo, int camiseta, int asistencias){
-
-    Jugador ju;
-
-    FILE*p;
-    p=fopen(FILE_JUGADORES,"ab");
-    if (p == NULL){
-        return;
-    }
-
-    while(fwrite(&ju,sizeof(Jugador),1,p)){
-        if(equipo==ju.getNro_equipo() && camiseta==ju.getNro_camiseta())ju.setAsistencias(asistencias);
-    }
-}
-
 void registrarGol(int nro_equipo, int numeroCamiseta){
 
     Jugador ju;

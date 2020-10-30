@@ -64,6 +64,8 @@ bool Jugador::guardarEnDisco(){
 }
 
 void listar_jugadores_x_equipo(){
+
+
     bool existe;
     int equipo;
     char nomb_equipo[30];
@@ -106,11 +108,24 @@ void listar_jugadores_x_equipo(){
                 cout << setw(14) ;
                 cout << ju.getTarjeta_amarilla();
                 cout << endl;
+
+
             }
         }
+         anykey();
+
     }
     else{
         msj("EQUIPO NO ENCONTRADO",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
     }
 }
 
+void mostrar_goleadores(){
+
+
+
+
+
+
+
+}

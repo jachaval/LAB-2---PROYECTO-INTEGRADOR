@@ -100,13 +100,13 @@ bool cargar_equipo(int cant_equipos){
     cout<<endl<<"    Ingrese cantidad de jugadores: ";
     cin>>cant_jugadores;
     cout<<endl;
-<<<<<<< Updated upstream
+
     grabo=cargar_jugadores(cant_jugadores,(n+1));
-=======
 
 
-    grabo=cargar_jugadores(cant_jugadores,n);
->>>>>>> Stashed changes
+
+
+
     return (grabo);
 }
 
@@ -182,7 +182,10 @@ void listar_equipos(){
         cout << setw(4) ;
         cout << eq.getGoles_encontra();
         cout << endl;
+
+
     }
+     anykey();
     fclose(pArchivo);
 }
 
