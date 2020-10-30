@@ -23,10 +23,10 @@ void Jugador::setNro_equipo(int nro){nro_equipo=nro;}
 void Jugador::setNombre(char *nom){strcpy(nombre,nom);}
 void Jugador::setApellido(char *ap){strcpy(apellido,ap);}
 void Jugador::setPosicion(char *pos){strcpy(posicion,pos);}
-void Jugador::setTarjeta_roja(int roja){tarjeta_roja+=roja;}
-void Jugador::setTarjeta_amarilla(int amarilla){tarjeta_amarilla+=amarilla;}
-void Jugador::setAsistencias(int asis){asistencias+=asis;}
-void Jugador::setCant_goles(int goles){cant_goles+=goles;}
+void Jugador::setTarjeta_roja(int roja){tarjeta_roja=roja;}
+void Jugador::setTarjeta_amarilla(int amarilla){tarjeta_amarilla=amarilla;}
+void Jugador::setAsistencias(int asis){asistencias=asis;}
+void Jugador::setCant_goles(int goles){cant_goles=goles;}
 void Jugador::setNro_camiseta(int nro){nro_camiseta=nro;}
 int  Jugador::getNro_equipo(){return nro_equipo;}
 char *Jugador::getNombre(){return nombre;}

@@ -1,7 +1,9 @@
 #include <iostream>
 #include <locale.h>
 
+#include <ctime>
 #include <iomanip>
+
 
 using namespace std;
 #include "menu.h"
@@ -10,13 +12,16 @@ using namespace rlutil;
 #include "torneo.h"
 #include "jugador.h"
 
+
 int main(){
     setlocale(LC_ALL, "spanish");
+
+
     /*
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");
     if(pArchivo==NULL){
-        cout<<"erro archivo"<<endl;
+        cout<<"error archivo"<<endl;
         exit(1);
     }
     Torneo tor;

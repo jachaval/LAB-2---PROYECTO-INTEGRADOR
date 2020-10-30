@@ -5,6 +5,7 @@
 #include <locale.h>
 #include <cstring>
 #include <iomanip>
+#include <ctime>
 using namespace std;
 #include "rlutil.h"
 #include "interfaz.h"
@@ -79,6 +80,24 @@ void ingresar_equipos(int cant_equipos){
     }
 }
 
+bool checkrep(int n, int num[]){
+    for(int i=0; i<10; i++)
+        if(n == num[i])
+            return true;
+    return false;
+}
+void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos){
+    srand(time(NULL));
+    int n, num[8];
+    for(int i=0; i<cant_equipos; i++){
+        do{
+            n = 1 + rand() % 8;
+        }while(checkrep(n, num));
+        vecAleatorio[i] = n;
+        cout << num[i] << "  ";
+    }
+}
+
 bool cargar_equipo(int cant_equipos){
     char nombre[30];
     int cant_jugadores,n;
@@ -102,10 +121,6 @@ bool cargar_equipo(int cant_equipos){
     cout<<endl;
 
     grabo=cargar_jugadores(cant_jugadores,(n+1));
-
-
-
-
 
     return (grabo);
 }

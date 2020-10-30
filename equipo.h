@@ -47,6 +47,8 @@ Equipo buscarEquipo(Equipo nro_equipo);
 
 void listar_equipos();
 
-
 bool nombre_equipo(char *,int);
+
+bool checkrep(int n, int num[]);
+void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos); //carga un vector aleatorio para poner en orden al alzar lo equipos
 #endif // EQUIPO_H_INCLUDED

@@ -24,7 +24,9 @@ Torneo::Torneo(){
     partidos_jugados=0;
     torneo_activo=true;
 }
-
+void Torneo::aumentar_partidos_jugados(){
+    partidos_jugados++;
+}
 bool Torneo::guardarEnDisco(){
     bool guardo;
     FILE *pArchivo;
@@ -33,6 +35,10 @@ bool Torneo::guardarEnDisco(){
     guardo=fwrite(this,sizeof(Torneo),1,pArchivo);
     fclose(pArchivo);
     return guardo;
+}
+
+void Torneo::cambiar_instacia_torneo(){
+    instancia_torneo=instancia_torneo/2;
 }
 
 int informar_tipoTorneo(){
@@ -86,10 +92,9 @@ int seleccionar_torneo(){
 }
 
 void cargar_resultado_partido(){
-    int numeroEquipo1,numeroEquipo2, numeroCamiseta, numeroCamiseta_asistencia, golesEquipo1,golesEquipo2, golesJugador, asistencias, CantRojas, CantAmari;
+    int numeroEquipo1,numeroEquipo2, numeroCamiseta, numeroCamiseta_asistencia, golesEquipo1,golesEquipo2;
     int resultado, res_penales1=0, res_penales2=0;
-    int opcion;
-
+    bool grabo;
     Torneo tor;
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");
@@ -101,7 +106,25 @@ void cargar_resultado_partido(){
     pclose(pArchivo);
     char nomb_equipo1[30];
     char nomb_equipo2[30];
-    cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
+    if(tor.getInstancia_torneo()==32){
+        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+    }
+    if(tor.getInstancia_torneo()==16){
+        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+    }
+    if(tor.getInstancia_torneo()==8){
+        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+    }
+    if(tor.getInstancia_torneo()==4){
+        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
+    }
+    if(tor.getInstancia_torneo()==2){
+        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
+    }
+    if(tor.getInstancia_torneo()==1){
+        cout<<"    CARGAR DATOS DEL PARTIDO FINAL" <<endl<<endl;
+    }
+
     cout<<"    Número del primer equipo: ";
     cin>>numeroEquipo1;
     nombre_equipo(nomb_equipo1,numeroEquipo1);
@@ -143,8 +166,16 @@ void cargar_resultado_partido(){
     }
 
 
-    registrarResultado(golesEquipo1,golesEquipo2,res_penales1,numeroEquipo1);
-    registrarResultado(golesEquipo2,golesEquipo1,res_penales2,numeroEquipo2);
+    grabo=registrarResultado(golesEquipo1,golesEquipo2,res_penales1,numeroEquipo1);
+    if(!grabo){
+        msj("NO SE HA PODIDO GUARDAR EL RESULTADO",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+        return;
+    }
+    grabo=registrarResultado(golesEquipo2,golesEquipo1,res_penales2,numeroEquipo2);
+    if(!grabo){
+        msj("NO SE HA PODIDO GUARDAR EL RESULTADO",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+        return;
+    }
 //////////////////////
     int i;
     char asis;
@@ -168,11 +199,19 @@ void cargar_resultado_partido(){
                 cout<<endl;
             }
             else{
-                numeroCamiseta_asistencia==0;
+                numeroCamiseta_asistencia=0;
             }
 
-            registrarGol(numeroEquipo1,numeroCamiseta);
-            registrarAsistencia(numeroEquipo1,numeroCamiseta_asistencia);
+            grabo=registrarGol(numeroEquipo1,numeroCamiseta);
+            if(!grabo){
+                msj("NO SE HA PODIDO GUARDAR EL GOL",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+                return;
+            }
+            grabo=registrarAsistencia(numeroEquipo1,numeroCamiseta_asistencia);
+            if(!grabo){
+                msj("NO SE HA PODIDO GUARDAR LA ASISTENCIA",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+                return;
+            }
         }
     }
     if(golesEquipo2>0){
@@ -193,11 +232,19 @@ void cargar_resultado_partido(){
                 cout<<endl;
             }
             else{
-                numeroCamiseta_asistencia==0;
+                numeroCamiseta_asistencia=0;
             }
 
-            registrarGol(numeroEquipo2,numeroCamiseta);
-            registrarAsistencia(numeroEquipo2,numeroCamiseta_asistencia);
+            grabo=registrarGol(numeroEquipo2,numeroCamiseta);
+            if(!grabo){
+                msj("NO SE HA PODIDO GUARDAR EL GOL",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+                return;
+            }
+            grabo=registrarAsistencia(numeroEquipo2,numeroCamiseta_asistencia);
+            if(!grabo){
+                msj("NO SE HA PODIDO GUARDAR LA ASISTENCIA",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+                return;
+            }
         }
     }
 //////////////////
@@ -215,12 +262,16 @@ void cargar_resultado_partido(){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_amarilla;
 
-        registrarAmarilla(numeroEquipo1, numeroCamiseta_amarilla);
+        grabo=registrarAmarilla(numeroEquipo1, numeroCamiseta_amarilla);
+        if(!grabo){
+            msj("NO SE HA PODIDO GUARDAR LA TARJETA AMARILLA",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            return;
+        }
         cout<<endl<<"    REGISTRAR OTRA TARJETA AMARILLA?(S/N): ";
         cin>>amarillas;
     }
 
-    cout<<"    ¿EN EL EQUIPO ";
+    cout<<endl<<"    ¿EN EL EQUIPO ";
     setColor(RED);
     cout<<nomb_equipo2;
     setColor(WHITE);
@@ -230,7 +281,11 @@ void cargar_resultado_partido(){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_amarilla;
 
-        registrarAmarilla(numeroEquipo2, numeroCamiseta_amarilla);
+        grabo=registrarAmarilla(numeroEquipo2, numeroCamiseta_amarilla);
+        if(!grabo){
+            msj("NO SE HA PODIDO GUARDAR LA TARJETA AMARILLA",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            return;
+        }
         cout<<endl<<"    REGISTRAR OTRA TARJETA AMARILLA?(S/N): ";
         cin>>amarillas;
     }
@@ -247,7 +302,11 @@ void cargar_resultado_partido(){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_roja;
 
-        registrarRoja(numeroEquipo1, numeroCamiseta_roja);
+        grabo=registrarRoja(numeroEquipo1, numeroCamiseta_roja);
+        if(!grabo){
+                msj("NO SE HA PODIDO GUARDAR LA TARJETA ROJA",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+                return;
+        }
         cout<<endl<<"    REGISTRAR OTRA TARJETA ROJA?(S/N): ";
         cin>>rojas;
     }
@@ -263,19 +322,36 @@ void cargar_resultado_partido(){
         cin>>numeroCamiseta_roja;
 
         registrarRoja(numeroEquipo2, numeroCamiseta_roja);
+        if(!grabo){
+                msj("NO SE HA PODIDO GUARDAR LA TARJETA ROJA",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+                return;
+        }
         cout<<endl<<"    REGISTRAR OTRA TARJETA ROJA?(S/N): ";
         cin>>rojas;
     }
+
+    if(grabo){
+        contar_partido_cargado();
+        cout<<"partidos jugados: "<<tor.getPartidos_jugados()<<endl;
+        cout<<"INSTANCIA: "<<tor.getInstancia_torneo()<<endl;
+        anykey();
+        msj("PARTIDO GUARDADO CORRECTAMENTE",APP_TITLEFORECOLOR, APP_OKCOLOR);
+        if((tor.getPartidos_jugados()+1)==tor.getInstancia_torneo()){
+            cambiar_instancia_torneo();
+            /// FUNCION QUE PONGA LOS EQUIPOS EN LA SIGUIENTE FASE
+            /// HAY QUE HACER CLASS PARTIDO
+        }
+    }
 }
 
-void registrarResultado(int goles_a_favor,int goles_en_contra, int diferencia_penales, int equipo){
+bool registrarResultado(int goles_a_favor,int goles_en_contra, int diferencia_penales, int equipo){
     Equipo eq;
     int diferencia;
     FILE*p;
     p=fopen(FILE_EQUIPOS,"rb+");
     if (p == NULL){
         msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
-        return;
+        return false;
     }
     diferencia=goles_a_favor-goles_en_contra;
 
@@ -302,20 +378,21 @@ void registrarResultado(int goles_a_favor,int goles_en_contra, int diferencia_pe
             fseek(p,ftell(p)-sizeof (Equipo),0);
             fwrite(&eq, sizeof(Equipo), 1 , p);
             fclose(p);
-            return;
+            return true;
         }
     }
     fclose(p);
+    return false;
 }
 
-void registrarGol(int nro_equipo, int numeroCamiseta){
+bool registrarGol(int nro_equipo, int numeroCamiseta){
 
     Jugador ju;
     FILE*p;
     p=fopen(FILE_JUGADORES,"rb+");
     if (p == NULL){
         msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
-        return;
+        return false;
     }
 
     while(fread(&ju,sizeof(Jugador),1,p)==1){
@@ -326,19 +403,20 @@ void registrarGol(int nro_equipo, int numeroCamiseta){
             fseek(p,ftell(p)-sizeof (Jugador),0);
             fwrite(&ju, sizeof(Jugador), 1 , p);
             fclose(p);
-            return;
+            return true;
         }
     }
     fclose(p);
+    return false;
 }
 
-void registrarAsistencia(int nro_equipo, int numeroCamiseta_asistencia){
+bool registrarAsistencia(int nro_equipo, int numeroCamiseta_asistencia){
     Jugador ju;
     FILE*p;
     p=fopen(FILE_JUGADORES,"rb+");
     if (p == NULL){
         msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
-        return;
+        return false;
     }
 
     while(fread(&ju,sizeof(Jugador),1,p)==1){
@@ -352,19 +430,20 @@ void registrarAsistencia(int nro_equipo, int numeroCamiseta_asistencia){
             fseek(p,ftell(p)-sizeof (Jugador),0);
             fwrite(&ju, sizeof(Jugador), 1 , p);
             fclose(p);
-            return;
+            return true;
         }
     }
     fclose(p);
+    return true;
 }
 
-void registrarAmarilla(int nro_equipo, int numeroCamiseta_amarilla){
+bool registrarAmarilla(int nro_equipo, int numeroCamiseta_amarilla){
     Jugador ju;
     FILE*p;
     p=fopen(FILE_JUGADORES,"rb+");
     if (p == NULL){
         msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
-        return;
+        return false;
     }
 
     while(fread(&ju,sizeof(Jugador),1,p)==1){
@@ -378,19 +457,20 @@ void registrarAmarilla(int nro_equipo, int numeroCamiseta_amarilla){
             fseek(p,ftell(p)-sizeof (Jugador),0);
             fwrite(&ju, sizeof(Jugador), 1 , p);
             fclose(p);
-            return;
+            return true;
         }
     }
     fclose(p);
+    return true;
 }
 
-void registrarRoja(int nro_equipo, int numeroCamiseta_roja){
+bool registrarRoja(int nro_equipo, int numeroCamiseta_roja){
     Jugador ju;
     FILE*p;
     p=fopen(FILE_JUGADORES,"rb+");
     if (p == NULL){
         msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
-        return;
+        return false;
     }
 
     while(fread(&ju,sizeof(Jugador),1,p)==1){
@@ -404,16 +484,46 @@ void registrarRoja(int nro_equipo, int numeroCamiseta_roja){
             fseek(p,ftell(p)-sizeof (Jugador),0);
             fwrite(&ju, sizeof(Jugador), 1 , p);
             fclose(p);
-            return;
+            return true;
         }
     }
     fclose(p);
+    return false;
 }
 
+void cambiar_instancia_torneo(){
+    Torneo tor;
+    FILE *p;
+    p=fopen(FILE_TORNEOS,"rb+");
+    if(p==NULL){
+        msj("ERROR ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return;
+    }
+    fread(&tor,sizeof(Torneo), 1,p);
 
+    tor.cambiar_instacia_torneo();
+    tor.setPartidos_jugados(0);
 
+    fseek(p, ftell(p)-sizeof(Torneo),0);
+    fwrite(&tor , sizeof(Torneo),1 ,p);
+    fclose(p);
+}
 
+void contar_partido_cargado(){
+    Torneo tor;
+    FILE *p;
+    p=fopen(FILE_TORNEOS,"rb+");
+    if(p==NULL){
+        msj("ERROR ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return;
+    }
+    fread(&tor,sizeof(Torneo), 1,p);
+    tor.aumentar_partidos_jugados();
 
+    fseek(p, ftell(p)-sizeof(Torneo),0);
+    fwrite(&tor , sizeof(Torneo),1 ,p);
+    fclose(p);
+}
 
 
 

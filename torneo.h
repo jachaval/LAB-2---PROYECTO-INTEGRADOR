@@ -22,27 +22,28 @@ class Torneo {
 		void mostrar();
 		bool escribrirEnDisco();
 		bool guardarEnDisco();
+		void aumentar_partidos_jugados();
+		void cambiar_instacia_torneo();
 };
 
 int informar_tipoTorneo();
 int seleccionar_torneo();
 void cargar_resultado_partido();
 
+bool registrarResultado(int, int, int, int);
 
-void registrarResultado(int, int, int, int);
+bool registrarGol(int nro_equipo, int numeroCamiseta);
 
-void registrarGol(int nro_equipo, int numeroCamiseta);
+bool registrarAsistencia(int nro_equipo, int numeroCamiseta);
 
-void registrarAsistencia(int nro_equipo, int numeroCamiseta);
+bool registrarAmarilla(int nro_equipo, int numeroCamiseta);
 
-void registrarAmarilla(int nro_equipo, int numeroCamiseta);
-
-void registrarRoja(int nro_equipo, int numeroCamiseta);
+bool registrarRoja(int nro_equipo, int numeroCamiseta);
 
 void mostrar_llaveTorneo();
 
+void cambiar_instancia_torneo();
 
-
-
+void contar_partido_cargado();
 
 #endif // TORNEO_H_INCLUDED
