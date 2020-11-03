@@ -115,6 +115,7 @@ void menu_iniciar_torneo(){
                 if(cant_equiposCargados==cantidad_equipos){
                     if(cantidad_equipos>0){
                         cout<<"    YA ESTÁN TODOS LOS EQUIPOS CARGADOS. CONTINUE TORNEO"<<endl;
+                        sortear_equipos(cantidad_equipos);
                         anykey();
                     }
                     else{
@@ -125,13 +126,11 @@ void menu_iniciar_torneo(){
                 else{
                     cout<< "    EQUIPOS CARGADOS HASTA EL MOMENTO: "<< cant_equiposCargados<<" de " << cantidad_equipos<<endl<<endl;
                     ingresar_equipos(cant_equipos); //agrega todos los equipos y jugadores y los guarda en equipos.dat
+                    if(cant_equiposCargados==cantidad_equipos){
+                        sortear_equipos(cantidad_equipos);
+                    }
                 }
             break;
-            case 3:
-            listar_equipos();
-                break;
-            case 4:
-                break;
             case 0:
                 return;
             break;

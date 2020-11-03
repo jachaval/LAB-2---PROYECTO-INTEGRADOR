@@ -79,7 +79,7 @@
 
 1603769946 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.h
 
-1603942034 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.cpp
+1604377342 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -92,7 +92,7 @@
 	"jugador.h"
 	"torneo.h"
 
-1604040142 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
+1604382160 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -106,7 +106,7 @@
 	"equipo.h"
 	"jugador.h"
 
-1604033256 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
+1604377370 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
 
 1604031501 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.cpp
 	<iostream>
@@ -127,7 +127,7 @@
 
 1603428492 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.h
 
-1604040762 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
+1604041031 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>

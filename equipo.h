@@ -13,6 +13,8 @@ class Equipo{
 		bool activo;
 	public:
 	    Equipo();
+	    Equipo(int);///recibe tamaño de un vector para memoria dinamica
+	    ~Equipo();///libera la memoria
 		void cargar();
 		void mostrar();
 		bool escribrirEnDisco();
@@ -51,4 +53,5 @@ bool nombre_equipo(char *,int);
 
 bool checkrep(int n, int num[]);
 void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos); //carga un vector aleatorio para poner en orden al alzar lo equipos
+void sortear_equipos(int cantidad_equipos);
 #endif // EQUIPO_H_INCLUDED

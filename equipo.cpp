@@ -13,9 +13,7 @@ using namespace rlutil;
 #include "equipo.h"
 #include "jugador.h"
 
-void Equipo::cargar(){
-    cout<< "    ";
-}
+void Equipo::cargar(){}
 
 
 Equipo::Equipo(){
@@ -24,6 +22,10 @@ Equipo::Equipo(){
     partidos_perdidos=0;
     goles_afavor=0;
     goles_encontra=0;
+}
+
+Equipo::~Equipo(){
+
 }
 
 void  Equipo::mostrar(){};
@@ -80,22 +82,79 @@ void ingresar_equipos(int cant_equipos){
     }
 }
 
-bool checkrep(int n, int num[]){
-    for(int i=0; i<10; i++)
-        if(n == num[i])
+bool checkrep(int n, int vecAleatorio[], int cant){
+    for(int i=0; i<cant; i++){
+        if(n == vecAleatorio[i]){
             return true;
+        }
+    }
     return false;
 }
+
 void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos){
     srand(time(NULL));
-    int n, num[8];
-    for(int i=0; i<cant_equipos; i++){
+    const int cant=8;//cant es el rango de 1 a 8 en este caso
+    int n;
+    for(int i=0; i<cant; i++){
         do{
-            n = 1 + rand() % 8;
-        }while(checkrep(n, num));
+            n = 1 + rand() % cant;
+        }while(checkrep(n, vecAleatorio, cant));
         vecAleatorio[i] = n;
-        cout << num[i] << "  ";
     }
+}
+///////////////////////////////////////////////////////// falta terminar
+void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de equipo lo pone de manera aleatoria.
+    int vecAleatorio[cant];
+    poner_equipos_aleatorios(vecAleatorio,cant);
+
+    cls();
+    int j;
+    for(j=0;j<cant;j++){
+        cout << "vec: "<<vecAleatorio[j]<<endl;
+    }
+    anykey();
+
+    Equipo eq;
+    FILE* p;
+    p=fopen(FILE_EQUIPOS,"rb+");
+    if(p==NULL){
+        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+        return;
+    }
+    /*
+    for(int i=0;i<cant;i++){
+    fread(&eq, sizeof(Equipo),1 ,p);
+    cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
+    cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
+    eq.setNro_equipo(vecAleatorio[i]-1);
+    fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET);
+    fwrite(&eq, sizeof(Equipo), 1 , p);
+    }
+    */
+    fread(&eq, sizeof(Equipo),1 ,p);
+    cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
+    cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
+    eq.setNro_equipo(vecAleatorio[0]-1);
+    fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET);
+    fwrite(&eq, sizeof(Equipo), 1 , p);
+
+    fread(&eq, sizeof(Equipo),1 ,p);
+    cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
+    cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
+    eq.setNro_equipo(vecAleatorio[1]);
+    fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET);
+    fwrite(&eq, sizeof(Equipo), 1 , p);
+
+    fread(&eq, sizeof(Equipo),1 ,p);
+    cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
+    cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
+    eq.setNro_equipo(vecAleatorio[2]);
+    fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET);
+    fwrite(&eq, sizeof(Equipo), 1 , p);
+
+
+    fclose(p);
+
 }
 
 bool cargar_equipo(int cant_equipos){
