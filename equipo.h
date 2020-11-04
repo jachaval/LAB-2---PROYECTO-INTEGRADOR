@@ -13,8 +13,6 @@ class Equipo{
 		bool activo;
 	public:
 	    Equipo();
-	    Equipo(int);///recibe tamaño de un vector para memoria dinamica
-	    ~Equipo();///libera la memoria
 		void cargar();
 		void mostrar();
 		bool escribrirEnDisco();

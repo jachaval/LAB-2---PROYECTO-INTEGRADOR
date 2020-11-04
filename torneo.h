@@ -5,16 +5,19 @@
 class Torneo {
     private:
         int tipo_torneo;///64 equipos, 32 equipos, 16 equipos o 8 equipos.
+        int codigo_torneo;
         int instancia_torneo;/// al iniciar torneo se carga con la llave inicial correspondiente. cuando pasa de llave se va cambiando el valor.
         int partidos_jugados;
         bool torneo_activo;
    public:
         Torneo();
         void setTipo_torneo(int);
+        void setCodigo_torneo(int);
         void setInstancia_torneo(int);
         void setPartidos_jugados(int);
         void setTorneo_activo(bool);
         int getTipo_torneo();
+        int getCodigo_torneo();
         int getInstancia_torneo();
         int getPartidos_jugados();
         bool getTorneo_activo();
@@ -24,6 +27,7 @@ class Torneo {
 		bool guardarEnDisco();
 		void aumentar_partidos_jugados();
 		void cambiar_instacia_torneo();
+		void autonumerar_torneo();
 };
 
 int informar_tipoTorneo();
@@ -45,5 +49,7 @@ void mostrar_llaveTorneo();
 void cambiar_instancia_torneo();
 
 void contar_partido_cargado();
+
+int contar_torneosCargados();
 
 #endif // TORNEO_H_INCLUDED

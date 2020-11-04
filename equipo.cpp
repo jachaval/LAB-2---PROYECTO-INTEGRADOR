@@ -13,19 +13,12 @@ using namespace rlutil;
 #include "equipo.h"
 #include "jugador.h"
 
-void Equipo::cargar(){}
-
-
 Equipo::Equipo(){
     activo=true;
     partidos_ganados=0;
     partidos_perdidos=0;
     goles_afavor=0;
     goles_encontra=0;
-}
-
-Equipo::~Equipo(){
-
 }
 
 void  Equipo::mostrar(){};

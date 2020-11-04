@@ -30,6 +30,7 @@ int main(){
 
     cout<<"torneo"<<endl;
     cout<< "tipo de torneo: "<<tor.getTipo_torneo()<<endl;
+    cout<< "codigo de torneo: "<<tor.getCodigo_torneo()<<endl;
     cout<< "instancia de torneo: "<<tor.getInstancia_torneo()<<endl;
     cout<< "Partido jugados: "<<tor.getPartidos_jugados()<<endl;
     cout<< "torneo activo? "<<tor.getTorneo_activo()<<endl;

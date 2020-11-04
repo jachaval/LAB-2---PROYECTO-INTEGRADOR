@@ -12,10 +12,12 @@ using namespace rlutil;
 #include "torneo.h"
 
 void Torneo::setTipo_torneo(int tipo){tipo_torneo=tipo;}
+void Torneo::setCodigo_torneo(int codigo){codigo_torneo=codigo;}
 void Torneo::setInstancia_torneo(int inst){instancia_torneo=inst;}
 void Torneo::setPartidos_jugados(int par){partidos_jugados=par;}
 void Torneo::setTorneo_activo(bool activo){torneo_activo=activo;}
 int  Torneo::getTipo_torneo(){return tipo_torneo;}
+int  Torneo::getCodigo_torneo(){return codigo_torneo;}
 int  Torneo::getInstancia_torneo(){return instancia_torneo;}
 int  Torneo::getPartidos_jugados(){return partidos_jugados;}
 bool Torneo::getTorneo_activo(){return torneo_activo;}
@@ -24,9 +26,11 @@ Torneo::Torneo(){
     partidos_jugados=0;
     torneo_activo=true;
 }
+
 void Torneo::aumentar_partidos_jugados(){
     partidos_jugados++;
 }
+
 bool Torneo::guardarEnDisco(){
     bool guardo;
     FILE *pArchivo;
@@ -39,6 +43,39 @@ bool Torneo::guardarEnDisco(){
 
 void Torneo::cambiar_instacia_torneo(){
     instancia_torneo=instancia_torneo/2;
+}
+
+void Torneo::autonumerar_torneo(){
+    cls();
+    cout<<"ENTROOOOO"<<endl<<endl;
+    anykey();
+    int cant;
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_TORNEOS, "rb");
+    if(pArchivo==NULL){
+        codigo_torneo=1;
+        return;
+    }
+    cant=contar_torneosCargados();
+    codigo_torneo=cant+1;
+    cls();
+    cout<<"codigo torneo "<<codigo_torneo<<endl<<endl;
+    anykey();
+    fclose(pArchivo);
+}
+
+int contar_torneosCargados(){
+    FILE*pArchivo;
+    pArchivo=fopen(FILE_TORNEOS,"rb");
+    if (pArchivo == NULL){
+        return 0;
+    }
+    int bytes, cant;
+    fseek(pArchivo, 0, SEEK_END);
+    bytes = ftell(pArchivo);
+    fclose(pArchivo);
+    cant = bytes / sizeof(Equipo);
+    return cant;
 }
 
 int informar_tipoTorneo(){
@@ -84,6 +121,7 @@ int seleccionar_torneo(){
     anykey();
 
     Torneo tor;
+    tor.autonumerar_torneo();
     tor.setInstancia_torneo(cant_equipos/2);
     tor.setTipo_torneo(cant_equipos);
     tor.guardarEnDisco();
@@ -164,7 +202,6 @@ void cargar_resultado_partido(){
         res_penales1=penales1-penales2;
         res_penales2=penales2-penales1;
     }
-
 
     grabo=registrarResultado(golesEquipo1,golesEquipo2,res_penales1,numeroEquipo1);
     if(!grabo){
