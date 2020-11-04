@@ -121,38 +121,17 @@ void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de
         msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
         return;
     }
-    /*
+
     for(int i=0;i<cant;i++){
-    fread(&eq, sizeof(Equipo),1 ,p);
-    cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
-    cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
-    eq.setNro_equipo(vecAleatorio[i]-1);
-    fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET);
-    fwrite(&eq, sizeof(Equipo), 1 , p);
+        fseek(p,0,SEEK_SET); ///seteo el cursor al inicio del archivo
+        fseek(p, i * sizeof (Equipo),SEEK_SET); /// lo seteo a la posicion de registro a leer
+        fread(&eq, sizeof(Equipo),1 ,p);
+        cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
+        cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
+        eq.setNro_equipo(vecAleatorio[i]-1);
+        fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET); /// seteo a la posicion de registro leido para modificarlo
+        fwrite(&eq, sizeof(Equipo), 1 , p);
     }
-    */
-    fread(&eq, sizeof(Equipo),1 ,p);
-    cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
-    cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
-    eq.setNro_equipo(vecAleatorio[0]-1);
-    fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET);
-    fwrite(&eq, sizeof(Equipo), 1 , p);
-
-    fread(&eq, sizeof(Equipo),1 ,p);
-    cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
-    cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
-    eq.setNro_equipo(vecAleatorio[1]);
-    fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET);
-    fwrite(&eq, sizeof(Equipo), 1 , p);
-
-    fread(&eq, sizeof(Equipo),1 ,p);
-    cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
-    cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
-    eq.setNro_equipo(vecAleatorio[2]);
-    fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET);
-    fwrite(&eq, sizeof(Equipo), 1 , p);
-
-
     fclose(p);
 
 }
