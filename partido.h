@@ -1,6 +1,6 @@
 #ifndef PARTIDO_H_INCLUDED
 #define PARTIDO_H_INCLUDED
-#define FILE_PARTIDOS "partidos.dat"
+#define FILE_PARTIDOS "datos/partidos.dat"
 
 class Partido {
 private:
@@ -32,5 +32,7 @@ public:
     bool escribrirEnDisco();
     bool guardarEnDisco();
 };
+
+void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo);
 
 #endif // PARTIDO_H_INCLUDED

@@ -39,3 +39,24 @@ bool Partido::guardarEnDisco(){
     fclose(pArchivo);
     return guardo;
 }
+
+void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo){
+    Partido par;
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS, "ab");
+    if(pArchivo=NULL){
+        msj("ERROR ARCHIVO PARTIDO",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return;
+    }
+
+    par.setEquipo_local(numeroEquipo1);
+    par.setEquipo_visitante(numeroEquipo2);
+    par.setGoles_local(golesEquipo1);
+    par.setGoles_visitante(golesEquipo2);
+    par.setEquipo_ganador(equipo_ganador);
+    par.setInstancia_torneo((instancia_torneo/2));
+
+    par.guardarEnDisco();
+
+    fclose(pArchivo);
+}

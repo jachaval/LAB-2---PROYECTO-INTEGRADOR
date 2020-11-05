@@ -10,6 +10,7 @@ using namespace rlutil;
 #include "equipo.h"
 #include "jugador.h"
 #include "torneo.h"
+#include "partido.h"
 
 void Torneo::setTipo_torneo(int tipo){tipo_torneo=tipo;}
 void Torneo::setCodigo_torneo(int codigo){codigo_torneo=codigo;}
@@ -130,7 +131,7 @@ int seleccionar_torneo(){
 }
 
 void cargar_resultado_partido(){
-    int numeroEquipo1,numeroEquipo2, numeroCamiseta, numeroCamiseta_asistencia, golesEquipo1,golesEquipo2;
+    int numeroEquipo1,numeroEquipo2, numeroCamiseta, numeroCamiseta_asistencia, golesEquipo1,golesEquipo2, equipo_ganador;
     int resultado, res_penales1=0, res_penales2=0;
     bool grabo;
     Torneo tor;
@@ -182,7 +183,6 @@ void cargar_resultado_partido(){
     cout<<endl;
 
     resultado=golesEquipo1-golesEquipo2;
-
     res_penales1=0;
     res_penales2=0;
 
@@ -201,6 +201,16 @@ void cargar_resultado_partido(){
 
         res_penales1=penales1-penales2;
         res_penales2=penales2-penales1;
+    }
+
+
+    if(golesEquipo1<golesEquipo2)equipo_ganador=numeroEquipo1;
+    else equipo_ganador=numeroEquipo2;
+    if (res_penales1>0){
+        equipo_ganador=numeroEquipo1;
+    }
+    else{
+        equipo_ganador=numeroEquipo2;
     }
 
     grabo=registrarResultado(golesEquipo1,golesEquipo2,res_penales1,numeroEquipo1);
@@ -366,6 +376,8 @@ void cargar_resultado_partido(){
         cout<<endl<<"    REGISTRAR OTRA TARJETA ROJA?(S/N): ";
         cin>>rojas;
     }
+
+    cargar_partido(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo());
 
     if(grabo){
         contar_partido_cargado();
