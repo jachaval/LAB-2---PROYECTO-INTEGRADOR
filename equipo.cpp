@@ -159,6 +159,7 @@ bool cargar_equipo(int cant_equipos){
 
 bool cargar_jugadores(int cant_jugadores, int nroEquipo){
     int i,camiseta;
+    bool guardo;
     char posicion[25], apellido[25], nombre[25];
     for(i=0;i<cant_jugadores;i++){
         Jugador ju;
@@ -184,8 +185,8 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo){
         ju.setNro_camiseta(camiseta);
 
 
-        ju.guardarEnDisco();
-        if(!ju.guardarEnDisco()){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
+        guardo=ju.guardarEnDisco();
+        if(!guardo){/// si no grabo entonces corta el for. si graba continua la carga del proximo jugador
             return false;
         }
     }
