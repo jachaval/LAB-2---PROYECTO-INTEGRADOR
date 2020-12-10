@@ -2,6 +2,7 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+<<<<<<< Updated upstream
 	<File name="menu.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="23" topLine="0" />
@@ -36,12 +37,24 @@
 			<Collapse line="542" />
 			<Collapse line="560" />
 		</Folding>
+=======
+	<File name="interfaz.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="424" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="partido.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="363" topLine="13" />
+		</Cursor>
+>>>>>>> Stashed changes
 	</File>
 	<File name="partido.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="363" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< Updated upstream
 	<File name="interfaz.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
@@ -63,13 +76,22 @@
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+=======
+	<File name="menu.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+>>>>>>> Stashed changes
 		<Cursor>
 			<Cursor1 position="3037" topLine="71" />
 		</Cursor>
 	</File>
+<<<<<<< Updated upstream
 	<File name="partido.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="190" topLine="0" />
+=======
+	<File name="jugador.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="745" topLine="12" />
+>>>>>>> Stashed changes
 		</Cursor>
 	</File>
 	<File name="equipo.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -88,9 +110,55 @@
 			<Cursor1 position="1020" topLine="9" />
 		</Cursor>
 	</File>
+<<<<<<< Updated upstream
 	<File name="jugador.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+=======
+	<File name="equipo.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1232" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="torneo.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+>>>>>>> Stashed changes
 		<Cursor>
 			<Cursor1 position="3975" topLine="107" />
 		</Cursor>
+	</File>
+	<File name="partido.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2163" topLine="30" />
+		</Cursor>
+		<Folding>
+			<Collapse line="46" />
+		</Folding>
+	</File>
+	<File name="interfaz.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1077" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="torneo.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="977" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="equipo.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2465" topLine="13" />
+		</Cursor>
+		<Folding>
+			<Collapse line="55" />
+			<Collapse line="86" />
+			<Collapse line="98" />
+			<Collapse line="131" />
+			<Collapse line="159" />
+			<Collapse line="195" />
+			<Collapse line="209" />
+		</Folding>
 	</File>
 </CodeBlocks_layout_file>

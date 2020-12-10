@@ -35,7 +35,11 @@
 	"rlutil.h"
 	"interfaz.h"
 
+<<<<<<< Updated upstream
 1607578859 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\main.cpp
+=======
+1605411458 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\main.cpp
+>>>>>>> Stashed changes
 	<iostream>
 	<locale.h>
 	<ctime>
