@@ -38,8 +38,8 @@ int main(){
     cout<< "Nro de partido "<<tor.getNro_partido()<<endl;
     */
 
-    /*
-    FILE* pArchivo;
+
+   /* FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");
     if(pArchivo==NULL){
         cout<<"error archivo"<<endl;
@@ -54,8 +54,8 @@ int main(){
     cout<< "codigo de torneo: "<<tor.getCodigo_torneo()<<endl;
     cout<< "instancia de torneo: "<<tor.getInstancia_torneo()<<endl;
     cout<< "Partido jugados: "<<tor.getPartidos_jugados()<<endl;
-    cout<< "torneo activo? "<<tor.getTorneo_activo()<<endl;
-    */
+    cout<< "torneo activo? "<<tor.getTorneo_activo()<<endl;*/
+
     menu_principal();
 
     return 0;
