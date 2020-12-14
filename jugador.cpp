@@ -17,7 +17,6 @@ Jugador::Jugador(){
     tarjeta_amarilla=0;
     asistencias=0;
     cant_goles=0;
-    leido=false;
 }
 
 void Jugador::setNro_equipo(int nro){nro_equipo=nro;}
@@ -38,8 +37,6 @@ int  Jugador::getTarjeta_amarilla(){return tarjeta_amarilla;}
 int  Jugador::getAsistencias(){return asistencias;}
 int  Jugador::getCant_goles(){return cant_goles;}
 int  Jugador::getNro_camiseta(){return nro_camiseta;}
-bool  Jugador::getLeido(){return leido;}
-
 
 void Jugador::aumentar_gol(){
     cant_goles++;
@@ -56,10 +53,6 @@ void Jugador::aumentar_roja(){
     tarjeta_roja++;
 }
 
-void Jugador::cambiarLeido(){
-      leido=true;
-}
-
 bool Jugador::guardarEnDisco(){
     bool guardo;
     FILE *pArchivo;
@@ -69,19 +62,6 @@ bool Jugador::guardarEnDisco(){
     fclose(pArchivo);
     return guardo;
 }
-
-void Jugador::mostrar_goles(){
-
-    Jugador ju;
-        cout << setw(12);
-        cout << ju.getNombre();
-        cout << setw(20) ;
-        cout << ju.getApellido();
-        cout << setw(4) ;
-        cout << ju.getCant_goles();
-
-        return;
-        }
 
 void listar_jugadores_x_equipo(){
 
@@ -140,47 +120,12 @@ void listar_jugadores_x_equipo(){
     }
 }
 
-void tabla_goleadores(){
-
-    Jugador reg;
-    int c=0,goles=0,posicion,i;
+void mostrar_goleadores(){
 
 
-    FILE *pArchivo;
-    pArchivo=fopen(FILE_JUGADORES,"rb+");
-    if(pArchivo==NULL)return;
-
-      cout << endl << "    LISTA DE GOLEADORES: ";
-
-      cout << setw(11) << "Jugador" << setw(20) << "|Nombre" << setw(4) << "|Apellido" << setw(4) << "|Cantidad de goles";
-      cout << endl << "-----------------------------------------------" << endl;
-
-    for(i=0;i<10;i++){
-
-    while(fread(&reg, sizeof(Equipo),1 ,pArchivo)){
-    c++;
-
-    if(reg.getLeido()>=goles && reg.getLeido()==false){
-
-        goles=reg.getLeido();
-        posicion=c;
-    }
-    }
-
-    fseek(pArchivo,posicion,SEEK_SET);
-    reg.cambiarLeido();
-    reg.mostrar_goles();
-    fwrite(&reg,sizeof(Jugador),1,pArchivo);
-
-    goles=0;
-    }
-
-     while(fread(&reg, sizeof(Jugador),1 ,pArchivo)){
-     fwrite(&reg,sizeof(Jugador),1,pArchivo);
-     }
 
 
-    fclose(pArchivo);
-    return;
+
+
+
 }
-
