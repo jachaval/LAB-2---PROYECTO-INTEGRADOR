@@ -24,11 +24,10 @@ int main(){
         exit(1);
     }
     Partido tor;
-    fread(&tor, sizeof(Partido), 1, pArchivo);
-    fclose(pArchivo);
+    while(fread(&tor, sizeof(Partido), 1, pArchivo)){
 
     cout<<"Partido"<<endl;
-    cout<< "codigo de Partido: "<<tor.getCodigo_toneo()<<endl;
+    cout<< "Codigo de torneo: "<<tor.getCodigo_toneo()<<endl;
     cout<< "Equipo local: "<<tor.getEquipo_local()<<endl;
     cout<< "Equipo visitante: "<<tor.getEquipo_visitante()<<endl;
     cout<< "Goles local: "<<tor.getGoles_local()<<endl;
@@ -36,8 +35,9 @@ int main(){
     cout<< "Equipo ganador "<<tor.getEquipo_ganador()<<endl;
     cout<< "Instancia del torneo "<<tor.getInstancia_torneo()<<endl;
     cout<< "Nro de partido "<<tor.getNro_partido()<<endl;
-    */
-
+}
+    fclose(pArchivo);
+*/
     /*
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");

@@ -25,9 +25,9 @@ class Torneo {
 		void mostrar();
 		bool escribrirEnDisco();
 		bool guardarEnDisco();
-		void aumentar_partidos_jugados();
 		void cambiar_instacia_torneo();
 		void autonumerar_torneo();
+
 };
 
 int informar_tipoTorneo();

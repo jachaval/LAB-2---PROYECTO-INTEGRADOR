@@ -3,7 +3,6 @@
 #include <cstdio>
 #include <cstring>
 #include <locale.h>
-#include <cstring>
 #include <iomanip>
 #include <ctime>
 using namespace std;
@@ -211,6 +210,10 @@ int contar_equiposCargados(){
 void listar_equipos(){
     FILE *pArchivo;
     pArchivo=fopen(FILE_EQUIPOS,"rb");
+    if(pArchivo==NULL){
+        msj("ERROR ARCHIVO EQUIPOS", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+        return;
+    }
     Equipo eq;
     cout << left;
     cout << setw(11) << "Nro Equipo" << setw(20) << "|Nombre Equipo" << setw(4) << "|PG" << setw(4) << "|PP" << setw(4) << "|GF" << setw(4) << "|GC";

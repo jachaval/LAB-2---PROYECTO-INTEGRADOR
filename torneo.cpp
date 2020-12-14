@@ -28,9 +28,6 @@ Torneo::Torneo(){
     torneo_activo=true;
 }
 
-void Torneo::aumentar_partidos_jugados(){
-    partidos_jugados++;
-}
 
 bool Torneo::guardarEnDisco(){
     bool guardo;
@@ -559,18 +556,18 @@ void cambiar_instancia_torneo(){
 }
 
 void contar_partido_cargado(){
-    Torneo tor;
+    Partido tor;
     FILE *p;
     p=fopen(FILE_TORNEOS,"rb+");
     if(p==NULL){
         msj("ERROR ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
         return;
     }
-    fread(&tor,sizeof(Torneo), 1,p);
+    fread(&tor,sizeof(Partido), 1,p);
     tor.aumentar_partidos_jugados();
 
-    fseek(p, ftell(p)-sizeof(Torneo),0);
-    fwrite(&tor , sizeof(Torneo),1 ,p);
+    fseek(p, ftell(p)-sizeof(Partido),0);
+    fwrite(&tor , sizeof(Partido),1 ,p);
     fclose(p);
 }
 

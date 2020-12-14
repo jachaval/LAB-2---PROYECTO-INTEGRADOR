@@ -11,6 +11,7 @@ using namespace rlutil;
 #include "equipo.h"
 #include "jugador.h"
 #include "torneo.h"
+#include "partido.h"
 
 void menu_principal(){
 
@@ -210,7 +211,12 @@ void menu_estadisticas(){
 
         switch (opcion) {
             case 1:
-                    cls();
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                listar_partidos();
+                anykey();
 
                 break;
             case 2:
