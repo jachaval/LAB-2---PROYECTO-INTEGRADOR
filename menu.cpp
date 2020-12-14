@@ -220,7 +220,11 @@ void menu_estadisticas(){
 
                 break;
             case 2:
-
+                system("cls");
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+                void tabla_goleadores();
+                anykey();
                 break;
             case 3:
 

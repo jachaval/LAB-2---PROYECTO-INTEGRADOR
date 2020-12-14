@@ -12,10 +12,14 @@ class Jugador{
 		int asistencias;
 		int cant_goles;
 		int nro_camiseta;
+		bool leido;
 	public:
 	    Jugador();
 		void cargar();
-		void mostrar();
+		void mostrar_goles();
+		void mostrar_asistencias();
+		void mostrar_tarjetas_rojas();
+		void mostrar_tarjetas_amarillas();
 		bool escribrirEnDisco();
 		bool guardarEnDisco();
 		void setNro_equipo(int);
@@ -38,16 +42,23 @@ class Jugador{
 		int getAsistencias();
 		int getCant_goles();
 		int getNro_camiseta();
+		bool getLeido();
 		void aumentar_gol();
 		void aumentar_asistencia();
 		void aumentar_amarilla();
 		void aumentar_roja();
+		void cambiarLeido();
+
 };
 
 Jugador buscar_jugador(Jugador nro_camiseta);
 
+
+
 void listar_jugadores_x_equipo();
 
+
+void tabla_goleadores();
 
 
 #endif // JUGADOR_H_INCLUDED
