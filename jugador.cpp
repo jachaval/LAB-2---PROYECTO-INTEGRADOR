@@ -120,12 +120,80 @@ void listar_jugadores_x_equipo(){
     }
 }
 
-void mostrar_goleadores(){
+int cantidad_jugadores(){
+    FILE *p = fopen(FILE_JUGADORES, "rb");
+    if (p == NULL){
+        return 1;
+    }
+    int bytes, cant;
+    fseek(p, 0, SEEK_END);
+    bytes = ftell(p);
+    fclose(p);
+    cant = bytes / sizeof(Jugador);
+    return cant;
+}
+
+void mostrar_goleadores(Jugador *v){
 
 
+    int i;
+    cout<<"-----------TABLA DE GOLEADORES-----------";
+    cout<<endl;
 
 
+ cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) <<"|Goles ";
+        cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+       for(i=0;i<10;i++){
+
+                cout << left;
+                cout << setw(15);
+                cout << v[i].getNombre();
+                cout << setw(15) ;
+                cout << v[i].getApellido();
+                cout << setw(15) ;
+                cout << v[i].getCant_goles();}
 
 
+                return;
 
 }
+
+
+void tabla_goleadores(){
+
+
+    int cant,i,j,posmax;
+    Jugador *v,aux;
+
+    cant=cantidad_jugadores();
+
+    v=new Jugador[cant];
+
+        FILE *p;
+        p = fopen(FILE_JUGADORES, "rb");
+        fread(v, sizeof(Jugador), cant, p);
+        fclose(p);
+
+        for(i=0; i<cant-1; i++){
+        posmax = i;
+        for(j=i+1; j<cant; j++){
+            if (v[j].getCant_goles() > v[posmax].getCant_goles()){
+                posmax = j;
+            }
+        }
+        aux = v[i];
+        v[i] = v[posmax];
+        v[posmax] = aux;
+    }
+    mostrar_goleadores(v);
+
+delete []v;
+
+return;
+
+}
+
+
+
+
+
