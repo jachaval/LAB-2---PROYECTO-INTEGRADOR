@@ -94,7 +94,7 @@ void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos){
         vecAleatorio[i] = n;
     }
 }
-///////////////////////////////////////////////////////// falta terminar
+/////////////////////////////////////////////////////////
 void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de equipo lo pone de manera aleatoria.
     int vecAleatorio[cant];
     poner_equipos_aleatorios(vecAleatorio,cant);
@@ -120,12 +120,39 @@ void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de
         fread(&eq, sizeof(Equipo),1 ,p);
         cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
         cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
+
+        cambiar_nroequipo_jugadores(vecAleatorio);
+
         eq.setNro_equipo(vecAleatorio[i]-1);
         fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET); /// seteo a la posicion de registro leido para modificarlo
         fwrite(&eq, sizeof(Equipo), 1 , p);
     }
     fclose(p);
 
+}
+
+void cambiar_nroequipo_jugadores(int *vecAleatorio){
+    Jugador jug;
+    FILE* p;
+    int numero, i=0;
+    p=fopen(FILE_JUGADORES,"rb+");
+    if(p==NULL){
+        msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+        return;
+    }
+    while(fread(&jug, sizeof(Jugador), 1 , p)){
+
+        numero=jug.getNro_equipo();
+        jug.setNro_equipo(vecAleatorio[numero-1]);
+        //jug.setNro_equipo(vecAleatorio[jug.getNro_equipo()-1]);
+
+        fseek(p,ftell(p)-sizeof (Jugador),SEEK_SET);
+        fwrite(&jug, sizeof(Jugador), 1 , p);
+
+        i++; //para saber en que registro leyo.
+        fseek(p, i * sizeof (Jugador),SEEK_SET); //pone el cursor al final de registro que acaba de leer.. porque el fwrite te vuelve el puntero al inicio del archivo
+    }
+    fclose(p);
 }
 
 bool cargar_equipo(int cant_equipos){
