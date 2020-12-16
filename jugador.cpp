@@ -137,21 +137,24 @@ void mostrar_goleadores(Jugador *v){
 
 
     int i;
+    cout<<endl;
     cout<<"-----------TABLA DE GOLEADORES-----------";
     cout<<endl;
 
-
- cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) <<"|Goles ";
-        cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+    cout<<left;
+    cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) <<"|Goles ";
+    cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
        for(i=0;i<10;i++){
 
                 cout << left;
-                cout << setw(15);
+                cout << setw(16);
                 cout << v[i].getNombre();
                 cout << setw(15) ;
                 cout << v[i].getApellido();
-                cout << setw(15) ;
-                cout << v[i].getCant_goles();}
+                cout << setw(10) ;
+                cout << v[i].getCant_goles();
+                cout<<endl;
+                }
 
 
                 return;
