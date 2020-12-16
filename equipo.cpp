@@ -118,8 +118,6 @@ void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de
         fseek(p,0,SEEK_SET); ///seteo el cursor al inicio del archivo
         fseek(p, i * sizeof (Equipo),SEEK_SET); /// lo seteo a la posicion de registro a leer
         fread(&eq, sizeof(Equipo),1 ,p);
-        cout<<"NRO EQUIPO: "<< eq.getNro_equipo()<<endl;
-        cout<<"NOMBRE: "<< eq.getNombre_equipo()<<endl;
 
         cambiar_nroequipo_jugadores(vecAleatorio);
 
