@@ -1,6 +1,7 @@
 #ifndef PARTIDO_H_INCLUDED
 #define PARTIDO_H_INCLUDED
 #define FILE_PARTIDOS "datos/partidos.dat"
+#include "equipo.h"
 
 class Partido {
 private:
@@ -34,11 +35,16 @@ public:
     bool guardarEnDisco();
     void aumentar_partidos_jugados(int);
     void ingresarCodigo_torneo();
+
 };
+
+
 
 void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados);
 
 int cantidad_partidos();
 
 void listar_partidos();
+
+char* buscar_nombre_equipo(int);
 #endif // PARTIDO_H_INCLUDED

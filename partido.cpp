@@ -56,6 +56,7 @@ Partido::Partido(){
     nro_partido=0;
 }
 
+
 bool Partido::guardarEnDisco(){
     bool guardo;
     FILE *pArchivo;
@@ -113,6 +114,11 @@ void listar_partidos(){
         msj("ERROR ARCHIVO PARTIDOS", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
         return;
     }
+
+    int a,b,c;
+
+
+
     Partido par;
     cout << left;
     cout << setw(11) << "Cod Torneo" << setw(14) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante" << setw(16) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
@@ -121,15 +127,18 @@ void listar_partidos(){
         cout << setw(12);
         cout << par.getCodigo_toneo();
         cout << setw(14) ;
-        cout << par.getEquipo_local();
+        a=par.getEquipo_local();
+        cout << buscar_nombre_equipo(a);
         cout << setw(18) ;
-        cout << par.getEquipo_visitante();
+        b=par.getEquipo_visitante();
+        cout << buscar_nombre_equipo(b);
         cout << setw(13) ;
         cout << par.getGoles_local();
         cout << setw(17) ;
         cout << par.getGoles_visitante();
         cout << setw(16) ;
-        cout << par.getEquipo_ganador();
+        c=par.getEquipo_ganador();
+        cout << buscar_nombre_equipo(c);
         cout << setw(18) ;
         cout << par.getInstancia_torneo();
         cout << setw(16) ;
@@ -140,4 +149,30 @@ void listar_partidos(){
     }
     anykey();
     fclose(pArchivo);
+}
+
+
+char* buscar_nombre_equipo(int a){
+
+    char nombre[30],n[2] ;
+    Equipo reg;
+	FILE* f;
+	f = fopen(FILE_EQUIPOS, "rb");
+	if (f == NULL) {
+		return n;
+	}
+	while (fread(&reg, sizeof(Equipo), 1, f)) {
+
+            if(a==reg.getNro_equipo()){
+
+                strcpy(nombre, reg.getNombre_equipo());
+                return nombre;
+
+            }
+            }
+
+            fclose(f);
+
+         return n;
+
 }

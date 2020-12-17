@@ -38,7 +38,7 @@ int main(){
     cout<< "Nro de partido "<<tor.getNro_partido()<<endl;
 }
     fclose(pArchivo);
-*/
+
 
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");
@@ -56,7 +56,7 @@ int main(){
     cout<< "instancia de torneo: "<<tor.getInstancia_torneo()<<endl;
     cout<< "Partido jugados: "<<tor.getPartidos_jugados()<<endl;
     cout<< "torneo activo? "<<tor.getTorneo_activo()<<endl;
-    anykey();
+    anykey();*/
 
 
     menu_principal();
