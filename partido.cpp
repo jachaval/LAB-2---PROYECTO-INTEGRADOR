@@ -121,24 +121,24 @@ void listar_partidos(){
 
     Partido par;
     cout << left;
-    cout << setw(11) << "Cod Torneo" << setw(14) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante" << setw(16) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
+    cout << setw(11) << "Cod Torneo" << setw(17) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante" << setw(17) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
     cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
     while(fread(&par, sizeof (Partido), 1, pArchivo)==1){
         cout << setw(12);
         cout << par.getCodigo_toneo();
-        cout << setw(14) ;
+        cout << setw(17) ;
         a=par.getEquipo_local();
-        cout << buscar_nombre_equipo(a);
+        buscar_nombre_equipo(a);
         cout << setw(18) ;
         b=par.getEquipo_visitante();
-        cout << buscar_nombre_equipo(b);
+        buscar_nombre_equipo(b);
         cout << setw(13) ;
         cout << par.getGoles_local();
         cout << setw(17) ;
         cout << par.getGoles_visitante();
-        cout << setw(16) ;
+        cout << setw(17) ;
         c=par.getEquipo_ganador();
-        cout << buscar_nombre_equipo(c);
+        buscar_nombre_equipo(c);
         cout << setw(18) ;
         cout << par.getInstancia_torneo();
         cout << setw(16) ;
@@ -152,27 +152,26 @@ void listar_partidos(){
 }
 
 
-char* buscar_nombre_equipo(int a){
+void buscar_nombre_equipo(int a){
 
     char nombre[30],n[2] ;
     Equipo reg;
 	FILE* f;
 	f = fopen(FILE_EQUIPOS, "rb");
 	if (f == NULL) {
-		return n;
+        cout<<"ERROR ARCHIVO EQUIPOS" << endl;
 	}
 	while (fread(&reg, sizeof(Equipo), 1, f)) {
 
             if(a==reg.getNro_equipo()){
 
                 strcpy(nombre, reg.getNombre_equipo());
-                return nombre;
+                cout<< nombre;
 
             }
-            }
+    }
 
-            fclose(f);
+    fclose(f);
 
-         return n;
 
 }

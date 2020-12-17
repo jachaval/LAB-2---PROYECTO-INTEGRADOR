@@ -59,6 +59,8 @@ void cambiar_nroequipo_jugadores(int *vecAleatorio);
 void listar_equipos_en_competencia();
 void ver_proximos_encuentros();
 
+void ver_ganador();
+
 
 void fase_final(int);
 void fase_semi(int);

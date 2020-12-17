@@ -380,6 +380,7 @@ void menu_ver_torneo(){
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy(1,3);
 
+                ver_ganador();
                 anykey();
 
 

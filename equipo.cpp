@@ -407,6 +407,43 @@ void listar_equipos_en_competencia(){
     fclose(f);
 }
 
+void ver_ganador(){
+    FILE* f;
+	f = fopen(FILE_EQUIPOS, "rb");
+	if (f == NULL) {
+        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+		return;
+	}
+    int contador=0;
+	Equipo eq;
+    while(fread(&eq, sizeof (Equipo), 1, f)==1){
+        if(eq.getActivo()==true){
+            contador++;
+        }
+    }
+    fclose(f);
+
+    if(contador==1){
+
+    setColor(RED);
+        for (int i = 0; i < 40; i++) {
+            gotoxy(i + 4, 3); printf("*");
+            gotoxy(7, 4); printf("EQUIPO GANADOR ES: ");
+            gotoxy(i + 4, 5); printf("*");
+            gotoxy(4, 4); printf("*");
+            gotoxy(43, 4); printf("*");
+        }
+        setColor(WHITE);
+    gotoxy(26,4);
+        cout << eq.getNombre_equipo();
+
+    }
+    else{
+        cout<< "AUN NO TERMINO EL TORNEO"<<endl;
+    }
+
+}
+
 void ver_proximos_encuentros(){ ///para febrero agregar fecha de encuentro
     FILE* f;
 	f = fopen(FILE_TORNEOS, "rb");
@@ -623,7 +660,7 @@ int cant,i , equipo1, equipo2, equipo3, equipo4, equipo5, equipo6, equipo7, equi
         }
     }
 
-    cout<< "    SEMIFINALES"<<endl<<endl;
+    cout<< "    CUARTOS DE FINAL"<<endl<<endl;
 
     cout<< equipo1 << " VS "<< equipo2;
     cout<< equipo3 << " VS "<< equipo4;
@@ -636,5 +673,9 @@ int cant,i , equipo1, equipo2, equipo3, equipo4, equipo5, equipo6, equipo7, equi
 
     delete []vec;
 }
-void fase_16(int partidos_jugados){}
-void fase_32(int partidos_jugados){}
+void fase_16(int partidos_jugados){
+
+}
+void fase_32(int partidos_jugados){
+
+}

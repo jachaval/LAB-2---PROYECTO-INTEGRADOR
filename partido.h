@@ -46,5 +46,5 @@ int cantidad_partidos();
 
 void listar_partidos();
 
-char* buscar_nombre_equipo(int);
+void buscar_nombre_equipo(int);
 #endif // PARTIDO_H_INCLUDED
