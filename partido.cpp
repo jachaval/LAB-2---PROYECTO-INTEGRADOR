@@ -93,6 +93,19 @@ void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int g
     fclose(pArchivo);
 }
 
+int cantidad_partidos(){
+    FILE *p = fopen(FILE_PARTIDOS, "rb");
+    if (p == NULL){
+        return 1;
+    }
+    int bytes, cant;
+    fseek(p, 0, SEEK_END);
+    bytes = ftell(p);
+    fclose(p);
+    cant = bytes / sizeof(Partido);
+    return cant;
+}
+
 void listar_partidos(){
     FILE *pArchivo;
     pArchivo=fopen(FILE_PARTIDOS,"rb");

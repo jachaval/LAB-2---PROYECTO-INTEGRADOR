@@ -52,4 +52,7 @@ void contar_partido_cargado();
 
 int contar_torneosCargados();
 
+void ver_fase_torneo();
+
+
 #endif // TORNEO_H_INCLUDED

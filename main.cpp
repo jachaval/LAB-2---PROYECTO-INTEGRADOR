@@ -12,6 +12,7 @@ using namespace rlutil;
 #include "torneo.h"
 #include "jugador.h"
 #include "partido.h"
+#include "equipo.h"
 
 
 int main(){
@@ -57,7 +58,7 @@ int main(){
     cout<< "torneo activo? "<<tor.getTorneo_activo()<<endl;
     anykey();
 
-    menu_principal();
 
+    menu_principal();
     return 0;
 }

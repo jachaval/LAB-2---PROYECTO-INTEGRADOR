@@ -37,7 +37,7 @@ class Equipo{
         void aumentar_partidos_perdidos();
 };
 
-void ingresar_equipos(int);
+void ingresar_equipos(int cant_equipos);
 
 bool cargar_equipo(int cant_equipos);
 bool cargar_jugadores(int cant_jugadores, int nroEquipo);
@@ -55,6 +55,17 @@ void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos); //carga un 
 void sortear();
 void sortear_equipos(int cantidad_equipos);
 void cambiar_nroequipo_jugadores(int *vecAleatorio);
+
+void listar_equipos_en_competencia();
+void ver_proximos_encuentros();
+
+
+void fase_final(int);
+void fase_semi(int);
+void fase_cuartos(int);
+void fase_octavos(int);
+void fase_16(int);
+void fase_32(int);
 
 
 

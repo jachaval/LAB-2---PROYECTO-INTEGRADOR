@@ -575,13 +575,8 @@ void contar_partido_cargado(){
         return;
     }
     fread(&tor,sizeof(Torneo), 1,p);
-    cout<<"partidos jugados: "<<tor.getPartidos_jugados()<<endl;
-    anykey();
-    tor.aumentar_partidos_jugados();
 
-    cout<<"partidos jugados: "<<tor.getPartidos_jugados()<<endl;
-    cout<<"INSTANCIA: "<<tor.getInstancia_torneo()<<endl;
-    anykey();
+    tor.aumentar_partidos_jugados();
 
     fseek(p, ftell(p)-sizeof(Torneo),0);
     fwrite(&tor , sizeof(Torneo),1 ,p);
@@ -590,7 +585,48 @@ void contar_partido_cargado(){
     fclose(p);
 }
 
+void ver_fase_torneo(){
+    FILE*p;
+    p=fopen(FILE_TORNEOS,"rb");
+    if (p == NULL){
+        msj("ERROR DE ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return;
+    }
+    Torneo tor;
+    char nom_fase[50];
 
+    ///para varios torneos hay que agruegar un buscador de torneo por nombre
+    fread(&tor, sizeof(Torneo), 1, p);
+
+    switch(tor.getInstancia_torneo()){
+        case 1:
+            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE FINAL"<<endl;
+            break;
+        case 2:
+            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE SEMIFINAL"<<endl;
+            break;
+        case 4:
+            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE CUARTOS DE FINAL"<<endl;
+            break;
+        case 8:
+            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE OCTAVOS DE FINAL"<<endl;
+            break;
+        case 16:
+            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE 16 AVOS DE FINAL"<<endl;
+            break;
+        case 32:
+            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE 32 AVOS DE FINAL"<<endl;
+            break;
+
+    }
+
+
+    cout<< endl<< "    LOS EQUIPOS EN COMPETENCIA SON: "<<endl<<endl;
+
+    listar_equipos_en_competencia();
+
+    fclose(p);
+}
 
 
 

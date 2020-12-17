@@ -9,8 +9,11 @@ using namespace std;
 #include "rlutil.h"
 #include "interfaz.h"
 using namespace rlutil;
-#include "equipo.h"
+#include "torneo.h"
 #include "jugador.h"
+#include "partido.h"
+#include "equipo.h"
+
 
 Jugador::Jugador(){
     tarjeta_roja=0;

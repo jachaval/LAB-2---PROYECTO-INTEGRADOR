@@ -38,5 +38,7 @@ public:
 
 void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados);
 
+int cantidad_partidos();
+
 void listar_partidos();
 #endif // PARTIDO_H_INCLUDED
