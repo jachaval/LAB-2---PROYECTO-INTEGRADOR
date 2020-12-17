@@ -47,12 +47,23 @@ class Jugador{
 Jugador buscar_jugador(Jugador nro_camiseta);
 
 void listar_jugadores_x_equipo();
-void mostrar_goleadores(Jugador *v , int tam);
+void mostrar_goleadores(Jugador *v);
+void mostrar_asistencias(Jugador *v);
+void mostrar_amarillas(Jugador *v);
+void mostrar_rojas(Jugador *v);
+void mostrar_jugador(Jugador);
 
 int cantidad_jugadores();
 
 
 void tabla_goleadores();
+void tabla_asistidores();
+void tabla_amarillas();
+void tabla_rojas();
+void buscar_jugador();
+
+
+
 
 
 

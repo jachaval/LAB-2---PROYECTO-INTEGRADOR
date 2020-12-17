@@ -231,19 +231,52 @@ void menu_estadisticas(){
 
                 break;
             case 3:
+                 cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                tabla_asistidores();
+                anykey();
+
 
                 break;
             case 4:
-                cls();
+              cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                tabla_rojas();
+                anykey();
 
                 break;
             case 5:
+                 cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                tabla_amarillas();
+                anykey();
+
 
                 break;
             case 6:
 
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                buscar_jugador();
+                anykey();
+
                 break;
             case 7:
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                buscarEquipo();
+                anykey();
+
 
                 break;
             case 8:

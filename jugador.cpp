@@ -133,10 +133,37 @@ int cantidad_jugadores(){
     return cant;
 }
 
+void mostrar_jugador(Jugador reg){
+
+ cout<<left;
+    cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) <<"|Goles "<< setw(15) <<"|Asistencias "<< setw(20) <<"|Tarjetas amarillas "<< setw(20) <<"|Tarjetas rojas ";
+    cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+
+    cout << left;
+    cout << setw(15);
+    cout << reg.getNombre();
+    cout << setw(15) ;
+    cout << reg.getApellido();
+    cout << setw(15) ;
+    cout << reg.getCant_goles();
+    cout << setw(15);
+    cout << reg.getAsistencias();
+    cout << setw(20);
+    cout << reg.getTarjeta_amarilla();
+    cout << setw(20);
+    cout << reg.getTarjeta_roja();
+
+    cout<<endl;
+
+
+
+
+}
+
 void mostrar_goleadores(Jugador *v){
 
 
-    int i;
+    int i, c=0;
     cout<<endl;
     cout<<"-----------TABLA DE GOLEADORES-----------";
     cout<<endl;
@@ -144,7 +171,12 @@ void mostrar_goleadores(Jugador *v){
     cout<<left;
     cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) <<"|Goles ";
     cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+
+
+
        for(i=0;i<10;i++){
+
+            if(v[i].getCant_goles()>0){
 
                 cout << left;
                 cout << setw(16);
@@ -154,7 +186,128 @@ void mostrar_goleadores(Jugador *v){
                 cout << setw(10) ;
                 cout << v[i].getCant_goles();
                 cout<<endl;
-                }
+                c++;
+                }}
+
+           if(c=0){
+            cout<<"Aun no hay goleadores"<<endl;
+
+
+           }
+                return;
+
+}
+
+void mostrar_asistencias(Jugador *v){
+
+
+    int i, c=0;
+    cout<<endl;
+    cout<<"-----------TABLA DE ASISTIDORES-----------";
+    cout<<endl;
+
+    cout<<left;
+    cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) <<"|Asistencias ";
+    cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+
+       for(i=0;i<10;i++){
+
+            if(v[i].getAsistencias()>0){
+
+                cout << left;
+                cout << setw(16);
+                cout << v[i].getNombre();
+                cout << setw(15) ;
+                cout << v[i].getApellido();
+                cout << setw(10) ;
+                cout << v[i].getAsistencias();
+                cout<<endl;
+                c++;
+                }}
+
+           if(c=0){
+            cout<<"Aun no hay asistidores"<<endl;
+
+
+           }
+
+                return;
+
+}
+
+void mostrar_amarillas(Jugador *v){
+
+
+    int i, c=0;
+    cout<<endl;
+    cout<<"-----------TARJETAS AMARILLAS-----------";
+    cout<<endl;
+
+    cout<<left;
+    cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(19) <<"|Tarjetas amarillas ";
+    cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+
+       for(i=0;i<10;i++){
+
+            if(v[i].getTarjeta_amarilla()>0){
+
+                cout << left;
+                cout << setw(16);
+                cout << v[i].getNombre();
+                cout << setw(15) ;
+                cout << v[i].getApellido();
+                cout << setw(10) ;
+                cout << v[i].getTarjeta_amarilla();
+                cout<<endl;
+                c++;
+                }}
+
+           if(c=0){
+            cout<<"Aun no hay tarjetas amarillas"<<endl;
+
+
+           }
+
+                return;
+
+}
+
+void mostrar_rojas(Jugador *v){
+
+
+    int i, c=0;
+    cout<<endl;
+    cout<<"-----------TARJETAS ROJAS-----------";
+    cout<<endl;
+
+    cout<<left;
+    cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(19) <<"|Tarjetas rojas ";
+    cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+
+       for(i=0;i<10;i++){
+
+            if(v[i].getTarjeta_roja()>0){
+
+                cout << left;
+                cout << setw(16);
+                cout << v[i].getNombre();
+                cout << setw(15) ;
+                cout << v[i].getApellido();
+                cout << setw(10) ;
+                cout << v[i].getTarjeta_roja();
+                cout<<endl;
+                c++;
+                }}
+
+           if(c=0){
+
+
+            cout<<setw(20)<<"Aun no hay tarjetas rojas"<<endl;
+
+
+           }
+
+
 
 
                 return;
@@ -197,6 +350,140 @@ return;
 }
 
 
+void tabla_asistidores(){
 
 
+    int cant,i,j,posmax;
+    Jugador *v,aux;
 
+    cant=cantidad_jugadores();
+
+    v=new Jugador[cant];
+
+        FILE *p;
+        p = fopen(FILE_JUGADORES, "rb");
+        fread(v, sizeof(Jugador), cant, p);
+        fclose(p);
+
+        for(i=0; i<cant-1; i++){
+        posmax = i;
+        for(j=i+1; j<cant; j++){
+            if (v[j].getAsistencias() > v[posmax].getAsistencias()){
+                posmax = j;
+            }
+        }
+        aux = v[i];
+        v[i] = v[posmax];
+        v[posmax] = aux;
+    }
+    mostrar_asistencias(v);
+
+delete []v;
+
+return;
+
+}
+
+void tabla_amarillas(){
+
+
+    int cant,i,j,posmax;
+    Jugador *v,aux;
+
+    cant=cantidad_jugadores();
+
+    v=new Jugador[cant];
+
+        FILE *p;
+        p = fopen(FILE_JUGADORES, "rb");
+        fread(v, sizeof(Jugador), cant, p);
+        fclose(p);
+
+        for(i=0; i<cant-1; i++){
+        posmax = i;
+        for(j=i+1; j<cant; j++){
+            if (v[j].getTarjeta_amarilla() > v[posmax].getTarjeta_amarilla()){
+                posmax = j;
+            }
+        }
+        aux = v[i];
+        v[i] = v[posmax];
+        v[posmax] = aux;
+    }
+    mostrar_amarillas(v);
+
+delete []v;
+
+return;
+
+}
+
+void tabla_rojas(){
+    int cant,i,j,posmax;
+    Jugador *v,aux;
+
+    cant=cantidad_jugadores();
+
+    v=new Jugador[cant];
+
+        FILE *p;
+        p = fopen(FILE_JUGADORES, "rb");
+        fread(v, sizeof(Jugador), cant, p);
+        fclose(p);
+
+        for(i=0; i<cant-1; i++){
+        posmax = i;
+        for(j=i+1; j<cant; j++){
+            if (v[j].getTarjeta_roja() > v[posmax].getTarjeta_roja()){
+                posmax = j;
+            }
+        }
+        aux = v[i];
+        v[i] = v[posmax];
+        v[posmax] = aux;
+    }
+    mostrar_rojas(v);
+
+delete []v;
+
+return;
+
+}
+
+void buscar_jugador() {
+
+	Jugador reg;
+	bool encontrado=false;
+	char nombre_jugador[30], apellido_jugador[30];
+	cout<<"Ingrese en mayusculas el nombre del jugador a buscar: ";
+	cin>>nombre_jugador;
+	cout<<endl;
+	cout<<"Ingrese en mayusculas el apellido del jugador a buscar: "<<endl;
+	cin>>apellido_jugador;
+	cout<<endl;
+
+	FILE* f;
+	f = fopen(FILE_JUGADORES, "rb");
+	if (f == NULL) {
+		return;
+	}
+	while (fread(&reg, sizeof(Jugador), 1, f)) {
+		if (strcmp(nombre_jugador,reg.getNombre())==0 && strcmp(apellido_jugador, reg.getApellido())==0 ) {
+
+            cls();
+            mostrar_jugador(reg);
+            encontrado=true;
+
+			fclose(f);
+			return;
+		}
+	}
+
+	if(encontrado==false){
+        cout<<"El jugador no existe"<<endl;
+
+	}
+
+	fclose(f);
+	return;
+}

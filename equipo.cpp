@@ -284,3 +284,65 @@ bool nombre_equipo(char * nom_equipo,int equipo){
     fclose(pArchivo);
     return false;
 }
+
+void mostrar_equipo(Equipo aux){
+
+cout<<left;
+    cout << setw(20) << "Nombre del equipo " << setw(20) << "|Partidos ganados " << setw(20) <<"|Partidos perdidos "<< setw(20) <<"|Goles a favor "<< setw(20) <<"|Goles en contra ";
+    cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+
+    cout << left;
+    cout << setw(20);
+    cout << aux.getNombre_equipo();
+    cout << setw(20) ;
+    cout << aux.getPartidos_ganados();
+    cout << setw(20) ;
+    cout << aux.getPartidos_perdidos();
+    cout << setw(20);
+    cout << aux.getGoles_afavor();
+    cout << setw(20);
+    cout << aux.getGoles_encontra();
+
+    cout<<endl;
+
+
+}
+
+void buscarEquipo(){
+
+	Equipo reg;
+	bool encontrado=false;
+	char nombre_equipo[30];
+	cout<<"Ingrese en mayusculas el nombre del equipo a buscar: ";
+	cin.ignore();
+	cin.getline(nombre_equipo,30);
+	cout<<endl;
+
+
+	FILE* f;
+	f = fopen(FILE_EQUIPOS, "rb");
+	if (f == NULL) {
+		return;
+	}
+	while (fread(&reg, sizeof(Equipo), 1, f)) {
+		if (strcmp(nombre_equipo,reg.getNombre_equipo())==0) {
+
+            cls();
+            mostrar_equipo(reg);
+            encontrado=true;
+
+			fclose(f);
+			return;
+		}
+	}
+
+
+	if(encontrado==false){
+        cout<<"El equipo no existe"<<endl;
+
+	}
+
+	fclose(f);
+	return;
+}
+
