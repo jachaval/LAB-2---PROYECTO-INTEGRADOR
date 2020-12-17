@@ -11,6 +11,7 @@ using namespace std;
 using namespace rlutil;
 #include "equipo.h"
 #include "jugador.h"
+#include "torneo.h"
 
 Equipo::Equipo(){
     activo=true;
@@ -94,17 +95,45 @@ void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos){
         vecAleatorio[i] = n;
     }
 }
-/////////////////////////////////////////////////////////
+
+void sortear(){
+    int cantidad_equipos;
+    int cant_equiposCargados;
+    FILE *p;
+    p=fopen(FILE_TORNEOS,"rb");
+    if(p==NULL){
+        cout << "    SELECCIONAR TORNEO PRIMERO"<<endl<<endl;
+        anykey();
+        return;
+    }
+    fclose(p);
+
+    cantidad_equipos=informar_tipoTorneo(); ///devuelve la cantidad de equipos total del torneo seleccionado.
+    cant_equiposCargados=contar_equiposCargados(); //devuelve la cantidad de los equipos cargados, si ya estan todo no permite cargar mas
+
+    if(cant_equiposCargados==cantidad_equipos){
+        if(cantidad_equipos>0){
+            cout<<"    SORTEAR EQUIPOS" <<endl<<endl;
+            sortear_equipos(cantidad_equipos);
+            /// mostrar equipos sorteados. HACER FUNCIONES CON RLUTIL HACER TIPO FIXTURE
+            listar_equipos();
+            anykey();
+        }
+        else{
+            cout<<"    PRIMERO SELECCIONE EL TORNEO PARA PODER CARGAR LOS EQUIPOS"<<endl;
+            anykey();
+        }
+    }
+    else{
+        cout<< "    EQUIPOS CARGADOS HASTA EL MOMENTO: "<< cant_equiposCargados<<" de " << cantidad_equipos<<endl<<endl;
+
+        cout<< "    TERMINE DE CARGAR EQUIPOS PARA PODER SORTEAR " <<endl<<endl;
+    }
+}
+
 void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de equipo lo pone de manera aleatoria.
     int vecAleatorio[cant];
     poner_equipos_aleatorios(vecAleatorio,cant);
-
-    cls();
-    int j;
-    for(j=0;j<cant;j++){
-        cout << "vec: "<<vecAleatorio[j]<<endl;
-    }
-    anykey();
 
     Equipo eq;
     FILE* p;
@@ -126,7 +155,6 @@ void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de
         fwrite(&eq, sizeof(Equipo), 1 , p);
     }
     fclose(p);
-
 }
 
 void cambiar_nroequipo_jugadores(int *vecAleatorio){

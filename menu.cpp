@@ -79,6 +79,7 @@ void menu_iniciar_torneo(){
         gotoxy(1,6);
         cout << "    1. SELECCIONAR TORNEO" << endl;
         cout << "    2. CARGAR EQUIPO Y JUGADORES" << endl;
+        cout << "    3. SORTEAR EQUIPOS" << endl;
         cout << "    0. SALIR" << endl;
         cout << "    ------------------------------" << endl;
 
@@ -110,28 +111,41 @@ void menu_iniciar_torneo(){
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy (1,3);
 
-                cantidad_equipos=informar_tipoTorneo(); ///devuelve la cantidad de equipos total del torneo seleccionado.
-                cant_equiposCargados=contar_equiposCargados(); //devuelve la cantidad de los equipos cargados, si ya estan todo no permite cargar mas
-
-                if(cant_equiposCargados==cantidad_equipos){
-                    if(cantidad_equipos>0){
-                        cout<<"    YA ESTÁN TODOS LOS EQUIPOS CARGADOS. CONTINUE TORNEO"<<endl;
-                        sortear_equipos(cantidad_equipos);
-                        anykey();
-                    }
-                    else{
-                        cout<<"    PRIMERO SELECCIONE EL TORNEO PARA PODER CARGAR LOS EQUIPOS"<<endl;
-                        anykey();
-                    }
+                FILE *p;
+                p=fopen(FILE_TORNEOS,"rb");
+                if(p==NULL){
+                    cout << "    SELECCIONAR TORNEO PRIMERO"<<endl<<endl;
+                    anykey();
                 }
                 else{
-                    cout<< "    EQUIPOS CARGADOS HASTA EL MOMENTO: "<< cant_equiposCargados<<" de " << cantidad_equipos<<endl<<endl;
-                    ingresar_equipos(cant_equipos); //agrega todos los equipos y jugadores y los guarda en equipos.dat
-                    if((cant_equiposCargados+1)==cantidad_equipos){
-                        sortear_equipos(cantidad_equipos);
+                    cantidad_equipos=informar_tipoTorneo(); ///devuelve la cantidad de equipos total del torneo seleccionado.
+                    cant_equiposCargados=contar_equiposCargados(); //devuelve la cantidad de los equipos cargados, si ya estan todo no permite cargar mas
+
+                    if(cant_equiposCargados==cantidad_equipos){
+                        if(cantidad_equipos>0){
+                            cout<<"    YA ESTÁN TODOS LOS EQUIPOS CARGADOS. SORTEE LOS EQUIPO Y CONTINUE TORNEO"<<endl;
+                            anykey();
+                        }
+                        else{
+                            cout<<"    PRIMERO SELECCIONE EL TORNEO PARA PODER CARGAR LOS EQUIPOS"<<endl;
+                            anykey();
+                        }
+                    }
+                    else{
+                        cout<< "    EQUIPOS CARGADOS HASTA EL MOMENTO: "<< cant_equiposCargados<<" de " << cantidad_equipos<<endl<<endl;
+                        ingresar_equipos(cant_equipos); //agrega todos los equipos y jugadores y los guarda en equipos.dat
                     }
                 }
+                fclose(p);
             break;
+            case 3:
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy (1,3);
+
+                sortear();
+
+                break;
             case 0:
                 return;
             break;
@@ -202,7 +216,8 @@ void menu_estadisticas(){
         cout << "    6. BUSCAR JUGADOR " << endl;
         cout << "    7. BUSCAR EQUIPO " << endl;
         cout << "    8. LISTAR EQUIPOS" << endl;
-        cout << "    9. LISTAR JUGADORES POR EQUIPO"<<endl;
+        cout << "    9. LISTAR JUGADORES" << endl;
+        cout << "    10. LISTAR JUGADORES POR EQUIPO"<<endl;
         cout << "    0. SALIR" << endl;
         cout << "    ------------------------------" << endl;
 
@@ -288,6 +303,14 @@ void menu_estadisticas(){
                 anykey();
                 break;
             case 9:
+                system("cls");
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                listar_jugadores();
+                anykey();
+                break;
+            case 10:
                 system("cls");
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy(1,3);

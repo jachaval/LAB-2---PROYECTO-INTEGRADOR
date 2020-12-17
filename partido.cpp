@@ -31,6 +31,20 @@ int Partido::getInstancia_torneo(){return instancia_torneo;}
 int Partido::getNro_partido(){return nro_partido;}
 bool Partido::escribrirEnDisco(){}
 
+void Partido::ingresarCodigo_torneo(){    //deberia ingresar nombre del torneo para ingresar al ingresar y ese es lo que recibiria la funcion
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_TORNEOS,"rb");
+    if(pArchivo==NULL){
+        msj("ERROR ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return;
+    }
+    Torneo tor;
+    fread(&tor, sizeof(Torneo), 1, pArchivo);
+    fclose(pArchivo);
+
+    codigo_toneo=tor.getCodigo_torneo();
+}
+
 Partido::Partido(){
     codigo_toneo;
     equipo_local=0;
@@ -52,11 +66,11 @@ bool Partido::guardarEnDisco(){
     return guardo;
 }
 
-void Partido::aumentar_partidos_jugados(){
-    nro_partido++;
+void Partido::aumentar_partidos_jugados(int numeroPartido){
+    nro_partido=numeroPartido+1;
 }
 
-void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo){
+void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados ){
     Partido par;
     FILE* pArchivo;
     pArchivo=fopen(FILE_PARTIDOS, "ab");
@@ -65,12 +79,14 @@ void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int g
         return;
     }
 
+    par.ingresarCodigo_torneo();
     par.setEquipo_local(numeroEquipo1);
     par.setEquipo_visitante(numeroEquipo2);
     par.setGoles_local(golesEquipo1);
     par.setGoles_visitante(golesEquipo2);
     par.setEquipo_ganador(equipo_ganador);
-    par.setInstancia_torneo((instancia_torneo/2));
+    par.setInstancia_torneo((instancia_torneo));
+    par.aumentar_partidos_jugados(partidos_jugados);
 
     par.guardarEnDisco();
 
@@ -86,24 +102,24 @@ void listar_partidos(){
     }
     Partido par;
     cout << left;
-    cout << setw(11) << "Cod Torneo" << setw(20) << "|Equipo Local" << setw(4) << "|Equipo Visitante" << setw(4) << "|Goles Local" << setw(4) << "|Goles Visitante" << setw(4) << "|Equipo Ganador"<< setw(4) << "|Instancia Torneo" << setw(4) << "|Número Partido";
-    cout << endl << "---------------------------------------------------------------------------------------------" << endl;
+    cout << setw(11) << "Cod Torneo" << setw(14) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante" << setw(16) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
+    cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
     while(fread(&par, sizeof (Partido), 1, pArchivo)==1){
         cout << setw(12);
         cout << par.getCodigo_toneo();
-        cout << setw(20) ;
+        cout << setw(14) ;
         cout << par.getEquipo_local();
-        cout << setw(4) ;
+        cout << setw(18) ;
         cout << par.getEquipo_visitante();
-        cout << setw(4) ;
+        cout << setw(13) ;
         cout << par.getGoles_local();
-        cout << setw(4) ;
+        cout << setw(17) ;
         cout << par.getGoles_visitante();
-        cout << setw(4) ;
+        cout << setw(16) ;
         cout << par.getEquipo_ganador();
-        cout << setw(4) ;
+        cout << setw(18) ;
         cout << par.getInstancia_torneo();
-        cout << setw(4) ;
+        cout << setw(16) ;
         cout << par.getNro_partido();
         cout << endl;
 

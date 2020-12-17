@@ -32,10 +32,11 @@ public:
     int getNro_partido();
     bool escribrirEnDisco();
     bool guardarEnDisco();
-    void aumentar_partidos_jugados();
+    void aumentar_partidos_jugados(int);
+    void ingresarCodigo_torneo();
 };
 
-void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo);
+void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados);
 
 void listar_partidos();
 #endif // PARTIDO_H_INCLUDED

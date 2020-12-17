@@ -28,6 +28,10 @@ Torneo::Torneo(){
     torneo_activo=true;
 }
 
+void Torneo::aumentar_partidos_jugados(){
+    partidos_jugados++;
+}
+
 
 bool Torneo::guardarEnDisco(){
     bool guardo;
@@ -44,9 +48,6 @@ void Torneo::cambiar_instacia_torneo(){
 }
 
 void Torneo::autonumerar_torneo(){
-    cls();
-    cout<<"ENTROOOOO"<<endl<<endl;
-    anykey();
     int cant;
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS, "rb");
@@ -55,6 +56,8 @@ void Torneo::autonumerar_torneo(){
         return;
     }
     cant=contar_torneosCargados();
+
+    /// esto es para el final que serian varios toreos
     codigo_torneo=cant+1;
     cls();
     cout<<"codigo torneo "<<codigo_torneo<<endl<<endl;
@@ -111,9 +114,14 @@ int seleccionar_torneo(){
     cout<< endl<< "    HA SELECCIONADO EL TORNEO PARA "<< cant_equipos << " EQUIPOS"<<endl;
     cout<< endl<< "    ¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)"; ///FALTARIA AGREGAR VALIDACION POR INGRESOS INCORRECTOS
     cin>>seguro;
-    if(seguro=='N' || seguro=='n') {
-        cout<<endl << "    VUELVA A SELECCIONAR TORNEO"<<endl;
-        return 0;
+
+    while(seguro!='S' && seguro!='s'){
+        if(seguro=='N' || seguro=='n') {
+            return 0;
+        }
+        cout << "Ingreso incorrecto";
+        cout<< endl<< "    >¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)"; ///FALTARIA AGREGAR VALIDACION POR INGRESOS INCORRECTOS
+        cin>>seguro;
     }
     cout<<endl << "    TORNEO SELECCIONADO CORRECTAMENTE"<<endl;
     anykey();
@@ -135,6 +143,8 @@ void cargar_resultado_partido(){
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");
     if(pArchivo==NULL){
+
+        cout << "INICIAR TORNEO PRIMERO"<<endl<<endl;
         msj("ERROR ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
         return;
     }
@@ -198,16 +208,20 @@ void cargar_resultado_partido(){
 
         res_penales1=penales1-penales2;
         res_penales2=penales2-penales1;
-    }
-
-
-    if(golesEquipo1<golesEquipo2)equipo_ganador=numeroEquipo1;
-    else equipo_ganador=numeroEquipo2;
-    if (res_penales1>0){
-        equipo_ganador=numeroEquipo1;
+        if (res_penales1>0){
+            equipo_ganador=numeroEquipo1;
+        }
+        else{
+            equipo_ganador=numeroEquipo2;
+        }
     }
     else{
-        equipo_ganador=numeroEquipo2;
+        if(golesEquipo1>golesEquipo2){
+            equipo_ganador=numeroEquipo1;
+        }
+        else {
+            equipo_ganador=numeroEquipo2;
+        }
     }
 
     grabo=registrarResultado(golesEquipo1,golesEquipo2,res_penales1,numeroEquipo1);
@@ -374,19 +388,11 @@ void cargar_resultado_partido(){
         cin>>rojas;
     }
 
-    cargar_partido(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo());
-
+    cargar_partido(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo(), tor.getPartidos_jugados());
     if(grabo){
         contar_partido_cargado();
-        cout<<"partidos jugados: "<<tor.getPartidos_jugados()<<endl;
-        cout<<"INSTANCIA: "<<tor.getInstancia_torneo()<<endl;
-        anykey();
+        cambiar_instancia_torneo();
         msj("PARTIDO GUARDADO CORRECTAMENTE",APP_TITLEFORECOLOR, APP_OKCOLOR);
-        if((tor.getPartidos_jugados()+1)==tor.getInstancia_torneo()){
-            cambiar_instancia_torneo();
-            /// FUNCION QUE PONGA LOS EQUIPOS EN LA SIGUIENTE FASE
-            /// HAY QUE HACER CLASS PARTIDO
-        }
     }
 }
 
@@ -538,6 +544,7 @@ bool registrarRoja(int nro_equipo, int numeroCamiseta_roja){
 }
 
 void cambiar_instancia_torneo(){
+
     Torneo tor;
     FILE *p;
     p=fopen(FILE_TORNEOS,"rb+");
@@ -547,27 +554,39 @@ void cambiar_instancia_torneo(){
     }
     fread(&tor,sizeof(Torneo), 1,p);
 
-    tor.cambiar_instacia_torneo();
-    tor.setPartidos_jugados(0);
+    if((tor.getPartidos_jugados())==tor.getInstancia_torneo()){
 
-    fseek(p, ftell(p)-sizeof(Torneo),0);
-    fwrite(&tor , sizeof(Torneo),1 ,p);
+        tor.cambiar_instacia_torneo();
+        tor.setPartidos_jugados(0);
+
+        fseek(p, ftell(p)-sizeof(Torneo),0);
+        fwrite(&tor , sizeof(Torneo),1 ,p);
+        fclose(p);
+    }
     fclose(p);
 }
 
 void contar_partido_cargado(){
-    Partido tor;
+    Torneo tor;
     FILE *p;
     p=fopen(FILE_TORNEOS,"rb+");
     if(p==NULL){
         msj("ERROR ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
         return;
     }
-    fread(&tor,sizeof(Partido), 1,p);
+    fread(&tor,sizeof(Torneo), 1,p);
+    cout<<"partidos jugados: "<<tor.getPartidos_jugados()<<endl;
+    anykey();
     tor.aumentar_partidos_jugados();
 
-    fseek(p, ftell(p)-sizeof(Partido),0);
-    fwrite(&tor , sizeof(Partido),1 ,p);
+    cout<<"partidos jugados: "<<tor.getPartidos_jugados()<<endl;
+    cout<<"INSTANCIA: "<<tor.getInstancia_torneo()<<endl;
+    anykey();
+
+    fseek(p, ftell(p)-sizeof(Torneo),0);
+    fwrite(&tor , sizeof(Torneo),1 ,p);
+
+
     fclose(p);
 }
 

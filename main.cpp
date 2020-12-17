@@ -38,12 +38,12 @@ int main(){
 }
     fclose(pArchivo);
 */
-    /*
+
     FILE* pArchivo;
     pArchivo=fopen(FILE_TORNEOS,"rb");
     if(pArchivo==NULL){
         cout<<"error archivo"<<endl;
-        exit(1);
+       // exit(1);
     }
     Torneo tor;
     fread(&tor, sizeof(Torneo), 1, pArchivo);
@@ -55,44 +55,7 @@ int main(){
     cout<< "instancia de torneo: "<<tor.getInstancia_torneo()<<endl;
     cout<< "Partido jugados: "<<tor.getPartidos_jugados()<<endl;
     cout<< "torneo activo? "<<tor.getTorneo_activo()<<endl;
-    */
-
-    /*
-    FILE * pArchivo;
-    pArchivo=fopen(FILE_JUGADORES,"rb");
-    if(pArchivo==NULL){
-        cout<<"error archivo"<<endl;
-        exit(1);
-    }
-    Jugador ju;
-
-        cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
-        cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
-        while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
-
-                cout << left;
-                cout << setw(16);
-                cout << ju.getNombre();
-                cout << setw(15) ;
-                cout << ju.getApellido();
-                cout << setw(15) ;
-                cout << ju.getPosicion();
-                cout << setw(15) ;
-                cout << ju.getNro_camiseta();
-                cout << setw(7) ;
-                cout << ju.getCant_goles();
-                cout << setw(13) ;
-                cout << ju.getAsistencias();
-                cout << setw(10) ;
-                cout << ju.getTarjeta_roja();
-                cout << setw(14) ;
-                cout << ju.getTarjeta_amarilla();
-                cout << endl;
-
-
-            }
-    */
-
+    anykey();
 
     menu_principal();
 

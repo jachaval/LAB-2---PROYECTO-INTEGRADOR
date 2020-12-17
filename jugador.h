@@ -45,7 +45,7 @@ class Jugador{
 };
 
 Jugador buscar_jugador(Jugador nro_camiseta);
-
+void listar_jugadores();
 void listar_jugadores_x_equipo();
 void mostrar_goleadores(Jugador *v);
 void mostrar_asistencias(Jugador *v);
