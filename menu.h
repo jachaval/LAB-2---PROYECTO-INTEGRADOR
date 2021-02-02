@@ -12,6 +12,8 @@ void menu_cargar_torneo();
 
 void menu_estadisticas();
 
+void menu_configuraciones();
+
 
 
 

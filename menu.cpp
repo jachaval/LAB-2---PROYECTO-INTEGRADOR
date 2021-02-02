@@ -12,6 +12,7 @@ using namespace rlutil;
 #include "jugador.h"
 #include "torneo.h"
 #include "partido.h"
+#include "configuraciones.h"
 
 void menu_principal(){
 
@@ -58,6 +59,7 @@ void menu_principal(){
                 menu_estadisticas();
                 break;
             case 5:
+                menu_configuraciones();
                 break;
 
             case 0:	return;
@@ -381,6 +383,69 @@ void menu_ver_torneo(){
                 gotoxy(1,3);
 
                 ver_ganador();
+                anykey();
+
+
+                break;
+            case 0:	return;
+            break;
+        }
+	} while (opcion != 0);
+
+}
+
+void menu_configuraciones(){
+    int opcion,i;
+	do{
+        system("cls");
+        title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+        setColor(MAGENTA);
+        for (i = 0; i < 29; i++) {
+            gotoxy(i + 4, 3); printf("*");
+            gotoxy(7, 4); printf("CONFIGURACIONES");
+            gotoxy(i + 4, 5); printf("*");
+            gotoxy(4, 4); printf("*");
+            gotoxy(32, 4); printf("*");
+        }
+        setColor(WHITE);
+        gotoxy(1,6);
+        cout << "    1. EXPORTAR ARCHIVOS EN FORMATO TEXTO" << endl;
+        cout << "    2. .... " << endl;
+        cout << "    3. ..... " << endl;
+
+        cout << "    0. SALIR" << endl;
+        cout << "    ------------------------------" << endl;
+
+        cout <<"    Opción-> ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                exportar_a_texto();
+                anykey();
+
+                break;
+            case 2:
+
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+
+                anykey();
+
+
+                break;
+            case 3:
+                 cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+
                 anykey();
 
 
