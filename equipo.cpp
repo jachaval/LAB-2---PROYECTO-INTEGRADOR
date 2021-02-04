@@ -315,6 +315,24 @@ bool nombre_equipo(char * nom_equipo,int equipo){
     return false;
 }
 
+void nombre_equipo1(char * nom_equipo,int equipo){
+    Equipo eq;
+    FILE * pArchivo;
+    pArchivo=fopen(FILE_EQUIPOS,"rb");
+    if(pArchivo==NULL){
+        cout<<"ERROR DE ARCHIVO"<<endl;
+    }
+    else{
+        while(fread(&eq, sizeof(Equipo), 1 , pArchivo)){
+            if(equipo==eq.getNro_equipo()){
+                strcpy(nom_equipo,eq.getNombre_equipo());
+                fclose(pArchivo);
+            }
+        }
+    }
+    fclose(pArchivo);
+}
+
 void mostrar_equipo(Equipo aux){
 
 cout<<left;
@@ -439,7 +457,7 @@ void ver_ganador(){
 
     }
     else{
-        cout<< "AUN NO TERMINO EL TORNEO"<<endl;
+        cout<< "AÚN NO TERMINO EL TORNEO"<<endl;
     }
 
 }
@@ -541,17 +559,20 @@ void fase_semi(int partidos_jugados){
 
     cout<< "    SEMIFINALES"<<endl<<endl;
 
-    cout<< equipo1 << " VS "<< equipo2;
-    cout<< equipo3 << " VS "<< equipo4;
+    cout<< equipo1 << " VS "<< equipo2<<endl<<endl;
+    cout<< equipo3 << " VS "<< equipo4<<endl;
 
     delete []vec;
 
 }
 void fase_cuartos(int partidos_jugados){
-    int cant,i , equipo1, equipo2, equipo3, equipo4, equipo5, equipo6, equipo7, equipo8;
+    int cant,i ;
+    char equipo1[30], equipo2[30], equipo3[30], equipo4[30], equipo5[30], equipo6[30], equipo7[30], equipo8[30];
     Partido *vec;
 
     cant=cantidad_partidos();
+                cout << "ENTRO "<<cant<<endl;
+        anykey();
 
     vec=new Partido[cant];
 
@@ -560,41 +581,27 @@ void fase_cuartos(int partidos_jugados){
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
-    for(i=0; i<cant-1; i++){
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==1){
-            equipo1=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==2){
-            equipo2=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==3){
-            equipo3=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==4){
-            equipo4=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==5){
-            equipo5=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==6){
-            equipo6=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==7){
-            equipo7=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==8){
-            equipo8=vec[i].getEquipo_ganador();
-        }
-    }
+    cout<< "    CUARTOS DE FINAL"<<endl<<endl;
 
-    cout<< "    SEMIFINALES"<<endl<<endl;
+      if(vec[i].getInstancia_torneo()== 4 && vec[i].getNro_partido()==1){
 
-    cout<< equipo1 << " VS "<< equipo2;
-    cout<< equipo3 << " VS "<< equipo4;
-    cout<< equipo5 << " VS "<< equipo6;
-    cout<< equipo7 << " VS "<< equipo8;
+        nombre_equipo1(equipo1,3);
+        nombre_equipo1(equipo1,4);
+        nombre_equipo1(equipo1,5);
+        nombre_equipo1(equipo1,6);
+        nombre_equipo1(equipo1,7);
+        nombre_equipo1(equipo1,8);
+
+
+        cout<< equipo3 << " VS "<< equipo4<<endl;
+        cout<< equipo5 << " VS "<< equipo6<<endl;
+        cout<< equipo7 << " VS "<< equipo8<<endl;
+      }
+
+
 
     delete []vec;
+
 }
 void fase_octavos(int partidos_jugados){
 int cant,i , equipo1, equipo2, equipo3, equipo4, equipo5, equipo6, equipo7, equipo8, equipo9, equipo10, equipo11, equipo12, equipo13, equipo14, equipo15, equipo16;
@@ -660,16 +667,16 @@ int cant,i , equipo1, equipo2, equipo3, equipo4, equipo5, equipo6, equipo7, equi
         }
     }
 
-    cout<< "    CUARTOS DE FINAL"<<endl<<endl;
+    cout<< "    OCTAVOS DE FINAL"<<endl<<endl;
 
-    cout<< equipo1 << " VS "<< equipo2;
-    cout<< equipo3 << " VS "<< equipo4;
-    cout<< equipo5 << " VS "<< equipo6;
-    cout<< equipo7 << " VS "<< equipo8;
-    cout<< equipo9 << " VS "<< equipo10;
-    cout<< equipo11 << " VS "<< equipo12;
-    cout<< equipo13 << " VS "<< equipo14;
-    cout<< equipo15 << " VS "<< equipo16;
+    cout<< equipo1 << " VS "<< equipo2<<endl;
+    cout<< equipo3 << " VS "<< equipo4<<endl;
+    cout<< equipo5 << " VS "<< equipo6<<endl;
+    cout<< equipo7 << " VS "<< equipo8<<endl;
+    cout<< equipo9 << " VS "<< equipo10<<endl;
+    cout<< equipo11 << " VS "<< equipo12<<endl;
+    cout<< equipo13 << " VS "<< equipo14<<endl;
+    cout<< equipo15 << " VS "<< equipo16<<endl;
 
     delete []vec;
 }

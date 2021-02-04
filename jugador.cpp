@@ -3,7 +3,6 @@
 #include <cstdio>
 #include <cstring>
 #include <locale.h>
-#include <cstring>
 #include <iomanip>
 using namespace std;
 #include "rlutil.h"
@@ -57,7 +56,12 @@ void Jugador::aumentar_roja(){
 }
 
 void Jugador::mostrar(){
+    bool existe;
+    char nomb_equipo[30];
     cout << left;
+    cout << setw(18);
+    existe=nombre_equipo(nomb_equipo,getNro_equipo());
+    if (existe){cout<<nomb_equipo;}
     cout << setw(18);
     cout << getNombre();
     cout << setw(15) ;
@@ -76,6 +80,7 @@ void Jugador::mostrar(){
     cout << getTarjeta_amarilla();
     cout << endl;
 }
+
 bool Jugador::guardarEnDisco(){
     bool guardo;
     FILE *pArchivo;
@@ -87,7 +92,6 @@ bool Jugador::guardarEnDisco(){
 }
 
 void listar_jugadores(){
-    char nomb_equipo[30];
     FILE * pArchivo;
     pArchivo=fopen(FILE_JUGADORES,"rb");
 
@@ -100,7 +104,7 @@ void listar_jugadores(){
         cout << endl << "    LISTA DE JUGADORES"<<endl<<endl;
 
         cout << left;
-        cout << setw(17) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
+        cout << setw(17) << "Equipo " << setw(17) << "|Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
         cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
         while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
 
@@ -131,8 +135,8 @@ void listar_jugadores_x_equipo(){
         cout << nomb_equipo<<endl<<endl;
         setColor(WHITE);
         cout << left;
-        cout << setw(17) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
-        cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
+        cout << setw(17) << "Equipo " << setw(17) << "|Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
+        cout << endl << "-------------------------------------------------------------------------------------------------------------------------" << endl;
         while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
             if(equipo==ju.getNro_equipo()){
 
@@ -182,10 +186,6 @@ void mostrar_jugador(Jugador reg){
     cout << reg.getTarjeta_roja();
 
     cout<<endl;
-
-
-
-
 }
 
 void mostrar_goleadores(Jugador *v){
@@ -194,7 +194,7 @@ void mostrar_goleadores(Jugador *v){
     int i, c=0;
     cout<<endl;
     cout<<"-----------TABLA DE GOLEADORES-----------";
-    cout<<endl;
+    cout<<endl<<endl;
 
     cout<<left;
     cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(15) <<"|Goles ";
@@ -217,7 +217,7 @@ void mostrar_goleadores(Jugador *v){
                 c++;
                 }}
 
-           if(c=0){
+           if(c==0){
             cout<<"Aun no hay goleadores"<<endl;
 
 
@@ -253,7 +253,7 @@ void mostrar_asistencias(Jugador *v){
                 c++;
                 }}
 
-           if(c=0){
+           if(c==0){
             cout<<"Aun no hay asistidores"<<endl;
 
 
@@ -269,7 +269,7 @@ void mostrar_amarillas(Jugador *v){
     int i, c=0;
     cout<<endl;
     cout<<"-----------TARJETAS AMARILLAS-----------";
-    cout<<endl;
+    cout<<endl<<endl;
 
     cout<<left;
     cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(19) <<"|Tarjetas amarillas ";
@@ -290,7 +290,7 @@ void mostrar_amarillas(Jugador *v){
                 c++;
                 }}
 
-           if(c=0){
+           if(c==0){
             cout<<"Aun no hay tarjetas amarillas"<<endl;
 
 
@@ -306,7 +306,7 @@ void mostrar_rojas(Jugador *v){
     int i, c=0;
     cout<<endl;
     cout<<"-----------TARJETAS ROJAS-----------";
-    cout<<endl;
+    cout<<endl<<endl;
 
     cout<<left;
     cout << setw(15) << "Nombre " << setw(15) << "|Apellido " << setw(19) <<"|Tarjetas rojas ";
@@ -327,7 +327,7 @@ void mostrar_rojas(Jugador *v){
                 c++;
                 }}
 
-           if(c=0){
+           if(c==0){
 
 
             cout<<setw(20)<<"Aun no hay tarjetas rojas"<<endl;
@@ -486,7 +486,7 @@ void buscar_jugador() {
 	cout<<"Ingrese en mayusculas el nombre del jugador a buscar: ";
 	cin>>nombre_jugador;
 	cout<<endl;
-	cout<<"Ingrese en mayusculas el apellido del jugador a buscar: "<<endl;
+	cout<<"Ingrese en mayusculas el apellido del jugador a buscar: ";
 	cin>>apellido_jugador;
 	cout<<endl;
 
@@ -495,11 +495,17 @@ void buscar_jugador() {
 	if (f == NULL) {
 		return;
 	}
+        cout << endl << "    JUGADOR ENCONTRADO"<<endl<<endl;
+
+        cout << left;
+        cout << setw(17) << "Equipo " << setw(17) << "|Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
+        cout << endl << "---------------------------------------------------------------------------------------------------------------------------------" << endl;
 	while (fread(&reg, sizeof(Jugador), 1, f)) {
 		if (strcmp(nombre_jugador,reg.getNombre())==0 && strcmp(apellido_jugador, reg.getApellido())==0 ) {
 
-            cls();
-            mostrar_jugador(reg);
+
+            reg.mostrar();
+            //mostrar_jugador(reg);
             encontrado=true;
 
 			fclose(f);

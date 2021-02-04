@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 #include <cstdio>
 #include <cstring>
 #include <locale.h>
+#include <iomanip>
 using namespace std;
 #include "rlutil.h"
 #include "interfaz.h"
@@ -27,7 +29,23 @@ Torneo::Torneo(){
     partidos_jugados=0;
     torneo_activo=true;
 }
+void Torneo::mostrar(){
 
+    cout << left;
+    cout << setw(18);
+    cout << getTipo_torneo();
+    cout << setw(15) ;
+    cout << getCodigo_torneo();
+    cout << setw(15) ;
+    cout << getInstancia_torneo();
+    cout << setw(15) ;
+    cout << getPartidos_jugados();
+    cout << setw(7) ;
+    cout << getTorneo_activo();
+    cout << setw(13) ;
+    cout << endl;
+
+}
 void Torneo::aumentar_partidos_jugados(){
     partidos_jugados++;
 }

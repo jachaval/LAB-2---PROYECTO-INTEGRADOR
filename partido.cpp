@@ -46,7 +46,7 @@ void Partido::ingresarCodigo_torneo(){    //deberia ingresar nombre del torneo p
 }
 
 Partido::Partido(){
-    codigo_toneo;
+    codigo_toneo=0;
     equipo_local=0;
     equipo_visitante=0;
     goles_local=0;
@@ -75,7 +75,7 @@ void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int g
     Partido par;
     FILE* pArchivo;
     pArchivo=fopen(FILE_PARTIDOS, "ab");
-    if(pArchivo=NULL){
+    if(pArchivo==NULL){
         msj("ERROR ARCHIVO PARTIDO",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
         return;
     }
