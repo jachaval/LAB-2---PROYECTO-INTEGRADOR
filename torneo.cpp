@@ -106,6 +106,14 @@ int seleccionar_torneo(){
     cout<<"    Opción-> ";
     cin>> torneo;
 
+
+    while(torneo<1 || torneo>4){
+
+        cout<< endl<< "    LA OPCION INGRESADA ES INCORRETA. POR FAVOR, INGRESE UNA DE LAS OPCIONES EN PANTALLA. ";
+        cin>>torneo;
+        cout<<endl;
+
+    }
     if(torneo==1) cant_equipos=64;
     if(torneo==2) cant_equipos=32;
     if(torneo==3) cant_equipos=16;
@@ -171,9 +179,18 @@ void cargar_resultado_partido(){
         cout<<"    CARGAR DATOS DEL PARTIDO FINAL" <<endl<<endl;
     }
 
+    bool eq;
+
     cout<<"    Número del primer equipo: ";
     cin>>numeroEquipo1;
-    nombre_equipo(nomb_equipo1,numeroEquipo1);
+    eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+    while(eq==false){
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo."<<endl;
+        cin>>numeroEquipo1;
+        cout<<endl;
+        eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+    }
+
     cout<<"    EQUIPO "<<nomb_equipo1;
     cout<<endl;
     cout<<"    Goles: ";
@@ -183,6 +200,14 @@ void cargar_resultado_partido(){
     cout<<"    Número del segundo equipo: ";
     cin>>numeroEquipo2;
     nombre_equipo(nomb_equipo2,numeroEquipo2);
+
+     while(eq==false){
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo."<<endl;
+        cin>>numeroEquipo1;
+        cout<<endl;
+        eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+    }
+
     cout<<"    EQUIPO "<<nomb_equipo2;
     cout<<endl;
     cout<<"    Goles: ";
@@ -204,6 +229,19 @@ void cargar_resultado_partido(){
         cout<< "    Penales a favor de "<<nomb_equipo2<<": ";
         cin>>penales2;
         cout<<endl;
+
+        while(penales1==penales2){
+            cout<<"    Los penales no pueden ser iguales. Por favor, ingrese el resultado de nuevo."<<endl;
+
+        cout<< "    Penales a favor de "<<nomb_equipo1<<": "<<endl;
+        cin>>penales1;
+        cout<<endl;
+
+        cout<< "    Penales a favor de "<<nomb_equipo2<<": ";
+        cin>>penales2;
+        cout<<endl;
+
+        }
 
 
         res_penales1=penales1-penales2;
@@ -237,6 +275,7 @@ void cargar_resultado_partido(){
 //////////////////////
     int i;
     char asis;
+    int camiseta;
 
     if(golesEquipo1>0){
         cout<<"    ASIGNE GOLES DEL EQUIPO ";
@@ -248,6 +287,12 @@ void cargar_resultado_partido(){
             cout << "    Del gol "<<i+1<<"."<<endl<<endl;
             cout<<"    Ingrese nro de camiseta del jugador que marcó: ";
             cin>>numeroCamiseta;
+            camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta);
+            if (camiseta != -1){
+
+                numeroCamiseta=camiseta;
+            }
+
             cout<<"    ¿HUBO ASISTENCIA?(S/N):";
             cin>>asis;
             cout<<endl;
@@ -255,6 +300,12 @@ void cargar_resultado_partido(){
                 cout<<"    Ingrese nro de camiseta del jugador que asistió: ";
                 cin>>numeroCamiseta_asistencia;
                 cout<<endl;
+                  camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta_asistencia);
+                if (camiseta != -1){
+
+                numeroCamiseta_asistencia=camiseta;
+            }
+
             }
             else{
                 numeroCamiseta_asistencia=0;
@@ -281,6 +332,12 @@ void cargar_resultado_partido(){
             cout << "    Del gol "<<i+1<<"."<<endl<<endl;
             cout<<"    Ingrese nro de camiseta del jugador que marcó: ";
             cin>>numeroCamiseta;
+              camiseta = verificar_camiseta(numeroEquipo2, numeroCamiseta);
+            if (camiseta != -1){
+
+                numeroCamiseta=camiseta;
+            }
+
             cout<<"    ¿HUBO ASISTENCIA?(S/N):";
             cin>>asis;
             cout<<endl;
@@ -288,6 +345,12 @@ void cargar_resultado_partido(){
                 cout<<"    Ingrese nro de camiseta del jugador que asistió: ";
                 cin>>numeroCamiseta_asistencia;
                 cout<<endl;
+            camiseta = verificar_camiseta(numeroEquipo2, numeroCamiseta_asistencia);
+            if (camiseta != -1){
+
+                numeroCamiseta=camiseta;
+            }
+
             }
             else{
                 numeroCamiseta_asistencia=0;
@@ -319,6 +382,12 @@ void cargar_resultado_partido(){
     while(amarillas=='s' || amarillas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_amarilla;
+          camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta_amarilla);
+            if (camiseta != -1){
+
+                numeroCamiseta_amarilla=camiseta;
+            }
+
 
         grabo=registrarAmarilla(numeroEquipo1, numeroCamiseta_amarilla);
         if(!grabo){
@@ -338,6 +407,12 @@ void cargar_resultado_partido(){
     while(amarillas=='s' || amarillas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_amarilla;
+          camiseta = verificar_camiseta(numeroEquipo2, numeroCamiseta_amarilla);
+            if (camiseta != -1){
+
+                numeroCamiseta_amarilla=camiseta;
+            }
+
 
         grabo=registrarAmarilla(numeroEquipo2, numeroCamiseta_amarilla);
         if(!grabo){
@@ -359,6 +434,12 @@ void cargar_resultado_partido(){
     while(rojas=='s' || rojas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_roja;
+          camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta_roja);
+            if (camiseta != -1){
+
+                numeroCamiseta_roja=camiseta;
+            }
+
 
         grabo=registrarRoja(numeroEquipo1, numeroCamiseta_roja);
         if(!grabo){
@@ -378,6 +459,12 @@ void cargar_resultado_partido(){
     while(rojas=='s' || rojas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_roja;
+          camiseta = verificar_camiseta(numeroEquipo2, numeroCamiseta_roja);
+            if (camiseta != -1){
+
+                numeroCamiseta_roja=camiseta;
+            }
+
 
         registrarRoja(numeroEquipo2, numeroCamiseta_roja);
         if(!grabo){
@@ -575,8 +662,13 @@ void contar_partido_cargado(){
         return;
     }
     fread(&tor,sizeof(Torneo), 1,p);
-
+    cout<<"partidos jugados: "<<tor.getPartidos_jugados()<<endl;
+    anykey();
     tor.aumentar_partidos_jugados();
+
+    cout<<"partidos jugados: "<<tor.getPartidos_jugados()<<endl;
+    cout<<"INSTANCIA: "<<tor.getInstancia_torneo()<<endl;
+    anykey();
 
     fseek(p, ftell(p)-sizeof(Torneo),0);
     fwrite(&tor , sizeof(Torneo),1 ,p);
@@ -585,47 +677,32 @@ void contar_partido_cargado(){
     fclose(p);
 }
 
-void ver_fase_torneo(){
-    FILE*p;
-    p=fopen(FILE_TORNEOS,"rb");
-    if (p == NULL){
-        msj("ERROR DE ARCHIVO TORNEOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
-        return;
+int verificar_camiseta(int nro_equipo, int nro_jugador){
+     Jugador reg;
+     bool encontrado=false;
+
+
+	FILE* f;
+	f = fopen(FILE_JUGADORES, "rb");
+	if (f == NULL) {
+		return -1;
+	}
+
+	while (encontrado==false ) {
+    while (fread(&reg, sizeof(Jugador), 1, f)) {
+	if (nro_equipo == reg.getNro_equipo() && nro_jugador ==reg.getNro_camiseta() ) {
+                encontrado=true;
     }
-    Torneo tor;
-    char nom_fase[50];
+	}
+	if(encontrado==false){
+    cout<<"    El numero de camiseta no existe. Por favor, vuelva a ingresarlo: "<<endl;
+    cin>>nro_jugador;
+    cout<<endl;
+	}
+	}
+	fclose(f);
+	return nro_jugador;
 
-    ///para varios torneos hay que agruegar un buscador de torneo por nombre
-    fread(&tor, sizeof(Torneo), 1, p);
-
-    switch(tor.getInstancia_torneo()){
-        case 1:
-            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE FINAL"<<endl;
-            break;
-        case 2:
-            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE SEMIFINAL"<<endl;
-            break;
-        case 4:
-            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE CUARTOS DE FINAL"<<endl;
-            break;
-        case 8:
-            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE OCTAVOS DE FINAL"<<endl;
-            break;
-        case 16:
-            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE 16 AVOS DE FINAL"<<endl;
-            break;
-        case 32:
-            cout<< "    EL TORNEO SE ENCUENTRA EN LA FASE 32 AVOS DE FINAL"<<endl;
-            break;
-
-    }
-
-
-    cout<< endl<< "    LOS EQUIPOS EN COMPETENCIA SON: "<<endl<<endl;
-
-    listar_equipos_en_competencia();
-
-    fclose(p);
 }
 
 

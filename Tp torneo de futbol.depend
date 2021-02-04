@@ -196,7 +196,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1608088000 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\jugador.cpp
+1608242272 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\jugador.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -206,14 +206,16 @@
 	<iomanip>
 	"rlutil.h"
 	"interfaz.h"
-	"equipo.h"
+	"torneo.h"
 	"jugador.h"
+	"partido.h"
+	"equipo.h"
 
-1604977031 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.h
+1608248335 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.h
 
-1608087863 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\jugador.h
+1608236558 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\jugador.h
 
-1607922845 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\main.cpp
+1608248351 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\main.cpp
 	<iostream>
 	<locale.h>
 	<ctime>
@@ -224,11 +226,11 @@
 	"jugador.h"
 	"partido.h"
 
-1607922845 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.h
+1608248350 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.h
 
-1607922845 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.h
+1612402397 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.h
 
-1608088252 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.cpp
+1608248351 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -242,7 +244,7 @@
 	"torneo.h"
 	"partido.h"
 
-1607922845 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.cpp
+1608248335 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -256,7 +258,7 @@
 	"torneo.h"
 	"partido.h"
 
-1607922845 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.cpp
+1612403368 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -269,7 +271,7 @@
 	"torneo.h"
 	"partido.h"
 
-1607922845 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.cpp
+1612207553 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -279,8 +281,11 @@
 	<ctime>
 	"rlutil.h"
 	"interfaz.h"
-	"equipo.h"
+	"torneo.h"
 	"jugador.h"
+	"partido.h"
+	"equipo.h"
 
-1607922845 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.h
+1608248335 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.h
+	"equipo.h"
 

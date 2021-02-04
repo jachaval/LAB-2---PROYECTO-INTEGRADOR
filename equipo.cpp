@@ -192,7 +192,7 @@ bool cargar_equipo(int cant_equipos){
     n=contar_equiposCargados();
     eq.setNro_equipo(n);
     cin.ignore();
-    cout<<"    Ingrese nombre: ";
+    cout<<"    Ingrese el nombre de el equipo en mayúsculas: ";
     cin.getline(nombre,25);
 
     eq.setNombre_equipo(nombre);
@@ -204,6 +204,12 @@ bool cargar_equipo(int cant_equipos){
     cout<<endl<<"    Ingrese cantidad de jugadores: ";
     cin>>cant_jugadores;
     cout<<endl;
+
+    while(cant_jugadores > 22 || cant_jugadores < 1){
+        cout<< "     Cantidad invalida. Solo se permiten un maximo de 22 jugadores. Por favor, ingrese de nuevo la cantidad de jugadores: "<<endl;
+        cin>>cant_jugadores;
+        cout<<endl;
+    }
 
     grabo=cargar_jugadores(cant_jugadores,(n+1));
 
