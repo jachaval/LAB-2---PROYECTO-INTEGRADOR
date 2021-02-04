@@ -571,34 +571,56 @@ void fase_cuartos(int partidos_jugados){
     Partido *vec;
 
     cant=cantidad_partidos();
-                cout << "ENTRO "<<cant<<endl;
-        anykey();
 
     vec=new Partido[cant];
 
     FILE *p;
     p = fopen(FILE_PARTIDOS, "rb");
+    cout<< "    CUARTOS DE FINAL"<<endl<<endl;
+
+
+    if(p==NULL){
+        nombre_equipo1(equipo1,1);
+        nombre_equipo1(equipo2,2);
+        nombre_equipo1(equipo3,3);
+        nombre_equipo1(equipo4,4);
+        nombre_equipo1(equipo5,5);
+        nombre_equipo1(equipo6,6);
+        nombre_equipo1(equipo7,7);
+        nombre_equipo1(equipo8,8);
+        cout<<left;
+        cout << setw(20) << equipo1 << setw(5) << "VS" << setw(18) << equipo2 << endl;
+        cout << setw(20) << equipo3 << setw(5) << "VS" << setw(18) << equipo4 << endl;
+        cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
+        cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+    }
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
-    cout<< "    CUARTOS DE FINAL"<<endl<<endl;
 
       if(vec[i].getInstancia_torneo()== 4 && vec[i].getNro_partido()==1){
-
-        nombre_equipo1(equipo1,3);
-        nombre_equipo1(equipo1,4);
-        nombre_equipo1(equipo1,5);
-        nombre_equipo1(equipo1,6);
-        nombre_equipo1(equipo1,7);
-        nombre_equipo1(equipo1,8);
-
-
-        cout<< equipo3 << " VS "<< equipo4<<endl;
-        cout<< equipo5 << " VS "<< equipo6<<endl;
-        cout<< equipo7 << " VS "<< equipo8<<endl;
+cout<< "   1"<<endl<<endl;
+        nombre_equipo1(equipo3,3);
+        nombre_equipo1(equipo4,4);
+        nombre_equipo1(equipo5,5);
+        nombre_equipo1(equipo6,6);
+        nombre_equipo1(equipo7,7);
+        nombre_equipo1(equipo8,8);
+        cout<<left;
+        cout << setw(20) << equipo3 << setw(5) << "VS" << setw(18) << equipo4 << endl;
+        cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
+        cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
       }
-
-
+      if(vec[i].getInstancia_torneo()== 4 && vec[i].getNro_partido()==2){
+cout<< "    2"<<endl<<endl;
+        nombre_equipo1(equipo5,5);
+        nombre_equipo1(equipo6,6);
+        nombre_equipo1(equipo7,7);
+        nombre_equipo1(equipo8,8);
+        cout<<left;
+        cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
+        cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+      }
 
     delete []vec;
 
