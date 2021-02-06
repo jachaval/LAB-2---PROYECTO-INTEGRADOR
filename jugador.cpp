@@ -56,7 +56,14 @@ void Jugador::aumentar_roja(){
     tarjeta_roja++;
 }
 
-void Jugador::mostrar(){
+void Jugador::mostrar(int nro){
+    char nombre_eq[30];
+
+
+    nombre_equipo(nombre_eq, nro);
+
+
+
     cout << left;
     cout << setw(18);
     cout << getNombre();
@@ -64,6 +71,8 @@ void Jugador::mostrar(){
     cout << getApellido();
     cout << setw(15) ;
     cout << getPosicion();
+    cout << setw(20) ;
+    cout << nombre_eq;
     cout << setw(15) ;
     cout << getNro_camiseta();
     cout << setw(7) ;
@@ -100,11 +109,11 @@ void listar_jugadores(){
         cout << endl << "    LISTA DE JUGADORES"<<endl<<endl;
 
         cout << left;
-        cout << setw(17) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
+        cout << setw(17) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(17) << "|Equipo "<< setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
         cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
         while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
 
-                ju.mostrar();
+                ju.mostrar(ju.getNro_equipo());
             }
 
          anykey();
@@ -131,12 +140,12 @@ void listar_jugadores_x_equipo(){
         cout << nomb_equipo<<endl<<endl;
         setColor(WHITE);
         cout << left;
-        cout << setw(17) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
+        cout << setw(17) << "Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición "<< setw(20) << "|Equipo " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
         cout << endl << "--------------------------------------------------------------------------------------------------------" << endl;
         while(fread(&ju, sizeof (Jugador),1, pArchivo)==1){
             if(equipo==ju.getNro_equipo()){
 
-                ju.mostrar();
+                ju.mostrar(ju.getNro_equipo());
 
             }
         }

@@ -185,9 +185,8 @@ void cargar_resultado_partido(){
     cin>>numeroEquipo1;
     eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
     while(eq==false){
-        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo."<<endl;
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
         cin>>numeroEquipo1;
-        cout<<endl;
         eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
     }
 
@@ -199,12 +198,11 @@ void cargar_resultado_partido(){
 
     cout<<"    Número del segundo equipo: ";
     cin>>numeroEquipo2;
-    nombre_equipo(nomb_equipo2,numeroEquipo2);
+    eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
 
      while(eq==false){
-        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo."<<endl;
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
         cin>>numeroEquipo1;
-        cout<<endl;
         eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
     }
 
@@ -692,12 +690,16 @@ int verificar_camiseta(int nro_equipo, int nro_jugador){
     while (fread(&reg, sizeof(Jugador), 1, f)) {
 	if (nro_equipo == reg.getNro_equipo() && nro_jugador ==reg.getNro_camiseta() ) {
                 encontrado=true;
+                fclose(f);
+                return nro_jugador;
     }
 	}
 	if(encontrado==false){
     cout<<"    El numero de camiseta no existe. Por favor, vuelva a ingresarlo: "<<endl;
     cin>>nro_jugador;
     cout<<endl;
+    cout<<nro_jugador<<endl;
+    cout<<nro_equipo;
 	}
 	}
 	fclose(f);
