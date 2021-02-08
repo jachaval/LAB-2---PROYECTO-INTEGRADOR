@@ -15,7 +15,7 @@ class Jugador{
 	public:
 	    Jugador();
 		void cargar();
-		void mostrar(int);
+		void mostrar();
 		bool escribrirEnDisco();
 		bool guardarEnDisco();
 		void setNro_equipo(int);
