@@ -4,7 +4,7 @@
 #include "equipo.h"
 
 class Partido {
-private:
+private: //////// AGREGAR FECHA DE PARTIDO (agregar clase fecha)
     int codigo_toneo;
     int equipo_local;
     int equipo_visitante;
@@ -13,8 +13,10 @@ private:
     int equipo_ganador;
     int instancia_torneo;
     int nro_partido;
+
 public:
     Partido();
+    Partido(int cant_equipos);
     void setCodigo_toneo(int);
     void setEquipo_local(int);
     void setEquipo_visitante(int);
@@ -35,6 +37,7 @@ public:
     bool guardarEnDisco();
     void aumentar_partidos_jugados(int);
     void ingresarCodigo_torneo();
+    void autonumerar_partido();
 
 };
 
@@ -47,4 +50,7 @@ int cantidad_partidos();
 void listar_partidos();
 
 void buscar_nombre_equipo(int);
+
+void generar_registros_partidos(int);
+
 #endif // PARTIDO_H_INCLUDED

@@ -56,6 +56,17 @@ Partido::Partido(){
     nro_partido=0;
 }
 
+Partido::Partido(int cant_equipos){
+    codigo_toneo=0;
+    equipo_local=0;
+    equipo_visitante=0;
+    goles_local=0;
+    goles_visitante=0;
+    equipo_ganador=0;
+    instancia_torneo=cant_equipos/2;
+    nro_partido=0;
+
+}
 
 bool Partido::guardarEnDisco(){
     bool guardo;
@@ -151,7 +162,6 @@ void listar_partidos(){
     fclose(pArchivo);
 }
 
-
 void buscar_nombre_equipo(int a){
 
     char nombre[30],n[2] ;
@@ -172,6 +182,36 @@ void buscar_nombre_equipo(int a){
     }
 
     fclose(f);
+}
+
+void generar_registros_partidos(int cant_equipos){
+    Partido par(cant_equipos);
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS, "rb");
+
+
+
+
+    fclose(pArchivo);
 
 
 }
+
+/*void Partido::autonumerar_partido(){
+    int cant;
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS, "rb");
+    if(pArchivo==NULL){
+        codigo_toneo=1;
+        return;
+    }
+    cant=contar_torneosCargados();
+
+    /// esto es para el final que serian varios toreos
+    codigo_torneo=cant+1;
+    cls();
+    cout<<"codigo torneo "<<codigo_torneo<<endl<<endl;
+    anykey();
+    fclose(pArchivo);
+}
+*/

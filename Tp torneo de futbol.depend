@@ -108,7 +108,11 @@
 	"torneo.h"
 	"partido.h"
 
+<<<<<<< Updated upstream
 1608244145 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
+=======
+1612825764 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
+>>>>>>> Stashed changes
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -142,7 +146,11 @@
 
 1608215691 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.h
 
+<<<<<<< Updated upstream
 1608242968 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.cpp
+=======
+1612825824 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.cpp
+>>>>>>> Stashed changes
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -156,10 +164,17 @@
 	"torneo.h"
 	"partido.h"
 
+<<<<<<< Updated upstream
 1608242709 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.h
 	"equipo.h"
 
 1608238304 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
+=======
+1612826464 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.h
+	"equipo.h"
+
+1612825473 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
+>>>>>>> Stashed changes
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -172,7 +187,11 @@
 	"torneo.h"
 	"partido.h"
 
+<<<<<<< Updated upstream
 1608236756 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.h
+=======
+1612825473 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.h
+>>>>>>> Stashed changes
 
 1603161930 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\interfaz.cpp
 	<iostream>

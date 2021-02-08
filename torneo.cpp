@@ -27,11 +27,32 @@ Torneo::Torneo(){
     partidos_jugados=0;
     torneo_activo=true;
 }
+<<<<<<< Updated upstream
 
+=======
+
+void Torneo::mostrar(){
+
+    cout << left;
+    cout << setw(18);
+    cout << getTipo_torneo();
+    cout << setw(15) ;
+    cout << getCodigo_torneo();
+    cout << setw(15) ;
+    cout << getInstancia_torneo();
+    cout << setw(15) ;
+    cout << getPartidos_jugados();
+    cout << setw(7) ;
+    cout << getTorneo_activo();
+    cout << setw(13) ;
+    cout << endl;
+
+}
+
+>>>>>>> Stashed changes
 void Torneo::aumentar_partidos_jugados(){
     partidos_jugados++;
 }
-
 
 bool Torneo::guardarEnDisco(){
     bool guardo;
@@ -139,6 +160,8 @@ int seleccionar_torneo(){
     tor.setInstancia_torneo(cant_equipos/2);
     tor.setTipo_torneo(cant_equipos);
     tor.guardarEnDisco();
+
+    generar_registros_partidos(cant_equipos);    /// Genera los registro de los partidos para que se modiquen y se completen a medida que se jugan los partidos
 
     return cant_equipos;
 }

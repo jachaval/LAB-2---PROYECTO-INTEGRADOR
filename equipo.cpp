@@ -530,6 +530,7 @@ void fase_semi(int partidos_jugados){
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
+<<<<<<< Updated upstream
     for(i=0; i<cant-1; i++){
         if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==1){
             equipo1=vec[i].getEquipo_ganador();
@@ -546,6 +547,24 @@ void fase_semi(int partidos_jugados){
     }
 
     cout<< "    SEMIFINALES"<<endl<<endl;
+=======
+    if(partidos_jugados==1){
+    /*    cout<< "   1"<<endl<<endl;
+        nombre_equipo1(equipo3,3);
+        nombre_equipo1(equipo4,4);
+        nombre_equipo1(equipo5,5);
+        nombre_equipo1(equipo6,6);
+        nombre_equipo1(equipo7,7);
+        nombre_equipo1(equipo8,8);
+        cout<<left;
+        cout << setw(20) << equipo3 << setw(5) << "VS" << setw(18) << equipo4 << endl;
+        cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
+        cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+
+    */
+    }
+}
+>>>>>>> Stashed changes
 
     cout<< equipo1 << " VS "<< equipo2;
     cout<< equipo3 << " VS "<< equipo4;
@@ -566,9 +585,44 @@ void fase_cuartos(int partidos_jugados){
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
+<<<<<<< Updated upstream
     for(i=0; i<cant-1; i++){
         if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==1){
             equipo1=vec[i].getEquipo_ganador();
+=======
+        if(partidos_jugados==1){
+            cout<< "   1"<<endl<<endl;
+            nombre_equipo1(equipo3,3);
+            nombre_equipo1(equipo4,4);
+            nombre_equipo1(equipo5,5);
+            nombre_equipo1(equipo6,6);
+            nombre_equipo1(equipo7,7);
+            nombre_equipo1(equipo8,8);
+            cout<<left;
+            cout << setw(20) << equipo3 << setw(5) << "VS" << setw(18) << equipo4 << endl;
+            cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
+            cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+        }
+        if(partidos_jugados==2){
+            cout<< "    2"<<endl<<endl;
+            nombre_equipo1(equipo5,5);
+            nombre_equipo1(equipo6,6);
+            nombre_equipo1(equipo7,7);
+            nombre_equipo1(equipo8,8);
+            cout<<left;
+            cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
+            cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+        }
+        if(partidos_jugados==3){
+            cout<< "    2"<<endl<<endl;
+            nombre_equipo1(equipo7,7);
+            nombre_equipo1(equipo8,8);
+            cout<<left;
+            cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+        }
+        if(partidos_jugados==4){
+            fase_semi(partidos_jugados);
+>>>>>>> Stashed changes
         }
         if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==2){
             equipo2=vec[i].getEquipo_ganador();
