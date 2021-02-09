@@ -51,6 +51,8 @@ void listar_partidos();
 
 void buscar_nombre_equipo(int);
 
-void generar_registros_partidos(int);
+void generar_registros_partidos(int, int);
+
+int buscar_posicion_nropartido(Partido *,int, int);
 
 #endif // PARTIDO_H_INCLUDED

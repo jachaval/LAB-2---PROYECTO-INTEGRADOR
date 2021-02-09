@@ -83,15 +83,38 @@ void Partido::aumentar_partidos_jugados(int numeroPartido){
 }
 
 void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados ){
-    Partido par;
+    int cant,i,posicion;
+    Partido *vec;
+
+    cant=cantidad_partidos();
+
+    vec=new Partido[cant];
+
+    FILE *p;
+    p = fopen(FILE_PARTIDOS, "rb");
+    fread(vec, sizeof(Partido), cant, p);
+    fclose(p);
+
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getCodigo_toneo()==instancia_torneo&&vec[i].getNro_partido()==0){
+            posicion=buscar_posicion_nropartido(vec,cant,5);
+            vec[posicion].setEquipo_ganador(equipo_ganador);
+        }
+    }
+
+
+    delete []vec;
+
+
+
+    /*Partido par;
     FILE* pArchivo;
     pArchivo=fopen(FILE_PARTIDOS, "ab");
     if(pArchivo==NULL){
-        msj("ERROR ARCHIVO PARTIDO",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        msj("ERROR ARCHIVO PARTIDOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
         return;
     }
 
-    par.ingresarCodigo_torneo();
     par.setEquipo_local(numeroEquipo1);
     par.setEquipo_visitante(numeroEquipo2);
     par.setGoles_local(golesEquipo1);
@@ -102,7 +125,7 @@ void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int g
 
     par.guardarEnDisco();
 
-    fclose(pArchivo);
+    fclose(pArchivo);*/
 }
 
 int cantidad_partidos(){
@@ -184,34 +207,33 @@ void buscar_nombre_equipo(int a){
     fclose(f);
 }
 
-void generar_registros_partidos(int cant_equipos){
-    Partido par(cant_equipos);
-    FILE* pArchivo;
-    pArchivo=fopen(FILE_PARTIDOS, "rb");
+void generar_registros_partidos(int cant_equipos, int partidos_jugados){
+    for(int i=0;i<cant_equipos;i++){
+        Partido par(cant_equipos);
+        FILE* pArchivo;
+        pArchivo=fopen(FILE_PARTIDOS, "ab");
+        if(pArchivo==NULL){
+            msj("ERROR ARCHIVO PARTIDOS", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            return;
+        }
 
+        par.ingresarCodigo_torneo();
+        par.setInstancia_torneo((cant_equipos/2));
+        par.aumentar_partidos_jugados(i);
 
+        par.guardarEnDisco();
 
-
-    fclose(pArchivo);
-
-
-}
-
-/*void Partido::autonumerar_partido(){
-    int cant;
-    FILE* pArchivo;
-    pArchivo=fopen(FILE_PARTIDOS, "rb");
-    if(pArchivo==NULL){
-        codigo_toneo=1;
-        return;
+        fclose(pArchivo);
     }
-    cant=contar_torneosCargados();
-
-    /// esto es para el final que serian varios toreos
-    codigo_torneo=cant+1;
-    cls();
-    cout<<"codigo torneo "<<codigo_torneo<<endl<<endl;
-    anykey();
-    fclose(pArchivo);
 }
-*/
+
+int buscar_posicion_nropartido(Partido *vec, int tam,int nro_partido){
+    Partido par;
+    int posicion,i;
+    for(i=0;i<tam-1;i++){
+        if(vec[i].getNro_partido()==nro_partido){
+            posicion=i;
+        }
+    }
+return posicion;
+}
