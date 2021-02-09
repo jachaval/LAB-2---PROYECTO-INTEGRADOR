@@ -33,7 +33,7 @@ public:
     int getEquipo_ganador();
     int getInstancia_torneo();
     int getNro_partido();
-    bool escribrirEnDisco();
+    bool escribrirEnDisco(int pos);
     bool guardarEnDisco();
     void aumentar_partidos_jugados(int);
     void ingresarCodigo_torneo();
@@ -43,7 +43,7 @@ public:
 
 
 
-void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados);
+void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados, int codigo_torneo);
 
 int cantidad_partidos();
 
@@ -53,6 +53,8 @@ void buscar_nombre_equipo(int);
 
 void generar_registros_partidos(int, int);
 
-int buscar_posicion_nropartido(Partido *,int, int);
+int buscar_posicion_nropartido_jugado(Partido *,int, int);
+
+int buscar_posicion_nropartido_prox_fase(Partido *,int, int);
 
 #endif // PARTIDO_H_INCLUDED

@@ -54,7 +54,10 @@ int contar_torneosCargados();
 
 void ver_fase_torneo();
 
+<<<<<<< Updated upstream
 int verificar_camiseta(int nro_equipo, int nro_jugador);
 
 
+=======
+>>>>>>> Stashed changes
 #endif // TORNEO_H_INCLUDED

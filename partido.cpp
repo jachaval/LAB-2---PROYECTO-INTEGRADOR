@@ -29,7 +29,6 @@ int Partido::getGoles_visitante(){return goles_visitante;}
 int Partido::getEquipo_ganador(){return equipo_ganador;}
 int Partido::getInstancia_torneo(){return instancia_torneo;}
 int Partido::getNro_partido(){return nro_partido;}
-bool Partido::escribrirEnDisco(){}
 
 void Partido::ingresarCodigo_torneo(){    //deberia ingresar nombre del torneo para ingresar al ingresar y ese es lo que recibiria la funcion
     FILE* pArchivo;
@@ -78,12 +77,24 @@ bool Partido::guardarEnDisco(){
     return guardo;
 }
 
+bool Partido::escribrirEnDisco(int pos){
+    bool guardo;
+    FILE *pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS,"rb+");
+    if(pArchivo==NULL)return false;
+    fseek(pArchivo, pos * sizeof(Partido), SEEK_SET);
+    guardo = fwrite(this, sizeof(Partido), 1, pArchivo);
+    fclose(pArchivo);
+    return guardo;
+}
+
 void Partido::aumentar_partidos_jugados(int numeroPartido){
     nro_partido=numeroPartido+1;
 }
 
-void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados ){
-    int cant,i,posicion;
+void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int golesEquipo2, int equipo_ganador, int instancia_torneo, int partidos_jugados, int codigo_torneo){
+
+    int cant,i, posicion_partido,posicion_ganador;
     Partido *vec;
 
     cant=cantidad_partidos();
@@ -96,36 +107,64 @@ void cargar_partido(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int g
     fclose(p);
 
     for(i=0; i<cant-1; i++){
-        if(vec[i].getCodigo_toneo()==instancia_torneo&&vec[i].getNro_partido()==0){
-            posicion=buscar_posicion_nropartido(vec,cant,5);
-            vec[posicion].setEquipo_ganador(equipo_ganador);
+            //cuartos///////////////////////////////////////////////////////////////////////////
+        if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==0){
+            msj("ENTRO 2", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,1);
+            posicion_ganador=buscar_posicion_nropartido_prox_fase(vec,cant,5);
+            vec[posicion_ganador].setEquipo_local(equipo_ganador);
         }
+            //cuartos///////////////////////////////////////////////////////////////////////////
+        if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==1){
+            msj("ENTRO 2", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,2);
+            posicion_ganador=buscar_posicion_nropartido_prox_fase(vec,cant,5);
+            vec[posicion_ganador].setEquipo_visitante(equipo_ganador);
+        }
+            //cuartos///////////////////////////////////////////////////////////////////////////
+        if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==2){
+            msj("ENTRO 2", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,3);
+            posicion_ganador=buscar_posicion_nropartido_prox_fase(vec,cant,6);
+            vec[posicion_ganador].setEquipo_local(equipo_ganador);
+        }
+            //cuartos///////////////////////////////////////////////////////////////////////////
+        if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==3){
+            msj("ENTRO 2", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,4);
+            posicion_ganador=buscar_posicion_nropartido_prox_fase(vec,cant,6);
+            vec[posicion_ganador].setEquipo_visitante(equipo_ganador);
+        }
+            //semi///////////////////////////////////////////////////////////////////////////
+        if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==4){
+            msj("ENTRO 2", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,5);
+            posicion_ganador=buscar_posicion_nropartido_prox_fase(vec,cant,7);
+            vec[posicion_ganador].setEquipo_local(equipo_ganador);
+        }
+            //semi///////////////////////////////////////////////////////////////////////////
+        if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==5){
+            msj("ENTRO 2", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,6);
+            posicion_ganador=buscar_posicion_nropartido_prox_fase(vec,cant,7);
+            vec[posicion_ganador].setEquipo_visitante(equipo_ganador);
+        }
+            //final///////////////////////////////////////////////////////////////////////////
+        if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==6){
+            msj("ENTRO 2", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+            posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,7);
+        }
+
     }
+            vec[posicion_partido].setEquipo_local(numeroEquipo1);
+            vec[posicion_partido].setEquipo_visitante(numeroEquipo2);
+            vec[posicion_partido].setGoles_local(golesEquipo1);
+            vec[posicion_partido].setGoles_visitante(golesEquipo2);
+            vec[posicion_partido].setEquipo_ganador(equipo_ganador);
+            vec[posicion_partido].escribrirEnDisco(posicion_partido);
 
-
+            vec[posicion_ganador].escribrirEnDisco(posicion_ganador);
     delete []vec;
-
-
-
-    /*Partido par;
-    FILE* pArchivo;
-    pArchivo=fopen(FILE_PARTIDOS, "ab");
-    if(pArchivo==NULL){
-        msj("ERROR ARCHIVO PARTIDOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
-        return;
-    }
-
-    par.setEquipo_local(numeroEquipo1);
-    par.setEquipo_visitante(numeroEquipo2);
-    par.setGoles_local(golesEquipo1);
-    par.setGoles_visitante(golesEquipo2);
-    par.setEquipo_ganador(equipo_ganador);
-    par.setInstancia_torneo((instancia_torneo));
-    par.aumentar_partidos_jugados(partidos_jugados);
-
-    par.guardarEnDisco();
-
-    fclose(pArchivo);*/
 }
 
 int cantidad_partidos(){
@@ -208,7 +247,7 @@ void buscar_nombre_equipo(int a){
 }
 
 void generar_registros_partidos(int cant_equipos, int partidos_jugados){
-    for(int i=0;i<cant_equipos;i++){
+    for(int i=0;i<cant_equipos-1;i++){
         Partido par(cant_equipos);
         FILE* pArchivo;
         pArchivo=fopen(FILE_PARTIDOS, "ab");
@@ -227,11 +266,34 @@ void generar_registros_partidos(int cant_equipos, int partidos_jugados){
     }
 }
 
-int buscar_posicion_nropartido(Partido *vec, int tam,int nro_partido){
-    Partido par;
+int buscar_posicion_nropartido_jugado(Partido *vec, int tam,int nro_partido){
     int posicion,i;
+        ////////////////////////////////////////////////77
+                        cout<<"ENTRO 3"<<endl;
+                        anykey();
     for(i=0;i<tam-1;i++){
-        if(vec[i].getNro_partido()==nro_partido){
+        if(vec[i].getNro_partido()== nro_partido){
+                //////////////////////////////////////////////////////////
+                    cout<<"vec[i].getNro_partido() = "<<vec[i].getNro_partido()<< " = "<<nro_partido<<endl;
+                        cout<<"posicion = "<<i<<endl;
+                        anykey();
+            posicion=i;
+        }
+    }
+return posicion;
+}
+
+int buscar_posicion_nropartido_prox_fase(Partido *vec, int tam,int nro_partido){
+    int posicion,i;
+        ////////////////////////////////////////////////77
+                        cout<<"ENTRO 3"<<endl;
+                        anykey();
+    for(i=0;i<tam-1;i++){
+        if(vec[i].getNro_partido()== nro_partido){
+                //////////////////////////////////////////////////////////
+                    cout<<"vec[i].getNro_partido() = "<<vec[i].getNro_partido()<< " = "<<nro_partido<<endl;
+                        cout<<"posicion = "<<i<<endl;
+                        anykey();
             posicion=i;
         }
     }

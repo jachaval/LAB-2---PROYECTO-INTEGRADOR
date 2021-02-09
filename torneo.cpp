@@ -494,7 +494,7 @@ void cargar_resultado_partido(){
         cin>>rojas;
     }
 
-    cargar_partido(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo(), tor.getPartidos_jugados());
+    cargar_partido(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo(), tor.getPartidos_jugados(), tor.getCodigo_torneo());
     if(grabo){
         contar_partido_cargado();
         cambiar_instancia_torneo();
@@ -765,7 +765,6 @@ int verificar_camiseta(int nro_equipo, int nro_jugador){
 	return nro_jugador;
 
 }
-
 
 
 
