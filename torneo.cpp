@@ -125,6 +125,14 @@ int seleccionar_torneo(){
     cout<<"    Opción-> ";
     cin>> torneo;
 
+    while(torneo<1 || torneo>4){
+
+        cout<< endl<< "    LA OPCION INGRESADA ES INCORRETA. POR FAVOR, INGRESE UNA DE LAS OPCIONES EN PANTALLA. ";
+        cin>>torneo;
+        cout<<endl;
+
+    }
+
     if(torneo==1) cant_equipos=64;
     if(torneo==2) cant_equipos=32;
     if(torneo==3) cant_equipos=16;
@@ -192,9 +200,17 @@ void cargar_resultado_partido(){
         cout<<"    CARGAR DATOS DEL PARTIDO FINAL" <<endl<<endl;
     }
 
+     bool eq;
+
     cout<<"    Número del primer equipo: ";
     cin>>numeroEquipo1;
-    nombre_equipo(nomb_equipo1,numeroEquipo1);
+    eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+    while(eq==false){
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cin>>numeroEquipo1;
+        eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+    }
+
     cout<<"    EQUIPO "<<nomb_equipo1;
     cout<<endl;
     cout<<"    Goles: ";
@@ -203,7 +219,14 @@ void cargar_resultado_partido(){
 
     cout<<"    Número del segundo equipo: ";
     cin>>numeroEquipo2;
-    nombre_equipo(nomb_equipo2,numeroEquipo2);
+    eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
+
+     while(eq==false){
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cin>>numeroEquipo1;
+        eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+    }
+
     cout<<"    EQUIPO "<<nomb_equipo2;
     cout<<endl;
     cout<<"    Goles: ";
@@ -225,6 +248,19 @@ void cargar_resultado_partido(){
         cout<< "    Penales a favor de "<<nomb_equipo2<<": ";
         cin>>penales2;
         cout<<endl;
+
+        while(penales1==penales2){
+            cout<<"    Los penales no pueden ser iguales. Por favor, ingrese el resultado de nuevo."<<endl;
+
+        cout<< "    Penales a favor de "<<nomb_equipo1<<": "<<endl;
+        cin>>penales1;
+        cout<<endl;
+
+        cout<< "    Penales a favor de "<<nomb_equipo2<<": ";
+        cin>>penales2;
+        cout<<endl;
+
+        }
 
 
         res_penales1=penales1-penales2;
@@ -258,6 +294,7 @@ void cargar_resultado_partido(){
 //////////////////////
     int i;
     char asis;
+    int camiseta;
 
     if(golesEquipo1>0){
         cout<<"    ASIGNE GOLES DEL EQUIPO ";
@@ -269,6 +306,12 @@ void cargar_resultado_partido(){
             cout << "    Del gol "<<i+1<<"."<<endl<<endl;
             cout<<"    Ingrese nro de camiseta del jugador que marcó: ";
             cin>>numeroCamiseta;
+            camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta);
+            if (camiseta != -1){
+
+                numeroCamiseta=camiseta;
+            }
+
             cout<<"    ¿HUBO ASISTENCIA?(S/N):";
             cin>>asis;
             cout<<endl;
@@ -276,6 +319,12 @@ void cargar_resultado_partido(){
                 cout<<"    Ingrese nro de camiseta del jugador que asistió: ";
                 cin>>numeroCamiseta_asistencia;
                 cout<<endl;
+                  camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta_asistencia);
+                if (camiseta != -1){
+
+                numeroCamiseta_asistencia=camiseta;
+            }
+
             }
             else{
                 numeroCamiseta_asistencia=0;
@@ -302,6 +351,12 @@ void cargar_resultado_partido(){
             cout << "    Del gol "<<i+1<<"."<<endl<<endl;
             cout<<"    Ingrese nro de camiseta del jugador que marcó: ";
             cin>>numeroCamiseta;
+              camiseta = verificar_camiseta(numeroEquipo2, numeroCamiseta);
+            if (camiseta != -1){
+
+                numeroCamiseta=camiseta;
+            }
+
             cout<<"    ¿HUBO ASISTENCIA?(S/N):";
             cin>>asis;
             cout<<endl;
@@ -309,6 +364,12 @@ void cargar_resultado_partido(){
                 cout<<"    Ingrese nro de camiseta del jugador que asistió: ";
                 cin>>numeroCamiseta_asistencia;
                 cout<<endl;
+            camiseta = verificar_camiseta(numeroEquipo2, numeroCamiseta_asistencia);
+            if (camiseta != -1){
+
+                numeroCamiseta=camiseta;
+            }
+
             }
             else{
                 numeroCamiseta_asistencia=0;
@@ -340,6 +401,12 @@ void cargar_resultado_partido(){
     while(amarillas=='s' || amarillas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_amarilla;
+          camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta_amarilla);
+            if (camiseta != -1){
+
+                numeroCamiseta_amarilla=camiseta;
+            }
+
 
         grabo=registrarAmarilla(numeroEquipo1, numeroCamiseta_amarilla);
         if(!grabo){
@@ -359,6 +426,12 @@ void cargar_resultado_partido(){
     while(amarillas=='s' || amarillas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_amarilla;
+          camiseta = verificar_camiseta(numeroEquipo2, numeroCamiseta_amarilla);
+            if (camiseta != -1){
+
+                numeroCamiseta_amarilla=camiseta;
+            }
+
 
         grabo=registrarAmarilla(numeroEquipo2, numeroCamiseta_amarilla);
         if(!grabo){
@@ -380,6 +453,12 @@ void cargar_resultado_partido(){
     while(rojas=='s' || rojas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_roja;
+          camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta_roja);
+            if (camiseta != -1){
+
+                numeroCamiseta_roja=camiseta;
+            }
+
 
         grabo=registrarRoja(numeroEquipo1, numeroCamiseta_roja);
         if(!grabo){
@@ -399,6 +478,12 @@ void cargar_resultado_partido(){
     while(rojas=='s' || rojas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_roja;
+          camiseta = verificar_camiseta(numeroEquipo2, numeroCamiseta_roja);
+            if (camiseta != -1){
+
+                numeroCamiseta_roja=camiseta;
+            }
+
 
         registrarRoja(numeroEquipo2, numeroCamiseta_roja);
         if(!grabo){
