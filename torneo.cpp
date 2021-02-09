@@ -131,7 +131,7 @@ int seleccionar_torneo(){
     if(torneo==4) cant_equipos=8;
 
     cout<< endl<< "    HA SELECCIONADO EL TORNEO PARA "<< cant_equipos << " EQUIPOS"<<endl;
-    cout<< endl<< "    ¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)"; ///FALTARIA AGREGAR VALIDACION POR INGRESOS INCORRECTOS
+    cout<< endl<< "    ¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)";
     cin>>seguro;
 
     while(seguro!='S' && seguro!='s'){
@@ -139,7 +139,7 @@ int seleccionar_torneo(){
             return 0;
         }
         cout << "Ingreso incorrecto";
-        cout<< endl<< "    >¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)"; ///FALTARIA AGREGAR VALIDACION POR INGRESOS INCORRECTOS
+        cout<< endl<< "    >¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)";
         cin>>seguro;
     }
     cout<<endl << "    TORNEO SELECCIONADO CORRECTAMENTE"<<endl;
@@ -151,7 +151,7 @@ int seleccionar_torneo(){
     tor.setTipo_torneo(cant_equipos);
     tor.guardarEnDisco();
 
-    generar_registros_partidos(cant_equipos);    /// Genera los registro de los partidos para que se modiquen y se completen a medida que se jugan los partidos
+    generar_registros_partidos(cant_equipos, tor.getPartidos_jugados());    /// Genera los registro de los partidos para que se modiquen y se completen a medida que se jugan los partidos
 
     return cant_equipos;
 }
