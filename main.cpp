@@ -1,10 +1,10 @@
 #include <iostream>
-#include <locale.h>
-
+#include <cstdlib>
 #include <ctime>
+#include <cstdio>
+#include <cstring>
+#include <locale.h>
 #include <iomanip>
-
-
 using namespace std;
 #include "menu.h"
 #include "rlutil.h"
@@ -12,50 +12,71 @@ using namespace rlutil;
 #include "torneo.h"
 #include "jugador.h"
 #include "partido.h"
+#include "equipo.h"
 
 
 int main(){
     setlocale(LC_ALL, "spanish");
-    /*
-    FILE* pArchivo;
-    pArchivo=fopen(FILE_PARTIDOS,"rb");
-    if(pArchivo==NULL){
-        cout<<"error archivo"<<endl;
-        exit(1);
+
+    FILE* p;
+    p=fopen(FILE_TORNEOS, "rb");
+    if(p==NULL){
+        cout<<" ERROR DE ARCHIVO TORNEO";
+        anykey();
     }
-    Partido tor;
-    while(fread(&tor, sizeof(Partido), 1, pArchivo)){
+    Torneo reg;
+    cout << left;
+    cout << setw(11) << "Tipo Torneo" << setw(17) << "|Cod. Torneo" << setw(18) << "|Instancia" << setw(13) << "|Partidos Jugados" << setw(17) << "|Torneo Activo";
+    cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
 
-    cout<<"Partido"<<endl;
-    cout<< "Codigo de torneo: "<<tor.getCodigo_toneo()<<endl;
-    cout<< "Equipo local: "<<tor.getEquipo_local()<<endl;
-    cout<< "Equipo visitante: "<<tor.getEquipo_visitante()<<endl;
-    cout<< "Goles local: "<<tor.getGoles_local()<<endl;
-    cout<< "Goles visitante "<<tor.getGoles_visitante()<<endl;
-    cout<< "Equipo ganador "<<tor.getEquipo_ganador()<<endl;
-    cout<< "Instancia del torneo "<<tor.getInstancia_torneo()<<endl;
-    cout<< "Nro de partido "<<tor.getNro_partido()<<endl;
-}
-    fclose(pArchivo);
+    while(fread(&reg, sizeof (Torneo),1,p)){
+        reg.mostrar();
 
 
-    FILE* pArchivo;
-    pArchivo=fopen(FILE_TORNEOS,"rb");
-    if(pArchivo==NULL){
-        cout<<"error archivo"<<endl;
-       // exit(1);
     }
-    Torneo tor;
-    fread(&tor, sizeof(Torneo), 1, pArchivo);
-    fclose(pArchivo);
 
-    cout<<"torneo"<<endl;
-    cout<< "tipo de torneo: "<<tor.getTipo_torneo()<<endl;
-    cout<< "codigo de torneo: "<<tor.getCodigo_torneo()<<endl;
-    cout<< "instancia de torneo: "<<tor.getInstancia_torneo()<<endl;
-    cout<< "Partido jugados: "<<tor.getPartidos_jugados()<<endl;
-    cout<< "torneo activo? "<<tor.getTorneo_activo()<<endl;
-    anykey();*/
+    fclose(p);
+
+    anykey();
+
+    FILE* par;
+    par=fopen(FILE_PARTIDOS, "rb");
+    if(p==NULL){
+        cout<<" ERROR DE ARCHIVO PARTIDOS";
+        anykey();
+    }
+    Partido pa;
+    cout << left;
+    cout << setw(11) << "Cod. Torneo" << setw(17) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante"<< setw(13) << "|Equipo Ganador"<< setw(13) << "|Instancia"<< setw(13) << "|Nro Partido"<<endl;
+    cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
+
+    while(fread(&pa, sizeof (Partido),1,par)){
+    cout << left;
+    cout << setw(18);
+    cout << pa.getCodigo_toneo();
+    cout << setw(15) ;
+    cout << pa.getEquipo_local();
+    cout << setw(15) ;
+    cout << pa.getEquipo_visitante();
+    cout << setw(15) ;
+    cout << pa.getGoles_local();
+    cout << setw(7) ;
+    cout << pa.getGoles_visitante();
+    cout << setw(7) ;
+    cout << pa.getEquipo_ganador();
+    cout << setw(7) ;
+    cout << pa.getInstancia_torneo();
+    cout << setw(7) ;
+    cout << pa.getNro_partido();
+    cout << setw(13) ;
+    cout << endl;
+
+
+    }
+
+    fclose(par);
+
+    anykey();
 
     menu_principal();
 
