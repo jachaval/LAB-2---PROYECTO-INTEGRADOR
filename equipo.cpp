@@ -512,7 +512,7 @@ void fase_final(int partidos_jugados){    /// fase 1
     fclose(p);
 
     for(i=0; i<cant-1; i++){
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==1){
+        if(vec[i].getInstancia_torneo()== 1 && vec[i].getNro_partido()==7){
             equipo1=vec[i].getEquipo_ganador();
         }
         if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==2){

@@ -218,7 +218,6 @@ void listar_partidos(){
         cout << par.getNro_partido();
         cout << endl;
 
-
     }
     anykey();
     fclose(pArchivo);
@@ -257,7 +256,7 @@ void generar_registros_partidos(int cant_equipos, int partidos_jugados){
         }
 
         par.ingresarCodigo_torneo();
-        par.setInstancia_torneo((cant_equipos/2));
+       // par.setInstancia_torneo((cant_equipos/2));
         par.aumentar_partidos_jugados(i);
 
         par.guardarEnDisco();
@@ -268,15 +267,9 @@ void generar_registros_partidos(int cant_equipos, int partidos_jugados){
 
 int buscar_posicion_nropartido_jugado(Partido *vec, int tam,int nro_partido){
     int posicion,i;
-        ////////////////////////////////////////////////77
-                        cout<<"ENTRO 3"<<endl;
-                        anykey();
+
     for(i=0;i<tam-1;i++){
         if(vec[i].getNro_partido()== nro_partido){
-                //////////////////////////////////////////////////////////
-                    cout<<"vec[i].getNro_partido() = "<<vec[i].getNro_partido()<< " = "<<nro_partido<<endl;
-                        cout<<"posicion = "<<i<<endl;
-                        anykey();
             posicion=i;
         }
     }
@@ -285,15 +278,9 @@ return posicion;
 
 int buscar_posicion_nropartido_prox_fase(Partido *vec, int tam,int nro_partido){
     int posicion,i;
-        ////////////////////////////////////////////////77
-                        cout<<"ENTRO 3"<<endl;
-                        anykey();
+
     for(i=0;i<tam-1;i++){
         if(vec[i].getNro_partido()== nro_partido){
-                //////////////////////////////////////////////////////////
-                    cout<<"vec[i].getNro_partido() = "<<vec[i].getNro_partido()<< " = "<<nro_partido<<endl;
-                        cout<<"posicion = "<<i<<endl;
-                        anykey();
             posicion=i;
         }
     }

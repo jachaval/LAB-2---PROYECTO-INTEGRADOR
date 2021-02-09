@@ -1,3 +1,5 @@
 *.exe
 *.dat
 *.o
+*.o
+*.exe

@@ -663,7 +663,6 @@ void cambiar_instancia_torneo(){
     if((tor.getPartidos_jugados())==tor.getInstancia_torneo()){
 
         tor.cambiar_instacia_torneo();
-        tor.setPartidos_jugados(0);
 
         fseek(p, ftell(p)-sizeof(Torneo),0);
         fwrite(&tor , sizeof(Torneo),1 ,p);
