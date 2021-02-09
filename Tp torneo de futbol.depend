@@ -35,9 +35,9 @@
 	"rlutil.h"
 	"interfaz.h"
 
-1603161988 ated upstream
+1612825473 ated upstream
 
-1608244214 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\main.cpp
+1612828723 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\main.cpp
 	<iostream>
 	<locale.h>
 	<ctime>
@@ -47,9 +47,8 @@
 	"torneo.h"
 	"jugador.h"
 	"partido.h"
-	"equipo.h"
 
-1605411458 shed changes
+1612825473 shed changes
 	<iostream>
 	<locale.h>
 	<ctime>
@@ -58,6 +57,42 @@
 	"rlutil.h"
 	"torneo.h"
 	"jugador.h"
+	"partido.h"
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<iomanip>
+	<ctime>
+	"rlutil.h"
+	"interfaz.h"
+	"torneo.h"
+	"jugador.h"
+	"partido.h"
+	"equipo.h"
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<iomanip>
+	"rlutil.h"
+	"interfaz.h"
+	"equipo.h"
+	"jugador.h"
+	"torneo.h"
+	"partido.h"
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	"rlutil.h"
+	"interfaz.h"
+	"equipo.h"
+	"jugador.h"
+	"torneo.h"
 	"partido.h"
 
 1603162575 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\funciones.h
@@ -92,7 +127,7 @@
 	"interfaz.h"
 	"rlutil.h"
 
-1608235180 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.h
+1612828723 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.h
 
 1608243746 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.cpp
 	<iostream>
@@ -108,11 +143,7 @@
 	"torneo.h"
 	"partido.h"
 
-<<<<<<< Updated upstream
-1608244145 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
-=======
-1612825764 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
->>>>>>> Stashed changes
+1612828734 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -127,7 +158,7 @@
 	"partido.h"
 	"equipo.h"
 
-1608243746 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
+1612828723 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
 
 1608238651 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.cpp
 	<iostream>
@@ -144,13 +175,9 @@
 	"partido.h"
 	"equipo.h"
 
-1608215691 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.h
+1612828723 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.h
 
-<<<<<<< Updated upstream
-1608242968 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.cpp
-=======
-1612825824 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.cpp
->>>>>>> Stashed changes
+1612828734 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -164,17 +191,10 @@
 	"torneo.h"
 	"partido.h"
 
-<<<<<<< Updated upstream
-1608242709 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.h
+1612828733 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.h
 	"equipo.h"
 
-1608238304 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
-=======
-1612826464 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.h
-	"equipo.h"
-
-1612825473 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
->>>>>>> Stashed changes
+1612828734 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -187,11 +207,7 @@
 	"torneo.h"
 	"partido.h"
 
-<<<<<<< Updated upstream
-1608236756 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.h
-=======
-1612825473 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.h
->>>>>>> Stashed changes
+1612828723 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.h
 
 1603161930 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\interfaz.cpp
 	<iostream>

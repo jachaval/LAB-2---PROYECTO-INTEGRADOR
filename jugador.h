@@ -52,6 +52,7 @@ void mostrar_asistencias(Jugador *v);
 void mostrar_amarillas(Jugador *v);
 void mostrar_rojas(Jugador *v);
 void mostrar_jugador(Jugador);
+void mostrar_nombre_equipo();
 
 int cantidad_jugadores();
 
@@ -61,7 +62,6 @@ void tabla_asistidores();
 void tabla_amarillas();
 void tabla_rojas();
 void buscar_jugador();
-
 
 
 
