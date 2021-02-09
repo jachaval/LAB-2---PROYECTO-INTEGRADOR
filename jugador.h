@@ -1,7 +1,7 @@
 #ifndef JUGADOR_H_INCLUDED
 #define JUGADOR_H_INCLUDED
 #define FILE_JUGADORES "datos/jugadores.dat"
-class Jugador {
+class Jugador{
 	private:
 		int nro_equipo;
 		char nombre[25];

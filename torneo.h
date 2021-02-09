@@ -54,5 +54,5 @@ int contar_torneosCargados();
 
 void ver_fase_torneo();
 
-int verificar_camiseta(int , int)
+
 #endif // TORNEO_H_INCLUDED
