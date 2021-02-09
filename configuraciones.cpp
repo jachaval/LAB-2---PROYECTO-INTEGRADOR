@@ -26,7 +26,7 @@ using namespace rlutil;
 #include "equipo.h"
 
 void exportar_a_texto(){
-
+    char seguro;
     int opcion,i;
 	do{
         system("cls");
@@ -50,6 +50,18 @@ void exportar_a_texto(){
 
         cout <<"    Opción-> ";
         cin >> opcion;
+
+        cout<< endl<< "    ¿ESTÁ SEGURO DE EXPORTAR EL ARCHIVO ELEGIDO? (S/N)"; ///FALTARIA AGREGAR VALIDACION POR INGRESOS INCORRECTOS
+        cin>>seguro;
+
+        while(seguro!='S' && seguro!='s'){
+            if(seguro=='N' || seguro=='n') {
+                return;
+            }
+            cout << "Ingreso incorrecto";
+            cout<< endl<< "    >¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)"; ///FALTARIA AGREGAR VALIDACION POR INGRESOS INCORRECTOS
+            cin>>seguro;
+        }
 
         switch (opcion) {
             case 1:
