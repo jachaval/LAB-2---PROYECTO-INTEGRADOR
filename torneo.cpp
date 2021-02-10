@@ -127,7 +127,8 @@ int seleccionar_torneo(){
 
     while(torneo<1 || torneo>4){
 
-        cout<< endl<< "    LA OPCION INGRESADA ES INCORRETA. POR FAVOR, INGRESE UNA DE LAS OPCIONES EN PANTALLA. ";
+        cout<< endl<< "    LA OPCIÓN INGRESADA ES INCORRETA. POR FAVOR, INGRESE UNA DE LAS OPCIONES EN PANTALLA. "<<endl;
+        cout<<"    >Opción-> ";
         cin>>torneo;
         cout<<endl;
 
@@ -150,8 +151,7 @@ int seleccionar_torneo(){
         cout<< endl<< "    >¿ESTÁ SEGURO DE LA ELECCIÓN? (S/N)";
         cin>>seguro;
     }
-    cout<<endl << "    TORNEO SELECCIONADO CORRECTAMENTE"<<endl;
-    anykey();
+    msj("TORNEO SELECCIONADO CORRECTAMENTE",APP_TITLEFORECOLOR,APP_OKCOLOR);
 
     Torneo tor;
     tor.autonumerar_torneo();
@@ -206,15 +206,15 @@ void cargar_resultado_partido(){
     cin>>numeroEquipo1;
     eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
     while(eq==false){
-        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo1;
         eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
     }
 
-     while(verificar_activo(numeroEquipo1)==false){
-        cout<<"   El quedo eliminado del torneo. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+    while(verificar_activo(numeroEquipo1)==false){
+        cout<<"   El equipo quedo eliminado del torneo. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo1;
-     }
+    }
 
     cout<<"    EQUIPO "<<nomb_equipo1;
     cout<<endl;
@@ -223,7 +223,7 @@ void cargar_resultado_partido(){
     cout<<endl;
 
      while(golesEquipo1<0 || golesEquipo1>100){
-        cout<<"    La opcion es invalida."<<endl;
+        cout<<"    La opción es invalida."<<endl;
         cout<<"    >Goles: ";
         cin>>golesEquipo1;
     }
@@ -233,30 +233,30 @@ void cargar_resultado_partido(){
     eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
 
      while(eq==false){
-        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo2;
         eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
     }
 
     while(numeroEquipo1==numeroEquipo2){
-        cout<<"   Un equipo no puede enfrentarse a si mismo. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cout<<"   Un equipo no puede enfrentarse a si mismo. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo2;
         cout<<endl;
          eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
 
           while(eq==false){
-           cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+           cout<<"   El equipo no existe. Por favor, vuelva a ingresar el número de equipo: "<<endl;
            cin>>numeroEquipo2;
             eq=nombre_equipo(nomb_equipo2,numeroEquipo2);}
     }
 
     while(verificar_activo(numeroEquipo2)==false){
-        cout<<"   El esta eliminado del torneo. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cout<<"   El esta eliminado del torneo. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo2;
          eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
 
         while(eq==false){
-        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo2;
         eq=nombre_equipo(nomb_equipo2,numeroEquipo2);}
      }
@@ -270,7 +270,7 @@ void cargar_resultado_partido(){
     cout<<endl;
 
     while(golesEquipo2<0 || golesEquipo2>100){
-        cout<<"    La opcion es invalida."<<endl;
+        cout<<"    La opción es invalida."<<endl;
         cout<<"    >Goles: ";
         cin>>golesEquipo2;
     }
@@ -482,6 +482,11 @@ void cargar_resultado_partido(){
         }
         cout<<endl<<"    REGISTRAR OTRA TARJETA AMARILLA?(S/N): ";
         cin>>amarillas;
+        while(amarillas!='S' && amarillas!='s' && amarillas!='N' && amarillas!='n'){
+            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cin>>amarillas;
+            cout<<endl;
+        }
     }
 
     cout<<endl<<"    ¿EN EL EQUIPO ";
@@ -515,6 +520,11 @@ void cargar_resultado_partido(){
         }
         cout<<endl<<"    REGISTRAR OTRA TARJETA AMARILLA?(S/N): ";
         cin>>amarillas;
+        while(amarillas!='S' && amarillas!='s' && amarillas!='N' && amarillas!='n'){
+            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cin>>amarillas;
+            cout<<endl;
+        }
     }
 
 ////////////////////
@@ -526,10 +536,10 @@ void cargar_resultado_partido(){
     cout<<" HUBO TARJETAS ROJAS?(S/N): ";
     cin>>rojas;
 
-       while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
-        cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
-        cin>>rojas;
-        cout<<endl;
+    while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
+    cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+    cin>>rojas;
+    cout<<endl;
     }
 
     while(rojas=='s' || rojas=='S'){
@@ -549,6 +559,11 @@ void cargar_resultado_partido(){
         }
         cout<<endl<<"    REGISTRAR OTRA TARJETA ROJA?(S/N): ";
         cin>>rojas;
+        while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
+            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cin>>rojas;
+            cout<<endl;
+        }
     }
 
     cout<<endl<<"    ¿EN EL EQUIPO ";
@@ -580,9 +595,29 @@ void cargar_resultado_partido(){
         }
         cout<<endl<<"    REGISTRAR OTRA TARJETA ROJA?(S/N): ";
         cin>>rojas;
+        while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
+            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cin>>rojas;
+            cout<<endl;
+        }
+    }
+    switch (tor.getTipo_torneo()){ ///tipo torneo = a 64 32 16 o 8 cantidad de equipos
+        case 64:
+            cargar_partido_64(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo(), tor.getPartidos_jugados(), tor.getCodigo_torneo());
+        break;
+        case 32:
+            cargar_partido_32(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo(), tor.getPartidos_jugados(), tor.getCodigo_torneo());
+        break;
+        case 16:
+            cargar_partido_16(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo(), tor.getPartidos_jugados(), tor.getCodigo_torneo());
+        break;
+        case 8:
+            cargar_partido_8(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo(), tor.getPartidos_jugados(), tor.getCodigo_torneo());
+        break;
+        default:
+        break;
     }
 
-    cargar_partido(numeroEquipo1, numeroEquipo2, golesEquipo1, golesEquipo2, equipo_ganador, tor.getInstancia_torneo(), tor.getPartidos_jugados(), tor.getCodigo_torneo());
     if(grabo){
         contar_partido_cargado();
         cambiar_instancia_torneo();
@@ -786,7 +821,6 @@ void ver_fase_torneo(){
         return;
     }
     Torneo tor;
-    char nom_fase[50];
 
     ///para varios torneos hay que agruegar un buscador de torneo por nombre
     fread(&tor, sizeof(Torneo), 1, p);
@@ -843,7 +877,7 @@ int verificar_camiseta(int nro_equipo, int nro_jugador){
     }
 	}
 	if(encontrado==false){
-    cout<<"    El numero de camiseta no existe. Por favor, vuelva a ingresarlo: "<<endl;
+    cout<<"    El número de camiseta no existe. Por favor, vuelva a ingresarlo: "<<endl;
     cin>>nro_jugador;
     cout<<endl;
 	}
@@ -855,20 +889,24 @@ int verificar_camiseta(int nro_equipo, int nro_jugador){
 
 bool verificar_activo(int nro_de_equipo){
 
- Equipo reg;
+    Equipo reg;
 
- FILE* f;
+    FILE* f;
 	f = fopen(FILE_EQUIPOS, "rb");
 	if (f == NULL) {
+
 		return false;
 	}
 
     while (fread(&reg, sizeof(Equipo), 1, f)) {
-	if (reg.getActivo()==true ) {
-            return true;
-	}
-}
-
+        if(reg.getNro_equipo()==nro_de_equipo){
+            if (reg.getActivo()==true ) {
+                    fclose(f);
+                    return true;
+            }
+        }
+    }
+fclose(f);
 return false;
 }
 
