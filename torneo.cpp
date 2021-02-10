@@ -217,6 +217,12 @@ void cargar_resultado_partido(){
     cin>>golesEquipo1;
     cout<<endl;
 
+     while(golesEquipo1<0 || golesEquipo1>100){
+        cout<<"    La opcion es invalida."<<endl;
+        cout<<"    >Goles: ";
+        cin>>golesEquipo1;
+    }
+
     cout<<"    Número del segundo equipo: ";
     cin>>numeroEquipo2;
     eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
@@ -232,6 +238,12 @@ void cargar_resultado_partido(){
     cout<<"    Goles: ";
     cin>>golesEquipo2;
     cout<<endl;
+
+    while(golesEquipo2<0 || golesEquipo2>100){
+        cout<<"    La opcion es invalida."<<endl;
+        cout<<"    >Goles: ";
+        cin>>golesEquipo2;
+    }
 
     resultado=golesEquipo1-golesEquipo2;
     res_penales1=0;
@@ -738,13 +750,15 @@ int verificar_camiseta(int nro_equipo, int nro_jugador){
      bool encontrado=false;
 
 
-	FILE* f;
+
+
+	while (encontrado==false ) {
+    FILE* f;
 	f = fopen(FILE_JUGADORES, "rb");
 	if (f == NULL) {
 		return -1;
 	}
 
-	while (encontrado==false ) {
     while (fread(&reg, sizeof(Jugador), 1, f)) {
 	if (nro_equipo == reg.getNro_equipo() && nro_jugador ==reg.getNro_camiseta() ) {
                 encontrado=true;
@@ -756,11 +770,9 @@ int verificar_camiseta(int nro_equipo, int nro_jugador){
     cout<<"    El numero de camiseta no existe. Por favor, vuelva a ingresarlo: "<<endl;
     cin>>nro_jugador;
     cout<<endl;
-    cout<<nro_jugador<<endl;
-    cout<<nro_equipo;
-	}
 	}
 	fclose(f);
+	}
 	return nro_jugador;
 
 }

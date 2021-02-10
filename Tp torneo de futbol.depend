@@ -236,7 +236,7 @@
 
 1612829700 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.h
 
-1612838798 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.h
+1612920289 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.h
 
 1612829700 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\menu.cpp
 	<iostream>
@@ -253,7 +253,7 @@
 	"partido.h"
 	"configuraciones.h"
 
-1612838178 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.cpp
+1612920288 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -267,12 +267,14 @@
 	"torneo.h"
 	"partido.h"
 
-1607922845 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.cpp
+1612929229 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\torneo.cpp
 	<iostream>
 	<cstdlib>
+	<ctime>
 	<cstdio>
 	<cstring>
 	<locale.h>
+	<iomanip>
 	"rlutil.h"
 	"interfaz.h"
 	"equipo.h"
@@ -280,7 +282,7 @@
 	"torneo.h"
 	"partido.h"
 
-1612837186 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.cpp
+1612920288 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\equipo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -295,7 +297,7 @@
 	"partido.h"
 	"equipo.h"
 
-1612838178 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.h
+1612920289 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.h
 	"equipo.h"
 
 1612830601 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\configuraciones.cpp
