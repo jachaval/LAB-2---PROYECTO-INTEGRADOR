@@ -211,6 +211,11 @@ void cargar_resultado_partido(){
         eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
     }
 
+     while(verificar_activo(numeroEquipo1)==false){
+        cout<<"   El quedo eliminado del torneo. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cin>>numeroEquipo1;
+     }
+
     cout<<"    EQUIPO "<<nomb_equipo1;
     cout<<endl;
     cout<<"    Goles: ";
@@ -229,9 +234,34 @@ void cargar_resultado_partido(){
 
      while(eq==false){
         cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
-        cin>>numeroEquipo1;
-        eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+        cin>>numeroEquipo2;
+        eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
     }
+
+    while(numeroEquipo1==numeroEquipo2){
+        cout<<"   Un equipo no puede enfrentarse a si mismo. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cin>>numeroEquipo2;
+        cout<<endl;
+         eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
+
+          while(eq==false){
+           cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+           cin>>numeroEquipo2;
+            eq=nombre_equipo(nomb_equipo2,numeroEquipo2);}
+    }
+
+    while(verificar_activo(numeroEquipo2)==false){
+        cout<<"   El esta eliminado del torneo. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cin>>numeroEquipo2;
+         eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
+
+        while(eq==false){
+        cout<<"   El equipo no existe. Por favor, vuelva a ingresar el numero de equipo: "<<endl;
+        cin>>numeroEquipo2;
+        eq=nombre_equipo(nomb_equipo2,numeroEquipo2);}
+     }
+
+
 
     cout<<"    EQUIPO "<<nomb_equipo2;
     cout<<endl;
@@ -327,6 +357,14 @@ void cargar_resultado_partido(){
             cout<<"    ¿HUBO ASISTENCIA?(S/N):";
             cin>>asis;
             cout<<endl;
+
+           while(asis!='S' && asis!='s' && asis!='N' && asis!='n'){
+            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cin>>asis;
+            cout<<endl;
+            }
+
+
             if(asis=='s' || asis=='S'){
                 cout<<"    Ingrese nro de camiseta del jugador que asistió: ";
                 cin>>numeroCamiseta_asistencia;
@@ -372,6 +410,14 @@ void cargar_resultado_partido(){
             cout<<"    ¿HUBO ASISTENCIA?(S/N):";
             cin>>asis;
             cout<<endl;
+
+
+           while(asis!='S' && asis!='s' && asis!='N' && asis!='n'){
+            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cin>>asis;
+            cout<<endl;
+            }
+
             if(asis=='s' || asis=='S'){
                 cout<<"    Ingrese nro de camiseta del jugador que asistió: ";
                 cin>>numeroCamiseta_asistencia;
@@ -410,9 +456,18 @@ void cargar_resultado_partido(){
     cout<<" HUBO TARJETAS AMARILLAS?(S/N): ";
     cin>>amarillas;
 
+    while(amarillas!='S' && amarillas!='s' && amarillas!='N' && amarillas!='n'){
+        cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+        cin>>amarillas;
+        cout<<endl;
+        }
+
+
     while(amarillas=='s' || amarillas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_amarilla;
+
+
           camiseta = verificar_camiseta(numeroEquipo1, numeroCamiseta_amarilla);
             if (camiseta != -1){
 
@@ -435,6 +490,14 @@ void cargar_resultado_partido(){
     setColor(WHITE);
     cout<<" HUBO TARJETAS AMARILLAS?(S/N): ";
     cin>>amarillas;
+
+
+    while(amarillas!='S' && amarillas!='s' && amarillas!='N' && amarillas!='n'){
+        cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+        cin>>amarillas;
+        cout<<endl;
+    }
+
     while(amarillas=='s' || amarillas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_amarilla;
@@ -462,6 +525,13 @@ void cargar_resultado_partido(){
     setColor(WHITE);
     cout<<" HUBO TARJETAS ROJAS?(S/N): ";
     cin>>rojas;
+
+       while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
+        cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+        cin>>rojas;
+        cout<<endl;
+    }
+
     while(rojas=='s' || rojas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_roja;
@@ -487,6 +557,12 @@ void cargar_resultado_partido(){
     setColor(WHITE);
     cout<<" HUBO TARJETAS ROJAS?(S/N): ";
     cin>>rojas;
+
+    while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
+        cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+        cin>>rojas;
+        cout<<endl;
+    }
     while(rojas=='s' || rojas=='S'){
         cout<< endl<<"    Ingrese número de camiseta del jugador amonestado: ";
         cin>>numeroCamiseta_roja;
@@ -777,8 +853,24 @@ int verificar_camiseta(int nro_equipo, int nro_jugador){
 
 }
 
+bool verificar_activo(int nro_de_equipo){
 
+ Equipo reg;
 
+ FILE* f;
+	f = fopen(FILE_EQUIPOS, "rb");
+	if (f == NULL) {
+		return false;
+	}
+
+    while (fread(&reg, sizeof(Equipo), 1, f)) {
+	if (reg.getActivo()==true ) {
+            return true;
+	}
+}
+
+return false;
+}
 
 
 

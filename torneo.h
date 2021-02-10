@@ -56,4 +56,5 @@ void ver_fase_torneo();
 
 int verificar_camiseta(int nro_equipo, int nro_jugador);
 
+bool verificar_activo(int);
 #endif // TORNEO_H_INCLUDED
