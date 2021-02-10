@@ -542,8 +542,9 @@ void fase_semi(int partidos_jugados){
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
-    if(partidos_jugados==1){
-    /*    cout<< "   1"<<endl<<endl;
+    if(partidos_jugados==5){
+      /*  cout<< "   1"<<endl<<endl;
+        buscar_posicion_nropartido_prox_fase(vec, );
         nombre_equipo1(equipo3,3);
         nombre_equipo1(equipo4,4);
         nombre_equipo1(equipo5,5);
@@ -554,8 +555,8 @@ void fase_semi(int partidos_jugados){
         cout << setw(20) << equipo3 << setw(5) << "VS" << setw(18) << equipo4 << endl;
         cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
         cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+*/
 
-    */
     }
 }
 
