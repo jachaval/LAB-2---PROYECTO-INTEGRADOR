@@ -339,7 +339,7 @@ void menu_ver_torneo(){
         setColor(MAGENTA);
         for (i = 0; i < 29; i++) {
             gotoxy(i + 4, 3); printf("*");
-            gotoxy(7, 4); printf("ESTADÍSTICAS DEL TORNEO ");
+            gotoxy(7, 4); printf("VER TORNEO ");
             gotoxy(i + 4, 5); printf("*");
             gotoxy(4, 4); printf("*");
             gotoxy(32, 4); printf("*");

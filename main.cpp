@@ -47,35 +47,82 @@ int main(){
     }
     Partido pa;
     cout << left;
-    cout << setw(11) << "Cod. Torneo" << setw(17) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante"<< setw(13) << "|Equipo Ganador"<< setw(13) << "|Instancia"<< setw(13) << "|Nro Partido"<<endl;
+    cout << setw(12) << "Cod. Torneo" << setw(14) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante"<< setw(13) << "|Equipo Ganador"<< setw(13) << "|Instancia"<< setw(13) << "|Nro Partido"<< setw(13) << "|Jugado"<<endl;
     cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
 
     while(fread(&pa, sizeof (Partido),1,par)){
     cout << left;
-    cout << setw(18);
+    cout << setw(13);
     cout << pa.getCodigo_toneo();
-    cout << setw(15) ;
+    cout << setw(14) ;
     cout << pa.getEquipo_local();
-    cout << setw(15) ;
+    cout << setw(18) ;
     cout << pa.getEquipo_visitante();
-    cout << setw(15) ;
+    cout << setw(13) ;
     cout << pa.getGoles_local();
-    cout << setw(7) ;
+    cout << setw(17) ;
     cout << pa.getGoles_visitante();
-    cout << setw(7) ;
+    cout << setw(15) ;
     cout << pa.getEquipo_ganador();
-    cout << setw(7) ;
+    cout << setw(13) ;
     cout << pa.getInstancia_torneo();
-    cout << setw(7) ;
+    cout << setw(11) ;
     cout << pa.getNro_partido();
     cout << setw(13) ;
+    cout << pa.getJugado();
+    cout << setw(13) ;
     cout << endl;
-
-
     }
 
     fclose(par);
 
+
+
+    int cant,i, contador=0;
+    Partido *vec;
+
+    cant=cantidad_partidos();
+
+    vec=new Partido[cant];
+
+    FILE *pArchivo;
+    pArchivo = fopen(FILE_PARTIDOS, "rb");
+    fread(vec, sizeof(Partido), cant, pArchivo);
+    fclose(pArchivo);
+
+    if(cant==63){
+
+        for (i=0 ;i<=31 ;i++ ){
+            vec[i].setEquipo_local((2*i)+1);
+            vec[i].setEquipo_visitante((i*2)+2);
+            vec[i].escribrirEnDisco(i);
+        }
+    }
+    if(cant==31){
+
+        for (i=0 ;i<=15 ;i++ ){
+            vec[i].setEquipo_local((2*i)+1);
+            vec[i].setEquipo_visitante((i*2)+2);
+            vec[i].escribrirEnDisco(i);
+        }
+    }
+    if(cant==15){
+
+        for (i=0 ;i<=7 ;i++ ){
+            vec[i].setEquipo_local((2*i)+1);
+            vec[i].setEquipo_visitante((i*2)+2);
+            vec[i].escribrirEnDisco(i);
+        }
+    }
+    if(cant==7){
+
+        for (i=0 ;i<=3 ;i++ ){
+            vec[i].setEquipo_local((2*i)+1);
+            vec[i].setEquipo_visitante((i*2)+2);
+            vec[i].escribrirEnDisco(i);
+        }
+    }
+    delete []vec;
     anykey();
 
     menu_principal();

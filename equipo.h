@@ -72,6 +72,7 @@ void fase_octavos(int);
 void fase_16(int);
 void fase_32(int);
 
+void poner_equipos_enpartidos(int cant_equipos);
 
 
 

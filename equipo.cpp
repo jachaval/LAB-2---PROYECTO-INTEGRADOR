@@ -119,6 +119,8 @@ void sortear(){
             sortear_equipos(cantidad_equipos);
             /// mostrar equipos sorteados. HACER FUNCIONES CON RLUTIL HACER TIPO FIXTURE
             listar_equipos();
+
+            poner_equipos_enpartidos(cantidad_equipos);
             anykey();
         }
         else{
@@ -130,6 +132,7 @@ void sortear(){
         cout<< "    EQUIPOS CARGADOS HASTA EL MOMENTO: "<< cant_equiposCargados<<" de " << cantidad_equipos<<endl<<endl;
 
         cout<< "    TERMINE DE CARGAR EQUIPOS PARA PODER SORTEAR " <<endl<<endl;
+        anykey();
     }
 }
 
@@ -499,7 +502,7 @@ void ver_proximos_encuentros(){ ///para febrero agregar fecha de encuentro
 
 void fase_final(int partidos_jugados){    /// fase 1
 
-    int cant,i , equipo1, equipo2;
+    int cant,i;
     Partido *vec;
 
     cant=cantidad_partidos();
@@ -511,26 +514,33 @@ void fase_final(int partidos_jugados){    /// fase 1
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
+    cout<< "                    FINAL"<<endl<<endl;
     for(i=0; i<cant-1; i++){
-        if(vec[i].getInstancia_torneo()== 1 && vec[i].getNro_partido()==7){
-            equipo1=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==2){
-            equipo2=vec[i].getEquipo_ganador();
+        if(vec[i].getInstancia_torneo()== 1){
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
         }
     }
 
-    cout<< "    FINAL"<<endl<<endl;
-
-    cout<< equipo1 << " VS "<< equipo2;
-
-
     delete []vec;
-
 }
 
 void fase_semi(int partidos_jugados){
-    int cant,i , equipo1, equipo2, equipo3, equipo4;
+    int cant,i, contador=0;
     Partido *vec;
 
     cant=cantidad_partidos();
@@ -542,27 +552,55 @@ void fase_semi(int partidos_jugados){
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
-    if(partidos_jugados==5){
-      /*  cout<< "   1"<<endl<<endl;
-        buscar_posicion_nropartido_prox_fase(vec, );
-        nombre_equipo1(equipo3,3);
-        nombre_equipo1(equipo4,4);
-        nombre_equipo1(equipo5,5);
-        nombre_equipo1(equipo6,6);
-        nombre_equipo1(equipo7,7);
-        nombre_equipo1(equipo8,8);
-        cout<<left;
-        cout << setw(20) << equipo3 << setw(5) << "VS" << setw(18) << equipo4 << endl;
-        cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
-        cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
-*/
-
+    cout<< "                  SEMIFINAL"<<endl<<endl;
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 2 && vec[i].getJugado()==false){
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
     }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 1){
+            if (contador==0)cout<< endl<<endl<<"                    FINAL"<<endl<<endl;
+            contador++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+
+    delete []vec;
 }
 
 void fase_cuartos(int partidos_jugados){
-    int cant,i ;
-    char equipo1[30], equipo2[30], equipo3[30], equipo4[30], equipo5[30], equipo6[30], equipo7[30], equipo8[30];
+    int cant,i,contador=0, contador2=0;
     Partido *vec;
 
     cant=cantidad_partidos();
@@ -571,64 +609,80 @@ void fase_cuartos(int partidos_jugados){
 
     FILE *p;
     p = fopen(FILE_PARTIDOS, "rb");
-    cout<< "    CUARTOS DE FINAL"<<endl<<endl;
-
-
-    if(p==NULL){
-        nombre_equipo1(equipo1,1);
-        nombre_equipo1(equipo2,2);
-        nombre_equipo1(equipo3,3);
-        nombre_equipo1(equipo4,4);
-        nombre_equipo1(equipo5,5);
-        nombre_equipo1(equipo6,6);
-        nombre_equipo1(equipo7,7);
-        nombre_equipo1(equipo8,8);
-        cout<<left;
-        cout << setw(20) << equipo1 << setw(5) << "VS" << setw(18) << equipo2 << endl;
-        cout << setw(20) << equipo3 << setw(5) << "VS" << setw(18) << equipo4 << endl;
-        cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
-        cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
-    }
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
-        if(partidos_jugados==1){
-            cout<< "   1"<<endl<<endl;
-            nombre_equipo1(equipo3,3);
-            nombre_equipo1(equipo4,4);
-            nombre_equipo1(equipo5,5);
-            nombre_equipo1(equipo6,6);
-            nombre_equipo1(equipo7,7);
-            nombre_equipo1(equipo8,8);
-            cout<<left;
-            cout << setw(20) << equipo3 << setw(5) << "VS" << setw(18) << equipo4 << endl;
-            cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
-            cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+    cout<< "              CUARTOS DE FINAL"<<endl<<endl;
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 4 && vec[i].getJugado()==false){
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
         }
-        if(partidos_jugados==2){
-            cout<< "    2"<<endl<<endl;
-            nombre_equipo1(equipo5,5);
-            nombre_equipo1(equipo6,6);
-            nombre_equipo1(equipo7,7);
-            nombre_equipo1(equipo8,8);
-            cout<<left;
-            cout << setw(20) << equipo5 << setw(5) << "VS" << setw(18) << equipo6 << endl;
-            cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 2 && vec[i].getJugado()==false){
+            if (contador==0)cout<< endl<<endl<<"                  SEMIFINAL"<<endl<<endl;
+            contador++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
         }
-        if(partidos_jugados==3){
-            cout<< "    2"<<endl<<endl;
-            nombre_equipo1(equipo7,7);
-            nombre_equipo1(equipo8,8);
-            cout<<left;
-            cout << setw(20) << equipo7 << setw(5) << "VS" << setw(18) << equipo8 << endl;
+    }
+    for(i=0; i<cant; i++){
+        if(vec[i].getInstancia_torneo()== 1){
+            if (contador2==0)cout<< endl<<endl<<"                    FINAL"<<endl<<endl;
+            contador++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
         }
-        if(partidos_jugados==4){
-            fase_semi(partidos_jugados);
-        }
+    }
+
+    delete []vec;
 }
 
 void fase_octavos(int partidos_jugados){
-int cant,i , equipo1, equipo2, equipo3, equipo4, equipo5, equipo6, equipo7, equipo8, equipo9, equipo10, equipo11, equipo12, equipo13, equipo14, equipo15, equipo16;
+    int cant,i,contador=0, contador2=0, contador3=0;
     Partido *vec;
 
     cant=cantidad_partidos();
@@ -640,73 +694,414 @@ int cant,i , equipo1, equipo2, equipo3, equipo4, equipo5, equipo6, equipo7, equi
     fread(vec, sizeof(Partido), cant, p);
     fclose(p);
 
+    cout<< "              OCTAVOS DE FINAL"<<endl<<endl;
     for(i=0; i<cant-1; i++){
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==1){
-            equipo1=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==2){
-            equipo2=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==3){
-            equipo3=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==4){
-            equipo4=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==5){
-            equipo5=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==6){
-            equipo6=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==7){
-            equipo7=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==8){
-            equipo8=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==9){
-            equipo9=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==10){
-            equipo10=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==11){
-            equipo11=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==12){
-            equipo12=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==13){
-            equipo13=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==14){
-            equipo14=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==15){
-            equipo15=vec[i].getEquipo_ganador();
-        }
-        if(vec[i].getInstancia_torneo()== 2 && vec[i].getNro_partido()==16){
-            equipo16=vec[i].getEquipo_ganador();
+        if(vec[i].getInstancia_torneo()== 8 && vec[i].getJugado()==false){
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
         }
     }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 4 && vec[i].getJugado()==false){
+            if (contador==0)cout<<endl<<"              CUARTOS DE FINAL"<<endl<<endl;
+            contador++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 2 && vec[i].getJugado()==false){
+            if (contador2==0)cout<<endl<<"                  SEMIFINAL"<<endl<<endl;
+            contador2++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
 
-    cout<< "    OCTAVOS DE FINAL"<<endl<<endl;
-
-    cout<< equipo1 << " VS "<< equipo2<<endl;
-    cout<< equipo3 << " VS "<< equipo4<<endl;
-    cout<< equipo5 << " VS "<< equipo6<<endl;
-    cout<< equipo7 << " VS "<< equipo8<<endl;
-    cout<< equipo9 << " VS "<< equipo10<<endl;
-    cout<< equipo11 << " VS "<< equipo12<<endl;
-    cout<< equipo13 << " VS "<< equipo14<<endl;
-    cout<< equipo15 << " VS "<< equipo16<<endl;
+    }
+    for(i=0; i<cant; i++){
+        if(vec[i].getInstancia_torneo()== 1){
+            if (contador3==0)cout<<endl<<"                    FINAL"<<endl<<endl;
+            contador3++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
 
     delete []vec;
 }
 void fase_16(int partidos_jugados){
+    int cant,i,contador=0, contador2=0, contador3=0, contador4=0;
+    Partido *vec;
+
+    cant=cantidad_partidos();
+
+    vec=new Partido[cant];
+
+    FILE *p;
+    p = fopen(FILE_PARTIDOS, "rb");
+    fread(vec, sizeof(Partido), cant, p);
+    fclose(p);
+
+    cout<< "               16AVOS DE FINAL"<<endl<<endl;
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 16 && vec[i].getJugado()==false){
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 8 && vec[i].getJugado()==false){
+            if (contador==0)cout<<endl<<"              OCTAVOS DE FINAL"<<endl<<endl;
+            contador++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 4 && vec[i].getJugado()==false){
+            if (contador2==0)cout<<endl<<"              CUARTOS DE FINAL"<<endl<<endl;
+            contador2++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 2 && vec[i].getJugado()==false){
+            if (contador3==0)cout<<endl<<"                  SEMIFINAL"<<endl<<endl;
+            contador3++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 1){
+            if (contador4==0)cout<<endl<<"                    FINAL"<<endl<<endl;
+            contador4++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+
+    delete []vec;
 
 }
 void fase_32(int partidos_jugados){
+    int cant,i,contador=0, contador2=0, contador3=0, contador4=0, contador5=0 ;
+    Partido *vec;
 
+    cant=cantidad_partidos();
+
+    vec=new Partido[cant];
+
+    FILE *p;
+    p = fopen(FILE_PARTIDOS, "rb");
+    fread(vec, sizeof(Partido), cant, p);
+    fclose(p);
+
+    cout<< "               32AVOS DE FINAL"<<endl<<endl;
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 32 && vec[i].getJugado()==false){
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 16 && vec[i].getJugado()==false){
+            if (contador==0)cout<<endl<<"               16AVOS DE FINAL"<<endl<<endl;
+            contador++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 8 && vec[i].getJugado()==false){
+            if (contador2==0)cout<<endl<<"              OCTAVOS DE FINAL"<<endl<<endl;
+            contador2++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 4 && vec[i].getJugado()==false){
+            if (contador3==0)cout<<endl<<"              CUARTOS DE FINAL"<<endl<<endl;
+            contador3++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+       if(vec[i].getInstancia_torneo()== 2 && vec[i].getJugado()==false){
+            if (contador4==0)cout<<endl<<"                  SEMIFINAL"<<endl<<endl;
+            contador4++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+    for(i=0; i<cant-1; i++){
+        if(vec[i].getInstancia_torneo()== 1){
+            if (contador5==0)cout<<endl<<"                    FINAL"<<endl<<endl;
+            contador5++;
+            cout << left;
+            cout << setw(20);
+            if(vec[i].getEquipo_local()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_local());
+            }
+            cout << " VS   ";
+            if(vec[i].getEquipo_visitante()==0){
+                cout<<"Esperando rival";
+            }
+            else{
+                buscar_nombre_equipo(vec[i].getEquipo_visitante());
+            }
+            cout<<endl;
+        }
+    }
+
+    delete []vec;
+}
+
+
+void poner_equipos_enpartidos(int cant_equipos){
+    int cant,i;
+    Partido *vec;
+
+    cant=cantidad_partidos();
+
+    vec=new Partido[cant];
+
+    FILE *p;
+    p = fopen(FILE_PARTIDOS, "rb");
+    fread(vec, sizeof(Partido), cant, p);
+    fclose(p);
+
+    if(cant==63){
+        for (i=0 ;i<=31 ;i++ ){
+            vec[i].setEquipo_local((2*i)+1);
+            vec[i].setEquipo_visitante((i*2)+2);
+            vec[i].escribrirEnDisco(i);
+        }
+    }
+    if(cant==31){
+        for (i=0 ;i<=15 ;i++ ){
+            vec[i].setEquipo_local((2*i)+1);
+            vec[i].setEquipo_visitante((i*2)+2);
+            vec[i].escribrirEnDisco(i);
+        }
+    }
+    if(cant==15){
+        for (i=0 ;i<=7 ;i++ ){
+            vec[i].setEquipo_local((2*i)+1);
+            vec[i].setEquipo_visitante((i*2)+2);
+            vec[i].escribrirEnDisco(i);
+        }
+    }
+    if(cant==7){
+        for (i=0 ;i<=3 ;i++ ){
+            vec[i].setEquipo_local((2*i)+1);
+            vec[i].setEquipo_visitante((i*2)+2);
+            vec[i].escribrirEnDisco(i);
+        }
+    }
+
+
+    delete []vec;
 }

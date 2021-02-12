@@ -13,6 +13,7 @@ private: //////// AGREGAR FECHA DE PARTIDO (agregar clase fecha)
     int equipo_ganador;
     int instancia_torneo;
     int nro_partido;
+    bool jugado;
 
 public:
     Partido();
@@ -25,6 +26,7 @@ public:
     void setEquipo_ganador(int);
     void setInstancia_torneo(int);
     void setNro_partido(int);
+    void setJugado();
     int getCodigo_toneo();
     int getEquipo_local();
     int getEquipo_visitante();
@@ -33,12 +35,12 @@ public:
     int getEquipo_ganador();
     int getInstancia_torneo();
     int getNro_partido();
+    bool getJugado();
     bool escribrirEnDisco(int pos);
     bool guardarEnDisco();
     void aumentar_partidos_jugados(int);
     void ingresarCodigo_torneo();
     void autonumerar_partido();
-
 };
 
 

@@ -200,7 +200,7 @@ void cargar_resultado_partido(){
         cout<<"    CARGAR DATOS DEL PARTIDO FINAL" <<endl<<endl;
     }
 
-     bool eq;
+    bool eq;
 
     cout<<"    Número del primer equipo: ";
     cin>>numeroEquipo1;
