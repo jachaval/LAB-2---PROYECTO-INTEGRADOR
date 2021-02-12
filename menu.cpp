@@ -237,7 +237,7 @@ void menu_estadisticas(){
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy(1,3);
 
-                listar_partidos();
+                menu_resultados();
                 anykey();
 
                 break;
@@ -456,5 +456,60 @@ void menu_configuraciones(){
 	} while (opcion != 0);
 
 }
+
+void menu_resultados(){
+
+ int opcion,i;
+	do{
+        system("cls");
+        title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+        setColor(GREEN);
+        for (i = 0; i < 24; i++) {
+            gotoxy(i + 4, 3); printf("*");
+            gotoxy(9, 4); printf("RESULTADOS ");
+            gotoxy(i + 4, 5); printf("*");
+            gotoxy(4, 4); printf("*");
+            gotoxy(27, 4); printf("*");
+        }
+        setColor(WHITE);
+        gotoxy(1,6);
+        cout << "    1. TODOS LOS RESULTADOS" << endl;
+        cout << "    2. RESULTADOS POR FASE" << endl;
+        cout << "    3. RESULTADOS POR EQUIPO" << endl;
+        cout << "    0. SALIR" << endl;
+        cout << "    ------------------------------" << endl;
+
+        cout <<"    Opción-> ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy (1,3);
+                listar_partidos();
+
+                break;
+            case 2:
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy (1,3);
+                resultados_por_fase();
+
+                break;
+            case 3:
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy (1,3);
+                resultados_por_equipo();
+
+                break;
+
+            case 0:	return;
+            break;
+        }
+	} while (opcion != 0);
+}
+
 
 

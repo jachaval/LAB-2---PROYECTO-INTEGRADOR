@@ -1036,6 +1036,7 @@ void listar_partidos(){
     cout << setw(11) << "Cod Torneo" << setw(17) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante" << setw(17) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
     cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
     while(fread(&par, sizeof (Partido), 1, pArchivo)==1){
+        if(par.getEquipo_local()!=0 && par.getEquipo_visitante()!=0){
         cout << setw(12);
         cout << par.getCodigo_toneo();
         cout << setw(17) ;
@@ -1055,7 +1056,7 @@ void listar_partidos(){
         cout << par.getInstancia_torneo();
         cout << setw(16) ;
         cout << par.getNro_partido();
-        cout << endl;
+        cout << endl;}
 
     }
     anykey();
@@ -1189,3 +1190,220 @@ int buscar_posicion_nropartido_prox_fase(Partido *vec, int tam,int nro_partido){
     }
 return posicion;
 }
+
+void resultados_por_fase(){
+
+    int opcion;
+        cout << "    1. FASE DE TREINTA Y DOS AVOS" << endl;
+        cout << "    2. FASE DE DIECISEIS AVOS" << endl;
+        cout << "    3. FASE DE OCTAVOS" << endl;
+        cout << "    4. FASE DE CUARTOS" << endl;
+        cout << "    5. FASE DE SEMIFINALES" << endl;
+        cout << "    6. FASE DE FINALES" << endl;
+        cout << "    0. SALIR" << endl;
+        cout << "    ------------------------------" << endl;
+
+        cout <<"    Opción-> ";
+        cin >> opcion;
+
+        int instancia;
+
+      switch (opcion) {
+            case 1:
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                if(informar_tipoTorneo()<64){
+                cout<< "El torneo seleccionado no posee esta fase."<<endl;
+                }
+                else{mostrar_resultados(1,32);}
+
+                anykey();
+
+                break;
+            case 2:
+
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                instancia=informar_tipoTorneo();
+
+                if(instancia==64){
+                   mostrar_resultados(33,48);
+                }
+                else if(instancia==32){
+                    mostrar_resultados(1, 16);
+                }
+
+                else if(instancia==16){
+                    cout<< "El torneo seleccionado no posee esta fase."<<endl;
+
+                }
+                anykey();
+
+
+                break;
+            case 3:
+                 cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+                instancia=informar_tipoTorneo();
+
+                if(instancia==64){
+                   mostrar_resultados(49,56);
+                }
+                else if(instancia==32){
+                    mostrar_resultados(17,24);
+                }
+
+                else if(instancia==16){
+                     mostrar_resultados(1,8);
+
+                }
+
+                else if(instancia==8){
+                    cout<< "El torneo seleccionado no posee esta fase."<<endl;
+                }
+                anykey();
+
+                break;
+            case 4:
+              cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+                   instancia=informar_tipoTorneo();
+
+                if(instancia==64){
+                   mostrar_resultados(57,61);
+                }
+                else if(instancia==32){
+                    mostrar_resultados(25,28);
+                }
+
+                else if(instancia==16){
+                     mostrar_resultados(9,12);
+
+                }
+
+                else if(instancia==8){
+                    mostrar_resultados(1,4);
+                }
+
+
+                anykey();
+
+                break;
+            case 5:
+                 cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                 instancia=informar_tipoTorneo();
+
+                if(instancia==64){
+                   mostrar_resultados(61,62);
+                }
+                else if(instancia==32){
+                    mostrar_resultados(29,30);
+                }
+
+                else if(instancia==16){
+                     mostrar_resultados(13,14);
+
+                }
+
+                else if(instancia==8){
+                    mostrar_resultados(5,6);
+                }
+
+
+                anykey();
+
+
+                break;
+            case 6:
+
+                cls();
+                title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+                gotoxy(1,3);
+
+                   instancia=informar_tipoTorneo();
+
+                if(instancia==64){
+                   mostrar_resultados(0, 63);
+                }
+                else if(instancia==32){
+                    mostrar_resultados(0,31);
+                }
+
+                else if(instancia==16){
+                     mostrar_resultados(0,15);
+
+                }
+
+                else if(instancia==8){
+                    mostrar_resultados(0,7);
+                }
+
+                anykey();
+
+                break;
+            case 0: return;
+            break;
+
+    }
+
+return;
+
+
+}
+
+void resultados_por_equipo(){
+
+}
+
+void mostrar_resultados(int nro_partido_a, int nro_partido_b){
+FILE *pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS,"rb");
+    if(pArchivo==NULL){
+        msj("ERROR ARCHIVO PARTIDOS", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+        return;
+    }
+
+    int a,b,c;
+
+    Partido par;
+    cout << left;
+    cout << setw(11) << "Nombre torneo" << setw(17) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante" << setw(17) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
+    cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
+    while(fread(&par, sizeof (Partido), 1, pArchivo)==1){
+        if(par.getNro_partido()>=nro_partido_a && par.getNro_partido()<=nro_partido_b && par.getEquipo_local()!=0 && par.getEquipo_visitante()!=0){
+        cout << setw(12);
+        cout << par.getCodigo_toneo();
+        cout << setw(17) ;
+        a=par.getEquipo_local();
+        buscar_nombre_equipo(a);
+        cout << setw(18) ;
+        b=par.getEquipo_visitante();
+        buscar_nombre_equipo(b);
+        cout << setw(13) ;
+        cout << par.getGoles_local();
+        cout << setw(17) ;
+        cout << par.getGoles_visitante();
+        cout << setw(17) ;
+        c=par.getEquipo_ganador();
+        buscar_nombre_equipo(c);
+        cout << setw(18) ;
+        cout << par.getInstancia_torneo();
+        cout << setw(16) ;
+        cout << par.getNro_partido();
+        cout << endl;}
+
+    }
+    anykey();
+    fclose(pArchivo);
+
+}
+void resultados_por_equipo();

@@ -14,6 +14,8 @@ void menu_estadisticas();
 
 void menu_configuraciones();
 
+void menu_resultados();
+
 
 
 

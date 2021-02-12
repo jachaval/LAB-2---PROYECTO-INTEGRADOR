@@ -499,3 +499,150 @@
 
 1612829700 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\configuraciones.h
 
+1612832851 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\configuraciones.cpp
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<fstream>
+	"configuraciones.h"
+	"equipo.h"
+	"interfaz.h"
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<iomanip>
+	<ctime>
+	"rlutil.h"
+	"interfaz.h"
+	"torneo.h"
+	"jugador.h"
+	"partido.h"
+	"equipo.h"
+
+1612829700 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\configuraciones.h
+
+1613098987 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\equipo.h
+
+1603161927 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\interfaz.h
+
+1571584339 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1612933121 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\torneo.h
+
+1612838682 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\jugador.h
+
+1613099106 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\partido.h
+	"equipo.h"
+
+1612931340 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\equipo.cpp
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<iomanip>
+	<ctime>
+	"rlutil.h"
+	"interfaz.h"
+	"torneo.h"
+	"jugador.h"
+	"partido.h"
+	"equipo.h"
+
+1603161930 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\interfaz.cpp
+	<iostream>
+	<cstring>
+	"interfaz.h"
+	"rlutil.h"
+
+1612828956 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\jugador.cpp
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<iomanip>
+	"rlutil.h"
+	"interfaz.h"
+	"torneo.h"
+	"jugador.h"
+	"partido.h"
+	"equipo.h"
+
+1612829700 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<iomanip>
+	"menu.h"
+	"rlutil.h"
+	"torneo.h"
+	"jugador.h"
+	"partido.h"
+	"equipo.h"
+
+1613098987 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\menu.h
+
+1613099031 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\menu.cpp
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	"menu.h"
+	"rlutil.h"
+	"interfaz.h"
+	"equipo.h"
+	"jugador.h"
+	"torneo.h"
+	"partido.h"
+	"configuraciones.h"
+
+1612986945 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\partido.cpp
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<iomanip>
+	"rlutil.h"
+	"interfaz.h"
+	"equipo.h"
+	"jugador.h"
+	"torneo.h"
+	"partido.h"
+
+1612986945 source:c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\backups\backup 1\torneo.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<cstdio>
+	<cstring>
+	<locale.h>
+	<iomanip>
+	"rlutil.h"
+	"interfaz.h"
+	"equipo.h"
+	"jugador.h"
+	"torneo.h"
+	"partido.h"
+

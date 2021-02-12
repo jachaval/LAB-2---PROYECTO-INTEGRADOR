@@ -55,6 +55,12 @@ int cantidad_partidos();
 
 void listar_partidos();
 
+void resultados_por_fase();
+
+void resultados_por_equipo();
+
+void mostrar_resultados(int , int );
+
 void buscar_nombre_equipo(int);
 
 void generar_registros_partidos(int, int);
@@ -62,5 +68,6 @@ void generar_registros_partidos(int, int);
 int buscar_posicion_nropartido_jugado(Partido *,int, int);
 
 int buscar_posicion_nropartido_prox_fase(Partido *,int, int);
+
 
 #endif // PARTIDO_H_INCLUDED
