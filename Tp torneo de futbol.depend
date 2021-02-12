@@ -37,7 +37,7 @@
 
 1603161988 ated upstream
 
-1613097734 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\main.cpp
+1613102088 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\main.cpp
 	<iostream>
 	<cstdlib>
 	<ctime>
@@ -95,9 +95,9 @@
 	"interfaz.h"
 	"rlutil.h"
 
-1612238662 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.h
+1613102074 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.h
 
-1613087907 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.cpp
+1613102088 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\menu.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -112,7 +112,7 @@
 	"partido.h"
 	"configuraciones.h"
 
-1613100397 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
+1613102778 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -127,7 +127,7 @@
 	"partido.h"
 	"equipo.h"
 
-1613093588 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
+1613102088 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
 
 1612416805 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.cpp
 	<iostream>
@@ -145,7 +145,7 @@
 
 1612417405 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.h
 
-1613100851 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.cpp
+1613102088 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -159,10 +159,10 @@
 	"torneo.h"
 	"partido.h"
 
-1613088631 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.h
+1613102088 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\partido.h
 	"equipo.h"
 
-1613085465 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
+1613102088 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\torneo.cpp
 	<iostream>
 	<cstdlib>
 	<ctime>

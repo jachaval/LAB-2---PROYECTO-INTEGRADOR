@@ -885,7 +885,7 @@ void fase_16(int partidos_jugados){
             cout<<endl;
         }
     }
-    for(i=0; i<cant-1; i++){
+    for(i=0; i<cant; i++){
         if(vec[i].getInstancia_torneo()== 1){
             if (contador4==0)cout<<endl<<"                    FINAL"<<endl<<endl;
             contador4++;
@@ -1033,7 +1033,7 @@ void fase_32(int partidos_jugados){
             cout<<endl;
         }
     }
-    for(i=0; i<cant-1; i++){
+    for(i=0; i<cant; i++){
         if(vec[i].getInstancia_torneo()== 1){
             if (contador5==0)cout<<endl<<"                    FINAL"<<endl<<endl;
             contador5++;
@@ -1101,7 +1101,5 @@ void poner_equipos_enpartidos(int cant_equipos){
             vec[i].escribrirEnDisco(i);
         }
     }
-
-
     delete []vec;
 }
