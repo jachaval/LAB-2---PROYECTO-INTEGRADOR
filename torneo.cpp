@@ -166,7 +166,7 @@ int seleccionar_torneo(){
 
 void cargar_resultado_partido(){
     int numeroEquipo1,numeroEquipo2, numeroCamiseta, numeroCamiseta_asistencia, golesEquipo1,golesEquipo2, equipo_ganador;
-    int resultado, res_penales1=0, res_penales2=0;
+    int resultado, res_penales1=0, res_penales2=0, contador_semi=0, contador_cuartos=0, contador_octavos=0, contador_16=0;
     bool grabo;
     Torneo tor;
     FILE* pArchivo;
@@ -181,25 +181,178 @@ void cargar_resultado_partido(){
     pclose(pArchivo);
     char nomb_equipo1[30];
     char nomb_equipo2[30];
-    if(tor.getInstancia_torneo()==32){
+
+    switch (tor.getTipo_torneo()){
+        case 8:
+            if(tor.getInstancia_torneo()==4){
+                cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE CUARTOS DE FINAL" <<endl<<endl;
+            }
+            if(tor.getInstancia_torneo()==2){
+                if(tor.getPartidos_jugados()==4){
+                    cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
+                }
+                if(tor.getPartidos_jugados()==5){
+                    cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
+                }
+            }
+            if(tor.getInstancia_torneo()==1){
+                cout<<"    CARGAR DATOS DEL PARTIDO FINAL" <<endl<<endl;
+            }
+        break;
+        case 16:
+            if(tor.getInstancia_torneo()==8){
+                cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+            }
+            if(tor.getInstancia_torneo()==4){
+                if(tor.getPartidos_jugados()==8){
+                    cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE CUARTOS DE FINAL" <<endl<<endl;
+                }
+                if(tor.getPartidos_jugados()==9){
+                    cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE CUARTOS DE FINAL" <<endl<<endl;
+                }
+                if(tor.getPartidos_jugados()==10){
+                    cout<<"    CARGAR DATOS DEL PARTIDO "<<3<< " DE LA LLAVE DE CUARTOS DE FINAL" <<endl<<endl;
+                }
+                if(tor.getPartidos_jugados()==11){
+                    cout<<"    CARGAR DATOS DEL PARTIDO "<<4<< " DE LA LLAVE DE CUARTOS DE FINAL" <<endl<<endl;
+                }
+            }
+            if(tor.getInstancia_torneo()==2){
+                if(tor.getPartidos_jugados()==12){
+                    cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
+                }
+                if(tor.getPartidos_jugados()==13){
+                    cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
+                }
+            }
+            if(tor.getInstancia_torneo()==1){
+                cout<<"    CARGAR DATOS DEL PARTIDO FINAL" <<endl<<endl;
+            }
+        break;
+        case 32:
+            if(tor.getInstancia_torneo()==16){
+                cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+            }
+        break;
+        case 64:
+            if(tor.getInstancia_torneo()==32){
+                cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+            }
+        break;
+
+        default:
+        break;
+    }
+
+    /*if(tor.getInstancia_torneo()==32){
         cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
     }
     if(tor.getInstancia_torneo()==16){
-        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        contador_16++;
+        if(tor.getPartidos_jugados()==1){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(tor.getPartidos_jugados()==2){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(tor.getPartidos_jugados()==3){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<3<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==4){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<4<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==5){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<5<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==6){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<6<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==7){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<7<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==8){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<8<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==9){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<9<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==10){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<10<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==11){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<11<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==12){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<12<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==13){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<13<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==14){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<14<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==15){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<15<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_16==16){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<16<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
     }
     if(tor.getInstancia_torneo()==8){
-        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        contador_octavos++;
+        if(contador_octavos==1){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_octavos==2){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_octavos==3){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<3<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_octavos==4){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<4<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_octavos==5){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<5<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_octavos==6){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<6<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_octavos==7){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<7<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
+        if(contador_octavos==8){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<8<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
+        }
     }
     if(tor.getInstancia_torneo()==4){
-        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
+        contador_cuartos++;
+        if(contador_cuartos==1){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
+        }
+        if(contador_cuartos==2){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
+        }
+        if(contador_cuartos==3){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<3<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
+        }
+        if(contador_cuartos==4){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<4<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
+        }
     }
     if(tor.getInstancia_torneo()==2){
-        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
+        contador_semi++;
+        if(contador_semi==1){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
+        }
+        if(contador_semi==2){
+            cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
+        }
     }
     if(tor.getInstancia_torneo()==1){
         cout<<"    CARGAR DATOS DEL PARTIDO FINAL" <<endl<<endl;
     }
-
+*/
     bool eq;
 
     cout<<"    Número del primer equipo: ";
@@ -783,13 +936,127 @@ void cambiar_instancia_torneo(){
     }
     fread(&tor,sizeof(Torneo), 1,p);
 
-    if((tor.getPartidos_jugados())==tor.getInstancia_torneo()){
+    switch (tor.getTipo_torneo()){
+        case 8:
+            if(tor.getPartidos_jugados()==4){
 
-        tor.cambiar_instacia_torneo();
+                tor.cambiar_instacia_torneo();
 
-        fseek(p, ftell(p)-sizeof(Torneo),0);
-        fwrite(&tor , sizeof(Torneo),1 ,p);
-        fclose(p);
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==6){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+        break;
+        case 16:
+            if(tor.getPartidos_jugados()==8){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==12){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==14){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+        break;
+        case 32:
+            if(tor.getPartidos_jugados()==16){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==24){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==28){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==30){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+        break;
+        case 64:
+            if(tor.getPartidos_jugados()==32){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==48){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==56){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==60){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+            if(tor.getPartidos_jugados()==62){
+
+                tor.cambiar_instacia_torneo();
+
+                fseek(p, ftell(p)-sizeof(Torneo),0);
+                fwrite(&tor , sizeof(Torneo),1 ,p);
+                fclose(p);
+            }
+        break;
     }
     fclose(p);
 }

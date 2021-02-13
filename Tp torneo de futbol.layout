@@ -2,19 +2,58 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="configuraciones.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="jugador.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4327" topLine="130" />
+			<Cursor1 position="275" topLine="45" />
 		</Cursor>
 	</File>
-	<File name="interfaz.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="interfaz.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="424" topLine="5" />
+			<Cursor1 position="1851" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="equipo.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="torneo.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="18546" topLine="524" />
+			<Cursor1 position="27479" topLine="683" />
+		</Cursor>
+		<Folding>
+			<Collapse line="32" />
+			<Collapse line="50" />
+			<Collapse line="54" />
+			<Collapse line="68" />
+			<Collapse line="86" />
+			<Collapse line="733" />
+			<Collapse line="773" />
+			<Collapse line="780" />
+			<Collapse line="798" />
+			<Collapse line="802" />
+			<Collapse line="821" />
+			<Collapse line="826" />
+			<Collapse line="832" />
+			<Collapse line="846" />
+			<Collapse line="873" />
+			<Collapse line="900" />
+			<Collapse line="909" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2931" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="menu.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="125" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="jugador.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1516" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="equipo.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12352" topLine="306" />
 		</Cursor>
 		<Folding>
 			<Collapse line="79" />
@@ -26,38 +65,24 @@
 			<Collapse line="267" />
 		</Folding>
 	</File>
+	<File name="equipo.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1660" topLine="53" />
+		</Cursor>
+	</File>
+	<File name="torneo.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1466" topLine="34" />
+		</Cursor>
+	</File>
 	<File name="partido.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2151" topLine="52" />
 		</Cursor>
 	</File>
-	<File name="torneo.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="interfaz.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="827" topLine="37" />
-		</Cursor>
-	</File>
-	<File name="menu.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="15289" topLine="370" />
-		</Cursor>
-		<Folding>
-			<Collapse line="333" />
-			<Collapse line="396" />
-		</Folding>
-	</File>
-	<File name="jugador.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="275" topLine="45" />
-		</Cursor>
-	</File>
-	<File name="equipo.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1827" topLine="56" />
-		</Cursor>
-	</File>
-	<File name="jugador.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1516" topLine="6" />
+			<Cursor1 position="424" topLine="5" />
 		</Cursor>
 	</File>
 	<File name="configuraciones.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -65,45 +90,22 @@
 			<Cursor1 position="249" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="torneo.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="configuraciones.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4287" topLine="90" />
+			<Cursor1 position="4327" topLine="130" />
+		</Cursor>
+	</File>
+	<File name="menu.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11868" topLine="364" />
 		</Cursor>
 		<Folding>
-			<Collapse line="32" />
-			<Collapse line="50" />
-			<Collapse line="54" />
-			<Collapse line="64" />
-			<Collapse line="68" />
-			<Collapse line="86" />
-			<Collapse line="166" />
-			<Collapse line="580" />
-			<Collapse line="620" />
-			<Collapse line="627" />
-			<Collapse line="645" />
-			<Collapse line="649" />
-			<Collapse line="668" />
-			<Collapse line="673" />
-			<Collapse line="679" />
-			<Collapse line="693" />
-			<Collapse line="720" />
-			<Collapse line="747" />
-			<Collapse line="756" />
-			<Collapse line="774" />
-			<Collapse line="796" />
-			<Collapse line="815" />
-			<Collapse line="857" />
-			<Collapse line="889" />
+			<Collapse line="396" />
 		</Folding>
-	</File>
-	<File name="menu.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="252" topLine="0" />
-		</Cursor>
 	</File>
 	<File name="partido.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2060" topLine="33" />
+			<Cursor1 position="59984" topLine="844" />
 		</Cursor>
 		<Folding>
 			<Collapse line="34" />
@@ -111,22 +113,12 @@
 			<Collapse line="73" />
 			<Collapse line="83" />
 			<Collapse line="94" />
-			<Collapse line="167" />
-			<Collapse line="183" />
-			<Collapse line="300" />
-			<Collapse line="542" />
-			<Collapse line="990" />
-			<Collapse line="1102" />
+			<Collapse line="177" />
+			<Collapse line="193" />
+			<Collapse line="310" />
+			<Collapse line="552" />
+			<Collapse line="1000" />
+			<Collapse line="1112" />
 		</Folding>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3175" topLine="108" />
-		</Cursor>
-	</File>
-	<File name="interfaz.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1851" topLine="0" />
-		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
