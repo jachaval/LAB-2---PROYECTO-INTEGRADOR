@@ -1096,3 +1096,35 @@ void poner_equipos_enpartidos(int cant_equipos){
     }
     delete []vec;
 }
+
+
+
+void listar_equipos_del_torneo(){
+    FILE* f;
+	f = fopen(FILE_EQUIPOS, "rb");
+	if (f == NULL) {
+        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+		return;
+	}
+
+	Equipo eq;
+    cout << left;
+    cout << setw(11) << "Nro Equipo" << setw(20) << "|Nombre Equipo" << setw(4) << "|PG" << setw(4) << "|PP" << setw(4) << "|GF" << setw(4) << "|GC";
+    cout << endl << "-----------------------------------------------" << endl;
+    while(fread(&eq, sizeof (Equipo), 1, f)==1){
+            cout << setw(12);
+            cout << eq.getNro_equipo();
+            cout << setw(20) ;
+            cout << eq.getNombre_equipo();
+            cout << setw(4) ;
+            cout << eq.getPartidos_ganados();
+            cout << setw(4) ;
+            cout << eq.getPartidos_perdidos();
+            cout << setw(4) ;
+            cout << eq.getGoles_afavor();
+            cout << setw(4) ;
+            cout << eq.getGoles_encontra();
+            cout << endl;
+    }
+    fclose(f);
+}

@@ -60,6 +60,7 @@ void cambiar_nroequipo_jugadores(int *vecAleatorio);
 
 void listar_equipos_en_competencia();
 void ver_proximos_encuentros();
+void listar_equipos_del_torneo();
 
 
 void ver_ganador();
