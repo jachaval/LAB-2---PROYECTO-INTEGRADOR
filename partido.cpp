@@ -1254,6 +1254,90 @@ return;
 
 void resultados_por_equipo(){
 
+    int a,b,c;
+    bool opcion;
+
+    do{
+    opcion=true;
+    FILE *pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS,"rb");
+    if(pArchivo==NULL){
+        msj("ERROR ARCHIVO PARTIDOS", APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+        return;
+    }
+    cls();
+
+    Partido par;
+
+    int nro_equipo;;
+
+    int nro=0;
+
+
+
+    cout<<"Estos son los equipos en competencia. Por favor, ingrese el Numero de equipo cuyos resultados desea observar."<<endl;;
+    listar_equipos_del_torneo();
+    cout<<endl;
+    cin>>nro_equipo;
+    cout<<endl;
+    cls();
+
+
+     while(fread(&par, sizeof (Partido), 1, pArchivo)==1){
+        if(nro_equipo == par.getEquipo_local() || nro_equipo == par.getEquipo_visitante()){
+        cout << left;
+        cout << setw(11) << "Nombre torneo" << setw(15) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
+        cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout << setw(11);
+        cout << par.getCodigo_toneo();
+        cout << setw(17) ;
+        a=par.getEquipo_local();
+        buscar_nombre_equipo(a);
+        cout << setw(1) ;
+        cout << par.getGoles_local();
+        cout<<"-";
+        cout << par.getGoles_visitante();
+        cout << setw(17);
+        b=par.getEquipo_visitante();
+        buscar_nombre_equipo(b);
+        cout << setw(17) ;
+        cout << par.getInstancia_torneo();
+        cout << setw(18) ;
+        cout << par.getNro_partido();
+        cout << endl;
+        nro++;
+        anykey();
+        }
+        }
+
+     fclose(pArchivo);
+     char asis;
+     if(nro==0){
+        cout<<"    El equipo no existe."<<endl;
+        cout<<"    ¿Desea volver a ingresarlo?(S/N)";
+        cin>>asis;
+
+           while(asis!='S' && asis!='s' && asis!='N' && asis!='n'){
+            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cin>>asis;
+            cout<<endl;
+            }
+
+
+            if(asis=='s' || asis=='S'){
+               opcion=false;
+            }
+
+            }
+            else{
+              return;
+            }
+
+     } while(opcion==false);
+
+     return;
+
+
 }
 
 void mostrar_resultados(int nro_partido_a, int nro_partido_b){
