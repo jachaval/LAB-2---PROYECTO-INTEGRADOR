@@ -435,34 +435,27 @@ void ver_ganador(){
         msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
 		return;
 	}
-    int contador=0;
+
 	Equipo eq;
     while(fread(&eq, sizeof (Equipo), 1, f)==1){
         if(eq.getActivo()==true){
-            contador++;
+            setColor(RED);
+            for (int i = 0; i < 40; i++) {
+                gotoxy(i + 4, 3); printf("*");
+                gotoxy(7, 4); printf("EQUIPO GANADOR ES: ");
+                gotoxy(i + 4, 5); printf("*");
+                gotoxy(4, 4); printf("*");
+                gotoxy(43, 4); printf("*");
+            }
+        setColor(WHITE);
+        gotoxy(26,4);
+        cout << eq.getNombre_equipo();
+
+        return;
         }
     }
     fclose(f);
-
-    if(contador==1){
-
-    setColor(RED);
-        for (int i = 0; i < 40; i++) {
-            gotoxy(i + 4, 3); printf("*");
-            gotoxy(7, 4); printf("EQUIPO GANADOR ES: ");
-            gotoxy(i + 4, 5); printf("*");
-            gotoxy(4, 4); printf("*");
-            gotoxy(43, 4); printf("*");
-        }
-        setColor(WHITE);
-    gotoxy(26,4);
-        cout << eq.getNombre_equipo();
-
-    }
-    else{
-        cout<< "AÚN NO TERMINO EL TORNEO"<<endl;
-    }
-
+    cout<< "AÚN NO TERMINO EL TORNEO"<<endl;
 }
 
 void ver_proximos_encuentros(){ ///para febrero agregar fecha de encuentro
@@ -515,7 +508,7 @@ void fase_final(int partidos_jugados){    /// fase 1
     fclose(p);
 
     cout<< "                    FINAL"<<endl<<endl;
-    for(i=0; i<cant-1; i++){
+    for(i=0; i<cant; i++){
         if(vec[i].getInstancia_torneo()== 1){
             cout << left;
             cout << setw(20);
@@ -573,7 +566,7 @@ void fase_semi(int partidos_jugados){
             cout<<endl;
         }
     }
-    for(i=0; i<cant-1; i++){
+    for(i=0; i<cant; i++){
         if(vec[i].getInstancia_torneo()== 1){
             if (contador==0)cout<< endl<<endl<<"                    FINAL"<<endl<<endl;
             contador++;
