@@ -24,6 +24,7 @@ Jugador::Jugador(){
 void Jugador::setNro_equipo(int nro){nro_equipo=nro;}
 void Jugador::setNombre(char *nom){strcpy(nombre,nom);}
 void Jugador::setApellido(char *ap){strcpy(apellido,ap);}
+void Jugador::setNombre_equipo(char * nom){strcpy(nombre_equipo,nom);}
 void Jugador::setPosicion(char *pos){strcpy(posicion,pos);}
 void Jugador::setTarjeta_roja(int roja){tarjeta_roja=roja;}
 void Jugador::setTarjeta_amarilla(int amarilla){tarjeta_amarilla=amarilla;}
@@ -33,6 +34,7 @@ void Jugador::setNro_camiseta(int nro){nro_camiseta=nro;}
 int  Jugador::getNro_equipo(){return nro_equipo;}
 char *Jugador::getNombre(){return nombre;}
 char *Jugador::getApellido(){return apellido;}
+char *Jugador::getNombre_equipo(){return nombre_equipo;}
 char *Jugador::getPosicion(){return posicion;}
 int  Jugador::getTarjeta_roja(){return tarjeta_roja;}
 int  Jugador::getTarjeta_amarilla(){return tarjeta_amarilla;}
@@ -60,7 +62,7 @@ void Jugador::mostrar(){
     char nomb_equipo[30];
     cout << left;
     cout << setw(18);
-    existe=nombre_equipo(nomb_equipo,getNro_equipo());
+    existe=copiar_nombre_equipo(nomb_equipo,getNro_equipo());
     if (existe){cout<<nomb_equipo;}
     cout << setw(18);
     cout << getNombre();
@@ -139,7 +141,7 @@ void listar_jugadores_x_equipo(){
     cout << "    INGRESE NÚMERO DEL EQUIPO A BUSCAR: ";
     cin >> equipo;
 
-    existe=nombre_equipo(nomb_equipo,equipo);/// carga el nombre para poder poner el nombre del equipo Y ADEMAS VERIFICA QUE EXISTA EL EQUIPO
+    existe=copiar_nombre_equipo(nomb_equipo,equipo);/// carga el nombre para poder poner el nombre del equipo Y ADEMAS VERIFICA QUE EXISTA EL EQUIPO
     if(existe){
         cout << endl << "    LISTA DE JUGADORES DEL EQUIPO: ";
         setColor(RED);

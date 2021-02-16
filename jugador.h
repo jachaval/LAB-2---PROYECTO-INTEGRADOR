@@ -6,6 +6,7 @@ class Jugador{
 		int nro_equipo;
 		char nombre[25];
 		char apellido[25];
+		char nombre_equipo[30];
 		char posicion[25];
 		int tarjeta_roja;
 		int tarjeta_amarilla;
@@ -21,6 +22,7 @@ class Jugador{
 		void setNro_equipo(int);
 		void setNombre(char *);
 		void setApellido(char *);
+		void setNombre_equipo(char *);
 		void setPosicion(char *);
 		void setTarjeta_roja(int);
 		void setTarjeta_amarilla(int);
@@ -32,6 +34,7 @@ class Jugador{
 		int getNro_equipo();
 		char *getNombre();
 		char *getApellido();
+		char *getNombre_equipo();
 		char *getPosicion();
 		int getTarjeta_roja();
 		int getTarjeta_amarilla();

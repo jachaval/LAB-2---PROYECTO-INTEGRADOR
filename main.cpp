@@ -18,6 +18,29 @@ using namespace rlutil;
 int main(){
     setlocale(LC_ALL, "spanish");
 
+/*
+    char nombre[30];
+    int cant_jugadores,n;
+    bool grabo;
+    cout<<"    CARGAR EQUIPO Y JUGADORES"<<endl<<endl;
+    Equipo eq;
+    n=contar_equiposCargados();
+    eq.setNro_equipo(n);
+    cin.ignore();
+    cout<<"    Ingrese nombre: ";
+    cin.getline(nombre,25);
+
+    eq.setNombre_equipo(nombre);
+    if(!eq.guardarEnDisco()){
+        cout<<"    NO SE HA PODIDO GUARDAR"<<endl;
+        return false;
+    }
+
+
+*/
+
+
+/*
     FILE* p;
     p=fopen(FILE_TORNEOS, "rb");
     if(p==NULL){
@@ -124,7 +147,7 @@ int main(){
     }
     delete []vec;
     anykey();
-
+*/
     menu_principal();
 
     return 0;

@@ -177,7 +177,7 @@ int seleccionar_torneo(){
 
 void cargar_resultado_partido(){
     int numeroEquipo1,numeroEquipo2, numeroCamiseta, numeroCamiseta_asistencia, golesEquipo1,golesEquipo2, equipo_ganador;
-    int resultado, res_penales1=0, res_penales2=0, contador_semi=0, contador_cuartos=0, contador_octavos=0, contador_16=0;
+    int resultado, res_penales1=0, res_penales2=0;
     bool grabo;
     Torneo tor;
     FILE* pArchivo;
@@ -255,124 +255,15 @@ void cargar_resultado_partido(){
         break;
     }
 
-    /*if(tor.getInstancia_torneo()==32){
-        cout<<"    CARGAR DATOS DEL PARTIDO "<<tor.getPartidos_jugados()+1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-    }
-    if(tor.getInstancia_torneo()==16){
-        contador_16++;
-        if(tor.getPartidos_jugados()==1){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(tor.getPartidos_jugados()==2){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(tor.getPartidos_jugados()==3){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<3<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==4){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<4<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==5){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<5<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==6){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<6<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==7){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<7<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==8){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<8<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==9){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<9<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==10){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<10<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==11){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<11<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==12){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<12<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==13){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<13<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==14){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<14<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==15){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<15<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_16==16){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<16<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-    }
-    if(tor.getInstancia_torneo()==8){
-        contador_octavos++;
-        if(contador_octavos==1){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_octavos==2){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_octavos==3){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<3<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_octavos==4){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<4<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_octavos==5){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<5<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_octavos==6){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<6<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_octavos==7){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<7<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-        if(contador_octavos==8){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<8<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"VOS" <<endl<<endl;
-        }
-    }
-    if(tor.getInstancia_torneo()==4){
-        contador_cuartos++;
-        if(contador_cuartos==1){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
-        }
-        if(contador_cuartos==2){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
-        }
-        if(contador_cuartos==3){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<3<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
-        }
-        if(contador_cuartos==4){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<4<< " DE LA LLAVE DE "<< tor.getInstancia_torneo()<<"TOS" <<endl<<endl;
-        }
-    }
-    if(tor.getInstancia_torneo()==2){
-        contador_semi++;
-        if(contador_semi==1){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<1<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
-        }
-        if(contador_semi==2){
-            cout<<"    CARGAR DATOS DEL PARTIDO "<<2<< " DE LA LLAVE DE SEMIFINAL" <<endl<<endl;
-        }
-    }
-    if(tor.getInstancia_torneo()==1){
-        cout<<"    CARGAR DATOS DEL PARTIDO FINAL" <<endl<<endl;
-    }
-*/
     bool eq;
 
     cout<<"    Número del primer equipo: ";
     cin>>numeroEquipo1;
-    eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+    eq=copiar_nombre_equipo(nomb_equipo1,numeroEquipo1);
     while(eq==false){
         cout<<"   El equipo no existe. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo1;
-        eq=nombre_equipo(nomb_equipo1,numeroEquipo1);
+        eq=copiar_nombre_equipo(nomb_equipo1,numeroEquipo1);
     }
 
     while(verificar_activo(numeroEquipo1)==false){
@@ -394,35 +285,35 @@ void cargar_resultado_partido(){
 
     cout<<"    Número del segundo equipo: ";
     cin>>numeroEquipo2;
-    eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
+    eq=copiar_nombre_equipo(nomb_equipo2,numeroEquipo2);
 
      while(eq==false){
         cout<<"   El equipo no existe. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo2;
-        eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
+        eq=copiar_nombre_equipo(nomb_equipo2,numeroEquipo2);
     }
 
     while(numeroEquipo1==numeroEquipo2){
         cout<<"   Un equipo no puede enfrentarse a si mismo. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo2;
         cout<<endl;
-         eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
+         eq=copiar_nombre_equipo(nomb_equipo2,numeroEquipo2);
 
           while(eq==false){
            cout<<"   El equipo no existe. Por favor, vuelva a ingresar el número de equipo: "<<endl;
            cin>>numeroEquipo2;
-            eq=nombre_equipo(nomb_equipo2,numeroEquipo2);}
+            eq=copiar_nombre_equipo(nomb_equipo2,numeroEquipo2);}
     }
 
     while(verificar_activo(numeroEquipo2)==false){
         cout<<"   El esta eliminado del torneo. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo2;
-         eq=nombre_equipo(nomb_equipo2,numeroEquipo2);
+         eq=copiar_nombre_equipo(nomb_equipo2,numeroEquipo2);
 
         while(eq==false){
         cout<<"   El equipo no existe. Por favor, vuelva a ingresar el número de equipo: "<<endl;
         cin>>numeroEquipo2;
-        eq=nombre_equipo(nomb_equipo2,numeroEquipo2);}
+        eq=copiar_nombre_equipo(nomb_equipo2,numeroEquipo2);}
      }
 
 

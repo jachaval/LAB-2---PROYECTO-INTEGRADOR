@@ -48,7 +48,7 @@ void buscarEquipo();
 void mostrar_equipo(Equipo);
 void listar_equipos();
 
-bool nombre_equipo(char *,int);
+bool copiar_nombre_equipo(char *,int);
 void nombre_equipo1(char * nom_equipo,int equipo);
 
 

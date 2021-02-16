@@ -162,73 +162,46 @@ void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de
         fseek(p, i * sizeof (Equipo),SEEK_SET); /// lo seteo a la posicion de registro a leer
         fread(&eq, sizeof(Equipo),1 ,p);
 
-        cambiar_nroequipo_jugadores(vecAleatorio, cant);
 
         eq.setNro_equipo(vecAleatorio[i]-1);
         fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET); /// seteo a la posicion de registro leido para modificarlo
         fwrite(&eq, sizeof(Equipo), 1 , p);
     }
     fclose(p);
+        cambiar_nroequipo_jugadores(vecAleatorio, cant);
 }
 
 void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant_equipos){
-    int cant,i,j;
-    Jugador *vec, jug;
-
-    cant=cantidad_jugadores();
-
-    vec=new Jugador[cant];
-
-    FILE *p;
-    p = fopen(FILE_JUGADORES, "rb");
-    fread(vec, sizeof(Jugador), cant, p);
-    fclose(p);
-
-    for(i=0;i<cant_equipos;i++){
-
-        for(j=0;j<cant;j++){
-            if(vec[j].getNro_equipo()==i+1){
-                FILE * pArchivo;
-                pArchivo = fopen(FILE_JUGADORES, "rb+");
-                if(pArchivo==NULL){
-                    msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
-                    return;
-                }
-                fread(&jug, j * sizeof(Jugador), 1, pArchivo);
-                jug.setNro_equipo(vecAleatorio[i]);
-                fseek(pArchivo, j * sizeof(Partido), SEEK_SET);
-                jug.escribrirEnDisco(j);
-                fclose(pArchivo);
-            }
-
-        }
-
-
-    }
-
-    delete []vec;
-    /*Jugador jug;
-    FILE* p;
-    int numero, i=0;
-    p=fopen(FILE_JUGADORES,"rb+");
-    if(p==NULL){
-        msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+    Equipo eq;
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_EQUIPOS,"rb");
+    if(pArchivo==NULL){
+        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
         return;
     }
-    while(fread(&jug, sizeof(Jugador), 1 , p)){
 
-        numero=jug.getNro_equipo();
-        jug.setNro_equipo(vecAleatorio[numero-1]);
-        //jug.setNro_equipo(vecAleatorio[jug.getNro_equipo()-1]);
+    while(fread(&eq, sizeof(Equipo),1,pArchivo)){
+            Jugador jug;
+            FILE* p;
+            int numero, i=0;
+            p=fopen(FILE_JUGADORES,"rb+");
+            if(p==NULL){
+                msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+                return;
+            }
+            while(fread(&jug, sizeof(Jugador), 1 , p)){
+                if(strcmp(eq.getNombre_equipo(),jug.getNombre_equipo())==0){
 
-        fseek(p,ftell(p)-sizeof (Jugador),SEEK_SET);
-        fwrite(&jug, sizeof(Jugador), 1 , p);
+                    jug.setNro_equipo(eq.getNro_equipo());
 
-        i++; //para saber en que registro leyo.
-        fseek(p, i * sizeof (Jugador),SEEK_SET); //pone el cursor al final de registro que acaba de leer.. porque el fwrite te vuelve el puntero al inicio del archivo
+                    fseek(p,ftell(p)-sizeof (Jugador),SEEK_SET);
+                    fwrite(&jug, sizeof(Jugador), 1 , p);
+                }
+            }
+            fclose(p);
+
     }
-    fclose(p);
-    */
+    fclose(pArchivo);
 }
 
 bool cargar_equipo(int cant_equipos){
@@ -342,7 +315,7 @@ void listar_equipos(){
     fclose(pArchivo);
 }
 
-bool nombre_equipo(char * nom_equipo,int equipo){
+bool copiar_nombre_equipo(char * nom_equipo,int equipo){
     Equipo eq;
     FILE * pArchivo;
     pArchivo=fopen(FILE_EQUIPOS,"rb");
