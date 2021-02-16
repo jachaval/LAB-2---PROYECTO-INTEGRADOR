@@ -934,33 +934,34 @@ void listar_partidos(){
     int a,b,c;
 
     Partido par;
-    cout << left;
-    cout << setw(11) << "Cod Torneo" << setw(17) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante" << setw(17) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
-    cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout << left;
+        cout << setw(11) << "Nombre torneo" << setw(20) << "|Equipo Local"<< setw(10)<< "|Resultado" << setw(18) << "|Equipo Visitante"<< setw(18) << "|Instancia Torneo"<< setw(17) << "|Equipo Ganador";
+        cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout << setw(11);
     while(fread(&par, sizeof (Partido), 1, pArchivo)==1){
-        if(par.getEquipo_local()!=0 && par.getEquipo_visitante()!=0){
-        cout << setw(12);
+        if(par.getEquipo_ganador()!=0){
+      cout << left;
+        cout << setw(14);
         cout << par.getCodigo_toneo();
-        cout << setw(17) ;
+        cout << setw(20) ;
         a=par.getEquipo_local();
         buscar_nombre_equipo(a);
-        cout << setw(18) ;
-        b=par.getEquipo_visitante();
-        buscar_nombre_equipo(b);
-        cout << setw(13) ;
+        cout << setw(1) ;
         cout << par.getGoles_local();
-        cout << setw(17) ;
+        cout <<setw(1);
+        cout<<"-";
+        cout <<setw(9);
         cout << par.getGoles_visitante();
+        cout << setw(17);
+        buscar_nombre_equipo(par.getEquipo_visitante());
+        cout << setw(18) ;
+        mostrar_fase(par.getInstancia_torneo());
         cout << setw(17) ;
         c=par.getEquipo_ganador();
         buscar_nombre_equipo(c);
-        cout << setw(18) ;
-        cout << par.getInstancia_torneo();
-        cout << setw(16) ;
-        cout << par.getNro_partido();
-        cout << endl;}
+        cout<<endl;
 
-    }
+    }}
     anykey();
     fclose(pArchivo);
 }
@@ -1292,35 +1293,35 @@ void resultados_por_equipo(){
     cout<<endl;
     cls();
 
+        cout << left;
+        cout << setw(11) << "Nombre torneo" << setw(20) << "|Equipo Local"<< setw(10)<< "|Resultado" << setw(18) << "|Equipo Visitante"<< setw(18) << "|Instancia Torneo"<< setw(17) << "|Equipo Ganador";
+        cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout << setw(11);
+
 
      while(fread(&par, sizeof (Partido), 1, pArchivo)==1){
         if(nro_equipo == par.getEquipo_local() || nro_equipo == par.getEquipo_visitante()) {
         if(par.getEquipo_ganador()!=0){
         cout << left;
-        cout << setw(11) << "Nombre torneo" << setw(17) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(17) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
-        cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
-        cout << setw(11);
+        cout << setw(14);
         cout << par.getCodigo_toneo();
-        cout << setw(17) ;
+        cout << setw(20) ;
         a=par.getEquipo_local();
         buscar_nombre_equipo(a);
         cout << setw(1) ;
         cout << par.getGoles_local();
+        cout <<setw(1);
         cout<<"-";
+        cout <<setw(9);
         cout << par.getGoles_visitante();
         cout << setw(17);
-        b=par.getEquipo_visitante();
-        buscar_nombre_equipo(b);
-        cout << setw(17) ;
-        mostrar_fase(par.getInstancia_torneo());
+        buscar_nombre_equipo(par.getEquipo_visitante());
         cout << setw(18) ;
-        cout << par.getNro_partido();
-        cout << endl;
+        mostrar_fase(par.getInstancia_torneo());
         cout << setw(17) ;
         c=par.getEquipo_ganador();
         buscar_nombre_equipo(c);
         nro++;
-        cout<<endl;
         cout<<endl;
         }
         }
@@ -1331,6 +1332,7 @@ void resultados_por_equipo(){
      fclose(pArchivo);
      char asis;
      if(nro==0){
+        cls();
         cout<<"    El equipo no existe o aún no ha disputado ningun encuentro."<<endl;
         cout<<"    ¿Desea volver a ingresarlo?(S/N)";
         cin>>asis;
@@ -1369,33 +1371,35 @@ FILE *pArchivo;
     int a,b,c;
 
     Partido par;
-    cout << left;
-    cout << setw(11) << "Nombre torneo" << setw(17) << "|Equipo Local" << setw(18) << "|Equipo Visitante" << setw(13) << "|Goles Local" << setw(17) << "|Goles Visitante" << setw(17) << "|Equipo Ganador"<< setw(18) << "|Instancia Torneo" << setw(16) << "|Número Partido";
-    cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout << left;
+        cout << setw(11) << "Nombre torneo" << setw(20) << "|Equipo Local"<< setw(10)<< "|Resultado" << setw(18) << "|Equipo Visitante"<< setw(18) << "|Instancia Torneo"<< setw(17) << "|Equipo Ganador";
+        cout << endl << "---------------------------------------------------------------------------------------------------------------------------" << endl;
+        cout << setw(11);
+
     while(fread(&par, sizeof (Partido), 1, pArchivo)==1){
-        if(par.getNro_partido()>=nro_partido_a && par.getNro_partido()<=nro_partido_b && par.getEquipo_local()!=0 && par.getEquipo_visitante()!=0){
-        cout << setw(12);
+        if(par.getNro_partido()>=nro_partido_a && par.getNro_partido()<=nro_partido_b && par.getJugado()==true){
+               cout << left;
+        cout << setw(14);
         cout << par.getCodigo_toneo();
-        cout << setw(17) ;
+        cout << setw(20) ;
         a=par.getEquipo_local();
         buscar_nombre_equipo(a);
-        cout << setw(18) ;
-        b=par.getEquipo_visitante();
-        buscar_nombre_equipo(b);
-        cout << setw(13) ;
+        cout << setw(1) ;
         cout << par.getGoles_local();
-        cout << setw(17) ;
+        cout <<setw(1);
+        cout<<"-";
+        cout <<setw(9);
         cout << par.getGoles_visitante();
+        cout << setw(17);
+        buscar_nombre_equipo(par.getEquipo_visitante());
+        cout << setw(18) ;
+        mostrar_fase(par.getInstancia_torneo());
         cout << setw(17) ;
         c=par.getEquipo_ganador();
         buscar_nombre_equipo(c);
-        cout << setw(18) ;
-        mostrar_fase(par.getInstancia_torneo());
-        cout << setw(16) ;
-        cout << par.getNro_partido();
-        cout << endl;}
+        cout<<endl;
 
-    }
+    }}
     anykey();
     fclose(pArchivo);
 
@@ -1405,22 +1409,22 @@ void mostrar_fase(int instancia){
 
      switch(instancia){
         case 1:
-            cout<< "    Final"<<endl;
+            cout<< "Final";
             break;
         case 2:
-            cout<< "    Semifinal"<<endl;
+            cout<< "Semifinal";
             break;
         case 4:
-            cout<< "    Cuartos de final"<<endl;
+            cout<< "Cuartos de final";
             break;
         case 8:
-            cout<< "   Octavos de final"<<endl;
+            cout<< "Octavos de final";
             break;
         case 16:
-            cout<< "   Dieciseisavos de final"<<endl;
+            cout<< "Dieciseisavos de final";
             break;
         case 32:
-            cout<< "   Treintaidosavos de final"<<endl;
+            cout<< "Treintaidosavos de final";
             break;}
 
   return;
