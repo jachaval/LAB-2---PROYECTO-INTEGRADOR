@@ -1127,4 +1127,6 @@ void listar_equipos_del_torneo(){
             cout << endl;
     }
     fclose(f);
+
+    return;
 }

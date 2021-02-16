@@ -71,5 +71,7 @@ int buscar_posicion_nropartido_jugado(Partido *,int, int);
 
 int buscar_posicion_nropartido_prox_fase(Partido *,int, int);
 
+void mostrar_fase(int);
+
 
 #endif // PARTIDO_H_INCLUDED
