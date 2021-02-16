@@ -24,7 +24,6 @@ Equipo::Equipo(){
 }
 
 void  Equipo::mostrar(){};
-bool  Equipo::escribrirEnDisco(){};
 void  Equipo::setActivo(){activo=false;}
 void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
 void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
@@ -54,6 +53,16 @@ void Equipo::aumentar_partidos_perdidos(){
     partidos_perdidos++;
 }
 
+bool Equipo::escribrirEnDisco(int pos){
+    bool guardo;
+    FILE *pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS,"rb+");
+    if(pArchivo==NULL)return false;
+    fseek(pArchivo, pos * sizeof(Partido), SEEK_SET);
+    guardo = fwrite(this, sizeof(Partido), 1, pArchivo);
+    fclose(pArchivo);
+    return guardo;
+}
 
 bool Equipo::guardarEnDisco(){
     bool guardo;
@@ -153,7 +162,7 @@ void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de
         fseek(p, i * sizeof (Equipo),SEEK_SET); /// lo seteo a la posicion de registro a leer
         fread(&eq, sizeof(Equipo),1 ,p);
 
-        cambiar_nroequipo_jugadores(vecAleatorio);
+        cambiar_nroequipo_jugadores(vecAleatorio, cant);
 
         eq.setNro_equipo(vecAleatorio[i]-1);
         fseek(p,ftell(p)-sizeof (Equipo),SEEK_SET); /// seteo a la posicion de registro leido para modificarlo
@@ -162,8 +171,43 @@ void sortear_equipos(int cant){/// abre el archivo equipos y el vector de nro de
     fclose(p);
 }
 
-void cambiar_nroequipo_jugadores(int *vecAleatorio){
-    Jugador jug;
+void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant_equipos){
+    int cant,i,j;
+    Jugador *vec, jug;
+
+    cant=cantidad_jugadores();
+
+    vec=new Jugador[cant];
+
+    FILE *p;
+    p = fopen(FILE_JUGADORES, "rb");
+    fread(vec, sizeof(Jugador), cant, p);
+    fclose(p);
+
+    for(i=0;i<cant_equipos;i++){
+
+        for(j=0;j<cant;j++){
+            if(vec[j].getNro_equipo()==i+1){
+                FILE * pArchivo;
+                pArchivo = fopen(FILE_JUGADORES, "rb+");
+                if(pArchivo==NULL){
+                    msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
+                    return;
+                }
+                fread(&jug, j * sizeof(Jugador), 1, pArchivo);
+                jug.setNro_equipo(vecAleatorio[i]);
+                fseek(pArchivo, j * sizeof(Partido), SEEK_SET);
+                jug.escribrirEnDisco(j);
+                fclose(pArchivo);
+            }
+
+        }
+
+
+    }
+
+    delete []vec;
+    /*Jugador jug;
     FILE* p;
     int numero, i=0;
     p=fopen(FILE_JUGADORES,"rb+");
@@ -184,6 +228,7 @@ void cambiar_nroequipo_jugadores(int *vecAleatorio){
         fseek(p, i * sizeof (Jugador),SEEK_SET); //pone el cursor al final de registro que acaba de leer.. porque el fwrite te vuelve el puntero al inicio del archivo
     }
     fclose(p);
+    */
 }
 
 bool cargar_equipo(int cant_equipos){

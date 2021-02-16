@@ -30,6 +30,17 @@ Torneo::Torneo(){
     torneo_activo=true;
 }
 
+bool Torneo::escribrirEnDisco(int pos){
+    bool guardo;
+    FILE *pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS,"rb+");
+    if(pArchivo==NULL)return false;
+    fseek(pArchivo, pos * sizeof(Partido), SEEK_SET);
+    guardo = fwrite(this, sizeof(Partido), 1, pArchivo);
+    fclose(pArchivo);
+    return guardo;
+}
+
 void Torneo::mostrar(){
 
     cout << left;

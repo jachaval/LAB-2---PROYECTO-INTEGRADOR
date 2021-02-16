@@ -16,7 +16,7 @@ class Jugador{
 	    Jugador();
 		void cargar();
 		void mostrar();
-		bool escribrirEnDisco();
+		bool escribrirEnDisco(int pos);
 		bool guardarEnDisco();
 		void setNro_equipo(int);
 		void setNombre(char *);

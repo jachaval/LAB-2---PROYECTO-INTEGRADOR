@@ -23,7 +23,7 @@ class Torneo {
         bool getTorneo_activo();
         void cargar();
 		void mostrar();
-		bool escribrirEnDisco();
+		bool escribrirEnDisco(int pos);
 		bool guardarEnDisco();
 		void cambiar_instacia_torneo();
 		void autonumerar_torneo();

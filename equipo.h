@@ -15,7 +15,7 @@ class Equipo{
 	    Equipo();
 		void cargar();
 		void mostrar();
-		bool escribrirEnDisco();
+		bool escribrirEnDisco(int pos);
 		bool guardarEnDisco();
 		void setNro_equipo(int);
 		void setNombre_equipo(char *);
@@ -56,7 +56,7 @@ bool checkrep(int n, int num[]);
 void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos); //carga un vector aleatorio para poner en orden al alzar lo equipos
 void sortear();
 void sortear_equipos(int cantidad_equipos);
-void cambiar_nroequipo_jugadores(int *vecAleatorio);
+void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant);
 
 void listar_equipos_en_competencia();
 void ver_proximos_encuentros();

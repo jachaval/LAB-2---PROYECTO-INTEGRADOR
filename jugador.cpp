@@ -81,6 +81,17 @@ void Jugador::mostrar(){
     cout << endl;
 }
 
+bool Jugador::escribrirEnDisco(int pos){
+    bool guardo;
+    FILE *pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS,"rb+");
+    if(pArchivo==NULL)return false;
+    fseek(pArchivo, pos * sizeof(Partido), SEEK_SET);
+    guardo = fwrite(this, sizeof(Partido), 1, pArchivo);
+    fclose(pArchivo);
+    return guardo;
+}
+
 bool Jugador::guardarEnDisco(){
     bool guardo;
     FILE *pArchivo;
