@@ -189,14 +189,20 @@ void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant_equipos){
                 msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
                 return;
             }
+
             while(fread(&jug, sizeof(Jugador), 1 , p)){
                 if(strcmp(eq.getNombre_equipo(),jug.getNombre_equipo())==0){
 
                     jug.setNro_equipo(eq.getNro_equipo());
 
                     fseek(p,ftell(p)-sizeof (Jugador),SEEK_SET);
+
                     fwrite(&jug, sizeof(Jugador), 1 , p);
+
+                    fseek(p,-sizeof (Jugador),SEEK_SET);
+
                 }
+
             }
             fclose(p);
 
@@ -226,13 +232,13 @@ bool cargar_equipo(int cant_equipos){
     cin>>cant_jugadores;
     cout<<endl;
 
-    grabo=cargar_jugadores(cant_jugadores,(n+1));
+    grabo=cargar_jugadores(cant_jugadores,(n+1),nombre);
 
     return (grabo);
 }
 
 
-bool cargar_jugadores(int cant_jugadores, int nroEquipo){
+bool cargar_jugadores(int cant_jugadores, int nroEquipo, char *nombre_eq){
     int i,camiseta;
     bool guardo;
     char posicion[25], apellido[25], nombre[25];
@@ -248,6 +254,8 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo){
         cout<<"    Ingresar número de camiseta jugador "<<i+1<<": ";
         cin>>camiseta;
         cout<<endl;
+
+        ju.setNombre_equipo(nombre_eq);
 
         ju.setNombre(nombre);
 
