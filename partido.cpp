@@ -111,9 +111,6 @@ void cargar_partido_8(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int
     fclose(p);
 
     for(i=0; i<cant-1; i++){
-
-        cout<<"INGRESO FOR "<<i<<endl;
-            anykey();
             //cuartos///////////////////////////////////////////////////////////////////////////
         if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==0){
             posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,1);
@@ -140,25 +137,18 @@ void cargar_partido_8(int numeroEquipo1,int numeroEquipo2, int golesEquipo1, int
         }
             //semi///////////////////////////////////////////////////////////////////////////
         if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==4){
-                cout<<"INGRESO 1"<<endl;
-            anykey();
             posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,5);
             posicion_ganador=buscar_posicion_nropartido_prox_fase(vec,cant,7);
             vec[posicion_ganador].setEquipo_local(equipo_ganador);
         }
             //semi///////////////////////////////////////////////////////////////////////////
         if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==5){
-
-            cout<<"INGRESO 2"<<endl;
-            anykey();
             posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,6);
             posicion_ganador=buscar_posicion_nropartido_prox_fase(vec,cant,7);
             vec[posicion_ganador].setEquipo_visitante(equipo_ganador);
         }
             //final///////////////////////////////////////////////////////////////////////////
         if(vec[i].getCodigo_toneo()==codigo_torneo&&partidos_jugados==6){
-            cout<<"INGRESO 3"<<endl;
-            anykey();
             posicion_partido=buscar_posicion_nropartido_jugado(vec,cant,7);
         }
 
@@ -1338,7 +1328,7 @@ void resultados_por_equipo(){
         cin>>asis;
 
            while(asis!='S' && asis!='s' && asis!='N' && asis!='n'){
-            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
             cin>>asis;
             cout<<endl;
             }

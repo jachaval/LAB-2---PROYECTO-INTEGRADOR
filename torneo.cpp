@@ -278,7 +278,7 @@ void cargar_resultado_partido(){
     cout<<endl;
 
      while(golesEquipo1<0 || golesEquipo1>100){
-        cout<<"    La opción es invalida."<<endl;
+        cout<<"    La opción es inválida."<<endl;
         cout<<"    >Goles: ";
         cin>>golesEquipo1;
     }
@@ -325,7 +325,7 @@ void cargar_resultado_partido(){
     cout<<endl;
 
     while(golesEquipo2<0 || golesEquipo2>100){
-        cout<<"    La opción es invalida."<<endl;
+        cout<<"    La opción es inválida."<<endl;
         cout<<"    >Goles: ";
         cin>>golesEquipo2;
     }
@@ -414,7 +414,7 @@ void cargar_resultado_partido(){
             cout<<endl;
 
            while(asis!='S' && asis!='s' && asis!='N' && asis!='n'){
-            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
             cin>>asis;
             cout<<endl;
             }
@@ -468,7 +468,7 @@ void cargar_resultado_partido(){
 
 
            while(asis!='S' && asis!='s' && asis!='N' && asis!='n'){
-            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
             cin>>asis;
             cout<<endl;
             }
@@ -512,7 +512,7 @@ void cargar_resultado_partido(){
     cin>>amarillas;
 
     while(amarillas!='S' && amarillas!='s' && amarillas!='N' && amarillas!='n'){
-        cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+        cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
         cin>>amarillas;
         cout<<endl;
         }
@@ -538,7 +538,7 @@ void cargar_resultado_partido(){
         cout<<endl<<"    REGISTRAR OTRA TARJETA AMARILLA?(S/N): ";
         cin>>amarillas;
         while(amarillas!='S' && amarillas!='s' && amarillas!='N' && amarillas!='n'){
-            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
             cin>>amarillas;
             cout<<endl;
         }
@@ -553,7 +553,7 @@ void cargar_resultado_partido(){
 
 
     while(amarillas!='S' && amarillas!='s' && amarillas!='N' && amarillas!='n'){
-        cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+        cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
         cin>>amarillas;
         cout<<endl;
     }
@@ -576,7 +576,7 @@ void cargar_resultado_partido(){
         cout<<endl<<"    REGISTRAR OTRA TARJETA AMARILLA?(S/N): ";
         cin>>amarillas;
         while(amarillas!='S' && amarillas!='s' && amarillas!='N' && amarillas!='n'){
-            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
             cin>>amarillas;
             cout<<endl;
         }
@@ -592,7 +592,7 @@ void cargar_resultado_partido(){
     cin>>rojas;
 
     while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
-    cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+    cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
     cin>>rojas;
     cout<<endl;
     }
@@ -615,7 +615,7 @@ void cargar_resultado_partido(){
         cout<<endl<<"    REGISTRAR OTRA TARJETA ROJA?(S/N): ";
         cin>>rojas;
         while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
-            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
             cin>>rojas;
             cout<<endl;
         }
@@ -629,7 +629,7 @@ void cargar_resultado_partido(){
     cin>>rojas;
 
     while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
-        cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+        cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
         cin>>rojas;
         cout<<endl;
     }
@@ -651,7 +651,7 @@ void cargar_resultado_partido(){
         cout<<endl<<"    REGISTRAR OTRA TARJETA ROJA?(S/N): ";
         cin>>rojas;
         while(rojas!='S' && rojas!='s' && rojas!='N' && rojas!='n'){
-            cout<<"    Opcion invalida. Debe ingresar 'S' o 'N'.";
+            cout<<"    Opción inválida. Debe ingresar 'S' o 'N'.";
             cin>>rojas;
             cout<<endl;
         }
