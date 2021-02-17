@@ -244,16 +244,44 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo, char *nombre_eq){
     char posicion[25], apellido[25], nombre[25];
     for(i=0;i<cant_jugadores;i++){
         Jugador ju;
+        int opcion;
+        bool ingreso=true;;
+        cls();
         cin.ignore();
-        cout<< "    Ingresar nombre jugador "<<i+1<<": ";
+        cout<< "    Ingresar solo el primer nombre del jugador en mayúsculas "<<i+1<<": ";
         cin.getline(nombre,25);
-        cout<< "    Ingresar apellido jugador "<<i+1<<": ";
+        cout<< "    Ingresar apellido jugador en mayúsculas "<<i+1<<": ";
         cin.getline(apellido,25);
-        cout<< "    Ingresar posicion jugador "<<i+1<<": ";
-        cin.getline(posicion,25);
         cout<<"    Ingresar número de camiseta jugador "<<i+1<<": ";
         cin>>camiseta;
         cout<<endl;
+        cls();
+        cout<< "    1-ARQUERO."<<endl;
+        cout<< "    2-DEFENSOR."<<endl;
+        cout<< "    3-MEDIOCAMPISTA."<<endl;
+        cout<< "    4-DELANTERO."<<endl;
+        cout<< "    Ingresar posicion jugador "<<i+1<<": "<<endl;
+        cin>>opcion;
+        do{
+        switch(opcion){
+            case 1:
+                strcpy(posicion, "ARQUERO");
+            break;
+              case 2:
+                strcpy(posicion, "DEFENSOR");
+            break;
+              case 3:
+                strcpy(posicion, "MEDIOCAMPISTA");
+            break;
+              case 4:
+                strcpy(posicion, "DELANTERO");
+            break;
+             default:
+                  cout<<"La opcion es invalida. Por favor, vuelva a ingresarla.";
+                  cls();
+                ingreso=false;
+        }} while(ingreso==false);
+
 
         ju.setNombre_equipo(nombre_eq);
 

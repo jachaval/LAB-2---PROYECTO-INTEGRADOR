@@ -187,3 +187,40 @@ void exportar_torneos(){
     archivo.close();
     msj("ARCHIVO EXPORTADO CORRECTAMENTE",APP_TITLEFORECOLOR,APP_OKCOLOR);
 }
+
+void modificar_equipo(){
+    int opcion;
+
+
+    Equipo eq;
+    FILE*p;
+    p=fopen(FILE_EQUIPOS,"rb+");
+    if (p == NULL){
+        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return;
+    }
+
+
+    listar_equipos_del_torneo();
+    cout<<"Ingrese el numero del equipo cuyo nombre desea modificar: "<<endl;
+    cin>>opcion;
+    cls();
+    char nombre[40];
+    cout<<"Ingrese el nuevo nombre de el equipo: ";
+    cin.ignore();
+    cin.getline(nombre, 40);
+
+
+    while(fread(&eq,sizeof(Equipo),1,p)==1){
+            if(opcion==eq.getNro_equipo()){
+                eq.setNombre_equipo(nombre);
+                }}
+
+                cout<<endl;
+                cout<<"  Nombre cambiado correctamente"<<endl;
+            fseek(p,ftell(p)-sizeof (Equipo),0);
+            fwrite(&eq, sizeof(Equipo), 1 , p);
+            fclose(p);
+            return;
+        }
+

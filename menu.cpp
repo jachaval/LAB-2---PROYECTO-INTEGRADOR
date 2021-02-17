@@ -410,7 +410,7 @@ void menu_configuraciones(){
         setColor(WHITE);
         gotoxy(1,6);
         cout << "    1. EXPORTAR ARCHIVOS EN FORMATO TEXTO" << endl;
-        cout << "    2. .... " << endl;
+        cout << "    2. EDITAR REGISTROS" << endl;
         cout << "    3. ..... " << endl;
 
         cout << "    0. SALIR" << endl;
@@ -434,6 +434,7 @@ void menu_configuraciones(){
                 cls();
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy(1,3);
+                modificar_equipo();
 
 
                 anykey();
