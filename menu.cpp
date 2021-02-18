@@ -151,10 +151,19 @@ void menu_iniciar_torneo(){
                 cls();
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy (1,3);
+                int valor;
 
-                sortear();
+                valor=verificar_sorteo();
+                if(valor==1){
+                    sortear();
 
-                break;
+                }
+                else{
+                    cout<<"EL TORNEO NO SE PUEDE VOLVER A SORTEAR SI YA HAY UN PARTIDO JUGADO"<<endl;
+                    anykey();
+                }
+
+            break;
             case 0:
                 return;
             break;

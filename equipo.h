@@ -60,7 +60,7 @@ void poner_equipos_aleatorios(int * vecAleatorio, int cant_equipos); //carga un 
 void sortear();
 void sortear_equipos(int cantidad_equipos);
 void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant);
-
+int verificar_sorteo();
 void listar_equipos_en_competencia();
 void ver_proximos_encuentros();
 void listar_equipos_del_torneo();

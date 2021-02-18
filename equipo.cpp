@@ -1240,3 +1240,20 @@ bool verificar_camiseta_equipo(int nro_camiseta, int num_equipo){
     }
     return verificado;
 }
+
+int verificar_sorteo(){
+    FILE*p;
+    p=fopen(FILE_TORNEOS,"rb");
+    if(p==NULL){
+        msj("ERROR DE ARCHIVO PARTIDOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return 1;
+    }
+    Torneo par;
+    while(fread(&par,sizeof(Torneo),1,p)){
+        if(par.getPartidos_jugados()==0){
+            return 1;
+        }
+    }
+return 2;
+
+}
