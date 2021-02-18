@@ -5,6 +5,7 @@
 #include <locale.h>
 #include <iomanip>
 #include <ctime>
+#include <conio.h>
 using namespace std;
 #include "rlutil.h"
 #include "interfaz.h"
@@ -186,7 +187,6 @@ void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant_equipos){
     while(fread(&eq, sizeof(Equipo),1,pArchivo)){
             Jugador jug;
             FILE* p;
-            int numero, i=0;
             p=fopen(FILE_JUGADORES,"rb+");
             if(p==NULL){
                 msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
@@ -202,7 +202,7 @@ void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant_equipos){
 
                     fwrite(&jug, sizeof(Jugador), 1 , p);
 
-                    fseek(p,-sizeof (Jugador),SEEK_SET);
+                    fseek(p,ftell(p)-sizeof (Jugador),SEEK_SET);
 
                 }
 
@@ -224,6 +224,7 @@ bool cargar_equipo(int cant_equipos){
     cin.ignore();
     cout<<"    Ingrese nombre: ";
     cin.getline(nombre,25);
+    strupr(nombre);
 
     eq.setNombre_equipo(nombre);
     if(!eq.guardarEnDisco()){
@@ -254,9 +255,9 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo, char *nombre_eq){
         bool ingreso=true;;
         cls();
         cin.ignore();
-        cout<< "    Ingresar solo el primer nombre del jugador "<<i+1<<" en mayúsculas: ";
+        cout<< "    Ingresar solo el primer nombre del jugador "<<i+1<<": ";
         cin.getline(nombre,25);
-        cout<< "    Ingresar apellido jugador "<<i+1<<" en mayúsculas: ";
+        cout<< "    Ingresar apellido jugador "<<i+1<<": ";
         cin.getline(apellido,25);
         bool verificado=false;
         do{
@@ -300,9 +301,9 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo, char *nombre_eq){
 
 
         ju.setNombre_equipo(nombre_eq);
-
+        strupr(nombre);
         ju.setNombre(nombre);
-
+        strupr(apellido);
         ju.setApellido(apellido);
 
         ju.setPosicion(posicion);

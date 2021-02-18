@@ -4,6 +4,7 @@
 #include <cstring>
 #include <locale.h>
 #include <fstream>
+#include <conio.h>
 using namespace std;
 #include "configuraciones.h"
 #include "equipo.h"
@@ -266,6 +267,8 @@ void modificar_equipo(){
     cin.ignore();
     cin.getline(nombre, 40);
 
+    strupr(nombre);
+
 
     while(fread(&eq,sizeof(Equipo),1,p)==1){
         if(opcion==eq.getNro_equipo()){
@@ -346,7 +349,7 @@ void modificar_jugadores(){
                     cout<<"Ingrese el nuevo nombre de el jugador: ";
                     cin.ignore();
                     cin.getline(nombre, 30);
-
+                    strupr(nombre);
                     ju.setNombre(nombre);
                     fseek(p,ftell(p)-sizeof (Jugador),0);
                     fwrite(&ju, sizeof(Jugador), 1 , p);
@@ -360,7 +363,7 @@ void modificar_jugadores(){
                     cout<<"Ingrese el nuevo apellido del jugador: ";
                     cin.ignore();
                     cin.getline(apellido, 30);
-
+                    strupr(apellido);
                     ju.setApellido(apellido);
                     fseek(p,ftell(p)-sizeof (Jugador),0);
                     fwrite(&ju, sizeof(Jugador), 1 , p);

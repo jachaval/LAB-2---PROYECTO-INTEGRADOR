@@ -4,6 +4,7 @@
 #include <cstring>
 #include <locale.h>
 #include <iomanip>
+#include <conio.h>
 using namespace std;
 #include "rlutil.h"
 #include "interfaz.h"
@@ -496,12 +497,14 @@ void buscar_jugador() {
 	Jugador reg;
 	bool encontrado=false;
 	char nombre_jugador[30], apellido_jugador[30];
-	cout<<"Ingrese en mayusculas el nombre del jugador a buscar: ";
+	cout<<"Ingrese el nombre del jugador a buscar: ";
 	cin>>nombre_jugador;
+	strupr(nombre_jugador);
 	cout<<endl;
-	cout<<"Ingrese en mayusculas el apellido del jugador a buscar: ";
+	cout<<"Ingrese el apellido del jugador a buscar: ";
 	cin>>apellido_jugador;
-	cout<<endl;
+    strupr(apellido_jugador);
+    cout<<endl;
 
 	FILE* f;
 	f = fopen(FILE_JUGADORES, "rb");

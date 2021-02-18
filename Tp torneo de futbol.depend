@@ -112,7 +112,7 @@
 	"partido.h"
 	"configuraciones.h"
 
-1613675695 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
+1613682278 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
@@ -120,6 +120,7 @@
 	<locale.h>
 	<iomanip>
 	<ctime>
+	<conio.h>
 	"rlutil.h"
 	"interfaz.h"
 	"torneo.h"
@@ -129,13 +130,14 @@
 
 1613673049 c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\equipo.h
 
-1613530497 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.cpp
+1613682418 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\jugador.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
 	<cstring>
 	<locale.h>
 	<iomanip>
+	<conio.h>
 	"rlutil.h"
 	"interfaz.h"
 	"torneo.h"
@@ -300,7 +302,7 @@
 1613531249 c:\users\agustin\desktop\utn\laboratorio 2\tp final\tp torneo de futbol\lab-2---proyecto-integrador\partido.h
 	"equipo.h"
 
-1613680526 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\configuraciones.cpp
+1613682541 source:c:\users\joa_a\documents\utn\2do cuatrimestre\laboratorio de computacion 2\lab-2---proyecto-integrador\configuraciones.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
