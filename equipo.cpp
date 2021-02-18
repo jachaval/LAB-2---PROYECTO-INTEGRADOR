@@ -132,9 +132,11 @@ void sortear(){
             sortear_equipos(cantidad_equipos);
             /// mostrar equipos sorteados. HACER FUNCIONES CON RLUTIL HACER TIPO FIXTURE
             listar_equipos();
+            anykey();
 
             poner_equipos_enpartidos(cantidad_equipos);
             anykey();
+            return;
         }
         else{
             cout<<"    PRIMERO SELECCIONE EL TORNEO PARA PODER CARGAR LOS EQUIPOS"<<endl;
@@ -187,6 +189,7 @@ void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant_equipos){
     while(fread(&eq, sizeof(Equipo),1,pArchivo)){
             Jugador jug;
             FILE* p;
+            int numero, i=0;
             p=fopen(FILE_JUGADORES,"rb+");
             if(p==NULL){
                 msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR, APP_ERRORCOLOR);
@@ -202,7 +205,7 @@ void cambiar_nroequipo_jugadores(int *vecAleatorio, int cant_equipos){
 
                     fwrite(&jug, sizeof(Jugador), 1 , p);
 
-                    fseek(p,ftell(p)-sizeof (Jugador),SEEK_SET);
+                    fseek(p,-sizeof (Jugador),SEEK_SET);
 
                 }
 
@@ -506,27 +509,46 @@ void ver_ganador(){
         msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
 		return;
 	}
-
+    int contador=0;
 	Equipo eq;
-    while(fread(&eq, sizeof (Equipo), 1, f)==1){
+	while(fread(&eq, sizeof (Equipo), 1, f)==1){
         if(eq.getActivo()==true){
-            setColor(RED);
-            for (int i = 0; i < 40; i++) {
-                gotoxy(i + 4, 3); printf("*");
-                gotoxy(7, 4); printf("EQUIPO GANADOR ES: ");
-                gotoxy(i + 4, 5); printf("*");
-                gotoxy(4, 4); printf("*");
-                gotoxy(43, 4); printf("*");
-            }
-        setColor(WHITE);
-        gotoxy(26,4);
-        cout << eq.getNombre_equipo();
+           contador++;
 
-        return;
         }
     }
     fclose(f);
+    FILE* p;
+	p = fopen(FILE_EQUIPOS, "rb");
+	if (p == NULL) {
+        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+		return;
+	}
+    if(contador==1){
+        while(fread(&eq, sizeof (Equipo), 1, f)==1){
+            if(eq.getActivo()==true){
+                setColor(RED);
+                for (int i = 0; i < 40; i++) {
+                    gotoxy(i + 4, 3); printf("*");
+                    gotoxy(7, 4); printf("EQUIPO GANADOR ES: ");
+                    gotoxy(i + 4, 5); printf("*");
+                    gotoxy(4, 4); printf("*");
+                    gotoxy(43, 4); printf("*");
+                }
+            setColor(WHITE);
+            gotoxy(26,4);
+            cout << eq.getNombre_equipo();
+            fclose(p);
+            return;
+            }
+        }
+    }
+    else{
+
     cout<< "AÚN NO TERMINO EL TORNEO"<<endl;
+    }
+    fclose(p);
+
 }
 
 void ver_proximos_encuentros(){ ///para febrero agregar fecha de encuentro
