@@ -289,7 +289,7 @@ void modificar_jugadores(){
 
     p=fopen(FILE_JUGADORES,"rb");
     if (p == NULL){
-        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        msj("ERROR DE ARCHIVO JUGADORES",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
         return;
     }
 
