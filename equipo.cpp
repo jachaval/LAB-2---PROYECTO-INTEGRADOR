@@ -21,10 +21,12 @@ Equipo::Equipo(){
     partidos_perdidos=0;
     goles_afavor=0;
     goles_encontra=0;
+    existe=true;
 }
 
 void  Equipo::mostrar(){};
 void  Equipo::setActivo(){activo=false;}
+void  Equipo::setExiste(){existe=false;}
 void  Equipo::setNro_equipo(int n){nro_equipo=n+1;}
 void  Equipo::setNombre_equipo(char *nombre){strcpy(nombre_equipo,nombre);}
 void  Equipo::setGoles_afavor(int goles){goles_afavor=goles;}
@@ -38,6 +40,7 @@ int   Equipo::getGoles_encontra(){return goles_encontra;}
 int   Equipo::getPartidos_ganados(){return partidos_ganados;}
 int   Equipo::getPartidos_perdidos(){return partidos_perdidos;}
 bool  Equipo::getActivo(){return activo;}
+bool  Equipo::getExiste(){return existe;}
 
 void Equipo::aumentar_gol_afavor(int goles){
     goles_afavor+= goles;
@@ -242,15 +245,18 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo, char *nombre_eq){
     int i,camiseta;
     bool guardo;
     char posicion[25], apellido[25], nombre[25];
+
+
+
     for(i=0;i<cant_jugadores;i++){
         Jugador ju;
         int opcion;
         bool ingreso=true;;
         cls();
         cin.ignore();
-        cout<< "    Ingresar solo el primer nombre del jugador en mayúsculas "<<i+1<<": ";
+        cout<< "    Ingresar solo el primer nombre del jugador"<<i+1<<" en mayúsculas: ";
         cin.getline(nombre,25);
-        cout<< "    Ingresar apellido jugador en mayúsculas "<<i+1<<": ";
+        cout<< "    Ingresar apellido jugador"<<i+1<<" en mayúsculas: ";
         cin.getline(apellido,25);
         cout<<"    Ingresar número de camiseta jugador "<<i+1<<": ";
         cin>>camiseta;

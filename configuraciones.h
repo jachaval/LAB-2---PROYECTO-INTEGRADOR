@@ -8,6 +8,9 @@ void exportar_jugadores();
 void exportar_partidos();
 void exportar_torneos();
 void modificar_equipo();
+void modificar_registros();
+void modificar_jugadores();
+bool ver_primer_partido_jugado();
 //-Modificar todos los archivos
 //-Agregar todo
 

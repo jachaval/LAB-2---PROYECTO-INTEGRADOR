@@ -11,6 +11,7 @@ class Equipo{
 		int partidos_ganados;
 		int partidos_perdidos;
 		bool activo;
+		bool existe;
 	public:
 	    Equipo();
 		void cargar();
@@ -24,12 +25,14 @@ class Equipo{
 		void setPartidos_ganados(int);
 		void setPartidos_perdidos(int);
 		void setActivo();
+		void setExiste();
 		int getNro_equipo();
 		char *getNombre_equipo();
 		int getGoles_afavor();
 		int getGoles_encontra();
 		int getPartidos_ganados();
 		int getPartidos_perdidos();
+		bool getExiste();
 		bool getActivo();
 		void aumentar_gol_afavor(int);
         void aumentar_gol_encontra(int);

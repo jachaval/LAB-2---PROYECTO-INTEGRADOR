@@ -434,7 +434,7 @@ void menu_configuraciones(){
                 cls();
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy(1,3);
-                modificar_equipo();
+                modificar_registros();
 
 
                 anykey();
