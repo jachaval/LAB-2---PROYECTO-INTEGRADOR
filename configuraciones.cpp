@@ -234,7 +234,8 @@ void modificar_registros(){
                 cls();
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy (1,3);
-
+                creditos();
+                anykey();
                 break;
             case 0:
                 return;
@@ -328,13 +329,14 @@ void modificar_jugadores(){
         if(opcion==ju.getNro_equipo() && opcion2==ju.getNro_camiseta()){
             cout << "    1. MODIFICAR NOMBRE DEL JUGADOR" << endl;
             cout << "    2. MODIFICAR APELLIDO DEL JUGADOR" << endl;
-            cout << "    3. MODIFICAR NUMERO DE CAMISETA DEL JUGADOR" << endl;
-            cout << "    4. MODIFICAR POSICION DEL JUGADOR" << endl;
+            cout << "    3. MODIFICAR NÚMERO DE CAMISETA DEL JUGADOR" << endl;
+            cout << "    4. MODIFICAR POSICIÓN DEL JUGADOR" << endl;
             cout << "    0. SALIR" << endl;
             cout << "    ------------------------------" << endl;
 
             cout <<"    Opción-> ";
             cin >> opcion3;
+
             char nombre[30], apellido[30], posicion[30];
             int camiseta;
 
@@ -382,12 +384,14 @@ void modificar_jugadores(){
                     cout<<"  Registro editado correctamente."<<endl;
                 break;
                 case 4:
+                    cls();
                     cout<< "    1-ARQUERO."<<endl;
                     cout<< "    2-DEFENSOR."<<endl;
                     cout<< "    3-MEDIOCAMPISTA."<<endl;
                     cout<< "    4-DELANTERO."<<endl;
-                    cout<< "    Ingresar la nueva posición jugador: "<<endl;
+                    cout<< "    Ingresar la nueva posición del jugador: ";
                     cin>>opcion4;
+
                     switch(opcion4){
                         case 1:
                             strcpy(posicion, "ARQUERO");
@@ -444,3 +448,28 @@ void modificar_jugadores(){
 return;
 }
 
+void creditos(){
+    system("cls");
+    title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
+    setColor(YELLOW);
+    for (int i = 0; i < 24; i++) {
+        gotoxy(i + 4, 3); printf("*");
+        gotoxy(9, 4); printf("!!! CRÉDITOS !!! ");
+        gotoxy(i + 4, 5); printf("*");
+        gotoxy(4, 4); printf("*");
+        gotoxy(27, 4); printf("*");
+    }
+    gotoxy(1,6);
+    setColor(WHITE);
+
+    cout<<endl<< "    EL PROGAMA FUE UNA CREACIÓN REALIZADA POR "<< endl<<endl<<endl;
+    setColor(GREEN);
+    cout<< "    ACHÁVAL DURIA JOAQUÍN nro legajo: 23900 "<< endl;
+    setColor(RED);
+    cout<< "    AGUSTÍN ROBLES        nro legajo: 23992 "<< endl<<endl<<endl;
+    setColor(WHITE);
+
+    cout<< "    PARA CORRECCIONES O SUGERENCIAS SOBRE EL PROGAMA "<<endl;
+    cout<< "    MANDAR MAIL A SUGERENCIAS@TORNEODEFUTBOL.COM "<<endl;
+
+}

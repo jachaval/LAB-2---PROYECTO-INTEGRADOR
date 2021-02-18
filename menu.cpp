@@ -411,7 +411,7 @@ void menu_configuraciones(){
         gotoxy(1,6);
         cout << "    1. EXPORTAR ARCHIVOS EN FORMATO TEXTO" << endl;
         cout << "    2. EDITAR REGISTROS" << endl;
-        cout << "    3. ..... " << endl;
+        cout << "    3. CRÉDITOS " << endl;
 
         cout << "    0. SALIR" << endl;
         cout << "    ------------------------------" << endl;
@@ -446,7 +446,7 @@ void menu_configuraciones(){
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy(1,3);
 
-
+                creditos();
                 anykey();
 
 

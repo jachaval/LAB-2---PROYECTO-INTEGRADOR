@@ -39,7 +39,7 @@ int main(){
 */
 
 
-
+/*
     FILE* p;
     p=fopen(FILE_TORNEOS, "rb");
     if(p==NULL){
@@ -98,7 +98,7 @@ int main(){
 
     fclose(par);
     anykey();
-
+*/
 /*
     int cant,i, contador=0;
     Partido *vec;
