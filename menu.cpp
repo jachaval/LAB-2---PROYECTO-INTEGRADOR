@@ -96,8 +96,8 @@ void menu_iniciar_torneo(){
         cin >> opcion;
 
 
-                int cantidad_equipos;
-                int cant_equiposCargados;
+        int cantidad_equipos;
+        int cant_equiposCargados;
 
         switch (opcion) {
             case 1:

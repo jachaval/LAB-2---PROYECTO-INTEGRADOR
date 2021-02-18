@@ -207,8 +207,6 @@ void modificar_registros(){
         gotoxy(1,6);
         cout << "    1. MODIFICAR NOMBRE EQUIPOS" << endl;
         cout << "    2. MODIFICAR JUGADOR" << endl;
-        cout << "    3. MODIFICAR PARTIDO" << endl;
-        cout << "    4. MODIFICAR TORNEO" << endl;
         cout << "    0. SALIR" << endl;
         cout << "    ------------------------------" << endl;
 
@@ -241,14 +239,15 @@ void modificar_registros(){
             case 0:
                 return;
             break;
-        }}
+        }
+}
 
 
 
 void modificar_equipo(){
-     Equipo eq;
-     FILE*p;
-     int opcion;
+    Equipo eq;
+    FILE*p;
+    int opcion;
 
     p=fopen(FILE_EQUIPOS,"rb+");
     if (p == NULL){
@@ -258,7 +257,7 @@ void modificar_equipo(){
 
 
     listar_equipos_del_torneo();
-    cout<<"Ingrese el numero del equipo cuyo nombre desea modificar: "<<endl;
+    cout<<endl<< "Ingrese el número del equipo cuyo nombre desea modificar: ";
     cin>>opcion;
     cls();
     char nombre[40];
@@ -268,26 +267,26 @@ void modificar_equipo(){
 
 
     while(fread(&eq,sizeof(Equipo),1,p)==1){
-            if(opcion==eq.getNro_equipo()){
-                eq.setNombre_equipo(nombre);
-                }}
-
-                cout<<endl;
-                cout<<"  Nombre cambiado correctamente"<<endl;
+        if(opcion==eq.getNro_equipo()){
+            eq.setNombre_equipo(nombre);
+            cout<<endl;
+            cout<<"  Nombre cambiado correctamente"<<endl;
             fseek(p,ftell(p)-sizeof (Equipo),0);
             fwrite(&eq, sizeof(Equipo), 1 , p);
             fclose(p);
             return;
         }
+    }
+}
 
 
 void modificar_jugadores(){
 
-     Jugador ju;
-     FILE*p;
-     int opcion, opcion2, opcion3, opcion4;
+    Jugador jug;
+    FILE*p;
+    int opcion, opcion2, opcion3, opcion4;
 
-    p=fopen(FILE_JUGADORES,"rb+");
+    p=fopen(FILE_JUGADORES,"rb");
     if (p == NULL){
         msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
         return;
@@ -296,109 +295,152 @@ void modificar_jugadores(){
 
     listar_equipos_del_torneo();
     cout<<endl;
-    cout<<"Ingrese el numero del equipo donde esta el jugador que desea editar: "<<endl;
+    cout<<"Ingrese el número del equipo donde está el jugador que desea editar: ";
     cin>>opcion;
     cls();
 
-     cout << left;
-     cout << setw(17) << "Equipo " << setw(17) << "|Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
-     cout << endl << "-------------------------------------------------------------------------------------------------------------------------" << endl;
+    cout << left;
+    cout << setw(17) << "Equipo " << setw(17) << "|Nombre " << setw(15) << "|Apellido " << setw(15) << "|Posición " << setw(15) << "|Nro. Camiseta "<< setw(6) << "|Goles " << setw(12) << "|Asistencias " << setw(9) << "|T. Rojas " << setw(13) << "|T. Amarillas ";
+    cout << endl << "-------------------------------------------------------------------------------------------------------------------------" << endl;
 
-    while(fread(&ju,sizeof(Jugador),1,p)==1){
-            if(opcion==ju.getNro_equipo()){
-                ju.mostrar();
-                 }}
-                 cout<<endl;
-                 cout<<"Ingrese el numero de camiseta del jugador que desea modificar: "<<endl;
-                 cin>>opcion2;
-                 cls();
+    while(fread(&jug,sizeof(Jugador),1,p)==1){
+        if(opcion==jug.getNro_equipo()){
+            jug.mostrar();
+        }
+    }
+    fclose(p);
+    cout<<endl;
+    cout<<"Ingrese el número de camiseta del jugador que desea modificar: "<<endl;
+    cin>>opcion2;
+    cls();
 
-                 fseek(p,0,0);
+    Jugador ju;
+    FILE*pArchivo;
+
+
+    pArchivo=fopen(FILE_JUGADORES,"rb+");
+    if (pArchivo == NULL){
+        msj("ERROR DE ARCHIVO EQUIPOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        return;
+    }
 
     while(fread(&ju,sizeof(Jugador),1,p)==1){
         if(opcion==ju.getNro_equipo() && opcion2==ju.getNro_camiseta()){
-        cout << "    1. MODIFICAR NOMBRE DEL JUGADOR" << endl;
-        cout << "    2. MODIFICAR APELLIDO DEL JUGADOR" << endl;
-        cout << "    3. MODIFICAR NUMERO DE CAMISETA DEL JUGADOR" << endl;
-        cout << "    4. MODIFICAR POSICION DEL JUGADOR" << endl;
-        cout << "    0. SALIR" << endl;
-        cout << "    ------------------------------" << endl;
+            cout << "    1. MODIFICAR NOMBRE DEL JUGADOR" << endl;
+            cout << "    2. MODIFICAR APELLIDO DEL JUGADOR" << endl;
+            cout << "    3. MODIFICAR NUMERO DE CAMISETA DEL JUGADOR" << endl;
+            cout << "    4. MODIFICAR POSICION DEL JUGADOR" << endl;
+            cout << "    0. SALIR" << endl;
+            cout << "    ------------------------------" << endl;
 
-        cout <<"    Opción-> ";
-        cin >> opcion3;
-        char nombre[30], apellido[30], posicion[30];
-        int camiseta;
+            cout <<"    Opción-> ";
+            cin >> opcion3;
+            char nombre[30], apellido[30], posicion[30];
+            int camiseta;
 
-        switch (opcion3) {
-            case 1:
-                cls();
-               cout<<"Ingrese  el nuevo nombre de el jugador: ";
-               cin>>nombre[30];
-               cout<<endl;
+            switch (opcion3) {
+                case 1:
+                    cls();
+                    cout<<"Ingrese el nuevo nombre de el jugador: ";
+                    cin.ignore();
+                    cin.getline(nombre, 30);
 
-               ju.setNombre(nombre);
+                    ju.setNombre(nombre);
+                    fseek(p,ftell(p)-sizeof (Jugador),0);
+                    fwrite(&ju, sizeof(Jugador), 1 , p);
+                    fclose(p);
+                    cls();
+                    cout<<endl;
+                    cout<<"  Registro editado correctamente."<<endl;
+                break;
+                case 2:
+                    cls();
+                    cout<<"Ingrese el nuevo apellido del jugador: ";
+                    cin.ignore();
+                    cin.getline(apellido, 30);
+
+                    ju.setApellido(apellido);
+                    fseek(p,ftell(p)-sizeof (Jugador),0);
+                    fwrite(&ju, sizeof(Jugador), 1 , p);
+                    fclose(p);
+                    cls();
+                    cout<<endl;
+                    cout<<"  Registro editado correctamente."<<endl;
 
                 break;
-            case 2:
-                cls();
-               cout<<"Ingrese  el nuevo apellido de el jugador: ";
-               cin>>apellido[30];
-               cout<<endl;
+                case 3:
+                    cls();
+                    cout<<"Ingrese el nuevo numero de camiseta del jugador: ";
+                    cin>>camiseta;
 
-               ju.setApellido(apellido);
-
-
-            break;
-            case 3:
-               cls();
-               cout<<"Ingrese el nuevo numero de camiseta de el jugador: ";
-               cin>>camiseta;
-               cout<<endl;
-
-               ju.setNro_camiseta(camiseta);
-
-
+                    ju.setNro_camiseta(camiseta);
+                    fseek(p,ftell(p)-sizeof (Jugador),0);
+                    fwrite(&ju, sizeof(Jugador), 1 , p);
+                    fclose(p);
+                    cls();
+                    cout<<endl;
+                    cout<<"  Registro editado correctamente."<<endl;
                 break;
-            case 4:
-        cout<< "    1-ARQUERO."<<endl;
-        cout<< "    2-DEFENSOR."<<endl;
-        cout<< "    3-MEDIOCAMPISTA."<<endl;
-        cout<< "    4-DELANTERO."<<endl;
-        cout<< "    Ingresar la nueva posicion jugador: "<<endl;
-        cin>>opcion4;
-        switch(opcion4){
-            case 1:
-                strcpy(posicion, "ARQUERO");
-                ju.setPosicion(posicion);
-            break;
-              case 2:
-                strcpy(posicion, "DEFENSOR");
-                ju.setPosicion(posicion);
-            break;
-              case 3:
-                strcpy(posicion, "MEDIOCAMPISTA");
-                ju.setPosicion(posicion);
-            break;
-              case 4:
-                strcpy(posicion, "DELANTERO");
-                ju.setPosicion(posicion);
-            break;
-
+                case 4:
+                    cout<< "    1-ARQUERO."<<endl;
+                    cout<< "    2-DEFENSOR."<<endl;
+                    cout<< "    3-MEDIOCAMPISTA."<<endl;
+                    cout<< "    4-DELANTERO."<<endl;
+                    cout<< "    Ingresar la nueva posición jugador: "<<endl;
+                    cin>>opcion4;
+                    switch(opcion4){
+                        case 1:
+                            strcpy(posicion, "ARQUERO");
+                            ju.setPosicion(posicion);
+                            fseek(p,ftell(p)-sizeof (Jugador),0);
+                            fwrite(&ju, sizeof(Jugador), 1 , p);
+                            fclose(p);
+                            cls();
+                            cout<<endl;
+                            cout<<"  Registro editado correctamente."<<endl;
+                        break;
+                        case 2:
+                            strcpy(posicion, "DEFENSOR");
+                            ju.setPosicion(posicion);
+                            fseek(p,ftell(p)-sizeof (Jugador),0);
+                            fwrite(&ju, sizeof(Jugador), 1 , p);
+                            fclose(p);
+                            cls();
+                            cout<<endl;
+                            cout<<"  Registro editado correctamente."<<endl;
+                        break;
+                        case 3:
+                            strcpy(posicion, "MEDIOCAMPISTA");
+                            ju.setPosicion(posicion);
+                            fseek(p,ftell(p)-sizeof (Jugador),0);
+                            fwrite(&ju, sizeof(Jugador), 1 , p);
+                            fclose(p);
+                            cls();
+                            cout<<endl;
+                            cout<<"  Registro editado correctamente."<<endl;
+                        break;
+                        case 4:
+                            strcpy(posicion, "DELANTERO");
+                            ju.setPosicion(posicion);
+                            fseek(p,ftell(p)-sizeof (Jugador),0);
+                            fwrite(&ju, sizeof(Jugador), 1 , p);
+                            fclose(p);
+                            cls();
+                            cout<<endl;
+                            cout<<"  Registro editado correctamente."<<endl;
+                        break;
+                        case 0:
+                            return;
+                        break;
+                    }
                 break;
-            case 0:
-                return;
-            break;
-        }}
-            fseek(p,ftell(p)-sizeof (Jugador),0);
-            fwrite(&ju, sizeof(Jugador), 1 , p);
-            fclose(p);
-            cls();
-            cout<<endl;
-            cout<<"  Registro editado correctamente."<<endl;
-        return;
+                case 0:	return;
+                break;
+            }
 
         }
     }
 
 return;
 }
+

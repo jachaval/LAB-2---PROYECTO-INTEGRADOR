@@ -254,19 +254,29 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo, char *nombre_eq){
         bool ingreso=true;;
         cls();
         cin.ignore();
-        cout<< "    Ingresar solo el primer nombre del jugador"<<i+1<<" en mayúsculas: ";
+        cout<< "    Ingresar solo el primer nombre del jugador "<<i+1<<" en mayúsculas: ";
         cin.getline(nombre,25);
-        cout<< "    Ingresar apellido jugador"<<i+1<<" en mayúsculas: ";
+        cout<< "    Ingresar apellido jugador "<<i+1<<" en mayúsculas: ";
         cin.getline(apellido,25);
-        cout<<"    Ingresar número de camiseta jugador "<<i+1<<": ";
-        cin>>camiseta;
+        bool verificado=false;
+        do{
+            cout<<"    Ingresar número de camiseta jugador "<<i+1<<": ";
+            cin>>camiseta;
+
+            verificado=verificar_camiseta_equipo(camiseta, nroEquipo);
+
+            if(verificado==true){
+                cout<< "    El número de camiseta ya se uso en el equipo o el número es menor a 0. Ingrese otro"<<endl;
+            }
+
+        }while (verificado);
         cout<<endl;
         cls();
         cout<< "    1-ARQUERO."<<endl;
         cout<< "    2-DEFENSOR."<<endl;
         cout<< "    3-MEDIOCAMPISTA."<<endl;
         cout<< "    4-DELANTERO."<<endl;
-        cout<< "    Ingresar posicion jugador "<<i+1<<": "<<endl;
+        cout<< "    Ingresar posición jugador "<<i+1<<": ";
         cin>>opcion;
         do{
         switch(opcion){
@@ -283,7 +293,7 @@ bool cargar_jugadores(int cant_jugadores, int nroEquipo, char *nombre_eq){
                 strcpy(posicion, "DELANTERO");
             break;
              default:
-                  cout<<"La opcion es invalida. Por favor, vuelva a ingresarla.";
+                  cout<<"La opción es inválida. Por favor, vuelva a ingresarla.";
                   cls();
                 ingreso=false;
         }} while(ingreso==false);
@@ -1189,4 +1199,21 @@ void listar_equipos_del_torneo(){
     fclose(f);
 
     return;
+}
+
+bool verificar_camiseta_equipo(int nro_camiseta, int num_equipo){
+    FILE * pArchivo;
+    pArchivo=fopen(FILE_JUGADORES, "rb");
+
+    Jugador jug;
+    bool verificado=false;
+    while(fread(&jug, sizeof (Jugador), 1 , pArchivo)==1){
+        if(jug.getNro_equipo()== num_equipo){
+            if(jug.getNro_camiseta()==nro_camiseta || nro_camiseta<=0){
+                verificado=true;
+                return verificado;
+            }
+        }
+    }
+    return verificado;
 }

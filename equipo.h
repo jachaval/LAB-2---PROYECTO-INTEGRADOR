@@ -78,6 +78,7 @@ void fase_32(int);
 
 void poner_equipos_enpartidos(int cant_equipos);
 
+bool verificar_camiseta_equipo(int , int);
 
 
 #endif // EQUIPO_H_INCLUDED

@@ -1032,25 +1032,25 @@ int verificar_camiseta(int nro_equipo, int nro_jugador){
 
 
 	while (encontrado==false ) {
-    FILE* f;
-	f = fopen(FILE_JUGADORES, "rb");
-	if (f == NULL) {
-		return -1;
-	}
+        FILE* f;
+        f = fopen(FILE_JUGADORES, "rb");
+        if (f == NULL) {
+            return -1;
+        }
 
-    while (fread(&reg, sizeof(Jugador), 1, f)) {
-	if (nro_equipo == reg.getNro_equipo() && nro_jugador ==reg.getNro_camiseta() ) {
+        while (fread(&reg, sizeof(Jugador), 1, f)) {
+            if (nro_equipo == reg.getNro_equipo() && nro_jugador ==reg.getNro_camiseta() ) {
                 encontrado=true;
                 fclose(f);
                 return nro_jugador;
-    }
-	}
-	if(encontrado==false){
-    cout<<"    El número de camiseta no existe. Por favor, vuelva a ingresarlo: "<<endl;
-    cin>>nro_jugador;
-    cout<<endl;
-	}
-	fclose(f);
+            }
+        }
+        if(encontrado==false){
+            cout<<"    El número de camiseta no existe. Por favor, vuelva a ingresarlo: "<<endl;
+            cin>>nro_jugador;
+            cout<<endl;
+        }
+        fclose(f);
 	}
 	return nro_jugador;
 
