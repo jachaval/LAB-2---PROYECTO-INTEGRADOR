@@ -32,7 +32,7 @@ class Torneo {
 
 int informar_tipoTorneo();
 int seleccionar_torneo();
-
+int verificar_partido_misma_fase(int , int);
 void cargar_resultado_partido();
 
 bool registrarResultado(int, int, int, int);

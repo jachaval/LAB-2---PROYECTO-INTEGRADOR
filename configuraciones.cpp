@@ -114,7 +114,7 @@ void exportar_equipos(){
 
 void exportar_jugadores(){
     ofstream archivo;
-    archivo.open("datos texto/jugadores.txt", ios::out);
+    archivo.open("datos texto/jugadores.csv", ios::out);
     if(archivo.fail()){
         cout<<"   ERROR DE ARCHIVO";
         return;
@@ -128,9 +128,9 @@ void exportar_jugadores(){
 	}
 	Jugador ju;
 
-    archivo<<"NRO EQUIPO,NOMBRE,APELLIDO,POSICION,NRO CAMISETA,GOLES,ASISTENCIAS,T. ROJAS,T. AMARILLAS"<<endl;
+    archivo<<"NRO EQUIPO;NOMBRE;APELLIDO;POSICION;NRO CAMISETA;GOLES;ASISTENCIAS;T. ROJAS;T. AMARILLAS"<<endl;
 	while(fread(&ju, sizeof (Jugador), 1 , p)){
-        archivo<<ju.getNro_equipo()<<","<<ju.getNombre()<<","<<ju.getApellido()<<","<<ju.getPosicion()<<","<<ju.getNro_camiseta()<<","<<ju.getCant_goles()<<","<<ju.getAsistencias()<<","<<ju.getTarjeta_roja()<<","<<ju.getTarjeta_amarilla()<<endl;
+        archivo<<ju.getNro_equipo()<<";"<<ju.getNombre()<<";"<<ju.getApellido()<<";"<<ju.getPosicion()<<";"<<ju.getNro_camiseta()<<";"<<ju.getCant_goles()<<";"<<ju.getAsistencias()<<";"<<ju.getTarjeta_roja()<<";"<<ju.getTarjeta_amarilla()<<endl;
     }
 	fclose(p);
     archivo.close();

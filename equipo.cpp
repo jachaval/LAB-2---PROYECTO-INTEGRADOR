@@ -1245,7 +1245,7 @@ int verificar_sorteo(){
     FILE*p;
     p=fopen(FILE_TORNEOS,"rb");
     if(p==NULL){
-        msj("ERROR DE ARCHIVO PARTIDOS",APP_TITLEFORECOLOR,APP_ERRORCOLOR);
+        cout<< "ERROR DE ARCHIVO PARTIDOS"<<endl;
         return 1;
     }
     Torneo par;

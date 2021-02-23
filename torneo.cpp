@@ -175,6 +175,23 @@ int seleccionar_torneo(){
     return cant_equipos;
 }
 
+int verificar_partido_misma_fase(int instancia, int nro_equipo){
+    Partido par;
+    FILE* pArchivo;
+    pArchivo=fopen(FILE_PARTIDOS,"rb");
+
+    while(fread(&par,sizeof(Partido),1,pArchivo)){
+        if(par.getInstancia_torneo()==instancia && par.getJugado()==1){
+            if(nro_equipo==par.getEquipo_local()|| nro_equipo==par.getEquipo_visitante()){
+                return 1;
+            }
+        }
+
+    }
+    fclose(pArchivo);
+    return 0;
+}
+
 void cargar_resultado_partido(){
     int numeroEquipo1,numeroEquipo2, numeroCamiseta, numeroCamiseta_asistencia, golesEquipo1,golesEquipo2, equipo_ganador;
     int resultado, res_penales1=0, res_penales2=0;
@@ -255,6 +272,7 @@ void cargar_resultado_partido(){
         break;
     }
 
+    int verificado;
     bool eq;
 
     cout<<"    Número del primer equipo: ";
@@ -271,20 +289,36 @@ void cargar_resultado_partido(){
         cin>>numeroEquipo1;
     }
 
+
     cout<<"    EQUIPO "<<nomb_equipo1;
     cout<<endl;
+    verificado=verificar_partido_misma_fase( tor.getInstancia_torneo(),numeroEquipo1 );
+    while(verificado==1){
+        cout<<"   El equipo ya jugo un partido en esa fase, vuelva a ingresar el número de equipo: "<<endl;
+        cin>>numeroEquipo1;
+        verificado=verificar_partido_misma_fase( tor.getInstancia_torneo(),numeroEquipo1 );
+    }
+
     cout<<"    Goles: ";
     cin>>golesEquipo1;
     cout<<endl;
 
-     while(golesEquipo1<0 || golesEquipo1>100){
+    while(golesEquipo1<0 || golesEquipo1>100){
         cout<<"    La opción es inválida."<<endl;
         cout<<"    >Goles: ";
         cin>>golesEquipo1;
     }
 
+
+
     cout<<"    Número del segundo equipo: ";
     cin>>numeroEquipo2;
+    verificado=verificar_partido_misma_fase( tor.getInstancia_torneo(),numeroEquipo1 );
+    while(verificado==1){
+        cout<<"   El equipo ya jugo un partido en esa fase, vuelva a ingresar el número de equipo: "<<endl;
+        cin>>numeroEquipo2;
+        verificado=verificar_partido_misma_fase( tor.getInstancia_torneo(),numeroEquipo1 );
+    }
     eq=copiar_nombre_equipo(nomb_equipo2,numeroEquipo2);
 
      while(eq==false){

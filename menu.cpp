@@ -198,6 +198,7 @@ void menu_cargar_torneo(){
                 cls();
                 title("TORNEO DE FÚTBOL", APP_TITLEFORECOLOR, APP_TITLEBACKCOLOR);
                 gotoxy (1,3);
+
                 cargar_resultado_partido();
 
                 break;
